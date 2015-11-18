@@ -47,7 +47,7 @@ var FunctionsCell = React.createClass({
             </View>
             <Image 
               style={styles.rightAccessoryView} 
-              source={require('image!theatersrightaccesoryview')}/>
+              source={require('../../../../Images/RightAccesoryView.png')}/>
           </View>
           <View style={styles.separator} />
         </View>

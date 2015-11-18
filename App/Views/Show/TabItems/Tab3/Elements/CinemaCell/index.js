@@ -31,7 +31,7 @@ module.exports = React.createClass({
                 {data.name}
               </Text>
             </View>
-            <Image style={styles.rightAccessoryView} source={require('image!theatersrightaccesoryview')}/>
+            <Image style={styles.rightAccessoryView} source={require('../../../../../../Images/RightAccesoryView.png')}/>
           </View>
           <View style={styles.separator}/>
         </View>

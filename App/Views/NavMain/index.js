@@ -64,7 +64,7 @@ var NavigationBarRouteMapper = {
         onPress={() => navigator.pop()}>
         <Image
           style={[styles.navBackImage, styles.navIcon]}
-          source={require('image!menubackicon')}/>
+          source={require('./Images/MenuBackIcon.png')}/>
       </TouchableOpacity>
     );
   },
@@ -75,7 +75,7 @@ var NavigationBarRouteMapper = {
         onPress={ () => { helper.openMenu() } }>
         <Image
           style={[styles.menuIcon, styles.navIcon]}
-          source={require('image!menuicon')}/>
+          source={require('./Images/MenuIcon.png')}/>
       </TouchableOpacity>
     );
   },

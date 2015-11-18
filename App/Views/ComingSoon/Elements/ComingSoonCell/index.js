@@ -41,7 +41,7 @@ var ComingSoonCell = React.createClass({
                 {data.debut}
               </Text>
             </View>
-            <Image source={require('image!theatersrightaccesoryview')}/>
+            <Image source={require('../../../../Images/RightAccesoryView.png')}/>
           </View>
           <View style={styles.separator} />
         </View>

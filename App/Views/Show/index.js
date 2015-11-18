@@ -36,7 +36,7 @@ module.exports = React.createClass({
         <TabNavigator.Item
           selected={this.state.selectedTab === 'tab1'}
           title="Home"
-          renderIcon={() => <Image style={styles.tabIcon} source={require('image!menuicon')} />}
+          renderIcon={() => <Image style={styles.tabIcon} source={require('./Images/MenuIcon.png')} />}
           onPress={() => this.setState({ selectedTab: 'tab1' })}>
           <Tab1
             api={api}
@@ -47,7 +47,7 @@ module.exports = React.createClass({
         <TabNavigator.Item
           selected={this.state.selectedTab === 'tab2'}
           title="Reparto"
-          renderIcon={() => <Image style={styles.tabIcon} source={require('image!menuicon')} />}
+          renderIcon={() => <Image style={styles.tabIcon} source={require('./Images/MenuIcon.png')} />}
           onPress={() => this.setState({ selectedTab: 'tab2' })}>
           <Tab2 
             api={api}
@@ -57,7 +57,7 @@ module.exports = React.createClass({
         <TabNavigator.Item
           selected={this.state.selectedTab === 'tab3'}
           title="Horarios"
-          renderIcon={() => <Image style={styles.tabIcon} source={require('image!menuicon')} />}
+          renderIcon={() => <Image style={styles.tabIcon} source={require('./Images/MenuIcon.png')} />}
           onPress={() => this.setState({ selectedTab: 'tab3' })}>
           <Tab3 
             api={api}

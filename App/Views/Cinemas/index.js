@@ -12,7 +12,6 @@ var {
 var TheatersView = require('../Theaters');
 var styles = require('./style');
 var CinemaCell = require('./Elements/CinemaCell');
-var CinemasData = require('../../../../Data/cinemas');
 
 var Cinemas = React.createClass({
 

@@ -35,7 +35,7 @@ var BillboardCell = React.createClass({
               <Text style={styles.name}>{data.name}</Text>
               <Text style={styles.genres}>{data.genres.split(", ").join('\n')}</Text>
             </View>
-            <Image source={require('image!theatersrightaccesoryview')}/>
+            <Image source={require('../../../../Images/RightAccesoryView.png')}/>
           </View>
           <View style={styles.separator} />
         </View>

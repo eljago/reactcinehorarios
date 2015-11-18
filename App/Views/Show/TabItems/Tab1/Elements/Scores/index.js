@@ -38,7 +38,7 @@ module.exports = React.createClass({
         underlayColor={touchUnderlayColor}
         onPress={this._onPressImdb}>
         <View style={styles.score}>
-          <Image style={styles.image} source={require('image!logoimdb')}/>
+          <Image style={styles.image} source={require('./Images/LogoImdb.png')}/>
           <Text style={styles.scoresText}>{imdb_text}</Text>
         </View>
       </TouchableHighlight>;
@@ -55,7 +55,7 @@ module.exports = React.createClass({
           underlayColor={touchUnderlayColor}
           onPress={this._onPressMetacritic}>
           <View style={styles.score}>
-            <Image style={styles.image} source={require('image!logometacritic')}/>
+            <Image style={styles.image} source={require('./Images/LogoMetacritic.png')}/>
             <Text style={styles.scoresText}>{metacritic_text}</Text>
           </View>
         </TouchableHighlight>;
@@ -72,7 +72,7 @@ module.exports = React.createClass({
           underlayColor={touchUnderlayColor}
           onPress={this._onPressRottenTomatoes}>
           <View style={styles.score}>
-            <Image style={styles.image} source={require('image!logorotten')}/>
+            <Image style={styles.image} source={require('./Images/LogoRotten.png')}/>
             <Text style={styles.scoresText}>{rotten_tomatoes_text}</Text>
           </View>
         </TouchableHighlight>;

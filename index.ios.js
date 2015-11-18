@@ -42,4 +42,4 @@ var CineHorariosApp = React.createClass({
 
 });
 
-AppRegistry.registerComponent('CineHorarios2', function() { return CineHorariosApp });
+AppRegistry.registerComponent('CineHorarios', function() { return CineHorariosApp });
