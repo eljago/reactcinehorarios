@@ -18,8 +18,7 @@ var dateFunctions = require('../../Utils/dateFunctions');
 var imageHelper = require('../../Utils/ImageHelper');
 var ShowView = require('../Show');
 
-var WebViewComponent = require('../WebViewComponent');
-var webpage = require('./webpage');
+var WebIntent = require('react-native-webintent');
 
 var pageIndex = 1;
 
@@ -89,11 +88,7 @@ var VideosPage = React.createClass({
     });
   },
   _goVideo: function(rowData) {
-    this.props.navigator.push({
-      title: rowData.name,
-      component: WebViewComponent,
-      extraData: {html: webpage.getHtml(rowData.show.name, rowData.name, rowData.code)}
-    });
+    WebIntent.open(`https://www.youtube.com/watch?v=${rowData.code}`);
   },
 
   _fetchData: function() {

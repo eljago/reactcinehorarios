@@ -11,7 +11,7 @@ import com.facebook.react.modules.core.DefaultHardwareBackBtnHandler;
 import com.facebook.react.shell.MainReactPackage;
 import com.facebook.soloader.SoLoader;
 
-import com.burnweb.rnwebview.RNWebViewPackage;
+import com.ivanph.webintent.RNWebIntentPackage;;  // <--- import
 
 public class MainActivity extends Activity implements DefaultHardwareBackBtnHandler {
 
@@ -28,7 +28,7 @@ public class MainActivity extends Activity implements DefaultHardwareBackBtnHand
                 .setBundleAssetName("index.android.bundle")
                 .setJSMainModuleName("index.android")
                 .addPackage(new MainReactPackage())
-                .addPackage(new RNWebViewPackage()) // <------ add this line to yout MainActivity class
+                .addPackage(new RNWebIntentPackage())  // <------ add this line to yout MainActivity class
                 .setUseDeveloperSupport(BuildConfig.DEBUG)
                 .setInitialLifecycleState(LifecycleState.RESUMED)
                 .build();

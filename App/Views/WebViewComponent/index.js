@@ -1,7 +1,11 @@
 var React = require('react-native');
-var { StyleSheet } = React;
+var React = require('react-native');
+var {
+  View
+} = React;
 
 var WebViewAndroid = require('react-native-webview-android');
+var styles = require('./style');
 
 module.exports = React.createClass({
 
@@ -15,7 +19,7 @@ module.exports = React.createClass({
       geolocationEnabled: false,
       builtInZoomControls: false,
       onNavigationStateChange: this.onNavigationStateChange,
-      style: styles.containerWebView
+      style: styles.webView
     }
     if (this.props.extraData.url) {
       props.url = this.props.extraData.url;
@@ -27,13 +31,12 @@ module.exports = React.createClass({
       props.html = "<html></html>"
     }
     return (
-      <WebViewAndroid {...props}/>
+      <View style={styles.container}>
+        <WebViewAndroid {...props}/>
+        <View style={styles.bottomBar}>
+
+        </View>
+      </View>
     );
   }
-});
-
-var styles = StyleSheet.create({
-    containerWebView: {
-        flex: 1,
-    }
 });
