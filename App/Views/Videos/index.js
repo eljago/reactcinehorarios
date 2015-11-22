@@ -17,7 +17,9 @@ var colors = require('../../Data/colors');
 var dateFunctions = require('../../Utils/dateFunctions');
 var imageHelper = require('../../Utils/ImageHelper');
 var ShowView = require('../Show');
-var YouTube = require('react-native-youtube');
+
+var WebViewComponent = require('../WebViewComponent');
+var webpage = require('./webpage');
 
 var pageIndex = 1;
 
@@ -37,6 +39,10 @@ var VideosPage = React.createClass({
     this._fetchData();
   },
 
+  onNavigationStateChange: function(event) {
+    console.log(event);
+  },
+
   render: function() {
     return (
       <ListView
@@ -52,26 +58,22 @@ var VideosPage = React.createClass({
         <View style={styles.rowContainer}>
 
           <TouchableHighlight
-          underlayColor={colors.concrete}
-          onPress={() => this._goShow(rowData) }>
+            underlayColor={colors.concrete}
+            onPress={() => this._goShow(rowData) }>
             <Image
             source={{uri: api.getFullURL(imageHelper.getThumbImage(rowData.show.image_url))}}
             style={styles.showImage}/>
           </TouchableHighlight>
 
 
-          <YouTube
-            videoId={rowData.code} // The YouTube video ID
-            play={false}           // control playback of video with true/false
-            hidden={false}         // control visiblity of the entire view
-            playsInline={false}     // control whether the video should play inline
-
-            onReady={(e)=>{this.setState({isReady: true})}}
-            onChangeState={(e)=>{this.setState({status: e.state})}}
-            onChangeQuality={(e)=>{this.setState({quality: e.quality})}}
-            onError={(e)=>{this.setState({error: e.error})}}
-
-            style={{backgroundColor: 'black', flex: 1}}/>
+          <TouchableHighlight
+            underlayColor={colors.concrete}
+            onPress={() => this._goVideo(rowData) }>
+            <Image
+              resizeMode='cover'
+              style={styles.portraitImage}
+              source={{uri: api.getFullURL(imageHelper.getThumbImage(rowData.show.portrait_image))}}/>
+          </TouchableHighlight>
 
         </View>
         <View style={styles.separator} />
@@ -88,9 +90,9 @@ var VideosPage = React.createClass({
   },
   _goVideo: function(rowData) {
     this.props.navigator.push({
-      title: rowData.show.name,
-      component: ShowView,
-      passProps: {showData: rowData.show}
+      title: rowData.name,
+      component: WebViewComponent,
+      extraData: {html: webpage.getHtml(rowData.show.name, rowData.name, rowData.code)}
     });
   },
 

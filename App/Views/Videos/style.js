@@ -28,5 +28,11 @@ module.exports = StyleSheet.create({
     width: 80,
     height: 120,
     marginRight: 10
+  },
+  portraitImage: {
+    flex: 1,
+    width: 200,
+    height: 120,
+    backgroundColor: 'black'
   }
 });
