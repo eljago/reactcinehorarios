@@ -55,7 +55,7 @@ module.exports = React.createClass({
     return(
       functions.map((f, i) => {
         return(
-          <View style={{marginTop: 5}}>
+          <View style={styles.functionView}>
             <Text style={styles.functionTypes}>
               {f.function_types.split(", ").join('   ')}
             </Text>

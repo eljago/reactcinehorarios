@@ -13,7 +13,7 @@ module.exports = StyleSheet.create({
     flex: 1,
     flexDirection: 'row',
     padding: 10,
-    alignItems: 'center',
+    alignItems: 'center'
   },
   textContainer: {
     flex: 1,
@@ -32,6 +32,7 @@ module.exports = StyleSheet.create({
   	marginTop: 5
   },
   functionTypes: {
+  	color: 'gray',
     fontSize: 16,
     marginTop: 5
   },
