@@ -16,7 +16,7 @@ var {
 var ShowView = require('../Show');
 //Components
 var RefreshableListView = require('react-native-refreshable-listview');
-var FunctionsCell = require('./Elements/FunctionsCell');
+var ShowFunctionsCell = require('./Elements/ShowFunctionsCell');
 // Utils
 var api = require('../../Utils/api');
 // Styles
@@ -48,15 +48,15 @@ var Functions = React.createClass({
 
   _renderRow: function(rowData, sectionID, rowID) {
     return (
-      <FunctionsCell data={rowData} rowID={rowID} onPress={this._pressRow} api={api}/>
+      <ShowFunctionsCell data={rowData} rowID={rowID} onPress={this._pressRow} api={api}/>
     );
   },
 
   _pressRow: function(data) {
     this.props.navigator.push({
-      title: data.show.name,
+      title: data.name,
       component: ShowView,
-      extraData: {showData: data.show}
+      extraData: {showData: data}
     });
   },
 
@@ -70,9 +70,9 @@ var Functions = React.createClass({
   },
 
   _handleResponse: function(json) {
-    if (json.functions && json.functions.length > 0) {
+    if (json.shows && json.shows.length > 0) {
       this.setState({
-        dataSource: this.state.dataSource.cloneWithRows(json.functions),
+        dataSource: this.state.dataSource.cloneWithRows(json.shows),
       });
     }
     else {
