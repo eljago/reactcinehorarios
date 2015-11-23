@@ -16,7 +16,7 @@ var CinemaCell = React.createClass({
 
   render: function() {
     var data = this.props.data;
-    var cellBackgroundColor = this.props.rowID % 2 == 0 ? 'white' : colors.silver;
+    var cellBackgroundColor = this.props.background % 2 == 0 ? 'white' : colors.silver;
 
     return(
       <TouchableHighlight

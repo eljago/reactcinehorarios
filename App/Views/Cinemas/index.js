@@ -3,7 +3,7 @@
 var React = require('react-native');
 var {
   Image,
-  View,
+  ScrollView,
   TouchableHighlight,
   ListView,
   Text
@@ -25,28 +25,38 @@ var Cinemas = React.createClass({
 
   render: function() {
     return (
-      <View style={styles.container}>
+      <ScrollView style={styles.container}>
         <CinemaCell
           data={{id: 1, name: 'Cinemark'}}
           source={require('./Images/Cinemark.png')}
-          onPress={this._pressRow}/>
+          onPress={this._pressRow}
+          background={0}/>
         <CinemaCell
           data={{id: 2, name: 'Hoyts Santiago'}}
           source={require('./Images/Hoyts.png')}
-          onPress={this._pressRow}/>
+          onPress={this._pressRow}
+          background={1}/>
         <CinemaCell
           data={{id: 4, name: 'Hoyts Regiones'}}
           source={require('./Images/Hoyts.png')}
-          onPress={this._pressRow}/>
+          onPress={this._pressRow}
+          background={0}/>
         <CinemaCell
           data={{id: 3, name: 'Cineplanet'}}
           source={require('./Images/Cineplanet.png')}
-          onPress={this._pressRow}/>
+          onPress={this._pressRow}
+          background={1}/>
         <CinemaCell
           data={{id: 6, name: 'Pavilion'}}
           source={require('./Images/CineStar.png')}
-          onPress={this._pressRow}/>
-      </View>
+          onPress={this._pressRow}
+          background={0}/>
+        <CinemaCell
+          data={{id: 6, name: 'Pavilion'}}
+          source={require('./Images/CineStar.png')}
+          onPress={this._pressRow}
+          background={1}/>
+      </ScrollView>
     );
   },
 
