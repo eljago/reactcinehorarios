@@ -12,7 +12,6 @@ module.exports = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: colors.silver,
-    marginTop: 12
   },
 
   // HEADER

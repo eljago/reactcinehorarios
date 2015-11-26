@@ -34,14 +34,12 @@ module.exports = React.createClass({
   },
 
 	render: function() {
-    var marginTop = 12;
-    if (Platform.OS === 'ios') {marginTop = 58}
 		return(
 			<ListView
-	    style={[styles.container, {marginTop: marginTop}]}
-	    dataSource={this.state.dataSource}
-	    renderRow={this._renderRow}
-      renderSectionHeader={this._renderSectionHeader}/>
+			    style={styles.container}
+			    dataSource={this.state.dataSource}
+			    renderRow={this._renderRow}
+      			renderSectionHeader={this._renderSectionHeader}/>
 		);
 	},
 

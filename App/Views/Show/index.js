@@ -32,7 +32,7 @@ module.exports = React.createClass({
 
   render: function() {
     return(
-      <TabNavigator>
+      <TabNavigator style={{marginTop: 12}}>
         <TabNavigator.Item
           selected={this.state.selectedTab === 'tab1'}
           title="Home"

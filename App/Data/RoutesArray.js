@@ -4,8 +4,9 @@ var CinemasView = require('../Views/Cinemas');
 var VideosView = require('../Views/Videos');
 var BillboardView = require('../Views/Billboard');
 var ComingSoonView = require('../Views/ComingSoon');
+var MapView = require('../Views/Map');
 
-var RoutesArray = [
+module.exports = [
   {
     title: 'Cines',
     component: CinemasView,
@@ -26,6 +27,9 @@ var RoutesArray = [
     component: ComingSoonView,
     imageName: 'menuiconComingSoon'
   },
+  {
+    title: 'Cines Cercanos',
+    component: MapView,
+    imageName: 'menuiconComingSoon'
+  }
 ];
-
-module.exports = RoutesArray;

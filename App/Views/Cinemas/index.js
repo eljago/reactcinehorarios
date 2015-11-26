@@ -48,14 +48,19 @@ var Cinemas = React.createClass({
           background={1}/>
         <CinemaCell
           data={{id: 6, name: 'Pavilion'}}
-          source={require('./Images/CineStar.png')}
+          source={require('./Images/Pavilion.png')}
           onPress={this._pressRow}
           background={0}/>
         <CinemaCell
-          data={{id: 6, name: 'Pavilion'}}
+          data={{id: 7, name: 'Cinestar'}}
           source={require('./Images/CineStar.png')}
           onPress={this._pressRow}
           background={1}/>
+        <CinemaCell
+          data={{id: 5, name: 'Independientes'}}
+          source={require('./Images/Pavilion.png')}
+          onPress={this._pressRow}
+          background={0}/>
       </ScrollView>
     );
   },
