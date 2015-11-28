@@ -9,7 +9,9 @@ var {
   ListView,
   Text,
   Component,
-  ScrollView
+  ScrollView,
+  IntentAndroid,
+  Platform
 } = React;
 
 var api = require('../../Utils/api');
@@ -17,8 +19,6 @@ var colors = require('../../Data/colors');
 var dateFunctions = require('../../Utils/dateFunctions');
 var imageHelper = require('../../Utils/ImageHelper');
 var ShowView = require('../Show');
-
-var WebIntent = require('react-native-webintent');
 
 var pageIndex = 1;
 
@@ -88,7 +88,19 @@ var VideosPage = React.createClass({
     });
   },
   _goVideo: function(rowData) {
-    WebIntent.open(`https://www.youtube.com/watch?v=${rowData.code}`);
+    var url = `https://www.youtube.com/watch?v=${rowData.code}`;
+    if (Platform.OS === 'android') {
+      IntentAndroid.canOpenURL(url, (supported) => {
+        if (supported) {
+          IntentAndroid.openURL(url);
+        } else {
+          console.log('Don\'t know how to open URI: ' + url);
+        }
+      });
+    }
+    else if (Platform.OS === 'ios') {
+
+    }
   },
 
   _fetchData: function() {

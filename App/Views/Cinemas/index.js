@@ -13,7 +13,7 @@ var TheatersView = require('../Theaters');
 var styles = require('./style');
 var CinemaCell = require('./Elements/CinemaCell');
 
-var Cinemas = React.createClass({
+module.exports = React.createClass({
 
   getInitialState: function() {
     var dataSource = new ListView.DataSource({rowHasChanged: (r1, r2) => r1 !== r2});
@@ -25,44 +25,18 @@ var Cinemas = React.createClass({
 
   render: function() {
     return (
-      <ScrollView style={styles.container}>
-        <CinemaCell
-          data={{id: 1, name: 'Cinemark'}}
-          source={require('./Images/Cinemark.png')}
-          onPress={this._pressRow}
-          background={0}/>
-        <CinemaCell
-          data={{id: 2, name: 'Hoyts Santiago'}}
-          source={require('./Images/Hoyts.png')}
-          onPress={this._pressRow}
-          background={1}/>
-        <CinemaCell
-          data={{id: 4, name: 'Hoyts Regiones'}}
-          source={require('./Images/Hoyts.png')}
-          onPress={this._pressRow}
-          background={0}/>
-        <CinemaCell
-          data={{id: 3, name: 'Cineplanet'}}
-          source={require('./Images/Cineplanet.png')}
-          onPress={this._pressRow}
-          background={1}/>
-        <CinemaCell
-          data={{id: 6, name: 'Pavilion'}}
-          source={require('./Images/Pavilion.png')}
-          onPress={this._pressRow}
-          background={0}/>
-        <CinemaCell
-          data={{id: 7, name: 'Cinestar'}}
-          source={require('./Images/CineStar.png')}
-          onPress={this._pressRow}
-          background={1}/>
-        <CinemaCell
-          data={{id: 5, name: 'Independientes'}}
-          source={require('./Images/Pavilion.png')}
-          onPress={this._pressRow}
-          background={0}/>
-      </ScrollView>
+      <ListView
+        style={styles.container}
+        dataSource={this.state.dataSource}
+        renderRow={this._renderRow}/>
     );
+  },
+
+  _renderRow: function(rowData, sectionID, rowID) {
+    return <CinemaCell
+            data={rowData}
+            rowID={rowID} 
+            onPress={this._pressRow}/>;
   },
 
   _pressRow: function(rowData) {
@@ -74,5 +48,3 @@ var Cinemas = React.createClass({
   }
 
 });
-
-module.exports = Cinemas;

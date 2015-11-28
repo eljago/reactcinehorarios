@@ -16,7 +16,7 @@ var CinemaCell = React.createClass({
 
   render: function() {
     var data = this.props.data;
-    var cellBackgroundColor = this.props.background % 2 == 0 ? 'white' : colors.silver;
+    var cellBackgroundColor = this.props.rowID % 2 == 0 ? 'white' : colors.silver;
 
     return(
       <TouchableHighlight
@@ -24,7 +24,7 @@ var CinemaCell = React.createClass({
       onPress={() => this.props.onPress(data) }>
         <View>
           <View style={[styles.rowContainer, {backgroundColor: cellBackgroundColor}]}>
-            <Image source={this.props.source} style={styles.image}/>
+            <Image source={data.image} style={styles.image}/>
             <View style={styles.textContainer}>
               <Text style={styles.name}>
                 {data.name}
