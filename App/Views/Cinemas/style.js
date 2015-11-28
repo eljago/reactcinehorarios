@@ -3,7 +3,7 @@
 var React = require('react-native');
 var {
   PixelRatio,
-  StyleSheet,
+  StyleSheet
 } = React;
 
 var colors = require('../../Data/colors');

@@ -4,11 +4,12 @@ var React = require('react-native');
 var {
   PixelRatio,
   StyleSheet,
+  Platform
 } = React;
 
 module.exports = StyleSheet.create({
-  listView: {
+  container: {
     flex: 1,
-    marginTop: 12
+    marginTop: Platform.OS === 'ios' ? 20 : 12
   },
 });

@@ -20,7 +20,7 @@ var TheatersCell = require('./Elements/TheatersCell');
 var styles = require('./style');
 var Favorites = require('../../Utils/Favorites');
 
-var TheatersPage = React.createClass({
+module.exports = React.createClass({
 
   componentDidMount: function() {
     this._fetchData();
@@ -36,7 +36,7 @@ var TheatersPage = React.createClass({
   render: function() {
     return (
       <RefreshableListView
-        style={styles.listView}
+        style={styles.container}
         dataSource={this.state.dataSource}
         renderRow={this._renderRow}
         loadData={this._fetchData}
@@ -85,5 +85,3 @@ var TheatersPage = React.createClass({
   }
 
 });
-
-module.exports = TheatersPage;

@@ -24,7 +24,9 @@ var CinemaCell = React.createClass({
       onPress={() => this.props.onPress(data) }>
         <View>
           <View style={[styles.rowContainer, {backgroundColor: cellBackgroundColor}]}>
-            <Image source={data.image} style={styles.image}/>
+            <Image 
+              source={data.images[Math.floor(Math.random()*data.images.length)]} 
+              style={styles.image}/>
             <View style={styles.textContainer}>
               <Text style={styles.name}>
                 {data.name}

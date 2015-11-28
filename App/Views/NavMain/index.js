@@ -33,17 +33,17 @@ var MainView = React.createClass({
   render: function() {
     return (
       <Navigator
-      style={styles.navigatorStyle}
-      initialRoute={{title: 'Cines', component: CinemasView}}
-      renderScene={this.renderScene}
-      sceneStyle={styles.scene}
-      ref={(navigator) => { this.navigator = navigator; }}
-      navigationBar={
-        <Navigator.NavigationBar
-          routeMapper={NavigationBarRouteMapper}
-          style={styles.navBar}
-        />
-      }/>
+        style={styles.navigatorStyle}
+        initialRoute={{title: 'Cines', component: CinemasView}}
+        renderScene={this.renderScene}
+        sceneStyle={styles.scene}
+        ref={(navigator) => { this.navigator = navigator; }}
+        navigationBar={
+          <Navigator.NavigationBar
+            routeMapper={NavigationBarRouteMapper}
+            style={styles.navBar}
+          />
+        }/>
     );
   },
 
