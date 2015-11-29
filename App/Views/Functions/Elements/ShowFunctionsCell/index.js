@@ -22,17 +22,18 @@ module.exports = React.createClass({
 
     return(
       <TouchableHighlight
-      underlayColor={colors.concrete}
-      onPress={() => this.props.onPress(data)}>
+        underlayColor={colors.concrete}
+        onPress={() => this.props.onPress(data)}>
         <View>
           <View style={[styles.rowContainer, {backgroundColor: cellBackgroundColor}]}>
             <View style={styles.imageContainer}>
               <Image
-                resizeMode='contain'
+                resizeMode='cover'
                 style={styles.image}
                 source={
                   {uri: api.getFullURL(imageHelper.getThumbImage(data.image_url))}
-                }/>
+                }
+              />
             </View>
             <View style={styles.textContainer}>
               <Text style={styles.name}>
@@ -42,7 +43,8 @@ module.exports = React.createClass({
             </View>
             <Image 
               style={styles.rightAccessoryView} 
-              source={require('../../../../Images/RightAccesoryView.png')}/>
+              source={require('../../../../Images/RightAccesoryView.png')}
+            />
           </View>
           <View style={styles.separator} />
         </View>
@@ -51,7 +53,6 @@ module.exports = React.createClass({
   },
 
   _getFunctionsViews: function(functions) {
-    console.log(functions);
     return(
       functions.map((f, i) => {
         return(

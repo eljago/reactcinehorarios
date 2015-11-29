@@ -18,7 +18,6 @@ module.exports = StyleSheet.create({
   viewHeader: {
   	height: 140,
   	flex: 1,
-  	flexDirection: 'row'
   },
   imageHeader: {
   	flex: 5
@@ -50,9 +49,18 @@ module.exports = StyleSheet.create({
     flexDirection: 'column',
     marginLeft: 10
   },
+  portraitImage: {
+    flex: 1,
+    flexDirection: 'column',
+    justifyContent: 'flex-end'
+  },
   showName: {
-    fontSize: 22,
-    fontWeight: 'bold'
+    color: 'white',
+    fontSize: 20,
+    backgroundColor: '#000000',
+    padding: 5,
+    paddingLeft: 10,
+    paddingTop: 4
   },
   nameOriginal: {
   	fontSize: 19

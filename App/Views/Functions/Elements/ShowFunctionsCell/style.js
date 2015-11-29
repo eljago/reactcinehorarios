@@ -39,7 +39,7 @@ module.exports = StyleSheet.create({
   showtimes: {
     fontSize: 19,
     color: '#000',
-    marginTop: 0
+    marginTop: 5
   },
   image: {
     flex: 1

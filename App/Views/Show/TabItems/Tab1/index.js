@@ -65,7 +65,6 @@ module.exports = React.createClass({
           <View style={styles.secondView}>
             {this._getPortraitImageView()}
             <View style={styles.details}>
-              <Text style={styles.showName}>{show.name}</Text>
               {showNameOriginal}
               {showYear}
               {showDuration}
@@ -85,7 +84,6 @@ module.exports = React.createClass({
           <View style={styles.secondView}>
             {this._getPortraitImageView()}
             <View style={styles.details}>
-              <Text style={styles.showName}>{propsShow.name}</Text>
               <Text style={styles.genres}>{propsShow.genres}</Text>
             </View>
           </View>
@@ -99,7 +97,9 @@ module.exports = React.createClass({
       <View style={[styles.viewHeader, styles.shadow]}>
         <Image
           source={{uri: this.props.api.getFullURL(this.props.extraData.showData.portrait_image)}}
-          style={styles.image}/>
+          style={styles.portraitImage}>
+          <Text style={styles.showName}>{this.props.extraData.showData.name}</Text>
+        </Image>
       </View>
     );
   },

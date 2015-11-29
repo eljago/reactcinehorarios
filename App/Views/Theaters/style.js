@@ -11,7 +11,5 @@ module.exports = StyleSheet.create({
   container: {
     flex: 1,
     marginTop: Platform.OS === 'ios' ? 20 : 12
-  },
-  progressHUD: {
   }
 });

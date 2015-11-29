@@ -12,17 +12,15 @@ var {
   ScrollView
 } = React;
 
-// Views
-var ShowView = require('../Show');
-//Components
 var RefreshableListView = require('react-native-refreshable-listview');
+var ProgressHUD = require('react-native-progress-hud');
 var ShowFunctionsCell = require('./Elements/ShowFunctionsCell');
-// Utils
 var api = require('../../Utils/api');
-// Styles
 var styles = require('./style');
+var ShowView = require('../Show');
 
 var Functions = React.createClass({
+  mixins: [ProgressHUD.Mixin],
 
   getInitialState: function() {
     var dataSource = new ListView.DataSource({rowHasChanged: (r1, r2) => r1 !== r2});
@@ -37,18 +35,31 @@ var Functions = React.createClass({
 
   render: function() {
     return (
-      <RefreshableListView
-        style={styles.listView}
-        dataSource={this.state.dataSource}
-        renderRow={this._renderRow}
-        loadData={this._fetchData}
-        refreshDescription="Descargando ..."/>
+      <View style={styles.container}>
+        <RefreshableListView
+          style={{flex: 1}}
+          dataSource={this.state.dataSource}
+          renderRow={this._renderRow}
+          loadData={this._fetchData}
+          refreshDescription="Descargando ..."
+        />
+        <ProgressHUD
+          isVisible={this.state.is_hud_visible}
+          isDismissible={true}
+          overlayColor="rgba(0, 0, 0, 0.11)"
+        />
+      </View>
     );
   },
 
   _renderRow: function(rowData, sectionID, rowID) {
     return (
-      <ShowFunctionsCell data={rowData} rowID={rowID} onPress={this._pressRow} api={api}/>
+      <ShowFunctionsCell 
+        data={rowData}
+        rowID={rowID}
+        onPress={this._pressRow}
+        api={api}
+      />
     );
   },
 
@@ -61,11 +72,13 @@ var Functions = React.createClass({
   },
 
   _fetchData: function() {
+    this.showProgressHUD();
     var date = new Date();
     api.getFunctions(this.props.extraData.theaterData.id, date).then(json => {
       this._handleResponse(json);
+      this.dismissProgressHUD();
     }).catch(error => {
-
+      this.dismissProgressHUD();
     });
   },
 
