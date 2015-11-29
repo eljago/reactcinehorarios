@@ -3,6 +3,7 @@
 var React = require('react-native');
 var {
   AppRegistry,
+  StatusBarIOS
 } = React;
 
 var Menu = require('./App/Views/Menu');
@@ -15,6 +16,7 @@ var CineHorariosApp = React.createClass({
   componentDidMount: function() {
     helper.closeMenu = this._closeMenu;
     helper.openMenu = this._openMenu;
+    StatusBarIOS.setStyle('light-content')
   },
 
   render() {
