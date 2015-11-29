@@ -37,7 +37,8 @@ module.exports = StyleSheet.create({
     marginTop: 5
   },
   showtimes: {
-    fontSize: 19,
+    fontFamily: 'Courier',
+    fontSize: 18,
     color: '#000',
     marginTop: 5
   },

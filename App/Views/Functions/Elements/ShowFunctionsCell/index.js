@@ -61,7 +61,7 @@ module.exports = React.createClass({
               {f.function_types.split(", ").join('   ')}
             </Text>
             <Text style={styles.showtimes}>
-              {f.showtimes.split(", ").join('   ')}
+              {f.showtimes.split(", ").join(' ')}
             </Text>
           </View>
         );
