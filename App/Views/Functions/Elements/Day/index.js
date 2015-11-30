@@ -9,7 +9,7 @@ var {
 var RefreshableListView = require('react-native-refreshable-listview');
 var ProgressHUD = require('react-native-progress-hud');
 
-var ShowFunctionsCell = require('../ShowFunctionsCell');
+var ShowFunctionsCell = require('./Elements/ShowFunctionsCell');
 var styles = require('./style');
 
 var Functions = React.createClass({
@@ -48,25 +48,25 @@ var Functions = React.createClass({
   _renderRow: function(rowData, sectionID, rowID) {
     return (
       <ShowFunctionsCell 
-        data={rowData}
+        rowData={rowData}
         rowID={rowID}
         onPress={this._pressRow}
-        api={this.props.api}
+        requires={this.props.requires}
       />
     );
   },
 
-  _pressRow: function(data) {
+  _pressRow: function(rowData) {
     this.props.navigator.push({
-      title: data.name,
-      component: this.props.show,
-      extraData: {showData: data}
+      title: rowData.name,
+      component: this.props.requires.showView,
+      extraData: {showData: rowData}
     });
   },
 
   _fetchData: function() {
     this.showProgressHUD();
-    this.props.api.getFunctions(this.props.theaterData.id, this.props.date).then(json => {
+    this.props.requires.api.getFunctions(this.props.theaterData.id, this.props.date).then(json => {
       this._handleResponse(json);
       this.dismissProgressHUD();
     }).catch(error => {

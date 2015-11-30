@@ -9,8 +9,13 @@ var {
 var TabNavigator = require('react-native-tab-navigator');
 var styles = require('./style');
 var Day = require('./Elements/Day');
-var api = require('../../Utils/api');
-var ShowView = require('../Show');
+var requires = {
+  api: require('../../Utils/api'),
+  showView: require('../Show'),
+  imageHelper: require('../../Utils/ImageHelper'),
+  colors: require('../../Data/colors'),
+  rightAccesoryView: require('../../Images/RightAccesoryView.png')
+}
 
 var getDateString = function(date) {
   var weekDayNumber = date.getDay();
@@ -42,11 +47,13 @@ module.exports = React.createClass({
     date5.setDate(date1.getDate()+4);
     date6.setDate(date1.getDate()+5);
     date7.setDate(date1.getDate()+6);
+    
     return (
       <TabNavigator
         style={styles.container}
         tabBarStyle={{ height: 42, overflow: 'hidden' }}
         sceneStyle={{ paddingBottom: 42 }}>
+
         <TabNavigator.Item
           selected={this.state.selectedTab === 'tab1'}
           renderIcon={() => <Text style={styles.icon}>{getDateString(date1)}</Text>}
@@ -56,10 +63,10 @@ module.exports = React.createClass({
             navigator={this.props.navigator}
             theaterData={this.props.extraData.theaterData}
             date={date1}
-            api={api}
             ref='tab1'
-            show={ShowView}/>
+            requires={requires}/>
         </TabNavigator.Item>
+
         <TabNavigator.Item
           selected={this.state.selectedTab === 'tab2'}
           renderIcon={() => <Text style={styles.icon}>{getDateString(date2)}</Text>}
@@ -69,10 +76,10 @@ module.exports = React.createClass({
             navigator={this.props.navigator}
             theaterData={this.props.extraData.theaterData}
             date={date2}
-            api={api}
             ref='tab2'
-            show={ShowView}/>
+            requires={requires}/>
         </TabNavigator.Item>
+
         <TabNavigator.Item
           selected={this.state.selectedTab === 'tab4'}
           renderIcon={() => <Text style={styles.icon}>{getDateString(date3)}</Text>}
@@ -82,10 +89,10 @@ module.exports = React.createClass({
             navigator={this.props.navigator}
             theaterData={this.props.extraData.theaterData}
             date={date3}
-            api={api}
             ref='tab4'
-            show={ShowView}/>
+            requires={requires}/>
         </TabNavigator.Item>
+
         <TabNavigator.Item
           selected={this.state.selectedTab === 'tab5'}
           renderIcon={() => <Text style={styles.icon}>{getDateString(date4)}</Text>}
@@ -95,10 +102,10 @@ module.exports = React.createClass({
             navigator={this.props.navigator}
             theaterData={this.props.extraData.theaterData}
             date={date4}
-            api={api}
             ref='tab5'
-            show={ShowView}/>
+            requires={requires}/>
         </TabNavigator.Item>
+
         <TabNavigator.Item
           selected={this.state.selectedTab === 'tab6'}
           renderIcon={() => <Text style={styles.icon}>{getDateString(date5)}</Text>}
@@ -108,10 +115,10 @@ module.exports = React.createClass({
             navigator={this.props.navigator}
             theaterData={this.props.extraData.theaterData}
             date={date5}
-            api={api}
             ref='tab6'
-            show={ShowView}/>
+            requires={requires}/>
         </TabNavigator.Item>
+
         <TabNavigator.Item
           selected={this.state.selectedTab === 'tab7'}
           renderIcon={() => <Text style={styles.icon}>{getDateString(date6)}</Text>}
@@ -121,11 +128,12 @@ module.exports = React.createClass({
             navigator={this.props.navigator}
             theaterData={this.props.extraData.theaterData}
             date={date6}
-            api={api}
             ref='tab7'
-            show={ShowView}/>
+            requires={requires}/>
         </TabNavigator.Item>
+
       </TabNavigator>
     );
   },
+
 });

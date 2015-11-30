@@ -9,15 +9,15 @@ var {
   View,
 } = React;
 
-var imageHelper = require('../../../../Utils/ImageHelper');
 var styles = require('./style');
-var colors = require('../../../../Data/colors');
 
 module.exports = React.createClass({
 
   render: function() {
-    var data = this.props.data;
-    var api = this.props.api;
+    var colors = this.props.requires.colors;
+    var data = this.props.rowData;
+    var api = this.props.requires.api;
+    var imageHelper = this.props.requires.imageHelper;
     var cellBackgroundColor = this.props.rowID % 2 == 0 ? 'white' : colors.silver;
 
     return(
@@ -43,7 +43,7 @@ module.exports = React.createClass({
             </View>
             <Image 
               style={styles.rightAccessoryView} 
-              source={require('../../../../Images/RightAccesoryView.png')}
+              source={this.props.requires.rightAccesoryView}
             />
           </View>
           <View style={styles.separator} />

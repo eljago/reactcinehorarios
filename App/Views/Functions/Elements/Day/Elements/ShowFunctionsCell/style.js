@@ -6,7 +6,7 @@ var {
   StyleSheet,
 } = React;
 
-var colors = require('../../../../Data/colors');
+var colors = require('../../../../../../Data/colors');
 
 module.exports = StyleSheet.create({
   rowContainer: {
