@@ -16,6 +16,7 @@ var Tab1 = require('./TabItems/Tab1');
 var Tab2 = require('./TabItems/Tab2');
 var Tab3 = require('./TabItems/Tab3');
 var api = require('../../Utils/api');
+var styles = require('./style');
 
 module.exports = React.createClass({
 
@@ -32,11 +33,14 @@ module.exports = React.createClass({
 
   render: function() {
     return(
-      <TabNavigator style={{marginTop: 12}}>
+      <TabNavigator
+        style={styles.container}
+        tabBarStyle={{ height: 42, overflow: 'hidden' }}
+        sceneStyle={{ paddingBottom: 42 }}>
         <TabNavigator.Item
           selected={this.state.selectedTab === 'tab1'}
-          title="Home"
-          renderIcon={() => <Image style={styles.tabIcon} source={require('./Images/MenuIcon.png')} />}
+          renderIcon={() => <Image style={[styles.tabIcon, styles.icon]} source={require('./Images/ShowInfo.png')} />}
+          renderSelectedIcon={() => <Image style={[styles.tabIcon, styles.selectedIcon]} source={require('./Images/ShowInfo.png')} />}
           onPress={() => this.setState({ selectedTab: 'tab1' })}>
           <Tab1
             api={api}
@@ -46,8 +50,8 @@ module.exports = React.createClass({
         </TabNavigator.Item>
         <TabNavigator.Item
           selected={this.state.selectedTab === 'tab2'}
-          title="Reparto"
-          renderIcon={() => <Image style={styles.tabIcon} source={require('./Images/MenuIcon.png')} />}
+          renderIcon={() => <Image style={[styles.tabIcon, styles.icon]} source={require('./Images/ShowCast.png')} />}
+          renderSelectedIcon={() => <Image style={[styles.tabIcon, styles.selectedIcon]} source={require('./Images/ShowCast.png')} />}
           onPress={() => this.setState({ selectedTab: 'tab2' })}>
           <Tab2 
             api={api}
@@ -56,8 +60,8 @@ module.exports = React.createClass({
         </TabNavigator.Item>
         <TabNavigator.Item
           selected={this.state.selectedTab === 'tab3'}
-          title="Horarios"
-          renderIcon={() => <Image style={styles.tabIcon} source={require('./Images/MenuIcon.png')} />}
+          renderIcon={() => <Image style={[styles.tabIcon, styles.icon]} source={require('./Images/ShowShowtimes.png')} />}
+          renderSelectedIcon={() => <Image style={[styles.tabIcon, styles.selectedIcon]} source={require('./Images/ShowShowtimes.png')} />}
           onPress={() => this.setState({ selectedTab: 'tab3' })}>
           <Tab3 
             api={api}
@@ -83,9 +87,3 @@ module.exports = React.createClass({
   }
 });
 
-var styles = StyleSheet.create({
-  tabIcon: {
-    height: 30,
-    width: 30,
-  }
-});
