@@ -26,21 +26,23 @@ module.exports = StyleSheet.create({
   },
   name: {
     fontSize: 22,
+    fontWeight: '300',
     color: colors.navBar,
   },
   functionView: {
   	marginTop: 5
   },
   functionTypes: {
-  	color: 'gray',
     fontSize: 16,
+    fontWeight: '300',
+    color: 'gray',
     marginTop: 5
   },
   showtimes: {
-    fontFamily: 'Courier',
-    fontSize: 18,
+    fontFamily: 'Verdana',
+    fontSize: 15,
     color: '#000',
-    marginTop: 5
+    marginTop: 2
   },
   image: {
     flex: 1

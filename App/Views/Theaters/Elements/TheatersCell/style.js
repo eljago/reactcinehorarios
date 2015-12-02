@@ -22,6 +22,7 @@ module.exports = StyleSheet.create({
   },
   name: {
     fontSize: 20,
+    fontWeight: '300',
     color: '#000'
   },
   rightAccessoryView: {
