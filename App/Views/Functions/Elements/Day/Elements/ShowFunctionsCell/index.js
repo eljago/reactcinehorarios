@@ -9,12 +9,12 @@ var {
   View,
 } = React;
 
+var colors = global.colors;
 var styles = require('./style');
 
 module.exports = React.createClass({
 
   render: function() {
-    var colors = this.props.requires.colors;
     var data = this.props.rowData;
     var api = this.props.requires.api;
     var imageHelper = this.props.requires.imageHelper;

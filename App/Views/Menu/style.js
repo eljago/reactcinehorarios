@@ -7,7 +7,7 @@ var {
   Dimensions
 } = React;
 
-var colors = require('../../Data/colors');
+var colors = global.colors;
 var window = Dimensions.get('window');
 
 module.exports = StyleSheet.create({

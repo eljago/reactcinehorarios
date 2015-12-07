@@ -6,24 +6,21 @@ var {
   StyleSheet,
 } = React;
 
-var colors = require('../../Data/colors');
-
 module.exports = StyleSheet.create({
   container: {
     marginTop: Platform.OS === 'ios' ? 20 : 12,
     flex: 1
   },
   icon: {
-    height: 36,
-    width: 36,
-    marginBottom: -10,
+    height: 34,
+    width: 34,
+    marginBottom: -8,
     tintColor: 'gray',
-    backgroundColor: 'transparent'
   },
   selectedIcon: {
-    height: 36,
-    width: 36,
-    marginBottom: -10,
-    tintColor: colors.navBar
+    height: 34,
+    width: 34,
+    marginBottom: -8,
+    tintColor: 'white'
   }
 });

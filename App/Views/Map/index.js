@@ -6,7 +6,7 @@ var {
   StyleSheet
 } = React;
 
-var api = require('../../Utils/api');
+var api = global.api;
 var cinemas = require('../../Data/cinemas');
 
 
@@ -28,7 +28,6 @@ var MapPage = React.createClass({
       {enableHighAccuracy: true, timeout: 20000, maximumAge: 1000}
     );
     this.watchID = navigator.geolocation.watchPosition((lastPosition) => {
-      console.log(lastPosition);
       this.setState({
         lastPosition: lastPosition,
         mapRegion: {

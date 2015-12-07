@@ -6,6 +6,9 @@ var {
   StatusBarIOS
 } = React;
 
+global.colors = require('./App/Data/colors');
+global.api = require('./App/Utils/api');
+
 var Menu = require('./App/Views/Menu');
 var SideMenu = require('react-native-side-menu');
 var MainView = require('./App/Views/NavMain');

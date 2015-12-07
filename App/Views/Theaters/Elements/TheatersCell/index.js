@@ -10,7 +10,7 @@ var {
 } = React;
 
 var styles = require('./style');
-var colors = require('../../../../Data/colors');
+var colors = global.colors;
 
 var TheatersCell = React.createClass({
 

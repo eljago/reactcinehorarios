@@ -9,7 +9,7 @@ var {
   View,
 } = React;
 
-var colors = require('../../../../Data/colors');
+var colors = global.colors;
 var styles = require('./style');
 
 var CinemaCell = React.createClass({

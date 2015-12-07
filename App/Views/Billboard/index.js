@@ -12,7 +12,7 @@ var {
   ScrollView
 } = React;
 
-var api = require('../../Utils/api');
+var api = global.api;
 var ShowView = require('../Show');
 var BillboardCell = require('./Elements/BillboardCell');
 

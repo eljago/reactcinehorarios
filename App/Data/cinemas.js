@@ -8,7 +8,7 @@ var cinemas = [
     },
     {
       id: 2,
-      name: "Cine Hoyts",
+      name: "Hoyts Santiago",
       images: [require('../Images/Hoyts.png')]
     },
     {

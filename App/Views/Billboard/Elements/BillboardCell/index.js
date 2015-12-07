@@ -9,7 +9,8 @@ var {
   View,
 } = React;
 
-var colors = require('../../../../Data/colors');
+var colors = global.colors;
+var api = global.api;
 var imageHelper = require('../../../../Utils/ImageHelper');
 var styles = require('./style');
 
@@ -17,7 +18,6 @@ var BillboardCell = React.createClass({
 
   render: function() {
     var data = this.props.data;
-    var api = this.props.api;
 
     return(
       <TouchableHighlight

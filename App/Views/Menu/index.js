@@ -12,7 +12,7 @@ var {
   Platform
 } = React;
 
-var colors = require('../../Data/colors');
+var colors = global.colors;
 var routesArray = require('../../Data/RoutesArray');
 var helper = null;
 

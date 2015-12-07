@@ -10,9 +10,9 @@ var {
 } = React;
 
 var imageHelper = require('../../../../Utils/ImageHelper');
-var colors = require('../../../../Data/colors');
 var styles = require('./style');
 var Scores = require('./Elements/Scores');
+var api = global.api;
 
 module.exports = React.createClass({
 
@@ -91,7 +91,7 @@ module.exports = React.createClass({
     return(
       <View style={[styles.viewHeader, styles.shadow]}>
         <Image
-          source={{uri: this.props.api.getFullURL(this.props.extraData.showData.portrait_image)}}
+          source={{uri: api.getFullURL(this.props.extraData.showData.portrait_image)}}
           style={styles.portraitImage}>
           <Text style={styles.showName}>{this.props.extraData.showData.name}</Text>
         </Image>
@@ -102,19 +102,10 @@ module.exports = React.createClass({
     return(
       <View style={[styles.imageContainer, styles.shadow]}>
         <Image
-          source={{uri: this.props.api.getFullURL(imageHelper.getThumbImage(this.props.extraData.showData.image_url))}}
+          source={{uri: api.getFullURL(imageHelper.getThumbImage(this.props.extraData.showData.image_url))}}
           style={styles.image}/>
       </View>
     );
-  },
-
-  _onPressImdb: function() {
-
-  },
-  _onPressMetacritic: function() {
-
-  },
-  _onPressRottenTomatoes: function() {
-
   }
+
 });

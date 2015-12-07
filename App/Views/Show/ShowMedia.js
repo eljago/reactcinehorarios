@@ -12,7 +12,7 @@ var {
 } = React;
 
 var GridView = require('react-native-grid-view');
-var colors = require('../../Data/colors');
+var colors = global.colors;
 var imageHelper = require('../../Utils/ImageHelper');
 var PhotoBrowser = require('./PhotoBrowser');
 

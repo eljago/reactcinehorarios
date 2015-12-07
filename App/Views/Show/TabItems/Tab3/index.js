@@ -11,8 +11,9 @@ var {
 } = React;
 
 var imageHelper = require('../../../../Utils/ImageHelper');
-var colors = require('../../../../Data/colors');
-var api = require('../../../../Utils/api');
+var colors = global.colors;
+var api = global.api;
+
 var styles = require('./style');
 var cinemas = require('../../../../Data/cinemas');
 var CinemaCell = require('./Elements/CinemaCell');
@@ -51,7 +52,7 @@ module.exports = React.createClass({
 		}
 		else if (sectionID == 1) {
 			return(
-				<CinemaCell api={this.props.api} rowID={rowID} data={rowData}/>
+				<CinemaCell rowID={rowID} data={rowData}/>
 			);
 		}
 	},

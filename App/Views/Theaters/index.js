@@ -17,7 +17,7 @@ var RefreshableListView = require('react-native-refreshable-listview');
 var ProgressHUD = require('react-native-progress-hud');
 
 var FunctionsView = require('../Functions');
-var api = require('../../Utils/api');
+var api = global.api;
 var TheatersCell = require('./Elements/TheatersCell');
 var styles = require('./style');
 var Favorites = require('../../Utils/Favorites');

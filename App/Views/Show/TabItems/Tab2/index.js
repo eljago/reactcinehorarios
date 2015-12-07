@@ -10,7 +10,7 @@ var {
 } = React;
 
 var imageHelper = require('../../../../Utils/ImageHelper');
-var colors = require('../../../../Data/colors');
+
 var styles = require('./style');
 var PersonCell = require('./Elements/PersonCell');
 
@@ -58,7 +58,7 @@ module.exports = React.createClass({
 
   _renderRow: function(rowData) {
   	return(
-  		<PersonCell data={rowData} api={this.props.api}/>
+  		<PersonCell data={rowData}/>
   	);
   },
   _renderSectionHeader: function(sectionData) {

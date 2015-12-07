@@ -13,7 +13,6 @@ var requires = {
   api: require('../../Utils/api'),
   showView: require('../Show'),
   imageHelper: require('../../Utils/ImageHelper'),
-  colors: require('../../Data/colors'),
   rightAccesoryView: require('../../Images/RightAccesoryView.png')
 }
 

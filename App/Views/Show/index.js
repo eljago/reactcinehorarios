@@ -11,11 +11,12 @@ var {
 } = React;
 
 var TabNavigator = require('react-native-tab-navigator');
-var colors = require('../../Data/colors');
+
+var api = global.api;
+
 var Tab1 = require('./TabItems/Tab1');
 var Tab2 = require('./TabItems/Tab2');
 var Tab3 = require('./TabItems/Tab3');
-var api = require('../../Utils/api');
 var styles = require('./style');
 
 module.exports = React.createClass({
@@ -35,7 +36,8 @@ module.exports = React.createClass({
     return(
       <TabNavigator
         style={styles.container}
-        tabBarStyle={{ height: 42, overflow: 'hidden' }}
+        tabBarStyle={{ height: 42, overflow: 'hidden', backgroundColor: '#272727' }}
+        hidesTabTouch={false}
         sceneStyle={{ paddingBottom: 42 }}>
         <TabNavigator.Item
           selected={this.state.selectedTab === 'tab1'}
@@ -43,10 +45,10 @@ module.exports = React.createClass({
           renderSelectedIcon={() => <Image style={[styles.tabIcon, styles.selectedIcon]} source={require('./Images/ShowInfo.png')} />}
           onPress={() => this.setState({ selectedTab: 'tab1' })}>
           <Tab1
-            api={api}
             ref='tab1'
             show={this.state.show}
-            extraData={this.props.extraData}/>
+            extraData={this.props.extraData}
+          />
         </TabNavigator.Item>
         <TabNavigator.Item
           selected={this.state.selectedTab === 'tab2'}
@@ -54,9 +56,9 @@ module.exports = React.createClass({
           renderSelectedIcon={() => <Image style={[styles.tabIcon, styles.selectedIcon]} source={require('./Images/ShowCast.png')} />}
           onPress={() => this.setState({ selectedTab: 'tab2' })}>
           <Tab2 
-            api={api}
             ref='tab2'
-            show={this.state.show}/>
+            show={this.state.show}
+          />
         </TabNavigator.Item>
         <TabNavigator.Item
           selected={this.state.selectedTab === 'tab3'}
@@ -64,9 +66,9 @@ module.exports = React.createClass({
           renderSelectedIcon={() => <Image style={[styles.tabIcon, styles.selectedIcon]} source={require('./Images/ShowShowtimes.png')} />}
           onPress={() => this.setState({ selectedTab: 'tab3' })}>
           <Tab3 
-            api={api}
             ref='tab3'
-            show={this.state.show}/>
+            show={this.state.show}
+          />
         </TabNavigator.Item>
       </TabNavigator>
     );

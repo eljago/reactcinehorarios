@@ -14,8 +14,8 @@ var {
   Platform
 } = React;
 
-var api = require('../../Utils/api');
-var colors = require('../../Data/colors');
+var api = global.api;
+var colors = global.colors;
 var dateFunctions = require('../../Utils/dateFunctions');
 var imageHelper = require('../../Utils/ImageHelper');
 var ShowView = require('../Show');
