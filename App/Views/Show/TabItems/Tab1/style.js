@@ -31,7 +31,7 @@ module.exports = StyleSheet.create({
     shadowRadius: 3,
     shadowOpacity: 1,
     shadowOffset: {
-      width: 0, height: 0
+      width: 0, height: 1
     }
   },
 
@@ -52,7 +52,8 @@ module.exports = StyleSheet.create({
   portraitImage: {
     flex: 1,
     flexDirection: 'column',
-    justifyContent: 'flex-end'
+    justifyContent: 'flex-end',
+    backgroundColor: 'black'
   },
   showName: {
     color: 'white',
@@ -63,30 +64,36 @@ module.exports = StyleSheet.create({
     paddingTop: 4
   },
   nameOriginal: {
-  	fontSize: 19
+  	fontSize: 18,
+    color: '#000',
+    fontWeight: '300',
+    marginBottom: 4
   },
   year: {
-    fontSize: 16
+    fontSize: 16,
+    color: '#000',
+    fontWeight: '300',
+    marginBottom: 4
   },
   duration: {
-  	fontSize: 17
+  	fontSize: 17,
+    color: '#000',
+    fontWeight: '300',
+    marginBottom: 4
   },
   genres: {
-  	fontSize: 17
+  	fontSize: 17,
+    color: '#000',
+    fontWeight: '300'
   },
 
   // INFORMATION
-  informationView: {
+  information: {
     margin: 15,
     marginTop: 5,
-    flex: 1,
-  },
-  informationTitle: {
-    fontSize: 20,
-    fontWeight: 'bold'
-  },
-  information: {
     fontSize: 18,
+    color: '#000',
+    fontWeight: '300'
   },
 
   // Scores

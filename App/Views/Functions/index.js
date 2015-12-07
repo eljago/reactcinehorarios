@@ -51,7 +51,8 @@ module.exports = React.createClass({
     return (
       <TabNavigator
         style={styles.container}
-        tabBarStyle={{ height: 42, overflow: 'hidden' }}
+        tabBarStyle={{ height: 42, overflow: 'hidden', backgroundColor: '#272727' }}
+        hidesTabTouch={false}
         sceneStyle={{ paddingBottom: 42 }}>
 
         <TabNavigator.Item

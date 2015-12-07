@@ -26,6 +26,6 @@ module.exports = StyleSheet.create({
 		backgroundColor: 'transparent'
 	},
 	selectedIcon: {
-		color: colors.navBar
+		color: 'white'
 	}
 });

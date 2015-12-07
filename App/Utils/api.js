@@ -18,10 +18,10 @@ function status(response) {
     return response;
   }
   throw new Error(response.statusText);
-}
+};
 function json(response) {
   return response.json();
-}
+};
 
 function getFullURL(relativePath) {
   var addedString = relativePath[0] == '/' ? "" : "/";

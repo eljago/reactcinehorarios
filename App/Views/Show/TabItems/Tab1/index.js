@@ -30,7 +30,7 @@ module.exports = React.createClass({
       }
       var showYear = null;
       if (show.year && show.year > 0) {
-        showYear = <Text style={styles.year}>{show.year}</Text>
+        showYear = <Text style={styles.year}>({show.year})</Text>
       }
       var showDuration = null;
       if (show.duration && show.duration > 0) {
@@ -43,14 +43,9 @@ module.exports = React.createClass({
       var information = null;
       if (show.information && show.information.length > 0) {
         information =
-          <View style={styles.informationView}>
-            <Text style={styles.informationTitle}>
-              Sinópsis:
-            </Text>
-            <Text style={styles.information}>
-              {show.information}
-            </Text>
-          </View>
+          <Text style={styles.information}>
+            {show.information}
+          </Text>
       }
       var scoresView = null;
       if ((show.imdb_code && show.imdb_code.length > 0) || 

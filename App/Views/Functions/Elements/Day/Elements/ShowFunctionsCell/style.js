@@ -33,7 +33,7 @@ module.exports = StyleSheet.create({
   	marginTop: 5
   },
   functionTypes: {
-    fontSize: 16,
+    fontSize: 18, 
     fontWeight: '300',
     color: 'gray',
     marginTop: 5
