@@ -100,89 +100,49 @@ module.exports = React.createClass({
   _onPressImdb: function(imdb_code) {
 
     var url1 = `http://m.imdb.com/title/${imdb_code}`;
-    var url2 = `imdb://title/${imdb_code}`;
-    var url3 = `googlechrome://m.imdb.com/title/${imdb_code}`;
+    var url2 = `imdb:///title/${imdb_code}/`;
 
     var canOpenSafari = false;
     var canOpenImdbApp = false;
-    var canOpenChrome = false;
 
     // Will check these three bools after getting each Callback
     var gotResultSafari = false;
     var gotResultImdb = false;
-    var gotResultChrome = false;
 
     if (Platform.OS === 'ios') {
       LinkingIOS.canOpenURL(url1, (supported) => {
         canOpenSafari = supported;
         gotResultSafari = true;
-        if (gotResultSafari && gotResultImdb && gotResultChrome) {
-          this._openAlert(canOpenSafari, canOpenImdbApp, canOpenChrome, url1, url2, url3);
+        if (gotResultSafari && gotResultImdb) {
+          this._openAlert(canOpenSafari, canOpenImdbApp, url1, url2);
         }
       });
       LinkingIOS.canOpenURL(url2, (supported) => {
         canOpenImdbApp = supported;
         gotResultImdb = true;
-        if (gotResultSafari && gotResultImdb && gotResultChrome) {
-          this._openAlert(canOpenSafari, canOpenImdbApp, canOpenChrome, url1, url2, url3);
-        }
-      });
-      LinkingIOS.canOpenURL(url3, (supported) => {
-        canOpenChrome = supported;
-        gotResultChrome = true;
-        if (gotResultSafari && gotResultImdb && gotResultChrome) {
-          this._openAlert(canOpenSafari, canOpenImdbApp, canOpenChrome, url1, url2, url3);
+        if (gotResultSafari && gotResultImdb) {
+          this._openAlert(canOpenSafari, canOpenImdbApp, url1, url2);
         }
       });
     }
-
-    // var url = `http://m.imdb.com/title/${imdb_code}`;
-    // LinkingIOS.canOpenURL(url, (supported) => {
-    //   if (supported) {
-    //     LinkingIOS.openURL(url);
-    //   }
-    // });
   },
   _onPressMetacritic: function(metacritic_url) {
-
+    LinkingIOS.canOpenURL(metacritic_url, (supported) => {
+      LinkingIOS.openURL(metacritic_url);
+    });
   },
   _onPressRottenTomatoes: function(rotten_tomatoes_url) {
-
+    LinkingIOS.canOpenURL(rotten_tomatoes_url, (supported) => {
+      LinkingIOS.openURL(rotten_tomatoes_url);
+    });
   },
 
-  _openAlert: function(canOpenSafari, canOpenImdbApp, canOpenChrome, url1, url2, url3) {
-    var optionsArray = [];
-
-    if (canOpenSafari) {
-      optionsArray.push({
-        text: 'Safari',
-        onPress: () => { LinkingIOS.openURL(url1) }
-      });
-    }
+  _openAlert: function(canOpenSafari, canOpenImdbApp, url1, url2) {
     if (canOpenImdbApp) {
-      optionsArray.push({
-        text: 'IMDB App',
-        onPress: () => { LinkingIOS.openURL(url2) }
-      });
+      LinkingIOS.openURL(url2);
     }
-    if (canOpenChrome) {
-      optionsArray.push({
-        text: 'Chrome',
-        onPress: () => { LinkingIOS.openURL(url3) }
-      });
-    }
-
-    optionsArray.push({
-      text: 'Cancelar',
-      onPress: null
-    });
-
-    if (optionsArray.length > 0) {
-      AlertIOS.alert(
-        '¿Cómo abrir?',
-        null,
-        optionsArray
-      );
+    else if (canOpenSafari) {
+      LinkingIOS.openURL(url1);
     }
   }
 
