@@ -9,8 +9,11 @@ var {
   Platform,
   PropTypes,
   AlertIOS,
-  LinkingIOS
+  LinkingIOS,
+  // IntentAndroid
 } = React;
+
+var WebIntent = require('react-native-webintent');
 
 var styles = require('./style');
 var colors = global.colors;
@@ -105,45 +108,88 @@ module.exports = React.createClass({
     var canOpenSafari = false;
     var canOpenImdbApp = false;
 
-    // Will check these three bools after getting each Callback
-    var gotResultSafari = false;
-    var gotResultImdb = false;
-
     if (Platform.OS === 'ios') {
       LinkingIOS.canOpenURL(url1, (supported) => {
         canOpenSafari = supported;
-        gotResultSafari = true;
-        if (gotResultSafari && gotResultImdb) {
-          this._openAlert(canOpenSafari, canOpenImdbApp, url1, url2);
+        if (canOpenSafari && canOpenImdbApp) {
+          if (canOpenSafari) {
+            LinkingIOS.openURL(url1);
+          }
+          else if (canOpenImdbApp) {
+            LinkingIOS.openURL(url2);
+          }
         }
       });
       LinkingIOS.canOpenURL(url2, (supported) => {
         canOpenImdbApp = supported;
-        gotResultImdb = true;
-        if (gotResultSafari && gotResultImdb) {
-          this._openAlert(canOpenSafari, canOpenImdbApp, url1, url2);
+        if (canOpenSafari && canOpenImdbApp) {
+          if (canOpenSafari) {
+            LinkingIOS.openURL(url1);
+          }
+          else if (canOpenImdbApp) {
+            LinkingIOS.openURL(url2);
+          }
         }
       });
     }
+    else if (Platform.OS === 'android') {
+      WebIntent.open(url1);
+      // IntentAndroid.canOpenURL(url1, (supported) => {
+      //   canOpenSafari = supported;
+      //   if (canOpenSafari && canOpenImdbApp) {
+      //     if (canOpenSafari) {
+      //       IntentAndroid.openURL(url1);
+      //     }
+      //     else if (canOpenImdbApp) {
+      //       IntentAndroid.openURL(url2);
+      //     }
+      //   }
+      // });
+      // IntentAndroid.canOpenURL(url2, (supported) => {
+      //   canOpenImdbApp = supported;
+      //   if (canOpenSafari && canOpenImdbApp) {
+      //     if (canOpenSafari) {
+      //       IntentAndroid.openURL(url1);
+      //     }
+      //     else if (canOpenImdbApp) {
+      //       IntentAndroid.openURL(url2);
+      //     }
+      //   }
+      // });
+    }
   },
   _onPressMetacritic: function(metacritic_url) {
-    LinkingIOS.canOpenURL(metacritic_url, (supported) => {
-      LinkingIOS.openURL(metacritic_url);
-    });
+    if (Platform.OS === 'ios') {
+      LinkingIOS.canOpenURL(metacritic_url, (supported) => {
+        if (supported) {
+          LinkingIOS.openURL(metacritic_url);
+        }
+      });
+    } else if (Platform.OS === 'android') {
+      console.log(typeof WebIntent);
+      WebIntent.open(metacritic_url);
+      // IntentAndroid.canOpenURL(metacritic_url, (supported) => {
+      //   if (supported) {
+      //     IntentAndroid.openURL(metacritic_url);
+      //   }
+      // });
+    }
   },
   _onPressRottenTomatoes: function(rotten_tomatoes_url) {
-    LinkingIOS.canOpenURL(rotten_tomatoes_url, (supported) => {
-      LinkingIOS.openURL(rotten_tomatoes_url);
-    });
+    if (Platform.OS === 'ios') {
+      LinkingIOS.canOpenURL(rotten_tomatoes_url, (supported) => {
+        if (supported) {
+          LinkingIOS.openURL(rotten_tomatoes_url);
+        }
+      });
+    } else if (Platform.OS === 'android') {
+      WebIntent.open(rotten_tomatoes_url);
+      // IntentAndroid.canOpenURL(rotten_tomatoes_url, (supported) => {
+      //   if (supported) {
+      //     IntentAndroid.openURL(rotten_tomatoes_url);
+      //   }
+      // });
+    }
   },
-
-  _openAlert: function(canOpenSafari, canOpenImdbApp, url1, url2) {
-    if (canOpenImdbApp) {
-      LinkingIOS.openURL(url2);
-    }
-    else if (canOpenSafari) {
-      LinkingIOS.openURL(url1);
-    }
-  }
 
 });
