@@ -76,15 +76,21 @@ module.exports = React.createClass({
     var rowIDs = [[],[]];
     var person;
     var i;
+    var directorCount = 0;
+    var actorCount = 0;
 
     for (i = 0; i < length; i++) {
       person = people[i];
       if (person.director || person.actor) {
         if (person.director) {
           rowIDs[0].push(person.id);
+          person.rowNumber = directorCount;
+          directorCount++;
         }
         if (person.actor) {
           rowIDs[1].push(person.id);
+          person.rowNumber = actorCount;
+          actorCount++;
         }
         if (dataBlob[person.id] == null) {
           dataBlob[person.id] = person;

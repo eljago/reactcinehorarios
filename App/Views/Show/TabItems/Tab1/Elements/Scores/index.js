@@ -166,7 +166,6 @@ module.exports = React.createClass({
         }
       });
     } else if (Platform.OS === 'android') {
-      console.log(typeof WebIntent);
       WebIntent.open(metacritic_url);
       // IntentAndroid.canOpenURL(metacritic_url, (supported) => {
       //   if (supported) {
