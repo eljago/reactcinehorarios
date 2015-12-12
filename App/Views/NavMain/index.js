@@ -43,7 +43,8 @@ var MainView = React.createClass({
             routeMapper={NavigationBarRouteMapper}
             style={styles.navBar}
           />
-        }/>
+        }
+      />
     );
   },
 
