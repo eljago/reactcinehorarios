@@ -30,14 +30,6 @@ var getDateString = function(date) {
 
 module.exports = React.createClass({
 
-
-  getInitialState: function() {
-    return {
-      selectedTab: 'tab1',
-      show: null
-    };
-  },
-
   render: function() {
     var date1 = new Date();
     var date2 = new Date();
@@ -56,144 +48,32 @@ module.exports = React.createClass({
     return (
       <View style={{flex: 1, marginTop: Platform.OS === 'ios' ? 20 : 12}}>
         <ScrollableTabView
-          tabBarPosition='bottom'
+          tabBarPosition='top'
           renderTabBar={() =>
             <CustomTabBar
-              backgroundColor='gray'
+              backgroundColor={colors.tabBar}
               activeTextColor='white'
-              inactiveTextColor='lightGray'/>}>
-          <Day
-            tabLabel={getDateString(date1)} 
-            navigator={this.props.navigator}
-            theaterData={this.props.extraData.theaterData}
-            date={date1}
-            requires={requires}/>
-          <Day
-            tabLabel={getDateString(date2)} 
-            navigator={this.props.navigator}
-            theaterData={this.props.extraData.theaterData}
-            date={date2}
-            requires={requires}/>
-          <Day
-            tabLabel={getDateString(date3)} 
-            navigator={this.props.navigator}
-            theaterData={this.props.extraData.theaterData}
-            date={date3}
-            requires={requires}/>
-          <Day
-            tabLabel={getDateString(date4)} 
-            navigator={this.props.navigator}
-            theaterData={this.props.extraData.theaterData}
-            date={date4}
-            requires={requires}/>
-          <Day
-            tabLabel={getDateString(date5)} 
-            navigator={this.props.navigator}
-            theaterData={this.props.extraData.theaterData}
-            date={date5}
-            requires={requires}/>
-          <Day
-            tabLabel={getDateString(date6)} 
-            navigator={this.props.navigator}
-            theaterData={this.props.extraData.theaterData}
-            date={date6}
-            requires={requires}/>
-          <Day
-            tabLabel={getDateString(date7)} 
-            navigator={this.props.navigator}
-            theaterData={this.props.extraData.theaterData}
-            date={date7}
-            requires={requires}/>
+              inactiveTextColor={colors.tabBarInactive}/>}>
+          {this._getDayComponent(date1)}
+          {this._getDayComponent(date2)}
+          {this._getDayComponent(date3)}
+          {this._getDayComponent(date4)}
+          {this._getDayComponent(date5)}
+          {this._getDayComponent(date6)}
+          {this._getDayComponent(date7)}
         </ScrollableTabView>
       </View>
-
-
-      // <TabNavigator
-      //   style={styles.container}
-      //   tabBarStyle={{ height: 42, overflow: 'hidden', backgroundColor: '#272727' }}
-      //   hidesTabTouch={false}
-      //   sceneStyle={{ paddingBottom: 42 }}>
-
-      //   <TabNavigator.Item
-      //     selected={this.state.selectedTab === 'tab1'}
-      //     renderIcon={() => <Text style={styles.icon}>{getDateString(date1)}</Text>}
-      //     renderSelectedIcon={() => <Text style={styles.selectedIcon}>{getDateString(date1)}</Text>}
-      //     onPress={() => this.setState({ selectedTab: 'tab1' })}>
-      //     <Day
-      //       navigator={this.props.navigator}
-      //       theaterData={this.props.extraData.theaterData}
-      //       date={date1}
-      //       ref='tab1'
-      //       requires={requires}/>
-      //   </TabNavigator.Item>
-
-      //   <TabNavigator.Item
-      //     selected={this.state.selectedTab === 'tab2'}
-      //     renderIcon={() => <Text style={styles.icon}>{getDateString(date2)}</Text>}
-      //     renderSelectedIcon={() => <Text style={styles.selectedIcon}>{getDateString(date2)}</Text>}
-      //     onPress={() => this.setState({ selectedTab: 'tab2' })}>
-      //     <Day 
-      //       navigator={this.props.navigator}
-      //       theaterData={this.props.extraData.theaterData}
-      //       date={date2}
-      //       ref='tab2'
-      //       requires={requires}/>
-      //   </TabNavigator.Item>
-
-      //   <TabNavigator.Item
-      //     selected={this.state.selectedTab === 'tab4'}
-      //     renderIcon={() => <Text style={styles.icon}>{getDateString(date3)}</Text>}
-      //     renderSelectedIcon={() => <Text style={styles.selectedIcon}>{getDateString(date3)}</Text>}
-      //     onPress={() => this.setState({ selectedTab: 'tab4' })}>
-      //     <Day 
-      //       navigator={this.props.navigator}
-      //       theaterData={this.props.extraData.theaterData}
-      //       date={date3}
-      //       ref='tab4'
-      //       requires={requires}/>
-      //   </TabNavigator.Item>
-
-      //   <TabNavigator.Item
-      //     selected={this.state.selectedTab === 'tab5'}
-      //     renderIcon={() => <Text style={styles.icon}>{getDateString(date4)}</Text>}
-      //     renderSelectedIcon={() => <Text style={styles.selectedIcon}>{getDateString(date4)}</Text>}
-      //     onPress={() => this.setState({ selectedTab: 'tab5' })}>
-      //     <Day 
-      //       navigator={this.props.navigator}
-      //       theaterData={this.props.extraData.theaterData}
-      //       date={date4}
-      //       ref='tab5'
-      //       requires={requires}/>
-      //   </TabNavigator.Item>
-
-      //   <TabNavigator.Item
-      //     selected={this.state.selectedTab === 'tab6'}
-      //     renderIcon={() => <Text style={styles.icon}>{getDateString(date5)}</Text>}
-      //     renderSelectedIcon={() => <Text style={styles.selectedIcon}>{getDateString(date5)}</Text>}
-      //     onPress={() => this.setState({ selectedTab: 'tab6' })}>
-      //     <Day 
-      //       navigator={this.props.navigator}
-      //       theaterData={this.props.extraData.theaterData}
-      //       date={date5}
-      //       ref='tab6'
-      //       requires={requires}/>
-      //   </TabNavigator.Item>
-
-      //   <TabNavigator.Item
-      //     selected={this.state.selectedTab === 'tab7'}
-      //     renderIcon={() => <Text style={styles.icon}>{getDateString(date6)}</Text>}
-      //     renderSelectedIcon={() => <Text style={styles.selectedIcon}>{getDateString(date6)}</Text>}
-      //     onPress={() => this.setState({ selectedTab: 'tab7' })}>
-      //     <Day 
-      //       navigator={this.props.navigator}
-      //       theaterData={this.props.extraData.theaterData}
-      //       date={date6}
-      //       ref='tab7'
-      //       requires={requires}/>
-      //   </TabNavigator.Item>
-
-      // </TabNavigator>
     );
   },
 
+  _getDayComponent: function(date) {
+    return(
+      <Day
+        tabLabel={getDateString(date)} 
+        navigator={this.props.navigator}
+        theaterData={this.props.extraData.theaterData}
+        date={date}
+        requires={requires}/>
+    );
+  }
 });

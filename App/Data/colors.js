@@ -7,7 +7,9 @@ var colors = {
 	midnightBlue: '#2c3e50',
 	wetAsphalt: '#34495e',
 	underlayColor: '#CFCFCF',
-	header: '#454545'
+	header: '#454545',
+	tabBar: '#272727',
+	tabBarInactive: '#888888'
 }
 
 module.exports = colors;
