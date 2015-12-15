@@ -15,6 +15,8 @@ var styles = require('./style');
 var Day = require('./Elements/Day');
 var colors = global.colors;
 
+var loadedTabs = null;
+
 var requires = {
   api: require('../../Utils/api'),
   showView: require('../Show'),
@@ -29,6 +31,11 @@ var getDateString = function(date) {
 };
 
 module.exports = React.createClass({
+
+  componentDidMount: function() {
+    this.refs.tab1.fetchData();
+    loadedTabs = [true, false, false, false, false, false, false];;
+  },
 
   render: function() {
     var date1 = new Date();
@@ -48,27 +55,43 @@ module.exports = React.createClass({
     return (
       <View style={{flex: 1, marginTop: Platform.OS === 'ios' ? 20 : 12}}>
         <ScrollableTabView
-          tabBarPosition='top'
+          locked={true}
+          tabBarPosition='bottom'
+          onChangeTab={this._onChangeTab}
           renderTabBar={() =>
             <CustomTabBar
               backgroundColor={colors.tabBar}
               activeTextColor='white'
               inactiveTextColor={colors.tabBarInactive}/>}>
-          {this._getDayComponent(date1)}
-          {this._getDayComponent(date2)}
-          {this._getDayComponent(date3)}
-          {this._getDayComponent(date4)}
-          {this._getDayComponent(date5)}
-          {this._getDayComponent(date6)}
-          {this._getDayComponent(date7)}
+          {this._getDayComponent(date1, 'tab1')}
+          {this._getDayComponent(date2, 'tab2')}
+          {this._getDayComponent(date3, 'tab3')}
+          {this._getDayComponent(date4, 'tab4')}
+          {this._getDayComponent(date5, 'tab5')}
+          {this._getDayComponent(date6, 'tab6')}
+          {this._getDayComponent(date7, 'tab7')}
         </ScrollableTabView>
       </View>
     );
   },
 
-  _getDayComponent: function(date) {
+  _onChangeTab: function(obj) {
+    console.log('changed to tab ' + obj.i);
+    if (!loadedTabs[obj.i]) {
+      console.log('fetching data of tab ' + obj.i);
+      this._getTabAtIndex(obj.i).fetchData();
+      loadedTabs[obj.i] = true;
+    }
+  },
+
+  _getTabAtIndex: function(index) {
+    return this.refs[`tab${index+1}`];
+  },
+
+  _getDayComponent: function(date, ref) {
     return(
       <Day
+        ref={ref}
         tabLabel={getDateString(date)} 
         navigator={this.props.navigator}
         theaterData={this.props.extraData.theaterData}

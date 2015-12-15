@@ -23,7 +23,7 @@ var Functions = React.createClass({
   },
 
   componentDidMount: function() {
-    this._fetchData();
+    // this._fetchData();
   },
 
   render: function() {
@@ -62,6 +62,10 @@ var Functions = React.createClass({
       component: this.props.requires.showView,
       extraData: {showData: rowData}
     });
+  },
+
+  fetchData: function() {
+    this._fetchData();
   },
 
   _fetchData: function() {
