@@ -37,19 +37,19 @@ var DefaultTabBar = React.createClass({
     goToPage: React.PropTypes.func,
     activeTab: React.PropTypes.number,
     tabs: React.PropTypes.array,
-    backgroundColor : React.PropTypes.string,
-    activeTextColor : React.PropTypes.string,
-    inactiveTextColor : React.PropTypes.string,
+    tabBarBackgroundColor : React.PropTypes.string,
+    tabBarActiveTextColor : React.PropTypes.string,
+    tabBarInactiveTextColor : React.PropTypes.string,
   },
 
   renderTabOption(name, page) {
     var isTabActive = this.props.activeTab === page;
-    var activeTextColor = this.props.activeTextColor || "navy";
-    var inactiveTextColor = this.props.inactiveTextColor || "black";
+    var tabBarActiveTextColor = this.props.tabBarActiveTextColor || "navy";
+    var tabBarInactiveTextColor = this.props.tabBarInactiveTextColor || "black";
     return (
       <TouchableOpacity style={[styles.tab]} key={name} onPress={() => this.props.goToPage(page)}>
         <View>
-          <Text style={{color: isTabActive ? activeTextColor : inactiveTextColor,
+          <Text style={{color: isTabActive ? tabBarActiveTextColor : tabBarInactiveTextColor,
             fontWeight: isTabActive ? 'bold' : 'normal'}}>{name}</Text>
         </View>
       </TouchableOpacity>
@@ -64,7 +64,7 @@ var DefaultTabBar = React.createClass({
     });
 
     return (
-      <View style={[styles.tabs, {backgroundColor : this.props.backgroundColor || null}]}>
+      <View style={[styles.tabs, {backgroundColor : this.props.tabBarBackgroundColor || null}]}>
         {this.props.tabs.map((tab, i) => this.renderTabOption(tab, i))}
       </View>
     );

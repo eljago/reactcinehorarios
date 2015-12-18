@@ -10,7 +10,7 @@
     "react-native-grid-view": "^0.3.7",
     "react-native-progress-hud": "^1.0.3",
     "react-native-refreshable-listview": "^1.3.0",
-    "react-native-scrollable-tab-view": "^0.3.2",
+    "react-native-scrollable-tab-view": "git+https://github.com/brentvatne/react-native-scrollable-tab-view.git",
     "react-native-side-menu": "^0.15.4",
     "react-native-simple-store": "^0.1.0",
     "react-native-webintent": "^1.0.4"

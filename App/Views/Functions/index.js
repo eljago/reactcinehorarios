@@ -60,9 +60,9 @@ module.exports = React.createClass({
           onChangeTab={this._onChangeTab}
           renderTabBar={() =>
             <CustomTabBar
-              backgroundColor={colors.tabBar}
-              activeTextColor='white'
-              inactiveTextColor={colors.tabBarInactive}/>}>
+              tabBarBackgroundColor={colors.tabBar}
+              tabBarActiveTextColor='white'
+              tabBarInactiveTextColor={colors.tabBarInactive}/>}>
           {this._getDayComponent(date1, 'tab1')}
           {this._getDayComponent(date2, 'tab2')}
           {this._getDayComponent(date3, 'tab3')}
