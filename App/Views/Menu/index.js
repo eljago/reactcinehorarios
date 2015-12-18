@@ -20,7 +20,7 @@ var styles = require('./style');
 
 var Menu = React.createClass({
   contextTypes: {
-    menuActions: React.PropTypes.object.isRequired
+    menuActions: React.PropTypes.object
   },
   componentDidMount: function() {
     helper = this.props.helper;

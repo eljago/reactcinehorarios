@@ -56,7 +56,8 @@ module.exports = StyleSheet.create({
     shadowOpacity: 1,
     shadowOffset: {
       width: 0, height: 0
-    }
+    },
+    backgroundColor: 'gray',
   },
   rightAccessoryView: {
     width: 22,

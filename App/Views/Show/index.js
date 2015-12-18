@@ -10,7 +10,8 @@ var {
   Platform
 } = React;
 
-var TabNavigator = require('react-native-tab-navigator');
+var ScrollableTabView = require('react-native-scrollable-tab-view');
+var CustomTabBar = require('./Elements/CustomTabBar');
 
 var api = global.api;
 
@@ -34,43 +35,31 @@ module.exports = React.createClass({
 
   render: function() {
     return(
-      <TabNavigator
-        style={styles.container}
-        tabBarStyle={{ height: 42, overflow: 'hidden', backgroundColor: '#272727' }}
-        hidesTabTouch={false}
-        sceneStyle={{ paddingBottom: 42 }}>
-        <TabNavigator.Item
-          selected={this.state.selectedTab === 'tab1'}
-          renderIcon={() => <Image style={[styles.tabIcon, styles.icon]} source={require('./Images/ShowInfo.png')} />}
-          renderSelectedIcon={() => <Image style={[styles.tabIcon, styles.selectedIcon]} source={require('./Images/ShowInfo.png')} />}
-          onPress={() => this.setState({ selectedTab: 'tab1' })}>
+      <View style={{flex: 1, marginTop: Platform.OS === 'ios' ? 20 : 12}}>
+        <ScrollableTabView
+          locked={true}
+          tabBarPosition='bottom'
+          onChangeTab={this._onChangeTab}
+          renderTabBar={() =>
+            <CustomTabBar
+              backgroundColor={colors.tabBar}
+              activeTextColor='white'
+              inactiveTextColor={colors.tabBarInactive}/>}>
           <Tab1
             ref='tab1'
             show={this.state.show}
             extraData={this.props.extraData}
-          />
-        </TabNavigator.Item>
-        <TabNavigator.Item
-          selected={this.state.selectedTab === 'tab2'}
-          renderIcon={() => <Image style={[styles.tabIcon, styles.icon]} source={require('./Images/ShowCast.png')} />}
-          renderSelectedIcon={() => <Image style={[styles.tabIcon, styles.selectedIcon]} source={require('./Images/ShowCast.png')} />}
-          onPress={() => this.setState({ selectedTab: 'tab2' })}>
+            tabLabel='Info'/>
           <Tab2 
             ref='tab2'
             show={this.state.show}
-          />
-        </TabNavigator.Item>
-        <TabNavigator.Item
-          selected={this.state.selectedTab === 'tab3'}
-          renderIcon={() => <Image style={[styles.tabIcon, styles.icon]} source={require('./Images/ShowShowtimes.png')} />}
-          renderSelectedIcon={() => <Image style={[styles.tabIcon, styles.selectedIcon]} source={require('./Images/ShowShowtimes.png')} />}
-          onPress={() => this.setState({ selectedTab: 'tab3' })}>
+            tabLabel='Elenco'/>
           <Tab3 
             ref='tab3'
             show={this.state.show}
-          />
-        </TabNavigator.Item>
-      </TabNavigator>
+            tabLabel='Horarios'/>
+        </ScrollableTabView>
+      </View>
     );
   },
 
