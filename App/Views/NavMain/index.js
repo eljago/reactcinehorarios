@@ -27,7 +27,7 @@ var MainView = React.createClass({
   },
 
   contextTypes: {
-    menuActions: React.PropTypes.object.isRequired
+    menuActions: React.PropTypes.object
   },
 
   render: function() {
