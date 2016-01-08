@@ -4,9 +4,9 @@ var React = require('react-native');
 var {
   View,
   ListView,
+  PullToRefreshViewAndroid
 } = React;
 
-var RefreshableListView = require('react-native-refreshable-listview');
 var ProgressHUD = require('react-native-progress-hud');
 
 var ShowFunctionsCell = require('./Elements/ShowFunctionsCell');
@@ -29,13 +29,23 @@ var Functions = React.createClass({
   render: function() {
     return (
       <View style={styles.container}>
-        <RefreshableListView
+        <PullToRefreshViewAndroid
           style={{flex: 1}}
-          dataSource={this.state.dataSource}
-          renderRow={this._renderRow}
-          loadData={this._fetchData}
-          refreshDescription="Descargando ..."
-        />
+          refreshing={this.state.is_hud_visible}
+          onRefresh={this._fetchData}
+          colors={['white']}
+          progressBackgroundColor={colors.navBar}>
+          <ListView
+            dataSource={this.state.dataSource}
+            renderRow={this._renderRow}
+            loadData={this._fetchData}
+            refreshDescription="Descargando ...">
+            <ProgressHUD
+              isVisible={this.state.is_hud_visible}
+              isDismissible={true}
+              overlayColor="rgba(0, 0, 0, 0.11)"/>
+          </ListView>
+        </PullToRefreshViewAndroid>
         <ProgressHUD
           isVisible={this.state.is_hud_visible}
           isDismissible={true}

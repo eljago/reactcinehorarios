@@ -40,7 +40,7 @@ module.exports = StyleSheet.create({
   },
   showtimes: {
     fontFamily: 'Verdana',
-    fontSize: 15,
+    fontSize: 16,
     color: '#000',
     marginTop: 2
   },

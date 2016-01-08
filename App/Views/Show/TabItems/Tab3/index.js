@@ -37,10 +37,10 @@ module.exports = React.createClass({
 	render: function() {
 		return(
 			<ListView
-			    style={styles.container}
-			    dataSource={this.state.dataSource}
-			    renderRow={this._renderRow}
-      			renderSectionHeader={this._renderSectionHeader}/>
+				style={styles.container}
+				dataSource={this.state.dataSource}
+				renderRow={this._renderRow}
+				renderSectionHeader={this._renderSectionHeader}/>
 		);
 	},
 

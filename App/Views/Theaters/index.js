@@ -8,48 +8,42 @@ var {
   TouchableHighlight,
   ListView,
   Text,
-  Component
+  Component,
+  PullToRefreshViewAndroid,
+  Platform
 } = React;
 
-const COUNTRYNAME = 'Chile';
 
-var RefreshableListView = require('react-native-refreshable-listview');
-var ProgressHUD = require('react-native-progress-hud');
+var GiftedListView = require('react-native-gifted-listview');
 
 var FunctionsView = require('../Functions');
-var api = global.api;
-var TheatersCell = require('./Elements/TheatersCell');
-var styles = require('./style');
+var TheaterCell = require('./TheaterCell');
 var Favorites = require('../../Utils/Favorites');
 
+const COUNTRYNAME = 'Chile';
+var api = global.api;
+
 module.exports = React.createClass({
-  mixins: [ProgressHUD.Mixin],
-
-  componentDidMount: function() {
-    this._fetchData();
-  },
-
-  getInitialState: function() {
-    var dataSource = new ListView.DataSource({rowHasChanged: (r1, r2) => r1 !== r2});
-    return {
-      dataSource: dataSource
-    };
-  },
 
   render: function() {
     return (
       <View style={styles.container}>
-        <RefreshableListView
-          style={{flex: 1}}
-          dataSource={this.state.dataSource}
-          renderRow={this._renderRow}
-          loadData={this._fetchData}
-          refreshDescription="Descargando ..."
-        />
-        <ProgressHUD
-          isVisible={this.state.is_hud_visible}
-          isDismissible={true}
-          overlayColor="rgba(0, 0, 0, 0.11)"
+        <GiftedListView
+          rowView={this._renderRow}
+          onFetch={this._onFetch}
+          firstLoader={true} // display a loader for the first fetching
+          pagination={false} // enable infinite scrolling using touch to load more
+          refreshable={true} // enable pull-to-refresh for iOS and touch-to-refresh for Android
+          withSections={false} // enable sections
+
+          refreshableFetchingView={this._renderRefreshableFetchingView}
+          renderSeparator={this._renderSeparatorView}
+          emptyView={this._renderEmptyView}
+
+          PullToRefreshViewAndroidProps={{
+            colors: ['white'],
+            progressBackgroundColor: colors.navBar
+          }}
         />
       </View>
     );
@@ -57,7 +51,37 @@ module.exports = React.createClass({
 
   _renderRow: function(rowData, sectionID, rowID) {
     return (
-      <TheatersCell data={rowData} rowID={rowID} onPress={this._pressRow}/>
+      <TheaterCell data={rowData} rowID={rowID} onPress={this._pressRow}/>
+    );
+  },
+
+  _renderRefreshableFetchingView() {
+    return (
+      <View style={styles.refreshableView}>
+        <GiftedSpinner />
+      </View>
+    );
+  },
+
+  _renderSeparatorView() {
+    return (
+      <View style={styles.separator} />
+    );
+  },
+
+  _renderEmptyView(refreshCallback) {
+    return (
+      <View style={styles.defaultView}>
+        <Text style={styles.defaultViewTitle}>
+          No hay contenido para mostrar
+        </Text>
+        
+        <TouchableHighlight 
+          underlayColor='#c8c7cc'
+          onPress={refreshCallback}>
+          <Text>↻</Text>
+        </TouchableHighlight>
+      </View>
     );
   },
 
@@ -65,35 +89,63 @@ module.exports = React.createClass({
     this.props.navigator.push({
       title: rowData.name,
       component: FunctionsView,
-      extraData: {theaterData: rowData}
+      extraData: {theaterData: rowData},
+      routeName: 'Functions'
     });
     Favorites.add(rowData.id, rowData.name);
   },
 
-  _fetchData: function() {
-    this.showProgressHUD();
+  _onFetch(page = 1, callback, options) {
     api.getTheaters(COUNTRYNAME).then(json => {
-      this._handleResponse(json);
-      this.dismissProgressHUD();
+      this._handleResponse(json, callback);
     }).catch(error => {
-      this.dismissProgressHUD();
+      callback();
     });
   },
 
-  _handleResponse: function(json) {
+  _handleResponse: function(json, callback) {
     if (json.theaters && json.theaters.length > 0) {
-      var theaters = json.theaters.filter(theater => {
+      let theaters = json.theaters.filter(theater => {
         if(theater.cinema_id == this.props.extraData.cinemaData.id) {
           return theater;
         }
       });
-      this.setState({
-        dataSource: this.state.dataSource.cloneWithRows(theaters),
-      });
+      callback(theaters);
     }
     else {
-
+      callback();
     }
   }
 
 });
+
+var styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    marginTop: Platform.OS === 'ios' ? 20 : 12
+  },
+
+  separator: {
+    height: 1,
+    backgroundColor: '#ddd',
+  },
+
+  defaultView: {
+    justifyContent: 'center',
+    alignItems: 'center',
+    padding: 20,
+  },
+  defaultViewTitle: {
+    fontSize: 16,
+    fontWeight: 'bold',
+    marginBottom: 15,
+  },
+  
+  refreshableView: {
+    height: 50,
+    backgroundColor: '#fff',
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+});
+

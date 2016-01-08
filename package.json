@@ -7,6 +7,7 @@
   },
   "dependencies": {
     "react-native": "^0.17.0",
+    "react-native-gifted-listview": "0.0.9",
     "react-native-grid-view": "^0.3.7",
     "react-native-progress-hud": "^1.0.3",
     "react-native-scrollable-tab-view": "git+https://github.com/brentvatne/react-native-scrollable-tab-view.git",
