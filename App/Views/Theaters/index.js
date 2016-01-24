@@ -3,13 +3,9 @@
 var React = require('react-native');
 var {
   StyleSheet,
-  Image,
   View,
   TouchableHighlight,
-  ListView,
   Text,
-  Component,
-  PullToRefreshViewAndroid,
   Platform
 } = React;
 
