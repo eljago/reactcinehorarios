@@ -6,7 +6,7 @@
     "start": "node_modules/react-native/packager/packager.sh"
   },
   "dependencies": {
-    "react-native": "^0.17.0",
+    "react-native": "^0.18.0",
     "react-native-gifted-listview": "0.0.9",
     "react-native-grid-view": "^0.3.7",
     "react-native-progress-hud": "^1.0.3",
