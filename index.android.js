@@ -15,9 +15,6 @@ var Menu = require('./App/Views/Menu');
 var NavMain = require('./App/Views/NavMain');
 var helper = {};
 
-var _navigator = null;
-
-var DRAWER_WIDTH_LEFT = 56;
 BackAndroid.addEventListener('hardwareBackPress', () => {
   if (helper.getNavigator().getCurrentRoutes().length === 1  ) {
      return false;
