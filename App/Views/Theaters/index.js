@@ -51,14 +51,6 @@ module.exports = React.createClass({
     );
   },
 
-  _renderRefreshableFetchingView() {
-    return (
-      <View style={styles.refreshableView}>
-        <GiftedSpinner />
-      </View>
-    );
-  },
-
   _renderSeparatorView() {
     return (
       <View style={styles.separator} />
