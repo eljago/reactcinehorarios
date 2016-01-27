@@ -16,6 +16,12 @@ var helper = {};
 
 var CineHorariosApp = React.createClass({
 
+  getInitialState: function() {
+    return {
+      isOpen: false
+    };
+  },
+
   componentDidMount: function() {
     helper.closeMenu = this._closeMenu;
     helper.openMenu = this._openMenu;
@@ -27,22 +33,22 @@ var CineHorariosApp = React.createClass({
       <SideMenu
         menuPosition='right'
         touchToClose={true}
-        menu={
-          <Menu
-            ref={(menu) => { this.menu = menu; }}
-            helper={helper}
-          />
-        }>
+        isOpen={this.state.isOpen}
+        menu={ <Menu helper={helper}/> }>
         <MainView helper={helper}/>
       </SideMenu>
     );
   },
 
   _closeMenu: function() {
-    this.menu.context.menuActions.close();
+    this.setState({
+      isOpen: false
+    });
   },
   _openMenu: function() {
-    this.menu.context.menuActions.open();
+    this.setState({
+      isOpen: true
+    });
   },
 
 });
