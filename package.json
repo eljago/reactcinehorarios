@@ -7,11 +7,12 @@
   },
   "dependencies": {
     "react-native": "^0.18.0",
-    "react-native-gifted-listview": "0.0.9",
+    "react-native-drawer": "^1.13.0",
+    "react-native-gifted-listview": "0.0.11",
     "react-native-grid-view": "^0.3.7",
     "react-native-progress-hud": "^1.0.3",
-    "react-native-scrollable-tab-view": "git+https://github.com/brentvatne/react-native-scrollable-tab-view.git",
-    "react-native-side-menu": "^0.15.4",
+    "react-native-scrollable-tab-view": "^0.3.5",
+    "react-native-side-menu": "^0.18.0",
     "react-native-simple-store": "^0.1.0",
     "react-native-webintent": "^1.0.4"
   }
