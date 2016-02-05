@@ -13,16 +13,7 @@ var CustomTabBar = require('./Elements/CustomTabBar');
 
 var styles = require('./style');
 var Day = require('./Elements/Day');
-var colors = global.colors;
-
-var loadedTabs = null;
-
-var requires = {
-  api: require('../../Utils/api'),
-  showView: require('../Show'),
-  imageHelper: require('../../Utils/ImageHelper'),
-  rightAccesoryView: require('../../Images/RightAccesoryView.png')
-}
+import colors from '../Data/colors';
 
 var getDateString = function(date) {
   var weekDayNumber = date.getDay();
@@ -30,14 +21,9 @@ var getDateString = function(date) {
   return `${weekDays[weekDayNumber]} ${date.getDate()}`;
 };
 
-module.exports = React.createClass({
+export default class FunctionsContainer extends React.Component{
 
-  componentDidMount: function() {
-    this.refs.tab1.fetchData();
-    loadedTabs = [true, false, false, false, false, false, false];;
-  },
-
-  render: function() {
+  render() {
     var date1 = new Date();
     var date2 = new Date();
     var date3 = new Date();
@@ -71,24 +57,32 @@ module.exports = React.createClass({
           {this._getDayComponent(date6, 'tab6')}
           {this._getDayComponent(date7, 'tab7')}
         </ScrollableTabView>
+
+        <TabNavigator>
+          <TabNavigator.Item
+            selected={this.state.selectedTab === 'home'}
+            title="Home"
+            renderIcon={() => <Image source={...} />}
+            renderSelectedIcon={() => <Image source={...} />}
+            badgeText="1"
+            onPress={() => this.setState({ selectedTab: 'home' })}>
+            {this._getDayComponent(date1, 'tab1')}
+          </TabNavigator.Item>
+          <TabNavigator.Item
+            selected={this.state.selectedTab === 'profile'}
+            title="Profile"
+            renderIcon={() => <Image source={...} />}
+            renderSelectedIcon={() => <Image source={...} />}
+            renderBadge={() => <CustomBadgeView />}
+            onPress={() => this.setState({ selectedTab: 'profile' })}>
+            {this._getDayComponent(date2, 'tab2')}
+          </TabNavigator.Item>
+        </TabNavigator>
       </View>
     );
-  },
+  }
 
-  _onChangeTab: function(obj) {
-    console.log('changed to tab ' + obj.i);
-    if (!loadedTabs[obj.i]) {
-      console.log('fetching data of tab ' + obj.i);
-      this._getTabAtIndex(obj.i).fetchData();
-      loadedTabs[obj.i] = true;
-    }
-  },
-
-  _getTabAtIndex: function(index) {
-    return this.refs[`tab${index+1}`];
-  },
-
-  _getDayComponent: function(date, ref) {
+  _getDayComponent(date, ref) {
     return(
       <Day
         ref={ref}
@@ -96,7 +90,7 @@ module.exports = React.createClass({
         navigator={this.props.navigator}
         theaterData={this.props.extraData.theaterData}
         date={date}
-        requires={requires}/>
+      />
     );
   }
-});
+}

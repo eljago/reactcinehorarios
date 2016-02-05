@@ -8,9 +8,6 @@ var {
   Dimensions
 } = React;
 
-global.colors = require('./App/Data/colors');
-global.api = require('./App/Utils/api');
-
 var Menu = require('./App/Views/Menu');
 var NavMain = require('./App/Views/NavMain');
 var helper = {};

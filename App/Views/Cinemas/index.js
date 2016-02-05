@@ -9,7 +9,7 @@ var {
   Text
 } = React;
 
-var TheatersView = require('../Theaters');
+var TheatersContainer = require('../../containers/theaters.container').default;
 var styles = require('./style');
 var CinemaCell = require('./Elements/CinemaCell');
 
@@ -33,16 +33,19 @@ module.exports = React.createClass({
   },
 
   _renderRow: function(rowData, sectionID, rowID) {
-    return <CinemaCell
-            data={rowData}
-            rowID={rowID} 
-            onPress={this._pressRow}/>;
+    return (
+      <CinemaCell
+        data={rowData}
+        rowID={rowID}
+        onPress={this._pressRow}/>
+    );
   },
 
   _pressRow: function(rowData) {
+    console.log(TheatersContainer);
     this.props.navigator.push({
       title: rowData.name,
-      component: TheatersView,
+      component: TheatersContainer,
       extraData: {cinemaData: rowData}
     });
   }

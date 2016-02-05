@@ -34,6 +34,7 @@ var CineHorariosApp = React.createClass({
         menuPosition='right'
         touchToClose={true}
         isOpen={this.state.isOpen}
+        disableGestures={true}
         menu={ <Menu helper={helper}/> }>
         <MainView helper={helper}/>
       </SideMenu>
