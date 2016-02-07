@@ -2,7 +2,7 @@
 
 import React, { PropTypes } from 'react-native';
 
-import Functions from '../components/functions';
+import Functions from '../components/functions/functions';
 import ShowView from '../Views/Show';
 
 import api from '../Utils/api';

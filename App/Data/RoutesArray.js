@@ -2,7 +2,7 @@
 
 var CinemasView = require('../Views/Cinemas');
 var VideosView = require('../Views/Videos');
-var BillboardView = require('../Views/Billboard');
+import BillboardContainer from '../containers/billboard.container';
 var ComingSoonView = require('../Views/ComingSoon');
 var MapView = require('../Views/Map');
 
@@ -19,7 +19,7 @@ module.exports = [
   },
   {
     title: 'Cartelera',
-    component: BillboardView,
+    component: BillboardContainer,
     imageName: 'menuiconBillboard'
   },
   {

@@ -2,7 +2,7 @@
 
 import React, { Text, TouchableHighlight, View, StyleSheet, PropTypes } from 'react-native';
 
-import colors from '../Data/colors';
+import colors from '../../Data/colors';
 import RightAccesoryView from './rightaccessoryview';
 
 export default class SimpleCell extends React.Component {

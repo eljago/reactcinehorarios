@@ -2,17 +2,20 @@
 
 import React, { Image, Text, TouchableHighlight, View, StyleSheet, PropTypes } from 'react-native';
 
-import colors from '../Data/colors';
-import RightAccesoryView from './rightaccessoryview';
-import api from '../Utils/api';
-import ImageHelper from '../Utils/ImageHelper';
+import colors from '../../Data/colors';
+import RightAccesoryView from '../reusables/rightaccessoryview';
+import api from '../../Utils/api';
+import ImageHelper from '../../Utils/ImageHelper';
 
 export default class FunctionCell extends React.Component {
 
   static propTypes = {
-    rowData: PropTypes.object,
     rowID: PropTypes.string,
-    onPress: PropTypes.func
+    onPress: PropTypes.func,
+    title: PropTypes.string,
+    subtitle: PropTypes.string,
+    functions: PropTypes.array,
+    imageUri: PropTypes.string
   };
   static displayName = "FunctionCell";
 
@@ -21,33 +24,28 @@ export default class FunctionCell extends React.Component {
   }
 
   render() {
-    var data = this.props.rowData;
     var cellBackgroundColor = this.props.rowID % 2 == 0 ? 'white' : colors.silver;
 
     return(
       <TouchableHighlight
-        underlayColor={colors.concrete}
-        onPress={() => this.props.onPress}>
-        <View>
-          <View style={[styles.rowContainer, {backgroundColor: cellBackgroundColor}]}>
-            <View style={styles.imageContainer}>
+        underlayColor={ colors.concrete }
+        onPress={ () => { this.props.onPress() } }>
+          <View style={ [styles.rowContainer, {backgroundColor: cellBackgroundColor}] }>
+            <View style={ styles.imageContainer }>
               <Image
                 resizeMode='cover'
-                style={styles.image}
-                source={
-                  {uri: api.getFullURL(ImageHelper.getThumbImage(data.image_url))}
-                }
+                style={ styles.image }
+                source={{ uri: this.props.imageUri }}
               />
             </View>
-            <View style={styles.textContainer}>
-              <Text style={styles.name}>
-                {data.name}
+            <View style={ styles.textContainer }>
+              <Text style={ styles.name }>
+                { this.props.title }
               </Text>
-              {this._getFunctionsViews(data.functions)}
+              { this._getFunctionsViews(this.props.functions) }
             </View>
             <RightAccesoryView />
           </View>
-        </View>
       </TouchableHighlight>
     );
   }

@@ -5,12 +5,12 @@ import GiftedListView from 'react-native-gifted-listview';
 
 import EmptyView from './emptyview';
 import SeparatorView from './separatorview';
-import colors from '../Data/colors';
+import colors from '../../Data/colors';
 
 export default class MyGiftedListView extends React.Component {
 
   static propTypes = {
-    onPress: PropTypes.func,
+    rowView: PropTypes.func,
     onFetch: PropTypes.func
   };
   static displayName = "MyGiftedListView";

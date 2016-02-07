@@ -2,7 +2,7 @@
 
 import React, { PropTypes } from 'react-native';
 
-import FunctionsTabs from '../components/functionstabs';
+import FunctionsTabs from '../components/functions/functionstabs';
 import dateFunctions from '../Utils/dateFunctions';
 
 export default class FunctionsTabsContainer extends React.Component{
@@ -20,9 +20,10 @@ export default class FunctionsTabsContainer extends React.Component{
   render() {
     return (
       <FunctionsTabs 
-        navigator={this.props.navigator}
-        theaterData={this.props.extraData.theaterData}
-        dates={dateFunctions.getWeekDates()}/>
+        navigator={ this.props.navigator }
+        theaterData={ this.props.extraData.theaterData }
+        dates={ dateFunctions.getWeekDates() }
+      />
     );
   }
 

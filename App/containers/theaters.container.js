@@ -1,8 +1,8 @@
 'use strict';
 
-import React from 'react-native';
+import React, { PropTypes } from 'react-native';
 
-import Theaters from '../components/theaters';
+import Theaters from '../components/theaters/theaters';
 import FunctionsTabsContainer from './functionstabs.container';
 import Favorites from '../Utils/Favorites';
 
@@ -12,6 +12,10 @@ const COUNTRYNAME = 'Chile';
 
 export default class TheatersContainer extends React.Component {
   
+  static propTypes = {
+    navigator: PropTypes.object,
+    extraData: PropTypes.object
+  };
   static displayName = "TheatersContainer";
 
   constructor(props) {

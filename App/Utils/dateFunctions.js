@@ -21,8 +21,8 @@ var dateFunctions = {
 
 	getDateString: (date) => {
 	  var weekDayNumber = date.getDay();
-	  var weekDays = ['Do', 'Lu', 'Ma', 'Mi', 'Ju', 'Vi', 'Sa'];
-	  return `${weekDays[weekDayNumber]} ${date.getDate()}`;
+	  var weekDays = ['dom', 'lun', 'mar', 'mié', 'jue', 'vie', 'sáb'];
+	  return `${weekDays[weekDayNumber]}`;
 	}
 }
 
