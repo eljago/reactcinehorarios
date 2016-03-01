@@ -8,11 +8,8 @@ var {
   Dimensions
 } = React;
 
-global.colors = require('./App/Data/colors');
-global.api = require('./App/Utils/api');
-
 var Menu = require('./App/Views/Menu');
-var NavMain = require('./App/Views/NavMain');
+var NavMain = require('./src/App/MainView');
 var helper = {};
 
 BackAndroid.addEventListener('hardwareBackPress', () => {
@@ -36,21 +33,17 @@ var CineHorariosApp = React.createClass({
         drawerWidth={2*Dimensions.get('window').width/3}
         drawerPosition={DrawerLayoutAndroid.positions.Right}
         renderNavigationView={() => <Menu helper={helper}/>}>
-        <NavMain helper={helper}
-      />
+
+        <MainView toggleMenu={this._toggleMenu}/>
+        
       </DrawerLayoutAndroid>
     );
   },
 
-  _closeMenu: function() {
-    this.drawer.closeDrawer();
-  },
-  _openMenu: function() {
-    this.drawer.openDrawer();
-  },
-
-  _handleBackButtonPress: function() {
-    helper.getNavigator().pop();
+  _toggleMenu: () => {
+    this.setState({
+      isOpen: !this.state.isOpen
+    });
   }
 
 });

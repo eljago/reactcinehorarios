@@ -1,32 +1,20 @@
 'use strict';
 
-var React = require('react-native');
-var {
-  AppRegistry,
-  StatusBarIOS
-} = React;
+import React, { AppRegistry } from 'react-native'
 
-global.colors = require('./App/Data/colors');
-global.api = require('./App/Utils/api');
+import SideMenu from 'react-native-side-menu';
 
-var Menu = require('./App/Views/Menu');
-var SideMenu = require('react-native-side-menu');
-var MainView = require('./App/Views/NavMain');
-var helper = {};
+import Menu from './src/Menu';
+import MainView from './src/App/MainView';
 
-var CineHorariosApp = React.createClass({
+class CineHorariosApp extends React.Component {
 
-  getInitialState: function() {
-    return {
+  constructor(props) {
+    super(props);
+    this.state = {
       isOpen: false
     };
-  },
-
-  componentDidMount: function() {
-    helper.closeMenu = this._closeMenu;
-    helper.openMenu = this._openMenu;
-    StatusBarIOS.setStyle('light-content')
-  },
+  }
 
   render() {
     return (
@@ -35,23 +23,20 @@ var CineHorariosApp = React.createClass({
         touchToClose={true}
         isOpen={this.state.isOpen}
         disableGestures={true}
-        menu={ <Menu helper={helper}/> }>
-        <MainView helper={helper}/>
+        menu={ <Menu /> }>
+
+        <MainView toggleMenu={this._toggleMenu}/>
+
       </SideMenu>
     );
-  },
+  }
 
-  _closeMenu: function() {
+  _toggleMenu() {
     this.setState({
-      isOpen: false
+      isOpen: !this.state.isOpen
     });
-  },
-  _openMenu: function() {
-    this.setState({
-      isOpen: true
-    });
-  },
+  }
 
-});
+}
 
 AppRegistry.registerComponent('CineHorarios', function() { return CineHorariosApp });

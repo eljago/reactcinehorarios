@@ -6,16 +6,10 @@
     "start": "node_modules/react-native/packager/packager.sh"
   },
   "dependencies": {
-    "autobind-decorator": "^1.3.3",
-    "react-native": "^0.18.0",
-    "react-native-drawer": "^1.13.0",
-    "react-native-gifted-listview": "0.0.11",
-    "react-native-grid-view": "^0.3.7",
-    "react-native-progress-hud": "^1.0.3",
-    "react-native-scrollable-tab-view": "^0.3.5",
+    "react-native": "^0.20.0",
+    "react-native-gifted-listview": "^0.0.12",
     "react-native-side-menu": "^0.18.0",
-    "react-native-simple-store": "^0.1.0",
-    "react-native-tab-navigator": "^0.2.15",
-    "react-native-webintent": "^1.0.4"
+    "react-native-simple-router": "^0.8.0",
+    "react-native-tab-navigator": "^0.2.16"
   }
 }
