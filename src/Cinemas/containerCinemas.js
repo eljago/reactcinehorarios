@@ -4,7 +4,7 @@ import React, { PropTypes } from 'react-native'
 
 import ComponentCinemas from './componentCinemas'
 // import ContainerTheaters from './theaters/containerTheaters';
-import { Cinemas } from '../Data'
+import { cinemas } from '../Data'
 
 export default class ContainerCinemas extends React.Component {
 
@@ -31,6 +31,6 @@ export default class ContainerCinemas extends React.Component {
   }
 
   _onFetch(page = 1, callback, options) {
-    callback(Cinemas);
+    callback(cinemas);
   }
 }

@@ -4,7 +4,7 @@ import React, { StyleSheet } from 'react-native'
 
 import Router from 'react-native-simple-router'
 
-import { Routes, Colors } from '../Data'
+import { routes, colors } from '../Data'
 import BackButton from './BackButton'
 import { MenuButton } from '../ReusableComponents'
 
@@ -14,7 +14,7 @@ export default class MainView extends React.Component {
   render() {
     return (
       <Router
-        firstRoute={Routes.Cinemas}
+        firstRoute={routes.Cinemas}
         headerStyle={styles.header}
         backButtonComponent={BackButton}
         customAction={this.props.toggleMenu}
@@ -27,6 +27,6 @@ export default class MainView extends React.Component {
 
 const styles = StyleSheet.create({
   header: {
-    backgroundColor: Colors.navBar
+    backgroundColor: colors.navBar
   },
 });

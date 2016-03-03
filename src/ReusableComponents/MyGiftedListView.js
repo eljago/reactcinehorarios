@@ -4,7 +4,7 @@ import React, { View, StyleSheet, PropTypes } from 'react-native'
 import GiftedListView from 'react-native-gifted-listview'
 
 import { EmptyView, SeparatorView } from './'
-import { Colors } from '../Data'
+import { colors } from '../Data'
 
 let separatorKey = 0;
 
@@ -36,7 +36,7 @@ export default class MyGiftedListView extends React.Component {
 
           PullToRefreshViewAndroidProps={{
             colors: ['white'],
-            progressBackgroundColor: Colors.navBar
+            progressBackgroundColor: colors.navBar
           }}
         />
       </View>

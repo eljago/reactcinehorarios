@@ -2,7 +2,7 @@
 
 import React, { StyleSheet, TouchableHighlight, View, Image, Text, PropTypes } from 'react-native'
 
-import { Colors } from '../Data'
+import { colors } from '../Data'
 import { RightAccesoryView } from './'
 
 export default class MovieCell extends React.Component {
@@ -22,7 +22,7 @@ export default class MovieCell extends React.Component {
   }
 
   componentWillMount() {
-    console.log(typeof Colors);
+    console.log(typeof colors);
   }
 
   render() {
@@ -66,7 +66,7 @@ let styles = StyleSheet.create({
   },
   name: {
     fontSize: 22,
-    color: Colors.navBar,
+    color: colors.navBar,
   },
   genres: {
     fontSize: 18,

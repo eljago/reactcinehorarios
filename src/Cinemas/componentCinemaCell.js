@@ -9,7 +9,7 @@ import React, {
   StyleSheet
 } from 'react-native';
 
-import { Colors } from '../Data'
+import { colors } from '../Data'
 import { ResponsiveImage } from '../ReusableComponents'
 
 export default class CinemaCell extends React.Component {
@@ -22,11 +22,11 @@ export default class CinemaCell extends React.Component {
   static displayName = "CinemaCell";
 
   render() {
-    var cellBackgroundColor = this.props.rowID % 2 == 0 ? 'white' : Colors.silver;
+    var cellBackgroundColor = this.props.rowID % 2 == 0 ? 'white' :  colors.silver;
 
     return(
       <TouchableHighlight
-      underlayColor={Colors.underlayColor}
+      underlayColor={ colors.underlayColor}
       onPress={() => this.props.onPress() }>
         <View>
           <View style={[styles.rowContainer, {backgroundColor: cellBackgroundColor}]}>

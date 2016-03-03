@@ -11,7 +11,7 @@ var {
   Platform
 } = React;
 
-import { Colors, Routes } from '../Data';
+import { colors, routes, cinemas } from '../Data';
 
 var Menu = React.createClass({
   contextTypes: {
@@ -19,10 +19,9 @@ var Menu = React.createClass({
   },
 
   getInitialState: function() {
-    let routes = [Routes.Cinemas];
     var dataSource = new ListView.DataSource({rowHasChanged: (r1, r2) => r1 !== r2});
     return {
-      dataSource: dataSource.cloneWithRows(routes)
+      dataSource: dataSource.cloneWithRows(cinemas)
     };
   },
 
@@ -73,7 +72,7 @@ var Menu = React.createClass({
       
     return(
       <TouchableHighlight
-        underlayColor={Colors.concrete}
+        underlayColor={colors.concrete}
         onPress={() => this._pressRow(rowData)}>
         {rowContainer}
       </TouchableHighlight>
@@ -92,11 +91,11 @@ let styles = StyleSheet.create({
     flex: 1,
     width: window.width,
     height: window.height,
-    backgroundColor: Colors.midnightBlue,
+    backgroundColor: colors.midnightBlue,
   },
   listView: {
     flex: 1,
-    backgroundColor: Colors.midnightblue,
+    backgroundColor: colors.midnightblue,
   },
 
   // ROW STYLES

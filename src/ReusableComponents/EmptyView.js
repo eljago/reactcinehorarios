@@ -1,6 +1,12 @@
 'use strict';
 
-import React, { View, StyleSheet, TouchableHighlight, Text, PropTypes } from 'react-native'
+import React, {
+  View,
+  StyleSheet,
+  TouchableHighlight,
+  Text, 
+  PropTypes
+} from 'react-native'
 
 export default class EmptyView extends React.Component {
 

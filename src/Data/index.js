@@ -1,5 +1,5 @@
 'use strict'
 
-export { default as Colors} from './Colors'
-export { default as Routes } from './Routes'
-export { default as Cinemas } from './Cinemas'
+export { default as colors} from './Colors'
+export { default as routes } from './Routes'
+export { default as cinemas } from './Cinemas'

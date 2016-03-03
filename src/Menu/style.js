@@ -1,20 +1,19 @@
 'use strict';
 
-var React = require('react-native');
-var {
-  PixelRatio,
+import React{
   StyleSheet,
   Dimensions
-} = React;
+} from 'react-native'
 
-var colors = global.colors;
-var window = Dimensions.get('window');
+import { colors } from '../Data'
+let width = Dimensions.get('window').width;
+let height = Dimensions.get('window').width;
 
 module.exports = StyleSheet.create({
   container: {
     flex: 1,
-    width: window.width,
-    height: window.height,
+    width: width,
+    height: height,
     backgroundColor: colors.midnightBlue,
   },
   listView: {

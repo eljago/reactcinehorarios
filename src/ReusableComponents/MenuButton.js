@@ -27,8 +27,8 @@ export default class ComposeIcon extends React.Component {
 
 let styles = StyleSheet.create({
   icon: {
-    width: 21,
-    height: 21,
+    width: 44,
+    height: 44,
     marginTop: 4,
     marginRight: 15
   },
