@@ -14,7 +14,7 @@ export default class ComposeIcon extends React.Component {
         <TouchableHighlight
           style={{flex: 1}}
           underlayColor="transparent"
-          onPress={ () => this.props.customAction("toggleMenu") }>
+          onPress={ () => this.props.customAction("openMenu") }>
           <Image 
             source={require('../Images/MenuIcon.png')} 
             style={styles.icon} 

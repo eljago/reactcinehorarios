@@ -9,15 +9,15 @@ import React, {
   StyleSheet
 } from 'react-native';
 
-import { colors } from '../Data'
-import { ResponsiveImage } from '../ReusableComponents'
+import { colors } from '../Data'
 
 export default class CinemaCell extends React.Component {
 
   static propTypes = {
     title: PropTypes.string,
     images: PropTypes.array,
-    rowID: PropTypes.string
+    rowID: PropTypes.string,
+    onPress: PropTypes.func
   };
   static displayName = "CinemaCell";
 
@@ -26,7 +26,7 @@ export default class CinemaCell extends React.Component {
 
     return(
       <TouchableHighlight
-      underlayColor={ colors.underlayColor}
+      underlayColor={colors.underlayColor}
       onPress={() => this.props.onPress() }>
         <View>
           <View style={[styles.rowContainer, {backgroundColor: cellBackgroundColor}]}>

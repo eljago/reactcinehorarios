@@ -2,28 +2,30 @@
 
 import React, { PropTypes } from 'react-native'
 
-import Menu from './componentMenu'
+import ComponentMenu from './componentMenu'
+import { routes } from '../Data'
 
 export default class ContainerMenu extends React.Component {
-  contextTypes: {
-    menuActions: PropTypes.object
-  };
 
   static propTypes = {
-    navigator: PropTypes.object
+    onPress: PropTypes.func
   };
-  static displayName = "ContainerCinemas";
+  static displayName = "ContainerMenu";
 
   render() {
-    return ( <Menu /> );
-  }
-
-  _renderRow(rowData, sectionID, rowID) {
-  	return <MenuCell onPress={this._onPress}/>
+    return(
+      <ComponentMenu
+        onPress={this._onPress.bind(this)}
+        onFetch={this._onFetch}
+      />
+    );
   }
 
   _onPress(routeData) {
-    helper.closeMenu();
-    helper.getNavigator().resetTo(routeData);
+    this.props.onPress(routeData);
   }
-};
+
+  _onFetch(page = 1, callback, options) {
+    callback(routes);
+  }
+}

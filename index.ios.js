@@ -1,14 +1,15 @@
 'use strict';
 
-import React, { AppRegistry } from 'react-native'
+import React, { AppRegistry, StyleSheet } from 'react-native'
 
-import SideMenu from 'react-native-side-menu';
+import Router from 'react-native-simple-router'
 
-import Menu from './src/Menu';
-import MainView from './src/App/MainView';
+import SideMenu from 'react-native-side-menu'
+import Menu from './src/Menu'
+import MainView from './src/App/MainView'
 
 class CineHorariosApp extends React.Component {
-
+  
   constructor(props) {
     super(props);
     this.state = {
@@ -23,20 +24,30 @@ class CineHorariosApp extends React.Component {
         touchToClose={true}
         isOpen={this.state.isOpen}
         disableGestures={true}
-        menu={ <Menu /> }>
-
-        <MainView toggleMenu={this._toggleMenu}/>
-
+        menu={
+          <Menu onPress={this._onPress.bind(this)} />
+        }
+      >
+        <MainView
+          ref={'mainview'}
+          openMenu={this._openMenu.bind(this)}
+        />
       </SideMenu>
     );
   }
 
-  _toggleMenu() {
+  _openMenu() {
     this.setState({
-      isOpen: !this.state.isOpen
+      isOpen: true
     });
   }
 
+  _onPress(routeData) {
+    this.refs.mainview.refs.router.refs.navigator.resetTo({
+      name: routeData.name,
+      component: routeData.component
+    });
+  }
 }
 
 AppRegistry.registerComponent('CineHorarios', function() { return CineHorariosApp });

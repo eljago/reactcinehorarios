@@ -1,118 +1,63 @@
 'use strict';
 
-var React = require('react-native');
-
-var {
+import React, {
+  Dimensions,
   View,
-  StyleSheet,
-  ListView,
-  TouchableHighlight,
-  Text,
-  Platform
-} = React;
+  PropTypes,
+  StyleSheet
+} from 'react-native'
 
-import { colors, routes, cinemas } from '../Data';
+import GiftedListView from 'react-native-gifted-listview'
+import MenuCell from './componentMenuCell'
+import { colors } from '../Data'
 
-var Menu = React.createClass({
-  contextTypes: {
-    menuActions: React.PropTypes.object
-  },
+const window = Dimensions.get('window');
 
-  getInitialState: function() {
-    var dataSource = new ListView.DataSource({rowHasChanged: (r1, r2) => r1 !== r2});
-    return {
-      dataSource: dataSource.cloneWithRows(cinemas)
-    };
-  },
+export default class ComponentMenu extends React.Component {
 
-  render: function() {
-    var paddingTop = 58;
-    if (Platform === 'ios') {
-      paddingTop = 44;
-    }
-    else if (Platform === 'android') {
-      paddingTop = 58
-    }
+  static propTypes = {
+    onPress: PropTypes.func,
+    onFetch: PropTypes.func
+  };
+  static displayName = "ComponentMenu";
+
+  render() {
     return (
-      <View style={[styles.container, {paddingTop: paddingTop}]}>
-        <ListView
-         style={styles.listView}
-         dataSource={this.state.dataSource}
-         renderRow={this._renderRow}
-         scrollsToTop={false}
-        />
+      <View style={styles.container}>
+        <View style={styles.rowContainer}>
+          <GiftedListView
+            rowView={this._renderRowView.bind(this)}
+            onFetch={this.props.onFetch}
+            firstLoader={true}
+            pagination={false}
+            refreshable={false}
+            withSections={false}
+          />
+        </View>
       </View>
     );
-  },
-
-  _renderRow: function(rowData, sectionID, rowID) {
-    var rowContainer = null;
-    if (Platform.OS === 'ios') {
-      rowContainer =
-        <View style={styles.rowContainer}>
-          <View style={{flex: 1}}/>
-          <View style={styles.textContainer}>
-            <Text style={styles.name}>
-              {rowData.title}
-            </Text>
-          </View>
-        </View>
-    }
-    else if(Platform.OS === 'android') {
-      rowContainer =
-        <View style={styles.rowContainer}>
-          <View style={styles.textContainer}>
-            <Text style={styles.name}>
-              {rowData.title}
-            </Text>
-          </View>
-          <View style={{flex: 1}}/>
-        </View>
-    }
-      
-    return(
-      <TouchableHighlight
-        underlayColor={colors.concrete}
-        onPress={() => this._pressRow(rowData)}>
-        {rowContainer}
-      </TouchableHighlight>
-    );
-
-  },
-
-  _pressRow: function(routeData) {
-    helper.closeMenu();
-    helper.getNavigator().resetTo(routeData);
   }
-});
+
+  _renderRowView(rowData, sectionID, rowID) {
+    return (
+      <MenuCell
+        title={rowData.name}
+        onPress={() => this.props.onPress(rowData)} />
+    );
+  }
+}
 
 let styles = StyleSheet.create({
   container: {
     flex: 1,
+    backgroundColor: colors.midnightBlue,
     width: window.width,
     height: window.height,
-    backgroundColor: colors.midnightBlue,
+    alignItems: 'flex-end'
   },
-  listView: {
-    flex: 1,
-    backgroundColor: colors.midnightblue,
-  },
-
-  // ROW STYLES
   rowContainer: {
     flex: 1,
-    flexDirection: 'row'
-  },
-  textContainer: {
-    padding: 10,
-    flex: 2
-  },
-  name: {
-    fontSize: 20,
-    color: 'white',
-    textAlign: 'center',
-    flex: 1
-  },
+    flexDirection: 'row',
+    alignItems: 'center'
+  }
 });
-
-module.exports = Menu;

@@ -8,9 +8,6 @@ import { cinemas } from '../Data'
 
 export default class ContainerCinemas extends React.Component {
 
-  static propTypes = {
-    navigator: PropTypes.object
-  };
   static displayName = "ContainerCinemas";
 
   render() {

@@ -13,10 +13,6 @@ export default class ComponentCinemas extends React.Component {
   };
   static displayName = "ComponentTheaters";
 
-  constructor(props) {
-    super(props);
-  }
-
   render() {
     return (
       <MyGiftedListView
