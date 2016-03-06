@@ -12,13 +12,13 @@ export default class MyGiftedListView extends React.Component {
 
   static propTypes = {
     rowView: PropTypes.func,
-    onFetch: PropTypes.func
+    onFetch: PropTypes.func,
+    pagination: PropTypes.bool
+  };
+  static defaultProps = {
+    pagination: false
   };
   static displayName = "MyGiftedListView";
-
-  constructor(props) {
-    super(props);
-  }
 
   render() {
     return (
@@ -27,7 +27,7 @@ export default class MyGiftedListView extends React.Component {
           rowView={this.props.rowView}
           onFetch={this.props.onFetch}
           firstLoader={true}
-          pagination={false}
+          pagination={this.props.pagination}
           refreshable={true}
           withSections={false}
 

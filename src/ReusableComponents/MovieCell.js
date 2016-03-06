@@ -1,9 +1,16 @@
 'use strict';
 
-import React, { StyleSheet, TouchableHighlight, View, Image, Text, PropTypes } from 'react-native'
+import React, {
+  StyleSheet,
+  TouchableHighlight,
+  View,
+  Image,
+  Text,
+  PropTypes
+} from 'react-native'
 
 import { colors } from '../Data'
-import { RightAccesoryView } from './'
+import { RightAccessoryView } from './'
 
 export default class MovieCell extends React.Component {
 
@@ -17,14 +24,6 @@ export default class MovieCell extends React.Component {
   };
   static displayName = "MovieCell";
 
-  constructor(props) {
-    super(props);
-  }
-
-  componentWillMount() {
-    console.log(typeof colors);
-  }
-
   render() {
     return(
       <TouchableHighlight
@@ -37,11 +36,11 @@ export default class MovieCell extends React.Component {
             style={ styles.image }
             source={{ uri: this.props.imageUri }}/>
           </View>
-          <View style={styles.textContainer}>
+          <View style={ styles.textContainer }>
             <Text style={ styles.name }>{ this.props.title }</Text>
             <Text style={ styles.genres }>{ this.props.subtitle }</Text>
           </View>
-          <RightAccesoryView />
+          <RightAccessoryView />
         </View>
       </TouchableHighlight>
     );
@@ -79,6 +78,7 @@ let styles = StyleSheet.create({
     width: 80,
     height: 120,
     alignSelf: 'flex-start',
+    backgroundColor: 'gray',
     shadowColor: 'black',
     shadowRadius: 3,
     shadowOpacity: 1,
