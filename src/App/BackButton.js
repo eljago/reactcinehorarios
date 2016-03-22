@@ -1,3 +1,5 @@
+'use strict';
+
 import React, { StyleSheet, Image } from 'react-native';
 
 export default class BackButton extends React.Component {

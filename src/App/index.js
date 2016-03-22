@@ -1,12 +1,10 @@
 'use strict';
 
-import React, { StyleSheet } from 'react-native'
-
-import Router from 'react-native-simple-router'
+import React, { StyleSheet, Text } from 'react-native'
 
 import SideMenu from 'react-native-side-menu'
 import Menu from '../Menu'
-import MainView from './MainView'
+import Nav from './Nav'
 
 export default class App extends React.Component {
   
@@ -28,8 +26,8 @@ export default class App extends React.Component {
           <Menu onPress={this._onPress.bind(this)} />
         }
       >
-        <MainView
-          ref={'mainview'}
+        <Nav
+          ref={'navMain'}
           openMenu={this._openMenu.bind(this)}
         />
       </SideMenu>
@@ -43,7 +41,7 @@ export default class App extends React.Component {
   }
 
   _onPress(routeData) {
-    this.refs.mainview.refs.router.refs.navigator.resetTo({
+    this.refs.navMain.getNavigator().resetTo({
       name: routeData.name,
       component: routeData.component
     });

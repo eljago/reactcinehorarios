@@ -15,7 +15,7 @@ export default class CinemaCell extends React.Component {
 
   static propTypes = {
     title: PropTypes.string,
-    images: PropTypes.array,
+    image: PropTypes.string,
     rowID: PropTypes.string,
     onPress: PropTypes.func
   };
@@ -23,7 +23,6 @@ export default class CinemaCell extends React.Component {
 
   render() {
     var cellBackgroundColor = this.props.rowID % 2 == 0 ? 'white' :  colors.silver;
-
     return(
       <TouchableHighlight
       underlayColor={colors.underlayColor}
@@ -31,14 +30,16 @@ export default class CinemaCell extends React.Component {
         <View>
           <View style={[styles.rowContainer, {backgroundColor: cellBackgroundColor}]}>
             <Image
-              source={this.props.images[Math.floor(Math.random()*this.props.images.length)]}
+              source={{uri: `http://cinehorarios.cl${this.props.image}`}}
               style={styles.image}/>
             <View style={styles.textContainer}>
               <Text style={styles.name}>
                 {this.props.title}
               </Text>
             </View>
-            <Image style={styles.rightAccessoryView} source={require('../Images/RightAccesoryView.png')}/>
+            <Image
+              style={styles.rightAccessoryView}
+              source={require('../Images/RightAccesoryView.png')}/>
           </View>
           <View style={styles.separator}/>
         </View>

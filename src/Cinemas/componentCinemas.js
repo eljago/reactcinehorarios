@@ -22,13 +22,13 @@ export default class ComponentCinemas extends React.Component {
     );
   }
 
-  _renderRowView(rowData, sectionID, rowID) {
+  _renderRowView(edge, sectionID, rowID) {
     return (
       <CinemaCell
-        title={rowData.name}
-        images={rowData.images}
+        title={edge.node.name}
+        image={edge.node.image}
         rowID={rowID}
-        onPress={() => this.props.onPress(rowData)} />
+        onPress={() => this.props.onPress(edge.node)} />
     );
   }
 }
