@@ -7,6 +7,9 @@ import {getCinemasRoute} from '../routes/navigatorRoutes';
 import renderRelayScene from './renderRelayScene';
 import {colors} from '../Data';
 
+import {BackButton} from './BackButton'
+import {MenuButton} from './MenuButton'
+
 export default class MyApp extends Component {
   render() {
     return (
@@ -39,11 +42,23 @@ var NavigationBarRouteMapper = {
     }
 
     var previousRoute = navState.routeStack[index - 1];
-      return null;
+    return(
+      <BackButton
+        onPress={() => {
+          navigator.pop();
+        }}
+      />
+    );
   },
 
   RightButton(route, navigator, index, navState) {
-      return null;
+    return(
+      <MenuButton
+        onPress={() => {
+          navigator.pop();
+        }}
+      />
+    );
   },
 
   Title(route, navigator, index, navState) {

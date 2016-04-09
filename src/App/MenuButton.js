@@ -1,22 +1,21 @@
 'use strict'
 
-import React, { View, StyleSheet, TouchableHighlight, Image } from 'react-native';
+import React, { PropTypes, View, StyleSheet, TouchableHighlight, Image } from 'react-native';
 
-export default class ComposeIcon extends React.Component {
+export class MenuButton extends React.Component {
 
-  constructor(props) {
-    super(props);
-  }
+  static propTypes = {
+    onPress: PropTypes.func
+  };
 
   render() {
     return (
-      <View style={{flex: 1}}>
+      <View style={styles.container}>
         <TouchableHighlight
-          style={{flex: 1}}
           underlayColor="transparent"
-          onPress={ () => this.props.customAction("openMenu") }>
+          onPress={this.props.onPress}>
           <Image 
-            source={require('../Images/MenuIcon.png')} 
+            source={require('./Images/MenuIcon.png')} 
             style={styles.icon} 
             resizeMode='contain'/>
         </TouchableHighlight>
@@ -26,10 +25,13 @@ export default class ComposeIcon extends React.Component {
 }
 
 let styles = StyleSheet.create({
+  container: {
+    flex: 1
+  },
   icon: {
     width: 44,
     height: 44,
-    marginTop: 4,
-    marginRight: 15
+    marginRight: 10,
+    marginLeft: 10
   },
 });
