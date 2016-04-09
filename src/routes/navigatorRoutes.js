@@ -2,9 +2,9 @@
 
 import { ViewerQueryConfig } from './queryConfigs';
 
-import Cinemas from '../Cinemas';
-import Theaters from '../Theaters';
-import Functions from '../Functions';
+import Cinemas from '../Views/Cinemas';
+import Theaters from '../Views/Theaters';
+import Functions from '../Views/Functions';
 
 export function getCinemasRoute() {
 	return({

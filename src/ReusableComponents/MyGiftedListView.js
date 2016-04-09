@@ -16,6 +16,7 @@ export default class MyGiftedListView extends React.Component {
 
   constructor(props) {
     super(props);
+    this._addRowNumbers(props);
     var ds = new ListView.DataSource({rowHasChanged: (r1, r2) => r1 !== r2});
     this.state = {
       dataSource: ds.cloneWithRows(this.props.dataRows)
@@ -23,6 +24,7 @@ export default class MyGiftedListView extends React.Component {
   }
 
   componentWillReceiveProps(nextProps) {
+    this._addRowNumbers(nextProps);
     if (this.props.dataRows !== nextProps.dataRows) {
       this.setState({
         dataSource: this.state.dataSource.cloneWithRows(nextProps.dataRows)
@@ -37,6 +39,7 @@ export default class MyGiftedListView extends React.Component {
           dataSource={this.state.dataSource}
           renderRow={this.props.renderRow}
           renderSeparator={this._renderSeparatorView}
+          enableEmptySections={true}
         />
       </View>
     );
@@ -46,6 +49,14 @@ export default class MyGiftedListView extends React.Component {
     return (
       <SeparatorView key={rowID}/>
     );
+  }
+
+  _addRowNumbers(props) {
+    if (props.dataRows) {
+      for (let index=0;index<props.dataRows.length;index++) {
+        props.dataRows[index].rowNumber = index;
+      }
+    }
   }
 }
 

@@ -1,10 +1,10 @@
 'use strict';
 
-import Cinemas from '../Cinemas'
-import Videos from '../Videos'
-import Billboard from '../Billboard'
-import ComingSoon from '../ComingSoon'
-import MapView from '../Map'
+import Cinemas from '../Views/Cinemas'
+import Videos from '../Views/Videos'
+import Billboard from '../Views/Billboard'
+import ComingSoon from '../Views/ComingSoon'
+import MapView from '../Views/Map'
 
 module.exports = {
   Cinemas: {

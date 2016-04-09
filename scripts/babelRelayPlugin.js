@@ -14,7 +14,7 @@ function status(response) {
   throw new Error(response.statusText);
 };
 
-var response = request('POST', config.graphqlURL, {
+var response = request('POST', `${config.URL}${config.graphqlPath}`, {
 	headers: config.headers,
   qs: {
     query: introspectionQueryString
