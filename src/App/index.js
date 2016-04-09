@@ -2,11 +2,17 @@
 
 import React, { StyleSheet, Text } from 'react-native'
 
+import codePush from "react-native-code-push";
+
 import SideMenu from 'react-native-side-menu'
 import Menu from '../Menu'
 import Nav from './Nav'
 
 export default class App extends React.Component {
+
+  componentDidMount() {
+    codePush.sync();
+  }
   
   constructor(props) {
     super(props);
