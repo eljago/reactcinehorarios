@@ -16,13 +16,12 @@ export default class CinemaCell extends React.Component {
   static propTypes = {
     title: PropTypes.string,
     image: PropTypes.string,
-    rowID: PropTypes.string,
+    rowNumber: PropTypes.number,
     onPress: PropTypes.func
   };
-  static displayName = "CinemaCell";
 
   render() {
-    var cellBackgroundColor = this.props.rowID % 2 == 0 ? 'white' :  colors.silver;
+    var cellBackgroundColor = this.props.rowNumber % 2 == 0 ? 'white' :  colors.silver;
     return(
       <TouchableHighlight
       underlayColor={colors.underlayColor}

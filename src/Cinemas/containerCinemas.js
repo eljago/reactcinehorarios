@@ -4,29 +4,23 @@ import React, { PropTypes, Navigator } from 'react-native'
 import Relay from 'react-relay'
 
 import ComponentCinemas from './componentCinemas'
-import ContainerTheaters from '../Theaters/ContainerTheaters';
+import {getTheatersRoute} from '../routes/navigatorRoutes'
 
 class ContainerCinemas extends React.Component {
 
   render() {
+    let dataRows = this.props.viewer.cinemas ? this.props.viewer.cinemas.edges : [];
     return (
       <ComponentCinemas 
         onPress={this._onPress.bind(this)}
-        onFetch={this._onFetch.bind(this)}
+        dataRows={dataRows}
       />
     );
   }
 
-  _onPress(rowData) {
-    this.props.navigator.push({
-      title: rowData.name,
-      component: ContainerTheaters,
-      rowData: rowData
-    });
-  }
-
-  _onFetch(page = 1, callback, options) {
-    callback(this.props.viewer.cinemas.edges);
+  _onPress(cinemaNode) {
+    let theatersRoute = getTheatersRoute(cinemaNode.cinema_id, cinemaNode.name);
+    this.props.navigator.push(theatersRoute);
   }
 }
 
@@ -34,9 +28,10 @@ export default Relay.createContainer(ContainerCinemas, {
   fragments: {
     viewer: () => Relay.QL`
       fragment on Viewer {
-        cinemas (first: 10) {
+        cinemas(first: 10) {
           edges {
             node {
+              cinema_id
               name
               image
             }

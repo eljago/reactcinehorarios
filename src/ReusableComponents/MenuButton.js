@@ -4,10 +4,6 @@ import React, { View, StyleSheet, TouchableHighlight, Image } from 'react-native
 
 export default class ComposeIcon extends React.Component {
 
-  constructor(props) {
-    super(props);
-  }
-
   render() {
     return (
       <View style={{flex: 1}}>

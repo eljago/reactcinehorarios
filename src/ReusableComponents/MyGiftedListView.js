@@ -1,58 +1,50 @@
 'use strict';
 
-import React, { View, StyleSheet, PropTypes } from 'react-native'
-import GiftedListView from 'react-native-gifted-listview'
+import React, { View, StyleSheet, PropTypes, ListView } from 'react-native'
 
 import { EmptyView, SeparatorView } from './'
-import { colors } from '../Data'
-
-let separatorKey = 0;
 
 export default class MyGiftedListView extends React.Component {
 
   static propTypes = {
-    rowView: PropTypes.func,
-    onFetch: PropTypes.func,
-    pagination: PropTypes.bool
+    renderRow: PropTypes.func,
+    dataRows: PropTypes.array
   };
   static defaultProps = {
     pagination: false
   };
-  static displayName = "MyGiftedListView";
+
+  constructor(props) {
+    super(props);
+    var ds = new ListView.DataSource({rowHasChanged: (r1, r2) => r1 !== r2});
+    this.state = {
+      dataSource: ds.cloneWithRows(this.props.dataRows)
+    };
+  }
+
+  componentWillReceiveProps(nextProps) {
+    if (this.props.dataRows !== nextProps.dataRows) {
+      this.setState({
+        dataSource: this.state.dataSource.cloneWithRows(nextProps.dataRows)
+      });
+    }
+  }
 
   render() {
     return (
     	<View style={styles.container}>
-        <GiftedListView
-          rowView={this.props.rowView}
-          onFetch={this.props.onFetch}
-          firstLoader={true}
-          pagination={this.props.pagination}
-          refreshable={true}
-          withSections={false}
-
-          emptyView={this._renderEmptyView}
+        <ListView
+          dataSource={this.state.dataSource}
+          renderRow={this.props.renderRow}
           renderSeparator={this._renderSeparatorView}
-
-          PullToRefreshViewAndroidProps={{
-            colors: ['white'],
-            progressBackgroundColor: colors.navBar
-          }}
         />
       </View>
     );
   }
 
-  _renderEmptyView(refreshCallback) {
+  _renderSeparatorView(sectionID, rowID, adjacentRowHighlighted) {
     return (
-      <EmptyView refreshCallback={refreshCallback} />
-    );
-  }
-
-  _renderSeparatorView() {
-    separatorKey = separatorKey + 1;
-    return (
-      <SeparatorView key={separatorKey}/>
+      <SeparatorView key={rowID}/>
     );
   }
 }

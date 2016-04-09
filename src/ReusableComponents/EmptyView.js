@@ -9,16 +9,10 @@ import React, {
 } from 'react-native'
 
 export default class EmptyView extends React.Component {
-
-  static displayName = "EmptyView";
     
   static propTypes = {
     refreshCallback: PropTypes.func
   };
-
-  constructor(props) {
-    super(props);
-  }
 
   render() {
     return (

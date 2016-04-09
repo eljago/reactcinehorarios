@@ -3,24 +3,19 @@
 import React, { Text, TouchableHighlight, View, StyleSheet, PropTypes } from 'react-native'
 
 import { colors } from '../Data'
-import { RightAccesoryView } from './'
+import { RightAccessoryView } from './'
 
 export default class SimpleCell extends React.Component {
   
   static propTypes = {
     title: PropTypes.string,
-    rowID: PropTypes.string,
+    rowNumber: PropTypes.number,
     onPress: PropTypes.func
   };
-  static displayName = "SimpleCell";
-
-  constructor(props) {
-    super(props);
-  }
 
   render() {
     let title = this.props.title;
-    let cellBackgroundColor = this.props.rowID % 2 == 0 ? 'white' : colors.silver;
+    let cellBackgroundColor = this.props.rowNumber % 2 == 0 ? 'white' : colors.silver;
 
     return(
       <TouchableHighlight
@@ -32,7 +27,7 @@ export default class SimpleCell extends React.Component {
               {title}
             </Text>
           </View>
-          <RightAccesoryView />
+          <RightAccessoryView />
         </View>
       </TouchableHighlight>
     );
@@ -40,7 +35,7 @@ export default class SimpleCell extends React.Component {
 }
 
 
-let styles = StyleSheet.create({
+const styles = StyleSheet.create({
 
   rowContainer: {
     flex: 1,

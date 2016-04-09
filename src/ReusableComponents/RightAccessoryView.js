@@ -4,12 +4,6 @@ import React, { Image, StyleSheet } from 'react-native'
 
 export default class RightAccesoryView extends React.Component {
 
-  static displayName = "RightAccesoryView";
-
-  constructor(props) {
-    super(props);
-  }
-
   render() {
     return (
       <Image 

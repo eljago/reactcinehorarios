@@ -10,22 +10,29 @@ export default class ContainerMenu extends React.Component {
   static propTypes = {
     onPress: PropTypes.func
   };
-  static displayName = "ContainerMenu";
+
+  constructor(props) {
+    super(props);
+    let dataRows = [];
+    const keys = Object.keys(routes);
+    for (let index = 0; index < keys.length; index++) {
+      dataRows.push(routes[keys[index]]);
+    }
+    this.state = {
+      dataRows: dataRows
+    }
+  }
 
   render() {
     return(
       <ComponentMenu
         onPress={this._onPress.bind(this)}
-        onFetch={this._onFetch}
+        dataRows={this.state.dataRows}
       />
     );
   }
 
   _onPress(routeData) {
     this.props.onPress(routeData);
-  }
-
-  _onFetch(page = 1, callback, options) {
-    callback(routes);
   }
 }

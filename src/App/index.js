@@ -27,7 +27,7 @@ export default class App extends React.Component {
         }
       >
         <Nav
-          ref={'navMain'}
+          ref={"navMain"}
           openMenu={this._openMenu.bind(this)}
         />
       </SideMenu>

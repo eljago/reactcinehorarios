@@ -7,7 +7,7 @@ import React, {
   StyleSheet
 } from 'react-native'
 
-import GiftedListView from 'react-native-gifted-listview'
+import {MyGiftedListView} from '../ReusableComponents'
 import MenuCell from './componentMenuCell'
 import { colors } from '../Data'
 
@@ -17,47 +17,24 @@ export default class ComponentMenu extends React.Component {
 
   static propTypes = {
     onPress: PropTypes.func,
-    onFetch: PropTypes.func
+    dataRows: PropTypes.array
   };
-  static displayName = "ComponentMenu";
 
   render() {
     return (
-      <View style={styles.container}>
-        <View style={styles.rowContainer}>
-          <GiftedListView
-            rowView={this._renderRowView.bind(this)}
-            onFetch={this.props.onFetch}
-            firstLoader={true}
-            pagination={false}
-            refreshable={false}
-            withSections={false}
-          />
-        </View>
-      </View>
+      <MyGiftedListView
+        renderRow={this._renderRow.bind(this)}
+        dataRows={this.props.dataRows}
+      />
     );
   }
 
-  _renderRowView(rowData, sectionID, rowID) {
+  _renderRow(rowData, sectionID, rowID, highlightRow) {
     return (
       <MenuCell
         title={rowData.name}
-        onPress={() => this.props.onPress(rowData)} />
+        onPress={() => this.props.onPress(rowData)}
+      />
     );
   }
 }
-
-let styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: colors.midnightBlue,
-    width: window.width,
-    height: window.height,
-    alignItems: 'flex-end'
-  },
-  rowContainer: {
-    flex: 1,
-    flexDirection: 'row',
-    alignItems: 'center'
-  }
-});

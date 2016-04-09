@@ -17,7 +17,6 @@ export default class MenuCell extends React.Component {
     title: PropTypes.string,
     onPress: PropTypes.func
   };
-  static displayName = "MenuCell";
 
   render() {
     const width = Dimensions.get('window').width * (2/3);

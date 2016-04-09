@@ -1,7 +1,7 @@
 'use strict';
 
 // inside that file
-var babelRelayPlugin   = require('babel-relay-plugin');
+var getBabelRelayPlugin   = require('babel-relay-plugin');
 var request            = require('sync-request');
 
 var introspectionQueryString = require('./introspectionQuery');
@@ -23,6 +23,6 @@ var response = request('POST', config.graphqlURL, {
 
 var schema = JSON.parse(response.body.toString('utf-8'));
 
-module.exports = babelRelayPlugin(schema.data, {
+module.exports = getBabelRelayPlugin(schema.data, {
   abortOnError: true,
 });

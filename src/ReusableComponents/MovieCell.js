@@ -22,7 +22,6 @@ export default class MovieCell extends React.Component {
     subtitle: PropTypes.string,
     imageUri: PropTypes.string
   };
-  static displayName = "MovieCell";
 
   render() {
     return(

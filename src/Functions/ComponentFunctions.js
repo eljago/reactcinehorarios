@@ -2,10 +2,10 @@
 
 import React, { PropTypes } from 'react-native';
 
+import ComponentFunctionCell from './ComponentFunctionCell';
 import { MyGiftedListView } from '../ReusableComponents';
-import CinemaCell from './componentCinemaCell';
 
-export default class ComponentCinemas extends React.Component {
+export default class ComponentFunctions extends React.Component {
 
   static propTypes = {
     onPress: PropTypes.func,
@@ -22,14 +22,14 @@ export default class ComponentCinemas extends React.Component {
   }
 
   _renderRow(rowData, sectionID, rowID, highlightRow) {
-    let cinemaNode = rowData.node;
-
     return (
-      <CinemaCell
-        title={cinemaNode.name}
-        image={cinemaNode.image}
-        rowNumber={cinemaNode.rowNumber}
-        onPress={() => this.props.onPress(cinemaNode)} />
+      <ComponentFunctionCell
+        title={rowData.name}
+        imageUri={rowData.image_url}
+        functions={rowData.functions}
+        rowNumber={0}
+        onPress={() => this.props.onPress(functionNode)}
+      />
     );
   }
 }
