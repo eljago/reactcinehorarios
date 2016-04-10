@@ -4,6 +4,7 @@ import React, { PropTypes } from 'react-native';
 
 import ComponentFunctionCell from './ComponentFunctionCell';
 import { MyGiftedListView } from '../../ReusableComponents';
+import { ImageHelper } from '../../Utils'
 
 export default class ComponentFunctions extends React.Component {
 
@@ -25,7 +26,7 @@ export default class ComponentFunctions extends React.Component {
     return (
       <ComponentFunctionCell
         title={rowData.name}
-        imageUri={rowData.image_url}
+        imageUri={ImageHelper.addPrefixToPath(rowData.image_url, 'small_')}
         functions={rowData.functions}
         rowNumber={rowData.rowNumber}
         onPress={() => this.props.onPress(functionNode)}

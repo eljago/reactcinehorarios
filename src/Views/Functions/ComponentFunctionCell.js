@@ -4,7 +4,6 @@ import React, { Text, TouchableHighlight, View, StyleSheet, PropTypes, Image } f
 
 import { colors } from '../../Data'
 import { RightAccessoryView } from '../../ReusableComponents'
-import { ImageHelper } from '../../Utils'
 
 export default class ComponentFunctionCell extends React.Component {
   
@@ -31,7 +30,7 @@ export default class ComponentFunctionCell extends React.Component {
               <Image
                 resizeMode='cover'
                 style={ styles.image }
-                source={{uri: ImageHelper.addPrefixToPath(imageUri, 'small_')}}
+                source={{uri: imageUri}}
               />
             </View>
             <View style={styles.textContainer}>

@@ -10,27 +10,26 @@ export default class ComponentBillboard extends React.Component {
 
   static propTypes = {
     onPress: PropTypes.func,
-    onFetch: PropTypes.func
+    dataRows: PropTypes.array
   };
-  static displayName = "ComponentBillboard";
 
   render() {
     return (
       <MyGiftedListView
-        rowView={this._renderRowView.bind(this)}
-        onFetch={this.props.onFetch}
+        renderRow={this._renderRow.bind(this)}
+        dataRows={this.props.dataRows}
       />
     );
   }
 
-  _renderRowView(rowData, sectionID, rowID) {
+  _renderRow(rowData, sectionID, rowID, highlightRow) {
     return (
       <MovieCell
         rowID={rowID}
         onPress={() => this.props.onPress(rowData)}
         title={rowData.name}
         subtitle={rowData.genres}
-        imageUri={`http://cinehorarios.cl${ImageHelper.getThumbImage(rowData.image_url)}`}
+        imageUri={ImageHelper.addPrefixToPath(rowData.image_url, 'small_')}
       />
     );
   }

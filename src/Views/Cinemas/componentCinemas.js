@@ -22,14 +22,12 @@ export default class ComponentCinemas extends React.Component {
   }
 
   _renderRow(rowData, sectionID, rowID, highlightRow) {
-    let cinemaNode = rowData.node;
-
     return (
       <CinemaCell
-        title={cinemaNode.name}
-        image={cinemaNode.image}
+        title={rowData.node.name}
+        image={rowData.node.image}
         rowNumber={rowData.rowNumber}
-        onPress={() => this.props.onPress(cinemaNode)} />
+        onPress={() => this.props.onPress(rowData.node)} />
     );
   }
 }
