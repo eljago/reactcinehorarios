@@ -8,7 +8,7 @@ var ImageHelper = {
 	  var pathArray = ImagePath.split('/');
 	  var imgName = pathArray[pathArray.length - 1];
 	  pathArray[pathArray.length - 1] = `${prefix}${imgName}`
-	  return `${config.URL}${pathArray.join('/')}`;
+	  return `http://cinehorarios.cl${pathArray.join('/')}`;rarios.cl
 	}
 }
 

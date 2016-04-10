@@ -45,7 +45,9 @@ export default class ComponentFunctionCell extends React.Component {
     return(
       functions.map((f, i) => {
         return(
-          <View style={styles.functionView}>
+          <View
+            key={i}
+            style={styles.functionView}>
             <Text style={styles.functionTypes}>
               {f.function_types.join('   ')}
             </Text>

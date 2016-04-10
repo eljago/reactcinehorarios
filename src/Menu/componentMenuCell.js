@@ -40,7 +40,7 @@ let styles = StyleSheet.create({
     marginBottom: 5
   },
   name: {
-    color: 'white',
+    color: 'black',
     textAlign: 'center',
     fontSize: 26
   }

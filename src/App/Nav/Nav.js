@@ -15,6 +15,7 @@ export default class MyApp extends Component {
       <View style={{ flex: 1, backgroundColor: 'white' }}>
         <Navigator
           ref={'nav'}
+          openMenu={this.props.openMenu}
           initialRoute={getCinemasRoute()}
           renderScene={renderScene}
           navigationBar={
@@ -53,9 +54,7 @@ var NavigationBarRouteMapper = {
   RightButton(route, navigator, index, navState) {
     return(
       <MenuButton
-        onPress={() => {
-          navigator.pop();
-        }}
+        onPress={navigator.props.openMenu}
       />
     );
   },

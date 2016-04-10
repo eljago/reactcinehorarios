@@ -11,7 +11,7 @@
     "react": "^0.14.7",
     "react-native": "^0.23.1",
     "react-native-code-push": "^1.10.0-beta",
-    "react-native-side-menu": "^0.18.0",
+    "react-native-side-menu": "git://github.com/react-native-fellowship/react-native-side-menu.git#master",
     "react-native-tab-navigator": "^0.2.18",
     "react-relay": "^0.7.3",
     "slash": "^1.0.0",

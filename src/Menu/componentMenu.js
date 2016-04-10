@@ -1,17 +1,11 @@
 'use strict';
 
 import React, {
-  Dimensions,
-  View,
-  PropTypes,
-  StyleSheet
+  PropTypes
 } from 'react-native'
 
 import {MyGiftedListView} from '../ReusableComponents'
 import MenuCell from './componentMenuCell'
-import { colors } from '../Data'
-
-const window = Dimensions.get('window');
 
 export default class ComponentMenu extends React.Component {
 

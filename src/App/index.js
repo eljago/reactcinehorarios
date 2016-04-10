@@ -24,7 +24,7 @@ export default class App extends React.Component {
   render() {
     return (
       <SideMenu
-        menuPosition='right'
+        menuPosition='left'
         touchToClose={true}
         isOpen={this.state.isOpen}
         disableGestures={true}
