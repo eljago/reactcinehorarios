@@ -1,6 +1,6 @@
 'use strict';
 
-export default {
+export const colors = {
 	silver: '#ecf0f1',
 	concrete: '#95a5a6',
 	navBar: '#760004',
@@ -10,4 +10,4 @@ export default {
 	header: '#454545',
 	tabBar: '#272727',
 	tabBarInactive: '#888888'
-}
+};

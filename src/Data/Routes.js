@@ -6,7 +6,7 @@ import Billboard from '../Views/Billboard'
 import ComingSoon from '../Views/ComingSoon'
 import MapView from '../Views/Map'
 
-module.exports = {
+export const routes = {
   Cinemas: {
     name: 'Cines',
     component: Cinemas,
@@ -32,4 +32,4 @@ module.exports = {
     component: MapView,
     imageName: 'menuiconComingSoon'
   }
-}
+};

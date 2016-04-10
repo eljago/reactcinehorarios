@@ -7,10 +7,9 @@ import Theaters from '../Views/Theaters';
 import Functions from '../Views/Functions';
 
 export function getCinemasRoute() {
-	return({
+  return({
     title: 'Cinemas',
-    Component: Cinemas,
-    queryConfig: new ViewerQueryConfig()
+    Component: Cinemas
   });
 };
 

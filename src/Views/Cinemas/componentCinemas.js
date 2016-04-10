@@ -2,7 +2,7 @@
 
 import React, { PropTypes } from 'react-native';
 
-import { MyGiftedListView } from '../../ReusableComponents';
+import {MyGiftedListView} from '../../ReusableComponents';
 import CinemaCell from './componentCinemaCell';
 
 export default class ComponentCinemas extends React.Component {
@@ -22,12 +22,16 @@ export default class ComponentCinemas extends React.Component {
   }
 
   _renderRow(rowData, sectionID, rowID, highlightRow) {
+    const { name, images, rowNumber } = rowData;
+    const image = images[Math.floor(Math.random()*images.length)];
+
     return (
       <CinemaCell
-        title={rowData.node.name}
-        image={rowData.node.image}
-        rowNumber={rowData.rowNumber}
-        onPress={() => this.props.onPress(rowData.node)} />
+        title={name}
+        image={image}
+        rowNumber={rowNumber}
+        onPress={() => this.props.onPress(rowData)}
+      />
     );
   }
 }

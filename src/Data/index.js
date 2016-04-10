@@ -1,4 +1,5 @@
 'use strict'
 
-export { default as colors} from './Colors'
-export { default as routes } from './Routes'
+export {colors} from './Colors'
+export {routes} from './Routes'
+export {cinemas} from './Cinemas'

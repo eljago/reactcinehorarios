@@ -1,11 +1,10 @@
 'use strict';
 
 import React, { Navigator, Component, Text, View } from 'react-native';
-import Relay from 'react-relay'
 
-import {getCinemasRoute} from '../routes/navigatorRoutes';
-import renderRelayScene from './renderRelayScene';
-import {colors} from '../Data';
+import {getCinemasRoute} from '../../routes/navigatorRoutes';
+import renderScene from '../RenderScene';
+import {colors} from '../../Data';
 
 import {BackButton} from './BackButton'
 import {MenuButton} from './MenuButton'
@@ -17,7 +16,7 @@ export default class MyApp extends Component {
         <Navigator
           ref={'nav'}
           initialRoute={getCinemasRoute()}
-          renderScene={renderRelayScene}
+          renderScene={renderScene}
           navigationBar={
             <Navigator.NavigationBar
               routeMapper={NavigationBarRouteMapper}

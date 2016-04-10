@@ -23,13 +23,14 @@ export default class ComponentFunctions extends React.Component {
   }
 
   _renderRow(rowData, sectionID, rowID, highlightRow) {
+    const {name, functions, rowNumber, image_url} = rowData;
     return (
       <ComponentFunctionCell
-        title={rowData.name}
-        imageUri={ImageHelper.addPrefixToPath(rowData.image_url, 'small_')}
-        functions={rowData.functions}
-        rowNumber={rowData.rowNumber}
-        onPress={() => this.props.onPress(functionNode)}
+        title={name}
+        imageUri={ImageHelper.addPrefixToPath(image_url, 'small_')}
+        functions={functions}
+        rowNumber={rowNumber}
+        onPress={() => this.props.onPress(rowData)}
       />
     );
   }

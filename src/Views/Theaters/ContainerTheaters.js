@@ -8,15 +8,17 @@ import {getFunctionsRoute} from '../../routes/navigatorRoutes'
 
 class ContainerTheaters extends React.Component {
 
-  constructor(props, context) {
-    super(props, context);
+  constructor(props) {
+    super(props);
+
     this.props.relay.setVariables({
       cinema_id: props.extraData.cinema_id,
     });
   }
 
   render() {
-    let dataRows = this.props.viewer.api_theaters ? this.props.viewer.api_theaters : [];
+    const dataRows = this.props.viewer ? this.props.viewer.api_theaters : [];
+
     return (
       <ComponentTheaters 
         onPress={this._onPress.bind(this)}
@@ -25,11 +27,11 @@ class ContainerTheaters extends React.Component {
     );
   }
 
-  _onPress(theaterNode) {
+  _onPress(rowData) {
     let date = new Date();
-    let formattedDate = `${date.getFullYear()}-${date.getMonth()+1}-${date.getDate()}`;
+    const formattedDate = `${date.getFullYear()}-${date.getMonth()+1}-${date.getDate()}`;
 
-    let functionsRoute = getFunctionsRoute(formattedDate, theaterNode.theater_id);
+    let functionsRoute = getFunctionsRoute(formattedDate, rowData.theater_id);
     this.props.navigator.push(functionsRoute);
   }
 }

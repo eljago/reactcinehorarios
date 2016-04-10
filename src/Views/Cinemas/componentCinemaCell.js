@@ -9,32 +9,34 @@ import React, {
   StyleSheet
 } from 'react-native';
 
-import { colors } from '../../Data'
+import {colors} from '../../Data'
 import {RightAccessoryView} from '../../ReusableComponents'
 
 export default class CinemaCell extends React.Component {
 
   static propTypes = {
     title: PropTypes.string,
-    image: PropTypes.string,
+    image: PropTypes.number,
     rowNumber: PropTypes.number,
     onPress: PropTypes.func
   };
 
   render() {
-    var cellBackgroundColor = this.props.rowNumber % 2 == 0 ? 'white' :  colors.silver;
+    const {title, image, rowNumber, onPress} = this.props;
+    var cellBackgroundColor = rowNumber % 2 == 0 ? 'white' :  colors.silver;
+
     return(
       <TouchableHighlight
       underlayColor={colors.underlayColor}
-      onPress={() => this.props.onPress() }>
+      onPress={() => onPress() }>
         <View>
           <View style={[styles.rowContainer, {backgroundColor: cellBackgroundColor}]}>
             <Image
-              source={{uri: `http://cinehorarios.cl${this.props.image}`}}
+              source={image}
               style={styles.image}/>
             <View style={styles.textContainer}>
               <Text style={styles.name}>
-                {this.props.title}
+                {title}
               </Text>
             </View>
             <RightAccessoryView/>

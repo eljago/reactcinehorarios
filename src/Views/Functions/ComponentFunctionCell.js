@@ -16,15 +16,13 @@ export default class ComponentFunctionCell extends React.Component {
   };
 
   render() {
-    const title = this.props.title;
-    const imageUri = this.props.imageUri;
-    const functions = this.props.functions;
-    const cellBackgroundColor = this.props.rowNumber % 2 == 0 ? 'white' : colors.silver;
+    const {title, imageUri, functions, rowNumber, onPress} = this.props;
+    const cellBackgroundColor = rowNumber % 2 == 0 ? 'white' : colors.silver;
 
     return(
       <TouchableHighlight
         underlayColor={colors.concrete}
-        onPress={() => {this.props.onPress()}}>
+        onPress={() => {onPress()}}>
           <View style={[styles.rowContainer, {backgroundColor: cellBackgroundColor}]}>
             <View style={styles.imageContainer}>
               <Image

@@ -12,17 +12,20 @@ class ContainerFunctions extends React.Component {
     theater_id: PropTypes.number,
   };
 
-  constructor(props, context) {
-    super(props, context);
+  constructor(props) {
+    super(props);
+
+    const {date,theater_id} = this.props.extraData;
     this.props.relay.setVariables({
-      date: props.extraData.date,
-      theater_id: props.extraData.theater_id,
+      date: date,
+      theater_id: theater_id
     });
   }
 
   render() {
     const api_theater_show = this.props.viewer.api_theater_shows;
     const dataRows = api_theater_show ? api_theater_show : [];
+
     return (
       <ComponentFunctions 
         onPress={this._onPress.bind(this)}

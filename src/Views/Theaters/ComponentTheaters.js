@@ -21,10 +21,11 @@ export default class ComponentTheaters extends React.Component {
   }
 
   _renderRow(rowData, sectionID, rowID, highlightRow) {
+    const {name, rowNumber} = rowData;
     return (
       <SimpleCell
-        title={rowData.name}
-        rowNumber={rowData.rowNumber}
+        title={name}
+        rowNumber={rowNumber}
         onPress={() => this.props.onPress(rowData)}
       />
     );
