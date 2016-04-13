@@ -3,17 +3,50 @@
 import { ViewerQueryConfig } from './queryConfigs';
 
 import Cinemas from '../Views/Cinemas';
+import Billboard from '../Views/Billboard';
+import ComingSoon from '../Views/ComingSoon';
 import Theaters from '../Views/Theaters';
 import Functions from '../Views/Functions';
 
-export function getCinemasRoute() {
+function getBaseRoutes() {
+  return [
+    getCinemasRoute(),
+    getBillboardRoute(),
+    getComingSoonRoute()
+  ];
+};
+
+export {
+  getBaseRoutes,
+  getCinemasRoute,
+  getFunctionsRoute,
+  getTheatersRoute
+};
+
+function getCinemasRoute() {
   return({
     title: 'Cinemas',
     Component: Cinemas
   });
 };
 
-export function getTheatersRoute(cinema_id, cinemaName) {
+function getBillboardRoute() {
+  return({
+    title: 'Cartelera',
+    Component: Billboard,
+    queryConfig: new ViewerQueryConfig()
+  });
+};
+
+function getComingSoonRoute() {
+  return({
+    title: 'Próximamente',
+    Component: ComingSoon,
+    queryConfig: new ViewerQueryConfig()
+  });
+};
+
+function getTheatersRoute(cinema_id, cinemaName) {
 	return({
     title: 'Theaters',
     Component: Theaters,
@@ -25,7 +58,7 @@ export function getTheatersRoute(cinema_id, cinemaName) {
   });
 };
 
-export function getFunctionsRoute(formattedDate, theater_id) {
+function getFunctionsRoute(formattedDate, theater_id) {
   return({
     title: 'Functions',
     Component: Functions,

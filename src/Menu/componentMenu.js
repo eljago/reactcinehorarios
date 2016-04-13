@@ -24,9 +24,10 @@ export default class ComponentMenu extends React.Component {
   }
 
   _renderRow(rowData, sectionID, rowID, highlightRow) {
+    console.log(rowData);
     return (
       <MenuCell
-        title={rowData.name}
+        title={rowData.title}
         onPress={() => this.props.onPress(rowData)}
       />
     );

@@ -16,28 +16,32 @@ export default class MovieCell extends React.Component {
 
   static propTypes = {
     title: PropTypes.string,
-    rowID: PropTypes.string,
+    rowNumber: PropTypes.number,
     onPress: PropTypes.func,
-    title: PropTypes.string,
     subtitle: PropTypes.string,
     imageUri: PropTypes.string
   };
 
   render() {
+    const {title, rowNumber, onPress, subtitle, imageUri} = this.props;
+    const cellBackgroundColor = rowNumber % 2 == 0 ? 'white' : colors.silver;
+
     return(
       <TouchableHighlight
-        underlayColor={ colors.concrete }
-        onPress={ () => this.props.onPress() }>
-        <View style={ styles.rowContainer }>
-          <View style={ styles.imageContainer }>
+        underlayColor={colors.midnightBlue}
+        onPress={onPress}
+      >
+        <View style={[styles.rowContainer, {backgroundColor: cellBackgroundColor}]}>
+          <View style={styles.imageContainer}>
             <Image
-            resizeMode='contain'
-            style={ styles.image }
-            source={{ uri: this.props.imageUri }}/>
+              resizeMode='stretch'
+              style={styles.image}
+              source={{uri: imageUri}}
+            />
           </View>
-          <View style={ styles.textContainer }>
-            <Text style={ styles.name }>{ this.props.title }</Text>
-            <Text style={ styles.genres }>{ this.props.subtitle }</Text>
+          <View style={styles.textContainer}>
+            <Text style={styles.name}>{title}</Text>
+            <Text style={styles.genres}>{subtitle}</Text>
           </View>
           <RightAccessoryView />
         </View>

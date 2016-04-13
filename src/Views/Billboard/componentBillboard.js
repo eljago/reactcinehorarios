@@ -23,13 +23,15 @@ export default class ComponentBillboard extends React.Component {
   }
 
   _renderRow(rowData, sectionID, rowID, highlightRow) {
+    const {name, genres, image_url, duration, rowNumber} = rowData;
+    console.log(rowNumber);
     return (
       <MovieCell
-        rowID={rowID}
+        rowNumber={rowNumber}
         onPress={() => this.props.onPress(rowData)}
-        title={rowData.name}
-        subtitle={rowData.genres}
-        imageUri={ImageHelper.addPrefixToPath(rowData.image_url, 'small_')}
+        title={name}
+        subtitle={genres}
+        imageUri={ImageHelper.addPrefixToPath(image_url, 'small_')}
       />
     );
   }

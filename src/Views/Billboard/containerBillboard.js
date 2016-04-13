@@ -1,16 +1,19 @@
 'use strict';
 
 import React, { PropTypes } from 'react-native';
+import Relay from 'react-relay'
 
 import ComponentBillboard from './componentBillboard';
 
-export default class ContainerBillboard extends React.Component {
+class ContainerBillboard extends React.Component {
 
   render() {
+    const dataRows = this.props.viewer ? this.props.viewer.api_billboard : [];
+    
     return (
       <ComponentBillboard
         onPress={this._onPress.bind(this)}
-        onFetch={this._onFetch.bind(this)}
+        dataRows={dataRows}
       />
     );
   }
@@ -19,3 +22,20 @@ export default class ContainerBillboard extends React.Component {
 
   }
 }
+
+export default Relay.createContainer(ContainerBillboard, {
+
+  fragments: {
+    viewer: () => Relay.QL`
+      fragment on Viewer {
+        api_billboard{
+          show_id
+          name
+          image_url
+          genres
+          duration
+        }
+      }
+    `
+  },
+});

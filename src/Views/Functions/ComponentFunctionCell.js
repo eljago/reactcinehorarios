@@ -21,22 +21,23 @@ export default class ComponentFunctionCell extends React.Component {
 
     return(
       <TouchableHighlight
-        underlayColor={colors.concrete}
-        onPress={() => {onPress()}}>
-          <View style={[styles.rowContainer, {backgroundColor: cellBackgroundColor}]}>
-            <View style={styles.imageContainer}>
-              <Image
-                resizeMode='cover'
-                style={ styles.image }
-                source={{uri: imageUri}}
-              />
-            </View>
-            <View style={styles.textContainer}>
-              <Text style={styles.name}>{title}</Text>
-              {this._getFunctionsViews(functions)}
-            </View>
-            <RightAccessoryView />
+        underlayColor={colors.midnightBlue}
+        onPress={onPress}
+      >
+        <View style={[styles.rowContainer, {backgroundColor: cellBackgroundColor}]}>
+          <View style={styles.imageContainer}>
+            <Image
+              resizeMode='stretch'
+              style={ styles.image }
+              source={{uri: imageUri}}
+            />
           </View>
+          <View style={styles.textContainer}>
+            <Text style={styles.name}>{title}</Text>
+            {this._getFunctionsViews(functions)}
+          </View>
+          <RightAccessoryView />
+        </View>
       </TouchableHighlight>
     );
   }

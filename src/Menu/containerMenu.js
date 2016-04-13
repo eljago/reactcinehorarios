@@ -3,7 +3,7 @@
 import React, { PropTypes } from 'react-native'
 
 import ComponentMenu from './componentMenu'
-import { routes } from '../Data'
+import {getBaseRoutes} from '../routes/navigatorRoutes'
 
 export default class ContainerMenu extends React.Component {
 
@@ -13,11 +13,8 @@ export default class ContainerMenu extends React.Component {
 
   constructor(props) {
     super(props);
-    let dataRows = [];
-    const keys = Object.keys(routes);
-    for (let index = 0; index < keys.length; index++) {
-      dataRows.push(routes[keys[index]]);
-    }
+
+    const dataRows = getBaseRoutes();
     this.state = {
       dataRows: dataRows
     }

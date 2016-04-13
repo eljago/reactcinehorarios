@@ -47,10 +47,7 @@ export default class App extends React.Component {
   }
 
   _onPress(routeData) {
-    this.refs.navMain.getNavigator().resetTo({
-      name: routeData.name,
-      component: routeData.component
-    });
+    this.refs.navMain.getNavigator().resetTo(routeData);
     this.setState({
       isOpen: false
     });

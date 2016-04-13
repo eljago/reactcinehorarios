@@ -10,6 +10,12 @@ import java.util.List;
 
 public class MainActivity extends ReactActivity {
 
+    /** CODEPUSH stuff */
+    @Override
+    protected String getJSBundleFile() {
+        return CodePush.getBundleUrl();
+    }
+
     /**
      * Returns the name of the main component registered from JavaScript.
      * This is used to schedule rendering of the component.
@@ -36,7 +42,7 @@ public class MainActivity extends ReactActivity {
     protected List<ReactPackage> getPackages() {
         return Arrays.<ReactPackage>asList(
             new MainReactPackage(),
-            new CodePush()
+            new CodePush("Ia8rXTpzEkgi8-MYeXuBc49mj33mVyYqaEyHl", this, BuildConfig.DEBUG)
         );
     }
 }

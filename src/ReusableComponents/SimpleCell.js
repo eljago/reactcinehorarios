@@ -14,13 +14,13 @@ export default class SimpleCell extends React.Component {
   };
 
   render() {
-    let title = this.props.title;
-    let cellBackgroundColor = this.props.rowNumber % 2 == 0 ? 'white' : colors.silver;
+    const {title, rowNumber, onPress} = this.props;
+    const cellBackgroundColor = rowNumber % 2 == 0 ? 'white' : colors.silver;
 
     return(
       <TouchableHighlight
-        underlayColor={colors.concrete}
-        onPress={() => this.props.onPress()}>
+        underlayColor={colors.midnightBlue}
+        onPress={onPress}>
         <View style={[styles.rowContainer, {backgroundColor: cellBackgroundColor}]}>
           <View style={styles.textContainer}>
             <Text style={styles.title}>

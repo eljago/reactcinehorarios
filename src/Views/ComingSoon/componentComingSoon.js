@@ -10,27 +10,28 @@ export default class ComponentComingSoon extends React.Component {
 
   static propTypes = {
     onPress: PropTypes.func,
-    onFetch: PropTypes.func
+    dataRows: PropTypes.array
   };
-  static displayName = "ComponentComingSoon";
 
   render() {
     return (
       <MyGiftedListView
-        rowView={this._renderRowView.bind(this)}
-        onFetch={this.props.onFetch}
+        renderRow={this._renderRow.bind(this)}
+        dataRows={this.props.dataRows}
       />
     );
   }
 
-  _renderRowView(rowData, sectionID, rowID) {
+  _renderRow(rowData, sectionID, rowID, highlightRow) {
+    const {name, genres, image_url, duration, rowNumber} = rowData;
+    
     return (
       <MovieCell
-        rowID={rowID}
+        rowNumber={rowNumber}
         onPress={() => this.props.onPress(rowData)}
-        title={rowData.name}
-        subtitle={rowData.debut}
-        imageUri={`http://cinehorarios.cl${ImageHelper.getThumbImage(rowData.image_url)}`}
+        title={name}
+        subtitle={genres}
+        imageUri={ImageHelper.addPrefixToPath(image_url, 'small_')}
       />
     );
   }

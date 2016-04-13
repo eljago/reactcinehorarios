@@ -27,8 +27,8 @@ export default class CinemaCell extends React.Component {
 
     return(
       <TouchableHighlight
-      underlayColor={colors.underlayColor}
-      onPress={() => onPress() }>
+      underlayColor={colors.midnightBlue}
+      onPress={onPress}>
         <View>
           <View style={[styles.rowContainer, {backgroundColor: cellBackgroundColor}]}>
             <Image

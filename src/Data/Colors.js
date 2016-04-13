@@ -3,6 +3,7 @@
 export const colors = {
 	silver: '#ecf0f1',
 	concrete: '#95a5a6',
+	asbestos: '#7f8c8d',
 	navBar: '#760004',
 	midnightBlue: '#2c3e50',
 	wetAsphalt: '#34495e',

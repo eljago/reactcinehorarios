@@ -60,7 +60,7 @@ var NavigationBarRouteMapper = {
   },
 
   Title(route, navigator, index, navState) {
-      return <Text>Hola</Text>;
+      return <Text>{route.title}</Text>;
   },
 
 };
