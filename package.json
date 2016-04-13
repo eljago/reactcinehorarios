@@ -6,18 +6,17 @@
     "start": "node_modules/react-native/packager/packager.sh"
   },
   "dependencies": {
-    "babel-preset-react-native": "^1.5.6",
-    "babel-relay-plugin": "^0.7.3",
     "react": "^0.14.7",
     "react-native": "^0.23.1",
     "react-native-code-push": "^1.10.0-beta",
     "react-native-side-menu": "git://github.com/react-native-fellowship/react-native-side-menu.git#master",
     "react-native-tab-navigator": "^0.2.18",
     "react-relay": "^0.7.3",
-    "slash": "^1.0.0",
-    "sync-request": "^3.0.0"
+    "slash": "^1.0.0"
   },
   "devDependencies": {
+    "babel-preset-react-native": "^1.5.6",
+    "babel-relay-plugin": "^0.7.3",
     "babel": "^6.5.2"
   }
 }
