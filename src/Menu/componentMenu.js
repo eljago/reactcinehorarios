@@ -17,6 +17,7 @@ export default class ComponentMenu extends React.Component {
   render() {
     return (
       <MyGiftedListView
+        scrollsToTop={false}
         renderRow={this._renderRow.bind(this)}
         dataRows={this.props.dataRows}
       />
@@ -24,7 +25,6 @@ export default class ComponentMenu extends React.Component {
   }
 
   _renderRow(rowData, sectionID, rowID, highlightRow) {
-    console.log(rowData);
     return (
       <MenuCell
         title={rowData.title}

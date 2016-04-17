@@ -7,6 +7,7 @@ import { EmptyView, SeparatorView } from './'
 export default class MyGiftedListView extends React.Component {
 
   static propTypes = {
+    scrollsToTop: PropTypes.boolean,
     renderRow: PropTypes.func,
     dataRows: PropTypes.array
   };
@@ -36,6 +37,7 @@ export default class MyGiftedListView extends React.Component {
     return (
     	<View style={styles.container}>
         <ListView
+          scrollsToTop={this.props.scrollsToTop}
           dataSource={this.state.dataSource}
           renderRow={this.props.renderRow}
           renderSeparator={this._renderSeparatorView}

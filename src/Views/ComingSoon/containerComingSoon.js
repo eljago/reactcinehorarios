@@ -31,6 +31,7 @@ export default Relay.createContainer(ContainerComingSoon, {
         api_coming_soon{
           show_id
           name
+          debut
           image_url
           genres
           duration

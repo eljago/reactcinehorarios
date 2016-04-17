@@ -58,14 +58,14 @@ function getTheatersRoute(cinema_id, cinemaName) {
   });
 };
 
-function getFunctionsRoute(formattedDate, theater_id) {
+function getFunctionsRoute(start_date, theater_id) {
   return({
     title: 'Functions',
     Component: Functions,
     queryConfig: new ViewerQueryConfig(),
     extraData: {
       theater_id: theater_id,
-      date: formattedDate
+      start_date: start_date
     }
   });
 };

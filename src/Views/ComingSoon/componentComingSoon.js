@@ -23,14 +23,15 @@ export default class ComponentComingSoon extends React.Component {
   }
 
   _renderRow(rowData, sectionID, rowID, highlightRow) {
-    const {name, genres, image_url, duration, rowNumber} = rowData;
+    let {name, debut, image_url, duration, rowNumber} = rowData;
+    debut = debut ? `Estreno: ${debut}` : "";
     
     return (
       <MovieCell
         rowNumber={rowNumber}
         onPress={() => this.props.onPress(rowData)}
         title={name}
-        subtitle={genres}
+        subtitle={debut}
         imageUri={ImageHelper.addPrefixToPath(image_url, 'small_')}
       />
     );

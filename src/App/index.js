@@ -24,10 +24,10 @@ export default class App extends React.Component {
   render() {
     return (
       <SideMenu
-        menuPosition='left'
+        menuPosition='right'
         touchToClose={true}
         isOpen={this.state.isOpen}
-        disableGestures={true}
+        disableGestures={false}
         menu={
           <Menu onPress={this._onPress.bind(this)} />
         }

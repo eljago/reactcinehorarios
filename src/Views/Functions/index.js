@@ -1,3 +1,3 @@
 'use strict';
 
-export { default as default } from './ContainerFunctions'
+export { default as default } from './ContainerFunctionsTabs'

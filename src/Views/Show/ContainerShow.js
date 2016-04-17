@@ -1,4 +1,8 @@
-'use strict';
+/* 
+  Copyright (C) 2016 Arturo Esteban Espinoza Carrasco - All Rights Reserved
+*/
+
+ 'use strict';
 
 import React, { PropTypes } from 'react-native'
 import Relay from 'react-relay'
@@ -28,7 +32,10 @@ class ContainerTheaters extends React.Component {
   }
 
   _onPress(rowData) {
-    let functionsRoute = getFunctionsRoute(new Date(), rowData.theater_id);
+    let date = new Date();
+    const formattedDate = `${date.getFullYear()}-${date.getMonth()+1}-${date.getDate()}`;
+
+    let functionsRoute = getFunctionsRoute(formattedDate, rowData.theater_id);
     this.props.navigator.push(functionsRoute);
   }
 }

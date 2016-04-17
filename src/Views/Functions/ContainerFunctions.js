@@ -4,32 +4,29 @@ import React, { PropTypes } from 'react-native';
 import Relay from 'react-relay';
 
 import ComponentFunctions from './ComponentFunctions';
+import {DateHelper} from '../../Utils'
 
-class ContainerFunctions extends React.Component {
+require('../../Utils/ArrayExtension');
+
+export default class ContainerFunctions extends React.Component {
 
   static propTypes = {
-    date: PropTypes.string,
-    theater_id: PropTypes.number,
+    date: PropTypes.object,
+    theaterShows: PropTypes.array
   };
 
-  constructor(props) {
+  constructor(props){
     super(props);
 
-    const {date,theater_id} = this.props.extraData;
-    this.props.relay.setVariables({
-      date: date,
-      theater_id: theater_id
-    });
+    const dataRows = getDataRows(props.date, props.theaterShows);
+    this.state = {dataRows: dataRows};
   }
 
   render() {
-    const api_theater_show = this.props.viewer.api_theater_shows;
-    const dataRows = api_theater_show ? api_theater_show : [];
-
     return (
       <ComponentFunctions 
         onPress={this._onPress.bind(this)}
-        dataRows={dataRows}
+        dataRows={this.state.dataRows}
       />
     );
   }
@@ -38,37 +35,37 @@ class ContainerFunctions extends React.Component {
 
   }
 
+  componentWillReceiveProps(nextProps){
+    const dataRows = getDataRows(nextProps.date, nextProps.theaterShows);
+    this.setState({dataRows: dataRows});
+  }
 }
 
-export default Relay.createContainer(ContainerFunctions, {
-  
-  initialVariables: {
-    date: getFormattedDate(),
-    theater_id: 0
-  },
+function getDataRows(date, theaterShows) {
+  let dataRows = [];
+  for(let index=0; index<theaterShows.length; index++){
+    const {id, name, information, genres, image_url, functions} = theaterShows[index];
 
-  fragments: {
-    viewer: () => Relay.QL`
-      fragment on Viewer {
-        api_theater_shows(date: $date, theater_id: $theater_id){
-          id
-          name
-          information
-          genres
-          image_url
-          functions{
-            date
-            showtimes
-            function_types
-          }
-        }
-      }
-    `
-  },
-});
+    const filteredFunctions = functions.filter((obj) => {
+      const dateArray1 = obj.date.split("-").map((string) => {
+        return parseInt(string);
+      });
+      const dateArray2 = DateHelper.getFormattedDate(date).split("-").map((string) => {
+        return parseInt(string);
+      });
+      return (dateArray1.equals(dateArray2));
+    });
 
-function getFormattedDate() {
-    let date = new Date();
-    let formattedDate = `${date.getFullYear()}-${date.getMonth()+1}-${date.getDate()}`;
-    return formattedDate;
-}
+    if (filteredFunctions.length > 0) {
+      dataRows.push({
+        id: id,
+        name: name,
+        information: information,
+        genres: genres,
+        image_url: image_url,
+        functions: filteredFunctions
+      });
+    }
+  }
+  return dataRows;
+};
