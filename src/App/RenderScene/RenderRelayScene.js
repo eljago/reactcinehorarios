@@ -3,6 +3,8 @@
 import React, { StyleSheet, View } from 'react-native';
 import Relay from 'react-relay';
 
+import LoadingIndicator from './LoadingIndicator';
+
 
 export default function renderRelayScene(route, navigator) {
   const { title, Component, queryConfig, extraData } = route;
@@ -41,8 +43,7 @@ export default function renderRelayScene(route, navigator) {
       }}
       renderLoading={() => {
         return(
-          <View style={{flex: 1, backgroundColor: 'green'}}>
-          </View>
+          <LoadingIndicator />
         );
       }}
     />

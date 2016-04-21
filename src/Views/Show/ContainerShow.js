@@ -1,14 +1,9 @@
-/* 
-  Copyright (C) 2016 Arturo Esteban Espinoza Carrasco - All Rights Reserved
-*/
-
- 'use strict';
+'use strict';
 
 import React, { PropTypes } from 'react-native'
 import Relay from 'react-relay'
 
-import ComponentTheaters from './ComponentTheaters'
-import {getFunctionsRoute} from '../../routes/navigatorRoutes'
+import ComponentShow from './ComponentShow'
 
 class ContainerTheaters extends React.Component {
 
@@ -16,44 +11,77 @@ class ContainerTheaters extends React.Component {
     super(props);
 
     this.props.relay.setVariables({
-      cinema_id: props.extraData.cinema_id,
+      show_id: props.extraData.show_id,
     });
   }
 
   render() {
-    const dataRows = this.props.viewer ? this.props.viewer.api_theaters : [];
+    const show = this.props.viewer ? this.props.viewer.api_show : null;
 
     return (
-      <ComponentTheaters 
+      <ComponentShow
         onPress={this._onPress.bind(this)}
-        dataRows={dataRows}
+        show={show}
       />
     );
-  }
-
-  _onPress(rowData) {
-    let date = new Date();
-    const formattedDate = `${date.getFullYear()}-${date.getMonth()+1}-${date.getDate()}`;
-
-    let functionsRoute = getFunctionsRoute(formattedDate, rowData.theater_id);
-    this.props.navigator.push(functionsRoute);
   }
 }
 
 export default Relay.createContainer(ContainerTheaters, {
 
   initialVariables: {
-    cinema_id: 0
+    show_id: 0
   },
 
   fragments: {
     viewer: () => Relay.QL`
       fragment on Viewer {
-        api_theaters(cinema_id: $cinema_id) {
-          cinema_id
-          theater_id
+         api_show(show_id: $show_id){
+          show_id
           name
-          address
+          image_url
+          information
+          debut
+          duration
+          genres
+          imdb_code
+          imdb_score
+          metacritic_url
+          metacritic_score
+          rotten_tomatoes_url
+          rotten_tomatoes_score
+          year
+          rating
+          videos{
+            video_id
+            name
+            code
+            image_url
+          }
+          images{
+            image_id
+            name
+            image_url
+            width
+            height
+          }
+          portrait_image{
+            image_id
+            name
+            image_url
+            width
+            height 
+          }
+          people{
+            person_id
+            actor
+            character
+            director
+            image_url
+            imdb_code
+            name
+          }
+          has_functions
         }
       }
     `

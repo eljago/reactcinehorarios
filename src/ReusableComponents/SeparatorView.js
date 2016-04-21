@@ -6,7 +6,7 @@ export default class SeparatorView extends React.Component {
 
   render() {
     return (
-      <View style={styles.separator} />
+      <View style={styles.separator}/>
     );
   }
 }
@@ -15,7 +15,7 @@ let styles = StyleSheet.create({
 
   separator: {
     height: 1,
-    backgroundColor: '#ddd',
+    backgroundColor: '#C1C1C1'
   }
 
 });

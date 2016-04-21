@@ -28,7 +28,7 @@ class ContainerTheaters extends React.Component {
   }
 
   _onPress(rowData) {
-    let functionsRoute = getFunctionsRoute(new Date(), rowData.theater_id);
+    let functionsRoute = getFunctionsRoute(new Date(), rowData.theater_id, rowData.name);
     this.props.navigator.push(functionsRoute);
   }
 }

@@ -8,7 +8,11 @@ import config from './config'
 import App from './src/App'
 
 Relay.injectNetworkLayer(
-  new Relay.DefaultNetworkLayer(`${config.URL}${config.graphqlPath}`, {headers: config.headers})
+  new Relay.DefaultNetworkLayer(`${config.URL}${config.graphqlPath}`, {
+  	headers: config.headers,
+  	fetchTimeout: 30000,
+    retryDelays: [5000, 10000]
+  })
 );
 
 

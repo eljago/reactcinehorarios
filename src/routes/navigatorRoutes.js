@@ -48,7 +48,7 @@ function getComingSoonRoute() {
 
 function getTheatersRoute(cinema_id, cinemaName) {
 	return({
-    title: 'Theaters',
+    title: cinemaName,
     Component: Theaters,
     queryConfig: new ViewerQueryConfig(),
     extraData: {
@@ -58,9 +58,9 @@ function getTheatersRoute(cinema_id, cinemaName) {
   });
 };
 
-function getFunctionsRoute(start_date, theater_id) {
+function getFunctionsRoute(start_date, theater_id, theaterName) {
   return({
-    title: 'Functions',
+    title: theaterName,
     Component: Functions,
     queryConfig: new ViewerQueryConfig(),
     extraData: {
