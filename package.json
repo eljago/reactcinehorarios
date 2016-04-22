@@ -7,19 +7,17 @@
   },
   "dependencies": {
     "react": "^0.14.7",
-    "react-native": "^0.23.1",
-    "react-native-code-push": "^1.10.0-beta",
+    "react-native": "^0.24.1",
+    "react-native-code-push": "^1.10.3-beta",
     "react-native-side-menu": "git://github.com/react-native-fellowship/react-native-side-menu.git#master",
     "react-native-tab-navigator": "^0.2.18",
-    "react-relay": "^0.7.3",
+    "react-relay": "^0.8.0",
     "slash": "^1.0.0"
+
   },
   "devDependencies": {
     "babel": "^6.5.2",
-    "babel-preset-react-native": "^1.5.6",
-    "babel-relay-plugin": "^0.7.3",
-    "babel-runtime": "^6.6.1",
-    "install": "^0.6.1",
-    "npm": "^3.8.6"
+    "babel-preset-react-native": "^1.5.7",
+    "babel-relay-plugin": "^0.8.0"
   }
 }
