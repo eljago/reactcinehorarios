@@ -4,6 +4,7 @@ import React, { PropTypes } from 'react-native';
 import Relay from 'react-relay';
 
 import ComponentFunctions from './ComponentFunctions';
+import {getShowRoute} from '../../routes/navigatorRoutes'
 import {DateHelper} from '../../Utils'
 
 require('../../Utils/ArrayExtension');
@@ -31,8 +32,9 @@ export default class ContainerFunctions extends React.Component {
     );
   }
 
-  _onPress(functionNode) {
-
+  _onPress(rowData) {
+    let showRoute = getShowRoute(rowData.show_id, rowData.name);
+    this.props.navigator.push(showRoute);
   }
 
   componentWillReceiveProps(nextProps){

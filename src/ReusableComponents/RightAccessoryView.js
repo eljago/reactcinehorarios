@@ -13,7 +13,7 @@ export default class RightAccesoryView extends React.Component {
   }
 }
 
-let styles = StyleSheet.create({
+const styles = StyleSheet.create({
 
   rightAccessoryView: {
     width: 22,

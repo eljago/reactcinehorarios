@@ -5,12 +5,12 @@ import Relay from 'react-relay'
 
 import ComponentShow from './ComponentShow'
 
-class ContainerTheaters extends React.Component {
+class ContainerShow extends React.Component {
 
   constructor(props) {
     super(props);
 
-    this.props.relay.setVariables({
+    props.relay.setVariables({
       show_id: props.extraData.show_id,
     });
   }
@@ -27,7 +27,7 @@ class ContainerTheaters extends React.Component {
   }
 }
 
-export default Relay.createContainer(ContainerTheaters, {
+export default Relay.createContainer(ContainerShow, {
 
   initialVariables: {
     show_id: 0

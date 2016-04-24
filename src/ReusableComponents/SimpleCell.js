@@ -1,9 +1,9 @@
 'use strict';
 
-import React, { Text, TouchableHighlight, View, StyleSheet, PropTypes } from 'react-native'
+import React, { Text, View, StyleSheet, PropTypes } from 'react-native'
 
 import { colors } from '../Data'
-import { RightAccessoryView } from './'
+import { MyListViewCell } from './'
 
 export default class SimpleCell extends React.Component {
   
@@ -15,43 +15,31 @@ export default class SimpleCell extends React.Component {
 
   render() {
     const {title, rowNumber, onPress} = this.props;
-    const cellBackgroundColor = rowNumber % 2 == 0 ? 'white' : colors.silver;
 
     return(
-      <TouchableHighlight
-        underlayColor={colors.midnightBlue}
-        onPress={onPress}>
-        <View style={[styles.rowContainer, {backgroundColor: cellBackgroundColor}]}>
-          <View style={styles.textContainer}>
-            <Text style={styles.title}>
-              {title}
-            </Text>
-          </View>
-          <RightAccessoryView />
+      <MyListViewCell
+        rowNumber={rowNumber}
+        onPress={onPress}
+      >
+        <View style={styles.textContainer}>
+          <Text style={styles.title}>
+            {title}
+          </Text>
         </View>
-      </TouchableHighlight>
+      </MyListViewCell>
     );
   }
 }
 
 
 const styles = StyleSheet.create({
-
-  rowContainer: {
-    flex: 1,
-    flexDirection: 'row',
-    padding: 10,
-    alignItems: 'center'
-  },
-
   textContainer: {
     flex: 1
   },
-
   title: {
     fontSize: 20,
     fontWeight: '300',
-    color: '#000'
+    color: '#000',
+    marginLeft: 10
   }
-
 });

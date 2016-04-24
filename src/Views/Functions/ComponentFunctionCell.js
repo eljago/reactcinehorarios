@@ -1,9 +1,9 @@
 'use strict';
 
-import React, { Text, TouchableHighlight, View, StyleSheet, PropTypes, Image } from 'react-native'
+import React, { Text, View, StyleSheet, PropTypes, Image } from 'react-native'
 
 import { colors } from '../../Data'
-import { RightAccessoryView } from '../../ReusableComponents'
+import { MyListViewCell } from '../../ReusableComponents'
 
 export default class ComponentFunctionCell extends React.Component {
   
@@ -17,14 +17,13 @@ export default class ComponentFunctionCell extends React.Component {
 
   render() {
     const {title, imageUri, functions, rowNumber, onPress} = this.props;
-    const cellBackgroundColor = rowNumber % 2 == 0 ? 'white' : colors.silver;
 
     return(
-      <TouchableHighlight
-        underlayColor={colors.midnightBlue}
+      <MyListViewCell
+        rowNumber={rowNumber}
         onPress={onPress}
       >
-        <View style={[styles.rowContainer, {backgroundColor: cellBackgroundColor}]}>
+        <View style={styles.rowContainer}>
           <View style={styles.imageContainer}>
             <Image
               resizeMode='stretch'
@@ -36,9 +35,8 @@ export default class ComponentFunctionCell extends React.Component {
             <Text style={styles.name}>{title}</Text>
             {this._getFunctionsViews(functions)}
           </View>
-          <RightAccessoryView />
         </View>
-      </TouchableHighlight>
+      </MyListViewCell>
     );
   }
 
@@ -64,12 +62,9 @@ export default class ComponentFunctionCell extends React.Component {
 
 
 const styles = StyleSheet.create({
-
   rowContainer: {
     flex: 1,
-    flexDirection: 'row',
-    padding: 10,
-    alignItems: 'center'
+    flexDirection: 'row'
   },
   textContainer: {
     flex: 1,

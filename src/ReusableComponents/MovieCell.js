@@ -2,7 +2,6 @@
 
 import React, {
   StyleSheet,
-  TouchableHighlight,
   View,
   Image,
   Text,
@@ -10,7 +9,7 @@ import React, {
 } from 'react-native'
 
 import { colors } from '../Data'
-import { RightAccessoryView } from './'
+import { RightAccessoryView, MyListViewCell } from './'
 
 export default class MovieCell extends React.Component {
 
@@ -24,14 +23,13 @@ export default class MovieCell extends React.Component {
 
   render() {
     const {title, rowNumber, onPress, subtitle, imageUri} = this.props;
-    const cellBackgroundColor = rowNumber % 2 == 0 ? 'white' : colors.silver;
 
     return(
-      <TouchableHighlight
-        underlayColor={colors.midnightBlue}
+      <MyListViewCell
+        rowNumber={rowNumber}
         onPress={onPress}
       >
-        <View style={[styles.rowContainer, {backgroundColor: cellBackgroundColor}]}>
+        <View style={styles.rowContainer}>
           <View style={styles.imageContainer}>
             <Image
               resizeMode='stretch'
@@ -43,9 +41,8 @@ export default class MovieCell extends React.Component {
             <Text style={styles.name}>{title}</Text>
             <Text style={styles.genres}>{subtitle}</Text>
           </View>
-          <RightAccessoryView />
         </View>
-      </TouchableHighlight>
+      </MyListViewCell>
     );
   }
 }
@@ -54,8 +51,6 @@ let styles = StyleSheet.create({
   rowContainer: {
     flex: 1,
     flexDirection: 'row',
-    padding: 10,
-    alignItems: 'center',
   },
   textContainer: {
     flex: 1,

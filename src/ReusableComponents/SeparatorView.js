@@ -11,7 +11,7 @@ export default class SeparatorView extends React.Component {
   }
 }
 
-let styles = StyleSheet.create({
+const styles = StyleSheet.create({
 
   separator: {
     height: 1,

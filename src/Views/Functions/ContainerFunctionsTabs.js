@@ -28,8 +28,7 @@ class ContainerFunctionsTabs extends React.Component {
       selectedTab: DateHelper.getShortDateString(date1)
     };
 
-    console.log(theater_id);
-    this.props.relay.setVariables({
+    props.relay.setVariables({
       date_start: DateHelper.getFormattedDate(date1),
       date_end: DateHelper.getFormattedDate(date7),
       theater_id: theater_id
@@ -60,6 +59,7 @@ class ContainerFunctionsTabs extends React.Component {
           <ContainerFunctions
             date={date1}
             theaterShows={this.props.viewer.api_theater_shows}
+            navigator={this.props.navigator}
           />
         </TabNavigator.Item>
 
@@ -72,6 +72,7 @@ class ContainerFunctionsTabs extends React.Component {
           <ContainerFunctions
             date={date2}
             theaterShows={this.props.viewer.api_theater_shows}
+            navigator={this.props.navigator}
           />
         </TabNavigator.Item>
 
@@ -84,6 +85,7 @@ class ContainerFunctionsTabs extends React.Component {
           <ContainerFunctions
             date={date3}
             theaterShows={this.props.viewer.api_theater_shows}
+            navigator={this.props.navigator}
           />
         </TabNavigator.Item>
 
@@ -96,6 +98,7 @@ class ContainerFunctionsTabs extends React.Component {
           <ContainerFunctions
             date={date4}
             theaterShows={this.props.viewer.api_theater_shows}
+            navigator={this.props.navigator}
           />
         </TabNavigator.Item>
 
@@ -108,6 +111,7 @@ class ContainerFunctionsTabs extends React.Component {
           <ContainerFunctions
             date={date5}
             theaterShows={this.props.viewer.api_theater_shows}
+            navigator={this.props.navigator}
           />
         </TabNavigator.Item>
 
@@ -120,6 +124,7 @@ class ContainerFunctionsTabs extends React.Component {
           <ContainerFunctions
             date={date6}
             theaterShows={this.props.viewer.api_theater_shows}
+            navigator={this.props.navigator}
           />
         </TabNavigator.Item>
 
@@ -132,6 +137,7 @@ class ContainerFunctionsTabs extends React.Component {
           <ContainerFunctions
             date={date7}
             theaterShows={this.props.viewer.api_theater_shows}
+            navigator={this.props.navigator}
           />
         </TabNavigator.Item>
 			</TabNavigator>
@@ -170,6 +176,7 @@ export default Relay.createContainer(ContainerFunctionsTabs, {
           information
           genres
           image_url
+          show_id
           functions{
             date
             showtimes

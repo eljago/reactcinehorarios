@@ -11,7 +11,7 @@ class ContainerTheaters extends React.Component {
   constructor(props) {
     super(props);
 
-    this.props.relay.setVariables({
+    props.relay.setVariables({
       cinema_id: props.extraData.cinema_id,
     });
   }

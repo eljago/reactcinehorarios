@@ -24,7 +24,7 @@ export default class ComponentBillboard extends React.Component {
 
   _renderRow(rowData, sectionID, rowID, highlightRow) {
     const {name, genres, image_url, duration, rowNumber} = rowData;
-    console.log(rowNumber);
+
     return (
       <MovieCell
         rowNumber={rowNumber}

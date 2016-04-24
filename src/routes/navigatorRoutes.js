@@ -7,6 +7,7 @@ import Billboard from '../Views/Billboard';
 import ComingSoon from '../Views/ComingSoon';
 import Theaters from '../Views/Theaters';
 import Functions from '../Views/Functions';
+import Show from '../Views/Show';
 
 function getBaseRoutes() {
   return [
@@ -20,7 +21,8 @@ export {
   getBaseRoutes,
   getCinemasRoute,
   getFunctionsRoute,
-  getTheatersRoute
+  getTheatersRoute,
+  getShowRoute
 };
 
 function getCinemasRoute() {
@@ -66,6 +68,18 @@ function getFunctionsRoute(start_date, theater_id, theaterName) {
     extraData: {
       theater_id: theater_id,
       start_date: start_date
+    }
+  });
+};
+
+function getShowRoute(show_id, showName) {
+  return({
+    title: showName,
+    Component: Show,
+    queryConfig: new ViewerQueryConfig(),
+    extraData: {
+      show_id: show_id,
+      showName: showName
     }
   });
 };

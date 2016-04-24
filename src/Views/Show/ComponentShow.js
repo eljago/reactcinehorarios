@@ -1,6 +1,6 @@
 'use strict';
 
-import React, { PropTypes, Image, View, Text, ScrollView } from 'react-native';
+import React, { PropTypes, Image, View, Text, ScrollView, StyleSheet } from 'react-native';
 import {colors} from '../../Data';
 
 class ContainerShow extends React.Component{
