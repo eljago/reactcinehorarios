@@ -27,7 +27,7 @@ export default class ComponentFunctions extends React.Component {
     return (
       <ComponentFunctionCell
         title={name}
-        imageUri={ImageHelper.addPrefixToPath(image_url, 'small_')}
+        imageUri={ImageHelper.addPrefixToPath(image_url, 'smaller_')}
         functions={functions}
         rowNumber={rowNumber}
         onPress={() => this.props.onPress(rowData)}

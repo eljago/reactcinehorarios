@@ -4,6 +4,7 @@ import React, { PropTypes } from 'react-native';
 import Relay from 'react-relay'
 
 import ComponentBillboard from './componentBillboard';
+import {getShowRoute} from '../../routes/navigatorRoutes'
 
 class ContainerBillboard extends React.Component {
 
@@ -19,7 +20,9 @@ class ContainerBillboard extends React.Component {
   }
 
   _onPress(rowData) {
-
+    const {show_id} = rowData;
+    let showRoute = getShowRoute(show_id);
+    this.props.navigator.push(showRoute);
   }
 }
 

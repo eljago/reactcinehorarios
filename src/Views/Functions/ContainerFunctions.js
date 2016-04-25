@@ -33,7 +33,8 @@ export default class ContainerFunctions extends React.Component {
   }
 
   _onPress(rowData) {
-    let showRoute = getShowRoute(rowData.show_id, rowData.name);
+    const {show_id} = rowData;
+    let showRoute = getShowRoute(show_id);
     this.props.navigator.push(showRoute);
   }
 
@@ -46,7 +47,7 @@ export default class ContainerFunctions extends React.Component {
 function getDataRows(date, theaterShows) {
   let dataRows = [];
   for(let index=0; index<theaterShows.length; index++){
-    const {id, name, information, genres, image_url, functions} = theaterShows[index];
+    const {id, name, information, genres, image_url, functions, show_id} = theaterShows[index];
 
     const filteredFunctions = functions.filter((obj) => {
       const dateArray1 = obj.date.split("-").map((string) => {
@@ -65,7 +66,8 @@ function getDataRows(date, theaterShows) {
         information: information,
         genres: genres,
         image_url: image_url,
-        functions: filteredFunctions
+        functions: filteredFunctions,
+        show_id: show_id
       });
     }
   }

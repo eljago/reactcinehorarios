@@ -2,7 +2,7 @@
 
 import React, { Navigator, Component, Text, View } from 'react-native';
 
-import {getCinemasRoute} from '../../routes/navigatorRoutes';
+import {getBaseRoutes} from '../../routes/navigatorRoutes';
 import renderScene from '../RenderScene';
 import {colors} from '../../Data';
 
@@ -16,8 +16,11 @@ export default class MyApp extends Component {
         <Navigator
           ref={'nav'}
           openMenu={this.props.openMenu}
-          initialRoute={getCinemasRoute()}
+          initialRoute={getBaseRoutes()[0]}
           renderScene={renderScene}
+          configureScene={(route, routeStack) => {
+            return Navigator.SceneConfigs.FloatFromRight;
+          }}
           navigationBar={
             <Navigator.NavigationBar
               routeMapper={NavigationBarRouteMapper}

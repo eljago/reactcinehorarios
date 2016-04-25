@@ -11,8 +11,8 @@ import Show from '../Views/Show';
 
 function getBaseRoutes() {
   return [
-    getCinemasRoute(),
     getBillboardRoute(),
+    getCinemasRoute(),
     getComingSoonRoute()
   ];
 };
@@ -72,14 +72,13 @@ function getFunctionsRoute(start_date, theater_id, theaterName) {
   });
 };
 
-function getShowRoute(show_id, showName) {
+function getShowRoute(show_id) {
   return({
-    title: showName,
+    title: "",
     Component: Show,
     queryConfig: new ViewerQueryConfig(),
     extraData: {
-      show_id: show_id,
-      showName: showName
+      show_id: show_id
     }
   });
 };

@@ -47,7 +47,7 @@
   
   #ifdef DEBUG
     NSLog(@"debug");
-    jsCodeLocation = [NSURL URLWithString:@"http://192.168.50.29:8081/index.ios.bundle?platform=ios&dev=true"];
+    jsCodeLocation = [NSURL URLWithString:@"http://localhost:8081/index.ios.bundle?platform=ios&dev=true"];
   #else
       // CODEPUSH
     NSLog(@"codepush");

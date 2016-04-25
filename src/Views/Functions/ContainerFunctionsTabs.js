@@ -19,7 +19,7 @@ class ContainerFunctionsTabs extends React.Component {
   constructor(props) {
     super(props);
 
-    const {start_date, theater_id} = this.props.extraData;
+    const {start_date, theater_id} = props.extraData;
 		const dates = DateHelper.getWeekDates(start_date);
     const {date1, date7} = dates;
 
@@ -35,6 +35,13 @@ class ContainerFunctionsTabs extends React.Component {
     });
   }
 
+  shouldComponentUpdate(nextProps, nextState) {
+    if (nextProps.viewer.api_theater_shows.length == 0) {
+      return false;
+    }
+    return true;
+  }
+
 	render() {
     const {date1, date2, date3, date4, date5, date6, date7} = this.state.dates;
 
@@ -45,6 +52,9 @@ class ContainerFunctionsTabs extends React.Component {
     const stringDate5 = DateHelper.getShortDateString(date5);
     const stringDate6 = DateHelper.getShortDateString(date6);
     const stringDate7 = DateHelper.getShortDateString(date7);
+
+    let {navigator, viewer} = this.props;
+    console.log(viewer);
 
     return (
     	<TabNavigator
@@ -58,8 +68,8 @@ class ContainerFunctionsTabs extends React.Component {
         >
           <ContainerFunctions
             date={date1}
-            theaterShows={this.props.viewer.api_theater_shows}
-            navigator={this.props.navigator}
+            theaterShows={viewer.api_theater_shows}
+            navigator={navigator}
           />
         </TabNavigator.Item>
 
@@ -71,8 +81,8 @@ class ContainerFunctionsTabs extends React.Component {
         >
           <ContainerFunctions
             date={date2}
-            theaterShows={this.props.viewer.api_theater_shows}
-            navigator={this.props.navigator}
+            theaterShows={viewer.api_theater_shows}
+            navigator={navigator}
           />
         </TabNavigator.Item>
 
@@ -84,8 +94,8 @@ class ContainerFunctionsTabs extends React.Component {
         >
           <ContainerFunctions
             date={date3}
-            theaterShows={this.props.viewer.api_theater_shows}
-            navigator={this.props.navigator}
+            theaterShows={viewer.api_theater_shows}
+            navigator={navigator}
           />
         </TabNavigator.Item>
 
@@ -97,8 +107,8 @@ class ContainerFunctionsTabs extends React.Component {
         >
           <ContainerFunctions
             date={date4}
-            theaterShows={this.props.viewer.api_theater_shows}
-            navigator={this.props.navigator}
+            theaterShows={viewer.api_theater_shows}
+            navigator={navigator}
           />
         </TabNavigator.Item>
 
@@ -110,8 +120,8 @@ class ContainerFunctionsTabs extends React.Component {
         >
           <ContainerFunctions
             date={date5}
-            theaterShows={this.props.viewer.api_theater_shows}
-            navigator={this.props.navigator}
+            theaterShows={viewer.api_theater_shows}
+            navigator={navigator}
           />
         </TabNavigator.Item>
 
@@ -123,8 +133,8 @@ class ContainerFunctionsTabs extends React.Component {
         >
           <ContainerFunctions
             date={date6}
-            theaterShows={this.props.viewer.api_theater_shows}
-            navigator={this.props.navigator}
+            theaterShows={viewer.api_theater_shows}
+            navigator={navigator}
           />
         </TabNavigator.Item>
 
@@ -136,8 +146,8 @@ class ContainerFunctionsTabs extends React.Component {
         >
           <ContainerFunctions
             date={date7}
-            theaterShows={this.props.viewer.api_theater_shows}
-            navigator={this.props.navigator}
+            theaterShows={viewer.api_theater_shows}
+            navigator={navigator}
           />
         </TabNavigator.Item>
 			</TabNavigator>
@@ -178,6 +188,7 @@ export default Relay.createContainer(ContainerFunctionsTabs, {
           image_url
           show_id
           functions{
+            function_id
             date
             showtimes
             function_types

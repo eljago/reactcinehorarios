@@ -1,214 +1,147 @@
 'use strict';
 
-import React, { PropTypes, Image, View, Text, ScrollView, StyleSheet } from 'react-native';
-import {colors} from '../../Data';
+import React, {
+  PropTypes,
+  View,
+  StyleSheet,
+  Text,
+  ScrollView,
+  Image,
+  Dimensions
+} from 'react-native';
 
-class ContainerShow extends React.Component{
+import {colors} from '../../Data';
+import {ImageHelper} from '../../Utils'
+
+export default class ContainerShow extends React.Component{
 
   static propTypes = {
-    onPress: PropTypes.func,
     show: PropTypes.object
   };
 
   render() {
-    const show = this.props.show;
+    const {show} = this.props;
+
     if (show) {
-      const  {
-        name,
+      const {
         image_url,
-        name_original,
-        information,
-        debut,
-        duration,
+        portrait_image,
+        name,
         genres,
-        has_functions,
-        imdb_code,
-        imdb_score,
-        rotten_tomatoes_url,
-        rotten_tomatoes_score,
-        metacritic_url,
-        metacritic_score,
+        information,
         year,
-        rating
+        rating,
+        name_original,
+        people,
+        images
       } = show;
-      
-      var showNameOriginal = null;
-      if (show.name_original && show.name_original.length > 0) {
-        showNameOriginal = <Text style={styles.nameOriginal}>{show.name_original}</Text>;
-      }
-      var showYear = null;
-      if (show.year && show.year > 0) {
-        showYear = <Text style={styles.year}>({show.year})</Text>
-      }
-      var showDuration = null;
-      if (show.duration && show.duration > 0) {
-        showDuration = <Text style={styles.duration}>{`${show.duration} minutos`}</Text>;
-      }
-      var showGenres;
-      if (show.genres && show.genres.length > 0) {
-        showGenres = <Text style={styles.genres}>{show.genres}</Text>
-      };
-      var information = null;
-      if (show.information && show.information.length > 0) {
-        information =
+
+      return(
+        <ScrollView>
+          <Image
+            resizeMode='cover'
+            style={styles.portraitImage}
+            source={{uri: ImageHelper.addPrefixToPath(portrait_image.image_url, 'smaller_')}}
+          >
+            <View style={styles.portraitView}>
+              <Text style={styles.title}>
+                {name}
+              </Text>
+              <View style={styles.portraitViewRow}>
+                <Image
+                  resizeMode='stretch'
+                  style={styles.coverImage}
+                  source={{uri: ImageHelper.addPrefixToPath(image_url, 'smaller_')}}
+                />
+                <Text style={styles.textDetails}>
+                  {name_original ? `${name_original}\n` : null}
+                  {year ? `${year}\n` : null}
+                  {rating ? `${rating}\n` : null}
+                  {genres ? `${genres}\n` : null}
+                </Text>
+              </View>
+            </View>
+          </Image>
+
           <Text style={styles.information}>
-            {show.information}
+            {information}
           </Text>
-      }
-      var scoresView = null;
-      if ((show.imdb_code && show.imdb_code.length > 0) || 
-          (show.rotten_tomatoes_url && show.rotten_tomatoes_url.length > 0) || 
-          (show.metacritic_url && show.metacritic_url.length > 0)) {
-        scoresView = <Scores show={show} style={styles.scores}/>
-      }
 
-      return (
-        <ScrollView style={styles.container}>
-          {this._getHeaderView()}
-          <View style={styles.secondView}>
-            {this._getPortraitImageView()}
-            <View style={styles.details}>
-              {showNameOriginal}
-              {showYear}
-              {showDuration}
-              {showGenres}
-            </View>
-          </View>
-          {information}
-          {scoresView}
+          <ScrollViewhorizontal={true}>
+            {people.map((obj) => {
+              return <Text key={obj.person_id}>{obj.name}</Text>;
+            })}
+          </ScrollView>
+
+          <ScrollView horizontal={true}>
+            {images.map((obj) => {
+              return(
+                <Image 
+                  key={obj.image_id}
+                  resizeMode='stretch' 
+                  style={styles.coverImage}
+                  source={{uri: ImageHelper.addPrefixToPath(obj.image_url, 'smaller_')}}
+                />
+              );
+            })}
+          </ScrollView>
         </ScrollView>
       );
     }
-    else { // BEFORE DOWNLOADING
-      var propsShow = this.props.extraData.showData;
-      return (
-        <ScrollView style={styles.container}>
-          {this._getHeaderView()}
-          <View style={styles.secondView}>
-            {this._getPortraitImageView()}
-            <View style={styles.details}>
-              <Text style={styles.genres}>{propsShow.genres}</Text>
-            </View>
-          </View>
-        </ScrollView>
+    else {
+      return(
+        <View />
       );
     }
-  }
-
-  _getHeaderView() {
-    return(
-      <View style={[styles.viewHeader, styles.shadow]}>
-        <Image
-          source={{uri: api.getFullURL(this.props.extraData.showData.portrait_image)}}
-          style={styles.portraitImage}>
-          <Text style={styles.showName}>{this.props.extraData.showData.name}</Text>
-        </Image>
-      </View>
-    );
-  }
-
-  _getPortraitImageView() {
-    return(
-      <View style={[styles.imageContainer, styles.shadow]}>
-        <Image
-          source={{uri: api.getFullURL(imageHelper.getThumbImage(this.props.extraData.showData.image_url))}}
-          style={styles.image}/>
-      </View>
-    );
   }
 }
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
-    backgroundColor: colors.silver,
+    flex: 1
   },
 
-  // HEADER
-  viewHeader: {
-    height: 140,
+  portraitImage: {
+    height: Dimensions.get('window').width * 720 / 1280,
+    width: Dimensions.get('window').width
+  },
+  portraitView: {
     flex: 1,
+    backgroundColor: 'rgba(0, 0, 0, 0.7)',
   },
-  imageHeader: {
-    flex: 5
+  portraitViewRow: {
+    flexDirection: 'row',
+    marginLeft: 20,
+    marginRight: 10,
+    marginTop: 10
   },
-  imageContainer: {
+  textDetails: {
+    marginLeft: 10,
+    fontSize: 14,
+    color: 'white',
+  },
+  coverImage: {
     width: 80,
-    height: 120
-  },
-  shadow: {
+    height: 120,
     shadowColor: 'black',
     shadowRadius: 3,
     shadowOpacity: 1,
     shadowOffset: {
-      width: 0, height: 1
-    }
+      width: 0, height: 0
+    },
   },
-
-  // TITLE
-  image: {
-    flex: 1
-  },
-  secondView: {
-    flex: 1,
-    flexDirection: 'row',
-    margin: 10
-  },
-  details: {
-    flex: 1,
-    flexDirection: 'column',
-    marginLeft: 10
-  },
-  portraitImage: {
-    flex: 1,
-    flexDirection: 'column',
-    justifyContent: 'flex-end',
-    backgroundColor: 'black'
-  },
-  showName: {
-    color: 'white',
+  title: {
+    marginTop: 10,
+    marginRight: 10,
+    marginLeft: 20,
     fontSize: 20,
-    backgroundColor: '#000000',
-    padding: 5,
-    paddingLeft: 10,
-    paddingTop: 4
+    color: 'white',
   },
-  nameOriginal: {
-    fontSize: 18,
-    color: '#000',
-    fontWeight: '300',
-    marginBottom: 4
-  },
-  year: {
-    fontSize: 16,
-    color: '#000',
-    fontWeight: '300',
-    marginBottom: 4
-  },
-  duration: {
-    fontSize: 17,
-    color: '#000',
-    fontWeight: '300',
-    marginBottom: 4
-  },
-  genres: {
-    fontSize: 17,
-    color: '#000',
-    fontWeight: '300'
-  },
-
-  // INFORMATION
   information: {
-    margin: 15,
-    marginTop: 5,
-    fontSize: 18,
-    color: '#000',
-    fontWeight: '300'
-  },
-
-  // Scores
-  scores: {
-    flex: 1,
-    margin: 10,
+    marginLeft: 20,
+    marginRight: 20,
+    marginTop: 15,
+    marginBottom: 15,
+    fontSize: 14
   }
 });

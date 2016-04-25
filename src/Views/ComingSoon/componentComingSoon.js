@@ -32,7 +32,7 @@ export default class ComponentComingSoon extends React.Component {
         onPress={() => this.props.onPress(rowData)}
         title={name}
         subtitle={debut}
-        imageUri={ImageHelper.addPrefixToPath(image_url, 'small_')}
+        imageUri={ImageHelper.addPrefixToPath(image_url, 'smaller_')}
       />
     );
   }

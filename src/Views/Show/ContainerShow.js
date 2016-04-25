@@ -1,9 +1,9 @@
 'use strict';
 
-import React, { PropTypes } from 'react-native'
-import Relay from 'react-relay'
+import React, { PropTypes } from 'react-native';
+import Relay from 'react-relay';
 
-import ComponentShow from './ComponentShow'
+import ComponentShow from './ComponentShow';
 
 class ContainerShow extends React.Component {
 
@@ -20,7 +20,6 @@ class ContainerShow extends React.Component {
 
     return (
       <ComponentShow
-        onPress={this._onPress.bind(this)}
         show={show}
       />
     );
@@ -39,6 +38,7 @@ export default Relay.createContainer(ContainerShow, {
          api_show(show_id: $show_id){
           show_id
           name
+          name_original
           image_url
           information
           debut
