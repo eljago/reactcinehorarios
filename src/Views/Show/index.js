@@ -1,3 +1,3 @@
 'use strict'
 
-export {default as default} from './ContainerShow'
+export {default as default} from './ContainerShowTabs'

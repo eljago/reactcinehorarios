@@ -13,11 +13,10 @@
     "react-native-tab-navigator": "^0.2.18",
     "react-relay": "^0.8.0",
     "slash": "^1.0.0"
-
   },
   "devDependencies": {
     "babel": "^6.5.2",
-    "babel-preset-react-native": "^1.5.7",
+    "babel-preset-react-native": "^1.6.0",
     "babel-relay-plugin": "^0.8.0"
   }
 }
