@@ -8,7 +8,7 @@ export default class RightAccesoryView extends React.Component {
     return (
       <Image 
         style={styles.rightAccessoryView} 
-        source={require('./Images/RightAccesoryView.png')}/>
+        source={require('../../assets/RightAccesoryView.png')}/>
     );
   }
 }

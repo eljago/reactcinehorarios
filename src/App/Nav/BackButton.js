@@ -13,7 +13,7 @@ export class BackButton extends React.Component {
       <TouchableHighlight
         onPress={this.props.onPress}
           underlayColor="transparent">
-        <Image source={require('./Images/MenuBackIcon.png')} style={styles.backButton} />
+        <Image source={require('../../../assets/MenuBackIcon.png')} style={styles.backButton} />
       </TouchableHighlight>
     );
   }

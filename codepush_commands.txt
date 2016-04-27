@@ -1,5 +1,5 @@
-react-native bundle --platform ios --entry-file index.ios.js --bundle-output codepush.js --dev false
+react-native bundle --platform ios --entry-file index.ios.js --bundle-output ./code-push-release/main.jsbundle --assets-dest ./code-push-release --dev
 
-code-push release CineHorarios codepush.js 1.0 --mandatory true
+code-push release CineHorarios ./code-push-release 1.0.0 --deploymentName "Staging" --description "inventory" --mandatory true
 
 code-push deployment ls CineHorarios -k

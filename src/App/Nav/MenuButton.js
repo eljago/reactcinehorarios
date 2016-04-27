@@ -15,7 +15,7 @@ export class MenuButton extends React.Component {
           underlayColor="transparent"
           onPress={this.props.onPress}>
           <Image 
-            source={require('./Images/MenuIcon.png')} 
+            source={require('../../../assets/MenuIcon.png')} 
             style={styles.icon} 
             resizeMode='contain'/>
         </TouchableHighlight>

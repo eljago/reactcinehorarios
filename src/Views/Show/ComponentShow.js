@@ -127,7 +127,7 @@ export default class ComponentShow extends React.Component {
           <View style={styles.scoreView}>
             <Image
               style={styles.scoreLogo}
-              source={require('../../Images/LogoImdb.png')}/>
+              source={require('../../../assets/LogoImdb.png')}/>
             <Text style={styles.scoreText}>{imdb_score} / 10</Text>
           </View>
         </TouchableHighlight>
@@ -149,7 +149,7 @@ export default class ComponentShow extends React.Component {
           <View style={styles.scoreView}>
             <Image
               style={styles.scoreLogo}
-              source={require('../../Images/LogoRotten.png')}/>
+              source={require('../../../assets/LogoRotten.png')}/>
             <Text style={styles.scoreText}>{rotten_tomatoes_score} %</Text>
           </View>
         </TouchableHighlight>
@@ -171,7 +171,7 @@ export default class ComponentShow extends React.Component {
           <View style={styles.scoreView}>
             <Image
               style={styles.scoreLogo}
-              source={require('../../Images/LogoMetacritic.png')}/>
+              source={require('../../../assets/LogoMetacritic.png')}/>
             <Text style={styles.scoreText}>{metacritic_score} / 100</Text>
           </View>
         </TouchableHighlight>

@@ -4,41 +4,41 @@ export const cinemas = [
   {
     cinema_id: 1,
     name: "Cinemark",
-    images: [require('../Images/Cinemark.png')]
+    images: [require('../../assets/Cinemark.png')]
   },
   {
     cinema_id: 2,
     name: "Hoyts Santiago",
-    images: [require('../Images/Hoyts.png')]
+    images: [require('../../assets/Hoyts.png')]
   },
   {
     cinema_id: 4,
     name: "Hoyts Regiones",
-    images: [require('../Images/Hoyts.png')]
+    images: [require('../../assets/Hoyts.png')]
   },
   {
     cinema_id: 3,
     name: "Cineplanet",
-    images: [require('../Images/Cineplanet.png')]
+    images: [require('../../assets/Cineplanet.png')]
   },
   {
     cinema_id: 6,
     name: "Cine Pavilion",
-    images: [require('../Images/Pavilion.png')]
+    images: [require('../../assets/Pavilion.png')]
   },
   {
     cinema_id: 7,
     name: "CineStar",
-    images: [require('../Images/CineStar.png')]
+    images: [require('../../assets/CineStar.png')]
   },
   {
     cinema_id: 5,
     name: "Independientes",
     images: [
-              require('../Images/Normandie.png'), 
-              require('../Images/Antay.png'),
-              require('../Images/ArteAlameda.png'),
-              require('../Images/ElBiografo.png')
+              require('../../assets/Normandie.png'), 
+              require('../../assets/Antay.png'),
+              require('../../assets/ArteAlameda.png'),
+              require('../../assets/ElBiografo.png')
             ]
   }
 ];
