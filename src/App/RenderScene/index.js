@@ -1,6 +1,6 @@
 'use strict'
 
-import React, { StyleSheet, View } from 'react-native';
+import React, { StyleSheet, View, Platform } from 'react-native';
 
 import renderRelayScene from './RenderRelayScene'
 import renderNormalScene from './RenderNormalScene'
@@ -13,8 +13,12 @@ export default function renderScene(route, navigator) {
 		var scene = renderNormalScene(route, navigator);
 	}
 
+	let marginTop = 64;
+	if (Platform.OS === 'android') {
+		marginTop = 56;
+	}
 	return (
-    <View style={styles.container}>
+    <View style={[styles.container, {marginTop: marginTop}]}>
     	{scene}
     </View>
 	);
@@ -23,7 +27,6 @@ export default function renderScene(route, navigator) {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: 'white',
-    marginTop: 64
+    backgroundColor: 'white'
   }
 });

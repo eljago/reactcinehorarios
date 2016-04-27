@@ -15,7 +15,7 @@ export default function renderRelayScene(route, navigator) {
       route={queryConfig}
       forceFetch={false}
       onReadyStateChange={(currentReadyState) => {
-
+        console.log(currentReadyState);
       }}
       renderFetched={(data, readyState) => {
         return (

@@ -54,8 +54,6 @@ class ContainerFunctionsTabs extends React.Component {
     const stringDate7 = DateHelper.getShortDateString(date7);
 
     let {navigator, viewer} = this.props;
-    console.log(viewer);
-
     return (
     	<TabNavigator
         tabBarStyle={styles.tabBar}

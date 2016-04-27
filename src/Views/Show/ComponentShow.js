@@ -15,8 +15,6 @@ import React, {
 import {colors} from '../../Data';
 import {ImageHelper} from '../../Utils';
 
-const MARGIN_LEFT = 15;
-
 export default class ComponentShow extends React.Component {
 
   static propTypes = {
@@ -69,40 +67,52 @@ export default class ComponentShow extends React.Component {
         <Image
           resizeMode='cover'
           style={styles.portraitImage}
-          source={{uri: ImageHelper.addPrefixToPath(portrait_image.image_url, 'smaller_')}}
+          source={{uri: ImageHelper.addPrefixToPath(portrait_image.image_url, 'small_')}}
         >
-          <View style={styles.portraitView}>
-            <Text style={styles.title}>
-              {name}
-            </Text>
-            <View style={styles.portraitViewRow}>
-              <Image
-                resizeMode='stretch'
-                style={styles.coverImage}
-                source={{uri: ImageHelper.addPrefixToPath(image_url, 'smaller_')}}
-              />
-              <View style={styles.portraitViewDetails}>
-                <Text style={styles.textDetails}>
-                  {[name_original, year.toString(), rating, genres, estreno].filter((obj) => {
-                    return typeof obj == "string" && obj.length > 0;
-                  }).join('\n')}
-                </Text>
-                <View style={styles.scoresView}>
-                  {this._getImdbScoreView()}
-                  {this._getMetacriticScoreView()}
-                  {this._getRottenTomatoesScoreView()}
-                </View>
+          <View style={styles.portraitViewRow}>
+            <View style={styles.viewTitleDetails}>
+              <Text style={styles.title}>
+                {name}
+              </Text>
+              <View style={styles.viewDetails}>
+                {this._getDetailText(name_original)}
+                {this._getDetailText(year.toString())}
+                {this._getDetailText(rating)}
+                {this._getDetailText(genres)}
+                {this._getDetailText(estreno)}
               </View>
+            </View>
+            <View style={styles.scoresView}>
+              {this._getImdbScoreView()}
+              {this._getMetacriticScoreView()}
+              {this._getRottenTomatoesScoreView()}
             </View>
           </View>
         </Image>
 
-        <Text style={styles.information}>
-          {information}
-        </Text>
+        <View style={styles.imageAndInformation}>
+          <Image
+            resizeMode='stretch'
+            style={styles.coverImage}
+            source={{uri: ImageHelper.addPrefixToPath(image_url, 'smaller_')}}
+          />
+          <Text style={styles.information}>
+            {information}
+          </Text>
+        </View>
 
       </ScrollView>
     );
+  }
+
+  _getDetailText(string) {
+    if (typeof string == 'string' && string.length > 0) {
+      return(
+        <Text style={styles.textDetails}>{string}</Text>
+      );
+    }
+    else
+      return null;
   }
 
   _getImdbScoreView() {
@@ -112,6 +122,7 @@ export default class ComponentShow extends React.Component {
       return(
         <TouchableHighlight
           style={styles.scoreButton}
+          underlayColor={colors.cellsUnderlayColor}
           onPress={() => {}}>
           <View style={styles.scoreView}>
             <Image
@@ -133,6 +144,7 @@ export default class ComponentShow extends React.Component {
       return(
         <TouchableHighlight
           style={styles.scoreButton}
+          underlayColor={colors.cellsUnderlayColor}
           onPress={() => {}}>
           <View style={styles.scoreView}>
             <Image
@@ -154,6 +166,7 @@ export default class ComponentShow extends React.Component {
       return(
         <TouchableHighlight
           style={styles.scoreButton}
+          underlayColor={colors.cellsUnderlayColor}
           onPress={() => {}}>
           <View style={styles.scoreView}>
             <Image
@@ -174,73 +187,69 @@ const styles = StyleSheet.create({
     height: Dimensions.get('window').width * 720 / 1280,
     width: Dimensions.get('window').width
   },
-  portraitView: {
-    flex: 1,
-    backgroundColor: 'rgba(0, 0, 0, 0.7)',
-  },
   portraitViewRow: {
     flex: 1,
+    backgroundColor: 'rgba(0, 0, 0, 0.5)',
     flexDirection: 'row',
-    marginLeft: MARGIN_LEFT,
-    marginRight: MARGIN_LEFT,
-    marginTop: 10
+    paddingTop: 10,
+    paddingRight: 10,
+    paddingBottom: 10,
+    paddingLeft: 15
   },
-  portraitViewDetails: {
+  viewTitleDetails: {
+    flex: 1
+  },
+  viewDetails: {
     flex: 1,
-    flexDirection: 'column',
-    marginLeft: MARGIN_LEFT,
-    justifyContent: 'space-between'
   },
   textDetails: {
-    flex: 1,
     fontSize: 14,
     color: 'white',
+    marginBottom: 5
+  },
+  title: {
+    fontSize: 24,
+    color: 'white',
+  },
+
+  scoresView: {
+    justifyContent: 'flex-end'
+  },
+  scoreButton: {
+    padding: 5
+  },
+  scoreView: {
+    alignItems: 'center'
+  },
+  scoreLogo: {
+    width: 25,
+    height: 25,
+    margin: 5
+  },
+  scoreText: {
+    textAlign: 'center',
+    fontSize: 13,
+    color: 'white'
+  },
+
+  // COVER IMAGE AND INFORMATION
+  imageAndInformation: {
+    flexDirection: 'row',
+    margin: 15
   },
   coverImage: {
-    width: 90,
-    height: 135,
+    width: 80,
+    height: 120,
     shadowColor: 'black',
     shadowRadius: 3,
     shadowOpacity: 1,
     shadowOffset: {
       width: 0, height: 0
-    },
-  },
-  title: {
-    marginTop: 10,
-    marginRight: 10,
-    marginLeft: MARGIN_LEFT,
-    fontSize: 20,
-    color: 'white',
+    }
   },
   information: {
-    marginLeft: MARGIN_LEFT,
-    marginRight: MARGIN_LEFT,
-    marginTop: 15,
-    marginBottom: 15,
-    fontSize: 14
+    flex: 1,
+    marginLeft: 15,
+    fontSize: 16
   },
-  scoresView: {
-    flexDirection: 'row',
-    marginTop: 10,
-    justifyContent: 'space-around'
-  },
-  scoreButton: {
-    paddingLeft: 10,
-    paddingRight: 10,
-    paddingBottom: 10
-  },
-  scoreView: {
-    flexDirection: 'column',
-    alignItems: 'center'
-  },
-  scoreLogo: {
-    width: 32,
-    height: 32,
-    margin: 5
-  },
-  scoreText: {
-    color: 'white',
-    fontSize: 14
-  }
 });
