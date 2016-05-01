@@ -25,29 +25,12 @@ class ContainerShowTabs extends React.Component {
   }
 
 	render() {
-    if (!this.props.viewer.api_show) {
+    const show = this.props.viewer.api_show;
+    
+    if (!show) {
       return null;
     }
 
-    const {
-      show_id,
-      name,
-      name_original,
-      image_url,
-      information,
-      debut,
-      duration,
-      genres,
-      imdb_code,
-      imdb_score,
-      metacritic_url,
-      metacritic_score,
-      rotten_tomatoes_url,
-      rotten_tomatoes_score,
-      year,
-      rating,
-      portrait_image
-    } = this.props.viewer.api_show;
 
     return (
     	<TabNavigator
@@ -61,23 +44,7 @@ class ContainerShowTabs extends React.Component {
         >
           <ContainerShow
             navigator={navigator}
-            show_id={show_id}
-            name={name}
-            name_original={name_original}
-            image_url={image_url}
-            information={information}
-            debut={debut}
-            duration={duration}
-            genres={genres}
-            imdb_code={imdb_code}
-            imdb_score={imdb_score}
-            metacritic_url={metacritic_url}
-            metacritic_score={metacritic_score}
-            rotten_tomatoes_url={rotten_tomatoes_url}
-            rotten_tomatoes_score={rotten_tomatoes_score}
-            year={year}
-            rating={rating}
-            portrait_image={portrait_image}
+            show={show}
           />
         </TabNavigator.Item>
 			</TabNavigator>

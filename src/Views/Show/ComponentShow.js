@@ -18,23 +18,7 @@ import {ImageHelper} from '../../Utils';
 export default class ComponentShow extends React.Component {
 
   static propTypes = {
-    show_id: PropTypes.number,
-    name: PropTypes.string,
-    name_original: PropTypes.string,
-    image_url: PropTypes.string,
-    information: PropTypes.string,
-    debut: PropTypes.string,
-    duration: PropTypes.number,
-    genres: PropTypes.string,
-    imdb_code: PropTypes.string,
-    imdb_score: PropTypes.number,
-    metacritic_url: PropTypes.string,
-    metacritic_score: PropTypes.number,
-    rotten_tomatoes_url: PropTypes.string,
-    rotten_tomatoes_score: PropTypes.number,
-    year: PropTypes.number,
-    rating: PropTypes.string,
-    portrait_image: PropTypes.object
+    show: PropTypes.object.isRequired
   };
 
   constructor(props) {
@@ -59,7 +43,7 @@ export default class ComponentShow extends React.Component {
       metacritic_score,
       rotten_tomatoes_url,
       rotten_tomatoes_score
-    } = this.props;
+    } = this.props.show;
 
     const estreno = debut ? `Estreno: ${debut}` : null;
     return(
@@ -69,33 +53,33 @@ export default class ComponentShow extends React.Component {
           style={styles.portraitImage}
           source={{uri: ImageHelper.addPrefixToPath(portrait_image.image_url, 'small_')}}
         >
-          <View style={styles.portraitViewRow}>
-            <View style={styles.viewTitleDetails}>
-              <Text style={styles.title}>
-                {name}
-              </Text>
-              <View style={styles.viewDetails}>
-                {this._getDetailText(name_original)}
-                {this._getDetailText(year.toString())}
-                {this._getDetailText(rating)}
-                {this._getDetailText(genres)}
-                {this._getDetailText(estreno)}
-              </View>
-            </View>
-            <View style={styles.scoresView}>
-              {this._getImdbScoreView()}
-              {this._getMetacriticScoreView()}
-              {this._getRottenTomatoesScoreView()}
+          <View style={styles.viewTitleDetails}>
+            <Text style={styles.title}>
+              {name}
+            </Text>
+            <View style={styles.viewDetails}>
+              {this._getDetailText(name_original)}
+              {this._getDetailText(year.toString())}
+              {this._getDetailText(rating)}
+              {this._getDetailText(genres)}
+              {this._getDetailText(estreno)}
             </View>
           </View>
         </Image>
 
         <View style={styles.imageAndInformation}>
-          <Image
-            resizeMode='stretch'
-            style={styles.coverImage}
-            source={{uri: ImageHelper.addPrefixToPath(image_url, 'smaller_')}}
-          />
+          <View>
+            <Image
+              resizeMode='stretch'
+              style={styles.coverImage}
+              source={{uri: ImageHelper.addPrefixToPath(image_url, 'smaller_')}}
+            />
+            <View style={styles.scoresView}>
+              {this._getImdbScoreView(imdb_code, imdb_score)}
+              {this._getMetacriticScoreView(metacritic_url, metacritic_score)}
+              {this._getRottenTomatoesScoreView(rotten_tomatoes_url, rotten_tomatoes_score)}
+            </View>
+          </View>
           <Text style={styles.information}>
             {information}
           </Text>
@@ -115,8 +99,7 @@ export default class ComponentShow extends React.Component {
       return null;
   }
 
-  _getImdbScoreView() {
-    let {imdb_code, imdb_score} = this.props;
+  _getImdbScoreView(imdb_code, imdb_score) {
     imdb_score = imdb_score > 0 ? imdb_score/10 : '?';
     if (typeof imdb_code == 'string' && imdb_code.length > 0) {
       return(
@@ -137,8 +120,7 @@ export default class ComponentShow extends React.Component {
       return null;
   }
 
-  _getRottenTomatoesScoreView() {
-    let {rotten_tomatoes_url, rotten_tomatoes_score} = this.props;
+  _getRottenTomatoesScoreView(rotten_tomatoes_url, rotten_tomatoes_score) {
     rotten_tomatoes_score = rotten_tomatoes_score > 0 ? rotten_tomatoes_score : '?';
     if (typeof rotten_tomatoes_url == 'string' && rotten_tomatoes_url.length > 0) {
       return(
@@ -159,8 +141,7 @@ export default class ComponentShow extends React.Component {
       return null;
   }
 
-  _getMetacriticScoreView() {
-    let {metacritic_url, metacritic_score} = this.props;
+  _getMetacriticScoreView(metacritic_url, metacritic_score) {
     metacritic_score = metacritic_score > 0 ? metacritic_score : '?';
     if (typeof metacritic_url == 'string' && metacritic_url.length > 0) {
       return(
@@ -187,17 +168,13 @@ const styles = StyleSheet.create({
     height: Dimensions.get('window').width * 720 / 1280,
     width: Dimensions.get('window').width
   },
-  portraitViewRow: {
+  viewTitleDetails: {
     flex: 1,
     backgroundColor: 'rgba(0, 0, 0, 0.5)',
-    flexDirection: 'row',
     paddingTop: 10,
     paddingRight: 10,
     paddingBottom: 10,
     paddingLeft: 15
-  },
-  viewTitleDetails: {
-    flex: 1
   },
   viewDetails: {
     flex: 1,
@@ -205,7 +182,7 @@ const styles = StyleSheet.create({
   textDetails: {
     fontSize: 14,
     color: 'white',
-    marginBottom: 5
+    marginTop: 5
   },
   title: {
     fontSize: 24,
@@ -213,7 +190,7 @@ const styles = StyleSheet.create({
   },
 
   scoresView: {
-    justifyContent: 'flex-end'
+
   },
   scoreButton: {
     padding: 5
@@ -222,14 +199,13 @@ const styles = StyleSheet.create({
     alignItems: 'center'
   },
   scoreLogo: {
-    width: 25,
-    height: 25,
+    width: 32,
+    height: 32,
     margin: 5
   },
   scoreText: {
     textAlign: 'center',
     fontSize: 13,
-    color: 'white'
   },
 
   // COVER IMAGE AND INFORMATION

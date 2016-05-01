@@ -58,6 +58,7 @@ var NavigationBarRouteMapper = {
     }
 
     var previousRoute = navState.routeStack[index - 1];
+    if (Platform.OS === 'android') return null;
     return(
       <BackButton
         onPress={() => {
