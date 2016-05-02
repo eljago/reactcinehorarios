@@ -1,6 +1,6 @@
 'use strict';
 
-import React, { StatusBar } from 'react-native';
+import React, { StatusBar, View } from 'react-native';
 import SideMenu from 'react-native-side-menu';
 import Menu from '../Menu';
 import Nav from './Nav';
