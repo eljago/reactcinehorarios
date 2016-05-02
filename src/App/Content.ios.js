@@ -27,8 +27,8 @@ export default class Content extends React.Component {
           touchToClose={true}
           isOpen={this.state.isOpen}
           disableGestures={false}
-          menu={<Menu onPress={this._onPress.bind(this)} />}>
-
+          menu={<Menu onPress={this._onPress.bind(this)} />}
+        >
           <Nav ref={"nav"} openMenu={this._openMenu.bind(this)} />
         </SideMenu>
       </View>

@@ -18,7 +18,7 @@ export default class Content extends React.Component {
         <DrawerLayoutAndroid
           ref="drawer"
           drawerWidth={300}
-          drawerPosition={DrawerLayoutAndroid.positions.Right}
+          drawerPosition={DrawerLayoutAndroid.positions.Left}
           renderNavigationView={() => {
             return <Menu onPress={this._onPress.bind(this)} />;
           }}
