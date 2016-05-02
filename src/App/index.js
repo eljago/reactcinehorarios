@@ -1,8 +1,6 @@
 'use strict';
 
-import React, {
-  View
-} from 'react-native';
+import React from 'react-native';
 
 import Relay from 'react-relay'
 import config from '../config'
