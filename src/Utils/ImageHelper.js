@@ -4,7 +4,7 @@ import config from '../config'
 
 var ImageHelper = {
 
-	addPrefixToPath(ImagePath, prefix) {
+	addPrefixToPath(ImagePath, prefix = '') {
 	  var pathArray = ImagePath.split('/');
 	  var imgName = pathArray[pathArray.length - 1];
 	  pathArray[pathArray.length - 1] = `${prefix}${imgName}`

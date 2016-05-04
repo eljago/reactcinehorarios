@@ -3,8 +3,10 @@
 import React, { PropTypes, StyleSheet } from 'react-native';
 import Relay from 'react-relay'
 import TabNavigator from 'react-native-tab-navigator';
+import PhotoBrowser from 'react-native-photo-browser';
 
-import {colors} from '../../Data'
+import {colors} from '../../Data';
+import {ImageHelper} from '../../Utils';
 import ContainerShow from './ContainerShow';
 
 class ContainerShowTabs extends React.Component {
@@ -47,8 +49,43 @@ class ContainerShowTabs extends React.Component {
             show={show}
           />
         </TabNavigator.Item>
+
+        <TabNavigator.Item
+          selected={this.state.selectedTab === 'photos'}
+          onPress={() => this.setState({ selectedTab: 'photos' })}
+          renderIcon={() => <React.Text style={styles.icon}>Photos</React.Text>}
+          renderSelectedIcon={() => <React.Text style={styles.sIcon}>Photos</React.Text>}
+        >
+          <PhotoBrowser
+            mediaList={this._getPhotoViewerMedia(show.images)}
+            initialIndex={0}
+            displayNavArrows={true}
+            displaySelectionButtons={false}
+            displayActionButton={false}
+            startOnGrid={true}
+            enableGrid={true}
+            onSelectionChanged={(media, index, selected) => {
+              console.log(`${media.photo} selection status: ${selected}`);
+            }}
+            onActionButton={(media, index) => {
+              console.log(`action button pressed for ${media.photo}, index: ${index}`);
+            }}
+          />
+        </TabNavigator.Item>
+
 			</TabNavigator>
     );
+  }
+
+  _getPhotoViewerMedia(images) {
+    return images.map((image) => {
+      return({
+        thumb: ImageHelper.addPrefixToPath(image.image_url, 'smaller_'),
+        photo: ImageHelper.addPrefixToPath(image.image_url),
+        caption: '',
+        selected: false
+      });
+    });
   }
 }
 

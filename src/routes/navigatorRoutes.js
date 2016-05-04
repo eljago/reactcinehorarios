@@ -8,6 +8,7 @@ import ComingSoon from '../Views/ComingSoon';
 import Theaters from '../Views/Theaters';
 import Functions from '../Views/Functions';
 import Show from '../Views/Show';
+import ShowImages from '../Views/Show/ComponentImages';
 
 function getBaseRoutes() {
   return [
@@ -22,7 +23,8 @@ export {
   getCinemasRoute,
   getFunctionsRoute,
   getTheatersRoute,
-  getShowRoute
+  getShowRoute,
+  getShowImagesRoute
 };
 
 function getCinemasRoute() {
@@ -82,3 +84,15 @@ function getShowRoute(show_id) {
     }
   });
 };
+
+function getShowImagesRoute(images) {
+  return({
+    title: "",
+    Component: ShowImages,
+    extraData: {
+      images: images
+    },
+    navigationBarHidden: true,
+    menuGesturesDisabled: true
+  });
+}

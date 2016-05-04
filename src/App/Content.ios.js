@@ -10,7 +10,8 @@ export default class Content extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      isOpen: false
+      isOpen: false,
+      disableGestures: false
     };
   }
 
@@ -23,16 +24,25 @@ export default class Content extends React.Component {
           backgroundColor={"rgba(0, 0, 0, 0.2)"}
         />
         <SideMenu
+          ref='sideMenu'
           menuPosition='right'
           touchToClose={true}
           isOpen={this.state.isOpen}
-          disableGestures={false}
+          disableGestures={this._getMenuGesturesDisabled.bind(this)}
           menu={<Menu onPress={this._onPress.bind(this)} />}
         >
-          <Nav ref={"nav"} openMenu={this._openMenu.bind(this)} />
+          <Nav 
+            ref={"nav"}
+            openMenu={this._openMenu.bind(this)}
+          />
         </SideMenu>
       </View>
     );
+  }
+
+  _getMenuGesturesDisabled() {
+    const currentRoutes = this.refs.nav.getNavigator().navigationContext._currentRoute;
+    return currentRoutes.menuGesturesDisabled === true;
   }
 
   _openMenu() {

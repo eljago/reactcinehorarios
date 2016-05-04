@@ -1,11 +1,12 @@
 'use strict';
 
-import React, { Navigator, Component, Text, View, Platform } from 'react-native';
+import React, { Navigator, Text, View, Platform } from 'react-native';
 
 import {getBaseRoutes} from '../../routes/navigatorRoutes';
 import renderScene from '../RenderScene';
 import {colors} from '../../Data';
 
+import NavigationBar from './NavigationBar'
 import {BackButton} from './BackButton'
 import {MenuButton} from './MenuButton'
 
@@ -19,7 +20,15 @@ React.BackAndroid.addEventListener('hardwareBackPress', () => {
     return false;
 });
 
-export default class MyApp extends Component {
+export default class MyApp extends React.Component {
+
+  constructor(props) {
+    super(props);
+    this.state = {
+      navigationBarHidden: false
+    }
+  }
+
   render() {
     return (
       <View style={{ flex: 1, backgroundColor: 'white' }}>
@@ -35,7 +44,7 @@ export default class MyApp extends Component {
             return Navigator.SceneConfigs.FloatFromRight;
           }}
           navigationBar={
-            <Navigator.NavigationBar
+            <NavigationBar
               routeMapper={NavigationBarRouteMapper}
               style={{backgroundColor: colors.navBar}}
             />

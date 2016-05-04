@@ -12,13 +12,17 @@ import React, {
   TouchableHighlight
 } from 'react-native';
 
+import ComponentImages from './ComponentImages';
+
 import {colors} from '../../Data';
 import {ImageHelper} from '../../Utils';
 
 export default class ComponentShow extends React.Component {
 
   static propTypes = {
-    show: PropTypes.object.isRequired
+    show: PropTypes.object.isRequired,
+    onGoToImages: PropTypes.func,
+    onGoToCast: PropTypes.func
   };
 
   constructor(props) {
@@ -42,50 +46,73 @@ export default class ComponentShow extends React.Component {
       metacritic_url,
       metacritic_score,
       rotten_tomatoes_url,
-      rotten_tomatoes_score
+      rotten_tomatoes_score,
+      images
     } = this.props.show;
 
     const estreno = debut ? `Estreno: ${debut}` : null;
     return(
-      <ScrollView>
-        <Image
-          resizeMode='cover'
-          style={styles.portraitImage}
-          source={{uri: ImageHelper.addPrefixToPath(portrait_image.image_url, 'small_')}}
-        >
-          <View style={styles.viewTitleDetails}>
-            <Text style={styles.title}>
-              {name}
+      <View style={styles.container}>
+        <ScrollView style={styles.scrollView}>
+          <Image
+            resizeMode='cover'
+            style={styles.portraitImage}
+            source={{uri: ImageHelper.addPrefixToPath(portrait_image.image_url, 'small_')}}
+          >
+            <View style={styles.viewTitleDetails}>
+              <Text style={styles.title}>
+                {name}
+              </Text>
+              <View style={styles.viewDetails}>
+                {this._getDetailText(name_original)}
+                {this._getDetailText(year.toString())}
+                {this._getDetailText(rating)}
+                {this._getDetailText(genres)}
+                {this._getDetailText(estreno)}
+              </View>
+            </View>
+          </Image>
+
+          <View style={styles.imageAndInformation}>
+            <View>
+              <Image
+                resizeMode='stretch'
+                style={styles.coverImage}
+                source={{uri: ImageHelper.addPrefixToPath(image_url, 'smaller_')}}
+              />
+              <View style={styles.scoresView}>
+                {this._getImdbScoreView(imdb_code, imdb_score)}
+                {this._getMetacriticScoreView(metacritic_url, metacritic_score)}
+                {this._getRottenTomatoesScoreView(rotten_tomatoes_url, rotten_tomatoes_score)}
+              </View>
+            </View>
+            <Text style={styles.information}>
+              {information}
             </Text>
-            <View style={styles.viewDetails}>
-              {this._getDetailText(name_original)}
-              {this._getDetailText(year.toString())}
-              {this._getDetailText(rating)}
-              {this._getDetailText(genres)}
-              {this._getDetailText(estreno)}
-            </View>
           </View>
-        </Image>
+        </ScrollView>
 
-        <View style={styles.imageAndInformation}>
-          <View>
+        <View style={styles.bottomView}>
+          <TouchableHighlight
+            style={styles.bottomViewButton}
+            onPress={this.props.onGoToImages}
+          >
             <Image
-              resizeMode='stretch'
-              style={styles.coverImage}
-              source={{uri: ImageHelper.addPrefixToPath(image_url, 'smaller_')}}
+              style={styles.bottomViewIcon}
+              source={require('../../../assets/IconImages.png')}
             />
-            <View style={styles.scoresView}>
-              {this._getImdbScoreView(imdb_code, imdb_score)}
-              {this._getMetacriticScoreView(metacritic_url, metacritic_score)}
-              {this._getRottenTomatoesScoreView(rotten_tomatoes_url, rotten_tomatoes_score)}
-            </View>
-          </View>
-          <Text style={styles.information}>
-            {information}
-          </Text>
+          </TouchableHighlight>
+          <TouchableHighlight
+            style={styles.bottomViewButton}
+            onPress={this.props.onGoToCast}
+          >
+            <Image
+              style={styles.bottomViewIcon}
+              source={require('../../../assets/IconActors.png')}
+            />
+          </TouchableHighlight>
         </View>
-
-      </ScrollView>
+      </View>
     );
   }
 
@@ -164,6 +191,12 @@ export default class ComponentShow extends React.Component {
 }
 
 const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+  },
+  scrollView: {
+    flex: 1,
+  },
   portraitImage: {
     height: Dimensions.get('window').width * 720 / 1280,
     width: Dimensions.get('window').width
@@ -176,6 +209,10 @@ const styles = StyleSheet.create({
     paddingBottom: 10,
     paddingLeft: 15
   },
+  title: {
+    fontSize: 22,
+    color: 'white',
+  },
   viewDetails: {
     flex: 1,
   },
@@ -184,11 +221,6 @@ const styles = StyleSheet.create({
     color: 'white',
     marginTop: 5
   },
-  title: {
-    fontSize: 24,
-    color: 'white',
-  },
-
   scoresView: {
 
   },
@@ -228,4 +260,22 @@ const styles = StyleSheet.create({
     marginLeft: 15,
     fontSize: 16
   },
+
+  // BOTTOM VIEW
+  bottomView: {
+    flexDirection: 'row',
+    height: 50,
+    backgroundColor: colors.tabBar,
+    justifyContent: 'space-around',
+    alignItems: 'stretch'
+  },
+  bottomViewButton: {
+    flex: 1,
+    alignItems: 'center'
+  },
+  bottomViewIcon: {
+    width: 32,
+    height: 32,
+    margin: 9
+  }
 });

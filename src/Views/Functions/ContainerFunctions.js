@@ -13,21 +13,14 @@ export default class ContainerFunctions extends React.Component {
 
   static propTypes = {
     date: PropTypes.object,
-    theaterShows: PropTypes.array
+    dataRows: PropTypes.array
   };
-
-  constructor(props){
-    super(props);
-
-    const dataRows = getDataRows(props.date, props.theaterShows);
-    this.state = {dataRows: dataRows};
-  }
 
   render() {
     return (
       <ComponentFunctions 
         onPress={this._onPress.bind(this)}
-        dataRows={this.state.dataRows}
+        dataRows={this.props.dataRows}
       />
     );
   }
@@ -37,39 +30,5 @@ export default class ContainerFunctions extends React.Component {
     let showRoute = getShowRoute(show_id);
     this.props.navigator.push(showRoute);
   }
-
-  componentWillReceiveProps(nextProps){
-    const dataRows = getDataRows(nextProps.date, nextProps.theaterShows);
-    this.setState({dataRows: dataRows});
-  }
 }
 
-function getDataRows(date, theaterShows) {
-  let dataRows = [];
-  for(let index=0; index<theaterShows.length; index++){
-    const {id, name, information, genres, image_url, functions, show_id} = theaterShows[index];
-
-    const filteredFunctions = functions.filter((obj) => {
-      const dateArray1 = obj.date.split("-").map((string) => {
-        return parseInt(string);
-      });
-      const dateArray2 = DateHelper.getFormattedDate(date).split("-").map((string) => {
-        return parseInt(string);
-      });
-      return (dateArray1.equals(dateArray2));
-    });
-
-    if (filteredFunctions.length > 0) {
-      dataRows.push({
-        id: id,
-        name: name,
-        information: information,
-        genres: genres,
-        image_url: image_url,
-        functions: filteredFunctions,
-        show_id: show_id
-      });
-    }
-  }
-  return dataRows;
-};

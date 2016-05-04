@@ -66,7 +66,7 @@ class ContainerFunctionsTabs extends React.Component {
         >
           <ContainerFunctions
             date={date1}
-            theaterShows={viewer.api_theater_shows}
+            dataRows={getDataRows(date1, viewer.api_theater_shows)}
             navigator={navigator}
           />
         </TabNavigator.Item>
@@ -79,7 +79,7 @@ class ContainerFunctionsTabs extends React.Component {
         >
           <ContainerFunctions
             date={date2}
-            theaterShows={viewer.api_theater_shows}
+            dataRows={getDataRows(date2, viewer.api_theater_shows)}
             navigator={navigator}
           />
         </TabNavigator.Item>
@@ -92,7 +92,7 @@ class ContainerFunctionsTabs extends React.Component {
         >
           <ContainerFunctions
             date={date3}
-            theaterShows={viewer.api_theater_shows}
+            dataRows={getDataRows(date3, viewer.api_theater_shows)}
             navigator={navigator}
           />
         </TabNavigator.Item>
@@ -105,7 +105,7 @@ class ContainerFunctionsTabs extends React.Component {
         >
           <ContainerFunctions
             date={date4}
-            theaterShows={viewer.api_theater_shows}
+            dataRows={getDataRows(date4, viewer.api_theater_shows)}
             navigator={navigator}
           />
         </TabNavigator.Item>
@@ -118,7 +118,7 @@ class ContainerFunctionsTabs extends React.Component {
         >
           <ContainerFunctions
             date={date5}
-            theaterShows={viewer.api_theater_shows}
+            dataRows={getDataRows(date5, viewer.api_theater_shows)}
             navigator={navigator}
           />
         </TabNavigator.Item>
@@ -131,7 +131,7 @@ class ContainerFunctionsTabs extends React.Component {
         >
           <ContainerFunctions
             date={date6}
-            theaterShows={viewer.api_theater_shows}
+            dataRows={getDataRows(date6, viewer.api_theater_shows)}
             navigator={navigator}
           />
         </TabNavigator.Item>
@@ -144,7 +144,7 @@ class ContainerFunctionsTabs extends React.Component {
         >
           <ContainerFunctions
             date={date7}
-            theaterShows={viewer.api_theater_shows}
+            dataRows={getDataRows(date7, viewer.api_theater_shows)}
             navigator={navigator}
           />
         </TabNavigator.Item>
@@ -166,6 +166,36 @@ const styles = StyleSheet.create({
     backgroundColor: colors.tabBar
   }
 });
+
+function getDataRows(date, theaterShows) {
+  let dataRows = [];
+  for(let index=0; index<theaterShows.length; index++){
+    const {id, name, information, genres, image_url, functions, show_id} = theaterShows[index];
+
+    const filteredFunctions = functions.filter((obj) => {
+      const dateArray1 = obj.date.split("-").map((string) => {
+        return parseInt(string);
+      });
+      const dateArray2 = DateHelper.getFormattedDate(date).split("-").map((string) => {
+        return parseInt(string);
+      });
+      return (dateArray1.equals(dateArray2));
+    });
+
+    if (filteredFunctions.length > 0) {
+      dataRows.push({
+        id: id,
+        name: name,
+        information: information,
+        genres: genres,
+        image_url: image_url,
+        functions: filteredFunctions,
+        show_id: show_id
+      });
+    }
+  }
+  return dataRows;
+};
 
 export default Relay.createContainer(ContainerFunctionsTabs, {
   
