@@ -9,12 +9,14 @@ import Theaters from '../Views/Theaters';
 import Functions from '../Views/Functions';
 import Show from '../Views/Show';
 import ShowImages from '../Views/Show/ComponentImages';
+import Videos from '../Views/Videos';
 
 function getBaseRoutes() {
   return [
     getBillboardRoute(),
     getCinemasRoute(),
-    getComingSoonRoute()
+    getComingSoonRoute(),
+    getVideosRoute()
   ];
 };
 
@@ -24,7 +26,8 @@ export {
   getFunctionsRoute,
   getTheatersRoute,
   getShowRoute,
-  getShowImagesRoute
+  getShowImagesRoute,
+  getVideosRoute
 };
 
 function getCinemasRoute() {
@@ -49,6 +52,14 @@ function getComingSoonRoute() {
     queryConfig: new ViewerQueryConfig()
   });
 };
+
+function getVideosRoute() {
+  return({
+    title: 'Videos',
+    Component: Videos,
+    queryConfig: new ViewerQueryConfig()
+  });
+}
 
 function getTheatersRoute(cinema_id, cinemaName) {
 	return({

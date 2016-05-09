@@ -39,7 +39,7 @@ export default class MyApp extends React.Component {
           renderScene={renderScene}
           configureScene={(route, routeStack) => {
             if (Platform.OS === 'android') {
-              return Navigator.SceneConfigs.FloatFromBottomAndroid;
+              return Navigator.SceneConfigs.FadeAndroid;
             }
             return Navigator.SceneConfigs.FloatFromRight;
           }}

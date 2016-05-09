@@ -31,10 +31,6 @@ class ContainerTheaters extends React.Component {
     let functionsRoute = getFunctionsRoute(new Date(), rowData.theater_id, rowData.name);
     this.props.navigator.push(functionsRoute);
   }
-
-  componentWillReceiveProps(nextProps) {
-    console.log(nextProps);
-  }
 }
 
 export default Relay.createContainer(ContainerTheaters, {
