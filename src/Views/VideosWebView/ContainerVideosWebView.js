@@ -13,7 +13,6 @@ export default class ContainerVideos extends React.Component {
   render() {
     return (
       <ComponentVideosWebView
-
       />
     );
   }

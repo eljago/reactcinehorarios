@@ -23,10 +23,12 @@ export default function getHtmlString(title, type, code) {
 	let bodyString = getBodyString(title, type, code);
 	return(
 		`
-			<!DOCTYPE html>
+			<!DOCTYPE html>\n
 			<html>
 				<head>
 					<title>Videos</title>
+					<meta http-equiv="content-type" content="text/html; charset=utf-8">
+    			<meta name="viewport" content="width=320, user-scalable=no">
 					<style type="text/css">
 			      body {
 							background-color: rgb(241, 234, 227);
@@ -58,7 +60,9 @@ export default function getHtmlString(title, type, code) {
 						iframe { margin: 0; }
 					</style>
 				</head>
-				<body>${bodyString}</body>
+				<body>
+					${bodyString}
+				</body>
 			</html>
 		`
 	);

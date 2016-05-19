@@ -25,11 +25,8 @@ export default class ComponentVideosWebView extends React.Component {
     super(props);
 
     this.state = {
-      url: 'http://cinehorarios.cl',
-      status: 'No Page Loaded',
-      backButtonEnabled: false,
-      forwardButtonEnabled: false,
-      loading: true,
+      html: getHtmlString('Titulo', "Youtube", "4r6ice_lzto"),
+      status: '',
       scalesPageToFit: true,
     };
   }
@@ -41,13 +38,13 @@ export default class ComponentVideosWebView extends React.Component {
           ref={WEBVIEW_REF}
           automaticallyAdjustContentInsets={false}
           style={styles.webView}
-          source={{html: getHtmlString('Titulo', "Youtube", "4r6ice_lzto")}}
+          source={{html: this.state.html}}
           javaScriptEnabled={true}
           domStorageEnabled={true}
           decelerationRate="normal"
           onNavigationStateChange={this.onNavigationStateChange.bind(this)}
           onShouldStartLoadWithRequest={this.onShouldStartLoadWithRequest}
-          startInLoadingState={true}
+          startInLoadingState={false}
           scalesPageToFit={this.state.scalesPageToFit}
         />
         <View style={[styles.addressBarRow]}>
@@ -90,14 +87,7 @@ export default class ComponentVideosWebView extends React.Component {
   }
 
   onNavigationStateChange(navState) {
-    this.setState({
-      backButtonEnabled: navState.canGoBack,
-      forwardButtonEnabled: navState.canGoForward,
-      url: navState.url,
-      status: navState.title,
-      loading: navState.loading,
-      scalesPageToFit: true
-    });
+
   }
 
 
