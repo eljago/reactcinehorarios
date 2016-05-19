@@ -1,6 +1,7 @@
 'use strict';
 
-import React, { StyleSheet, View } from 'react-native';
+import React from 'react';
+import { Text, TouchableHighlight, StyleSheet, View } from 'react-native';
 import Relay from 'react-relay';
 
 import LoadingIndicator from './LoadingIndicator';
@@ -31,14 +32,14 @@ export default function renderRelayScene(route, navigator) {
       renderFailure={(error, retry) => {
         return (
           <View>
-            <React.Text>{error.message}</React.Text>
-            <React.TouchableHighlight
+            <Text>{error.message}</Text>
+            <TouchableHighlight
               underlayColor={'red'}
               onPress={retry}>
-              <React.Text>
+              <Text>
                 Retry?
-              </React.Text>
-            </React.TouchableHighlight>
+              </Text>
+            </TouchableHighlight>
           </View>
         );
       }}

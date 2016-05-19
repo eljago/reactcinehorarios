@@ -1,6 +1,7 @@
 'use strict';
 
-import React, { PropTypes } from 'react-native';
+import React, { PropTypes } from 'react';
+
 import PhotoBrowser from 'react-native-photo-browser';
 
 import { ImageHelper } from '../../Utils';

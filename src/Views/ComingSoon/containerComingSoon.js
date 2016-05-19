@@ -1,10 +1,10 @@
 'use strict';
 
-import React, { PropTypes } from 'react-native';
-import Relay from 'react-relay'
+import React, { PropTypes } from 'react';
+import Relay from 'react-relay';
 
 import ComponentComingSoon from './componentComingSoon';
-import {getShowRoute} from '../../routes/navigatorRoutes'
+import {getShowRoute} from '../../routes/navigatorRoutes';
 
 class ContainerComingSoon extends React.Component {
 

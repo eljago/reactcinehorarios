@@ -1,6 +1,7 @@
 'use strict';
 
-import React, { Text, View, StyleSheet, PropTypes, Image } from 'react-native'
+import React, { PropTypes } from 'react';
+import { Text, View, StyleSheet, Image } from 'react-native'
 
 import { colors } from '../../Data'
 import { MyListViewCell } from '../../ReusableComponents'

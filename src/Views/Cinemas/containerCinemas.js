@@ -1,10 +1,11 @@
 'use strict';
 
-import React, { PropTypes, Navigator } from 'react-native'
+import React, { PropTypes } from 'react';
+import { Navigator } from 'react-native';
 
-import ComponentCinemas from './componentCinemas'
-import {getTheatersRoute} from '../../routes/navigatorRoutes'
-import {cinemas} from '../../Data'
+import ComponentCinemas from './componentCinemas';
+import {getTheatersRoute} from '../../routes/navigatorRoutes';
+import {cinemas} from '../../Data';
 
 export default class ContainerCinemas extends React.Component {
 

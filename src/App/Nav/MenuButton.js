@@ -1,6 +1,7 @@
 'use strict'
 
-import React, { PropTypes, View, StyleSheet, TouchableHighlight, Image } from 'react-native';
+import React, { PropTypes } from 'react';
+import { View, StyleSheet, TouchableHighlight, Image } from 'react-native';
 
 export class MenuButton extends React.Component {
 

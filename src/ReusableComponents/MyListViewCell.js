@@ -1,6 +1,7 @@
 'use strict';
 
-import React, { TouchableHighlight, StyleSheet, PropTypes, View } from 'react-native'
+import React, { PropTypes } from 'react';
+import { TouchableHighlight, StyleSheet, View } from 'react-native'
 
 import {colors} from '../Data';
 import {RightAccessoryView} from './';

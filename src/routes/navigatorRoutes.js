@@ -10,13 +10,14 @@ import Functions from '../Views/Functions';
 import Show from '../Views/Show';
 import ShowImages from '../Views/Show/ComponentImages';
 import Videos from '../Views/Videos';
+import VideosWebView from '../Views/VideosWebView';
 
 function getBaseRoutes() {
   return [
+    getVideosRoute(),
     getBillboardRoute(),
     getCinemasRoute(),
-    getComingSoonRoute(),
-    getVideosRoute()
+    getComingSoonRoute()
   ];
 };
 
@@ -27,7 +28,8 @@ export {
   getTheatersRoute,
   getShowRoute,
   getShowImagesRoute,
-  getVideosRoute
+  getVideosRoute,
+  getVideosWebView
 };
 
 function getCinemasRoute() {
@@ -105,5 +107,12 @@ function getShowImagesRoute(images) {
     },
     navigationBarHidden: true,
     menuGesturesDisabled: true
+  });
+};
+
+function getVideosWebView() {
+  return({
+    title: "",
+    Component: VideosWebView
   });
 }

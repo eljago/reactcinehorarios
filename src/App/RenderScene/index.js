@@ -1,6 +1,7 @@
 'use strict'
 
-import React, { StyleSheet, View, Platform } from 'react-native';
+import React from 'react';
+import { StyleSheet, View, Platform } from 'react-native';
 
 import renderRelayScene from './RenderRelayScene'
 import renderNormalScene from './RenderNormalScene'

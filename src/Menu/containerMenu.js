@@ -1,6 +1,6 @@
 'use strict';
 
-import React, { PropTypes } from 'react-native'
+import React, { PropTypes } from 'react'
 
 import ComponentMenu from './componentMenu'
 import {getBaseRoutes} from '../routes/navigatorRoutes'

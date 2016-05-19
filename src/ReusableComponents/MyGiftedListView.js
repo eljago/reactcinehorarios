@@ -1,8 +1,9 @@
 'use strict';
 
-import React, { View, StyleSheet, PropTypes, ListView } from 'react-native'
+import React, { PropTypes } from 'react';
+import { View, StyleSheet, ListView } from 'react-native';
 
-import { EmptyView, SeparatorView } from './'
+import { EmptyView, SeparatorView } from './';
 
 export default class MyGiftedListView extends React.Component {
 

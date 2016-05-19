@@ -1,6 +1,6 @@
 'use strict';
 
-import React, { PropTypes } from 'react-native';
+import React, { PropTypes } from 'react';
 import Relay from 'react-relay'
 
 import ComponentBillboard from './componentBillboard';

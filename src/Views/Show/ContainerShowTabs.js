@@ -1,7 +1,9 @@
 'use strict';
 
-import React, { PropTypes, StyleSheet } from 'react-native';
+import React, { PropTypes } from 'react';
+import { StyleSheet } from 'react-native';
 import Relay from 'react-relay'
+
 import TabNavigator from 'react-native-tab-navigator';
 import PhotoBrowser from 'react-native-photo-browser';
 

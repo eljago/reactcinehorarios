@@ -6,12 +6,12 @@
     "start": "node_modules/react-native/packager/packager.sh"
   },
   "dependencies": {
-    "react": "^0.14.7",
-    "react-native": "^0.24.1",
-    "react-native-code-push": "^1.10.3-beta",
+    "react": "^15.0.2",
+    "react-native": "^0.26.0",
+    "react-native-code-push": "^1.11.0-beta",
     "react-native-photo-browser": "https://github.com/halilb/react-native-photo-browser.git#master",
     "react-native-side-menu": "git://github.com/react-native-fellowship/react-native-side-menu.git#master",
-    "react-native-tab-navigator": "^0.2.18",
+    "react-native-tab-navigator": "^0.3.0",
     "react-relay": "^0.8.0",
     "slash": "^1.0.0"
   },

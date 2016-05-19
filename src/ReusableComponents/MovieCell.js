@@ -1,15 +1,10 @@
 'use strict';
 
-import React, {
-  StyleSheet,
-  View,
-  Image,
-  Text,
-  PropTypes
-} from 'react-native'
+import React, { PropTypes } from 'react';
+import { StyleSheet, View, Image, Text } from 'react-native';
 
-import { colors } from '../Data'
-import { RightAccessoryView, MyListViewCell } from './'
+import { colors } from '../Data';
+import { RightAccessoryView, MyListViewCell } from './';
 
 export default class MovieCell extends React.Component {
 

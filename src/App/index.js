@@ -1,7 +1,6 @@
 'use strict';
 
-import React from 'react-native';
-
+import React from 'react';
 import Relay from 'react-relay'
 import config from '../config'
 

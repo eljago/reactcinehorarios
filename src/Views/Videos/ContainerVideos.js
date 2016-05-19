@@ -1,10 +1,10 @@
 'use strict';
 
-import React, { PropTypes } from 'react-native'
-import Relay from 'react-relay'
+import React, { PropTypes } from 'react';
+import Relay from 'react-relay';
 
-import ComponentVideos from './ComponentVideos'
-import {getVideosRoute} from '../../routes/navigatorRoutes'
+import ComponentVideos from './ComponentVideos';
+import {getVideosWebView} from '../../routes/navigatorRoutes';
 
 class ContainerVideos extends React.Component {
 
@@ -12,7 +12,7 @@ class ContainerVideos extends React.Component {
     super(props);
 
     props.relay.setVariables({
-      pageNumber: 1
+      page: 1
     });
   }
 
@@ -21,32 +21,41 @@ class ContainerVideos extends React.Component {
 
     return (
       <ComponentVideos 
-        onPress={this._onPress.bind(this)}
         dataRows={dataRows}
+        onPress={this._onPress.bind(this)}
+        onPressShow={this._onPressShow.bind(this)}
       />
     );
   }
 
   _onPress(rowData) {
-    
+  }
+
+  _onPressShow(rowData) {
+    let videosWebViewRoute = getVideosWebView();
+    this.props.navigator.push(videosWebViewRoute);
   }
 }
 
 export default Relay.createContainer(ContainerVideos, {
 
   initialVariables: {
-    pageNumber: 1
+    page: 1
   },
 
   fragments: {
     viewer: () => Relay.QL`
       fragment on Viewer {
-        api_videos(pageNumber: $pageNumber) {
+        api_videos(page: $page) {
           video_id
-          show_id
           name
+          image_url
           code
-          video_type
+          show{
+            show_id
+            name
+            image_url
+          }
         }
       }
     `

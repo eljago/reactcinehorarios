@@ -1,13 +1,14 @@
 'use strict';
 
-import React, { PropTypes, Text, StyleSheet } from 'react-native';
-import Relay from 'react-relay'
+import React, { PropTypes } from 'react';
+import { Text, StyleSheet } from 'react-native';
+import Relay from 'react-relay';
 import TabNavigator from 'react-native-tab-navigator';
 
 import ContainerFunctions from './ContainerFunctions';
 
-import {DateHelper} from '../../Utils'
-import {colors} from '../../Data'
+import {DateHelper} from '../../Utils';
+import {colors} from '../../Data';
 
 
 class ContainerFunctionsTabs extends React.Component {

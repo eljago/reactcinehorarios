@@ -1,6 +1,8 @@
 'use strict';
 
-import React, { StatusBar, View, DrawerLayoutAndroid } from 'react-native';
+import React from 'react';
+import { StatusBar, View, DrawerLayoutAndroid } from 'react-native';
+
 import Nav from './Nav';
 import Menu from '../Menu';
 import {colors} from '../Data';

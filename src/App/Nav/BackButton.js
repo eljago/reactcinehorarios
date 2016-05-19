@@ -1,6 +1,7 @@
 'use strict'
 
-import React, {Image, StyleSheet, PropTypes, TouchableHighlight} from 'react-native'
+import React, {PropTypes} from 'react';
+import {Image, StyleSheet, TouchableHighlight} from 'react-native'
 
 export class BackButton extends React.Component {
 

@@ -1,6 +1,6 @@
 'use strict';
 
-import React, { PropTypes } from 'react-native';
+import React, { PropTypes } from 'react';
 
 import ComponentFunctionCell from './ComponentFunctionCell';
 import { MyGiftedListView } from '../../ReusableComponents';

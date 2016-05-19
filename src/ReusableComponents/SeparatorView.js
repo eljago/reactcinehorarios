@@ -1,6 +1,7 @@
 'use strict';
 
-import React, { View, StyleSheet } from 'react-native'
+import React from 'react';
+import { View, StyleSheet } from 'react-native'
 
 export default class SeparatorView extends React.Component {
 

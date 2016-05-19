@@ -1,6 +1,7 @@
 'use strict';
 
-import React, { PropTypes, StyleSheet, TouchableHighlight, Image } from 'react-native';
+import React, { PropTypes } from 'react';
+import { StyleSheet, TouchableHighlight, Image } from 'react-native';
 
 export default class ComponentRightButton extends React.Component {
 

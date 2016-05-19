@@ -1,6 +1,7 @@
 'use strict';
 
-import React, { Text, View, PropTypes, StyleSheet, TouchableHighlight, Image } from 'react-native';
+import React, { PropTypes } from 'react';
+import { Text, View, StyleSheet, TouchableHighlight, Image } from 'react-native';
 import {colors} from '../../Data';
 
 export default class ComponentScoreButton extends React.Component {

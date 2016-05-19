@@ -1,6 +1,6 @@
 'use strict';
 
-import React, {Navigator} from 'react-native';
+import { Navigator } from 'react-native';
 
 export default class NavigationBar extends Navigator.NavigationBar {
   render() {

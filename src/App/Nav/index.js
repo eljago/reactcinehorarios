@@ -1,18 +1,19 @@
 'use strict';
 
-import React, { Navigator, Text, View, Platform } from 'react-native';
+import React from 'react';
+import { Navigator, Text, View, Platform, BackAndroid } from 'react-native';
 
 import {getBaseRoutes} from '../../routes/navigatorRoutes';
 import renderScene from '../RenderScene';
 import {colors} from '../../Data';
 
-import NavigationBar from './NavigationBar'
-import {BackButton} from './BackButton'
-import {MenuButton} from './MenuButton'
+import NavigationBar from './NavigationBar';
+import {BackButton} from './BackButton';
+import {MenuButton} from './MenuButton';
 
 let navigator = null;
 
-React.BackAndroid.addEventListener('hardwareBackPress', () => {
+BackAndroid.addEventListener('hardwareBackPress', () => {
     if (navigator && navigator.getCurrentRoutes().length > 1) {
         navigator.pop();
         return true;
@@ -24,6 +25,7 @@ export default class MyApp extends React.Component {
 
   constructor(props) {
     super(props);
+
     this.state = {
       navigationBarHidden: false
     }

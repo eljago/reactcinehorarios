@@ -1,37 +1,36 @@
-'use strict'
+'use strict';
 
-import React, { PropTypes } from 'react-native'
+import React, { PropTypes } from 'react';
 
-import ComponentVideoCell from './ComponentVideoCell'
-import { MyGiftedListView } from '../../ReusableComponents'
+import ComponentVideoCell from './ComponentVideoCell';
+import { MyGiftedListView } from '../../ReusableComponents';
+import { ImageHelper } from '../../Utils'
 
 export default class ComponentVideos extends React.Component {
 
   static propTypes = {
+    dataRows: PropTypes.array,
     onPress: PropTypes.func,
-    onPressShow: PropTypes.func,
-    onFetch: PropTypes.func
+    onPressShow: PropTypes.func
   };
-  static displayName = "ComponentVideos";
 
   render() {
     return (
       <MyGiftedListView
-        rowView={this._renderRowView.bind(this)}
-        onFetch={this.props.onFetch}
+        renderRow={this._renderRow.bind(this)}
+        dataRows={this.props.dataRows}
         pagination={true}
       />
     );
   }
 
-  _renderRowView(rowData, sectionID, rowID) {
-    return (
-      <ComponentVideoCell
-        title={rowData.name}
-        subtitle={rowData.show.name}
-        image1={rowData.show.portrait_image}
-        image2={rowData.image_url}
-        rowID={rowID}
+  _renderRow(rowData, sectionID, rowID, highlightRow) {
+    const {name, image_url, code, show} = rowData;
+    return(
+      <ComponentVideoCell 
+        title={name}
+        videoPortraitImageUri={ImageHelper.addPrefixToPath(image_url, 'smaller_')}
+        showImageUri={ImageHelper.addPrefixToPath(show.image_url, 'smaller_')}
         onPress={() => this.props.onPress(rowData)}
         onPressShow={() => this.props.onPressShow(rowData)}
       />

@@ -1,9 +1,10 @@
 'use strict';
 
-import React, { Text, View, StyleSheet, PropTypes } from 'react-native'
+import React, { PropTypes } from 'react';
+import { Text, View, StyleSheet } from 'react-native';
 
-import { colors } from '../Data'
-import { MyListViewCell } from './'
+import { colors } from '../Data';
+import { MyListViewCell } from './';
 
 export default class SimpleCell extends React.Component {
   
