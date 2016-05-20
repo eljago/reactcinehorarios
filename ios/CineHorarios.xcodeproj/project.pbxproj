@@ -672,6 +672,7 @@
 				OTHER_LDFLAGS = (
 					"-ObjC",
 					"-lz",
+					"-lc++",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.jagochile.cinehorarios;
 				PRODUCT_NAME = CineHorarios;
@@ -694,6 +695,7 @@
 				OTHER_LDFLAGS = (
 					"-ObjC",
 					"-lz",
+					"-lc++",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.jagochile.cinehorarios;
 				PRODUCT_NAME = CineHorarios;
