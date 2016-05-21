@@ -2,7 +2,6 @@
 
 import React, { PropTypes } from 'react';
 import { Text, View, StyleSheet, TouchableHighlight, Image } from 'react-native';
-import {colors} from '../../Data';
 
 export default class ComponentScoreButton extends React.Component {
 
@@ -16,7 +15,7 @@ export default class ComponentScoreButton extends React.Component {
     return (
       <TouchableHighlight
         style={styles.scoreButton}
-        underlayColor={colors.cellsUnderlayColor}
+        underlayColor={'transparent'}
         onPress={this.props.onPress}>
         <View style={styles.scoreView}
       >

@@ -7,6 +7,8 @@ import SideMenu from 'react-native-side-menu';
 import Menu from '../Menu';
 import Nav from './Nav';
 
+import {colors} from '../Data';
+
 export default class Content extends React.Component {
   
   constructor(props) {
@@ -19,7 +21,7 @@ export default class Content extends React.Component {
 
   render() {
     return (
-      <View style={{flex: 1}}>
+      <View style={{flex: 1, backgroundColor: colors.menuBackground}}>
         <StatusBar
           barStyle="light-content"
           translucent={true}

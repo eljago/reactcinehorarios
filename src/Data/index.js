@@ -1,4 +1,4 @@
 'use strict'
 
-export {colors} from './Colors'
+export {colors, colorsMadMax} from './Colors'
 export {cinemas} from './Cinemas'

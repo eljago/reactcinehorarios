@@ -33,7 +33,7 @@ export default class MyApp extends React.Component {
 
   render() {
     return (
-      <View style={{ flex: 1, backgroundColor: 'white' }}>
+      <View style={{ flex: 1}}>
         <Navigator
           ref={(nav) => { navigator = nav; }}
           openMenu={this.props.openMenu}
@@ -89,7 +89,15 @@ var NavigationBarRouteMapper = {
 
   Title(route, navigator, index, navState) {
       return(
-				<Text style={{color: 'white', fontSize: 20, marginTop: 8}}>{route.title}</Text>
+				<Text
+          style={{
+            color: colors.navBarLetters,
+            fontSize: 20,
+            marginTop: 8
+          }}
+        >
+          {route.title}
+        </Text>
 			);
   },
 

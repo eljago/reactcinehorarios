@@ -3,8 +3,9 @@
 import React from 'react';
 import { StyleSheet, View, Platform } from 'react-native';
 
-import renderRelayScene from './RenderRelayScene'
-import renderNormalScene from './RenderNormalScene'
+import {colors} from '../../Data';
+import renderRelayScene from './RenderRelayScene';
+import renderNormalScene from './RenderNormalScene';
 
 export default function renderScene(route, navigator) {
 	if (route.queryConfig !== undefined){
@@ -31,6 +32,6 @@ export default function renderScene(route, navigator) {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: 'white'
+    backgroundColor: colors.background
   }
 });

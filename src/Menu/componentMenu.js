@@ -1,9 +1,10 @@
 'use strict';
 
-import React, { PropTypes } from 'react'
+import React, { PropTypes } from 'react';
 
-import { MyGiftedListView } from '../ReusableComponents'
-import MenuCell from './componentMenuCell'
+import {colors} from '../Data';
+import { MyGiftedListView } from '../ReusableComponents';
+import MenuCell from './componentMenuCell';
 
 export default class ComponentMenu extends React.Component {
 

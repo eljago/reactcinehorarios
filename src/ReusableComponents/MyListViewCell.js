@@ -3,7 +3,6 @@
 import React, { PropTypes } from 'react';
 import { TouchableHighlight, StyleSheet, View } from 'react-native'
 
-import {colors} from '../Data';
 import {RightAccessoryView} from './';
 
 export default class MyListviewCell extends React.Component {
@@ -21,7 +20,7 @@ export default class MyListviewCell extends React.Component {
       <TouchableHighlight
       	style={styles.container}
       	onPress={onPress}
-      	underlayColor={colors.cellsUnderlayColor}
+      	underlayColor={'transparent'}
       >
         <View style={[styles.rowContainer, {backgroundColor: cellBackgroundColor}]}>
       		{children}

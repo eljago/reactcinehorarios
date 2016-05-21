@@ -18,29 +18,59 @@ export default class MenuCell extends React.Component {
     onPress: PropTypes.func
   };
 
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      cellStyle: {
+        backgroundColor: 'transparent'
+      }
+    }
+  }
+
   render() {
     const width = Dimensions.get('window').width * (2/3);
     return(
       <TouchableHighlight
-        underlayColor={colors.underlayColor}
+        onShowUnderlay={this._onShowUnderlay.bind(this)}
+        onHideUnderlay={this._onHideUnderlay.bind(this)}
+        underlayColor={'transparent'}
         onPress={() => this.props.onPress()}
       >
-        <View style={[{width: width}, styles.rowContainer]}>
-          <Text style={styles.name}>{this.props.title}</Text>
+        <View style={[{width: width}, styles.rowContainer, this.state.cellStyle]}>
+          <Text style={[styles.name, this.state.textStyle]}>
+            {this.props.title}
+          </Text>
         </View>
       </TouchableHighlight>
     );
+  }
+
+  _onShowUnderlay() {
+    this.setState({
+      cellStyle: {
+        backgroundColor: colors.menuTouchOverlay
+      }
+    });
+  }
+
+  _onHideUnderlay() {
+    this.setState({
+      cellStyle: {
+        backgroundColor: 'transparent'
+      }
+    });
   }
 }
 
 let styles = StyleSheet.create({
   rowContainer: {
     flex: 1,
-    marginTop: 5,
-    marginBottom: 5
+    paddingTop: 5,
+    paddingBottom: 5
   },
   name: {
-    color: 'black',
+    color: 'white',
     textAlign: 'center',
     fontSize: 26
   }

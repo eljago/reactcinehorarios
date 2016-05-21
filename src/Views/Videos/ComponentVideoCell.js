@@ -9,8 +9,6 @@ import {
   Text
 } from 'react-native'
 
-import { colors } from '../../Data';
-
 export default class ComponentVideoCell extends React.Component {
 
   static propTypes = {
@@ -29,7 +27,7 @@ export default class ComponentVideoCell extends React.Component {
 
 	      <TouchableHighlight
           style={[styles.showContainer, styles.shadow]}
-	        underlayColor={colors.concrete}
+          underlayColor={'transparent'}
 	        onPress={() => this.props.onPress() }>
 	        <Image
 		        style={styles.showImage}
@@ -40,7 +38,7 @@ export default class ComponentVideoCell extends React.Component {
 
 	      <TouchableHighlight
           style={[styles.videoContainer, styles.shadow]}
-	        underlayColor={colors.concrete}
+	        underlayColor={'transparent'}
 	        onPress={() => this.props.onPressShow() }>
 	        <Image
 	          resizeMode='cover'
