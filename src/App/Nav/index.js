@@ -69,7 +69,12 @@ var NavigationBarRouteMapper = {
     }
 
     var previousRoute = navState.routeStack[index - 1];
-    if (Platform.OS === 'android') return null;
+    if (Platform.OS === 'android') {
+      return(
+        <MenuButton onPress={navigator.props.openMenu} />
+      );
+    }
+    
     return(
       <BackButton
         onPress={() => {
@@ -80,10 +85,10 @@ var NavigationBarRouteMapper = {
   },
 
   RightButton(route, navigator, index, navState) {
+    if (Platform.OS === 'android') return null;
+
     return(
-      <MenuButton
-        onPress={navigator.props.openMenu}
-      />
+      <MenuButton onPress={navigator.props.openMenu} />
     );
   },
 

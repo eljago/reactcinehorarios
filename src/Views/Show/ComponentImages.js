@@ -25,7 +25,7 @@ export default class ComponentImages extends React.Component {
         displayNavArrows={true}
         displaySelectionButtons={false}
         displayActionButton={false}
-        startOnGrid={true}
+        startOnGrid={false}
         enableGrid={true}
       />
     );

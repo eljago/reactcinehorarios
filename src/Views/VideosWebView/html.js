@@ -2,6 +2,7 @@ function getBodyString(title, type, code) {
 	const width = 280;
 	const height = 180;
 	const src = `http://www.youtube.com/embed/${code}`;
+	const src2 = `https://www.facebook.com/plugins/video.php?href=https%3A%2F%2Fwww.facebook.com%2FCinemarkChile%2Fvideos%2F1358522824163642%2F&show_text=0&width=${width}`;
 	return(
 		`
       <div class="video">
@@ -13,6 +14,15 @@ function getBodyString(title, type, code) {
 	      	frameborder="0"
 	      	allowfullscreen
 	      >
+	      </iframe>
+	      <iframe src="${src2}"
+	      	width="${width}"
+	      	height="${height}"
+	      	style="border:none;overflow:hidden"
+	      	scrolling="no"
+	      	frameborder="0"
+	      	allowTransparency="true"
+	      	allowFullScreen="true">
 	      </iframe>
       </div>
 		`
