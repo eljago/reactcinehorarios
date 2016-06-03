@@ -67,10 +67,10 @@ class ContainerShowTabs extends React.Component {
             startOnGrid={true}
             enableGrid={true}
             onSelectionChanged={(media, index, selected) => {
-              console.log(`${media.photo} selection status: ${selected}`);
+
             }}
             onActionButton={(media, index) => {
-              console.log(`action button pressed for ${media.photo}, index: ${index}`);
+              
             }}
           />
         </TabNavigator.Item>

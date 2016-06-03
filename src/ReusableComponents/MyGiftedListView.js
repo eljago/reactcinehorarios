@@ -36,12 +36,14 @@ export default class MyGiftedListView extends React.Component {
 
   render() {
     return (
-    	<View style={styles.container}>
+    	<View style={[styles.container, this.props.style]}>
         <ListView
+          contentContainerStyle={this.props.listViewStyle}
           scrollsToTop={this.props.scrollsToTop}
           dataSource={this.state.dataSource}
           renderRow={this.props.renderRow}
           enableEmptySections={true}
+          initialListSize={1}
         />
       </View>
     );

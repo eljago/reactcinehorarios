@@ -6,15 +6,12 @@ import PhotoBrowser from 'react-native-photo-browser';
 
 import { ImageHelper } from '../../Utils';
 
-export default class ComponentImages extends React.Component {
+export default class ComponentPhotoGallery extends React.Component {
 
   static propTypes = {
   	navigator: PropTypes.object,
     extraData: PropTypes.object
   };
-  static defaultProps = {
-  	images: []
-  }
 
   render() {
     return (
@@ -25,7 +22,7 @@ export default class ComponentImages extends React.Component {
         displayNavArrows={true}
         displaySelectionButtons={false}
         displayActionButton={false}
-        startOnGrid={false}
+        startOnGrid={true}
         enableGrid={true}
       />
     );
@@ -36,7 +33,7 @@ export default class ComponentImages extends React.Component {
       return({
         thumb: ImageHelper.addPrefixToPath(image.image_url, 'smaller_'),
         photo: ImageHelper.addPrefixToPath(image.image_url),
-        caption: '',
+        caption: ' ',
         selected: false
       });
     });

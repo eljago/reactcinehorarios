@@ -12,7 +12,6 @@ import {
   TouchableHighlight
 } from 'react-native';
 
-import ComponentImages from './ComponentImages';
 import ComponentRightButton from './ComponentRightButton';
 import ComponentScoreButton from './ComponentScoreButton';
 
@@ -81,7 +80,7 @@ export default class ComponentShow extends React.Component {
                   color={'#45D264'}
                 />
                 <ComponentRightButton
-                  onPress={this.props.onGoToImages}
+                  onPress={this.props.onGoToCast}
                   source={require('../../../assets/IconActors.png')}
                   color={'#FFC956'}
                 />

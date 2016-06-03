@@ -70,7 +70,7 @@ let styles = StyleSheet.create({
     paddingBottom: 5
   },
   name: {
-    color: 'white',
+    color: colors.menuText,
     textAlign: 'center',
     fontSize: 26
   }

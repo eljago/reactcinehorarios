@@ -33,7 +33,7 @@ export default class MyApp extends React.Component {
 
   render() {
     return (
-      <View style={{ flex: 1}}>
+      <View style={{ flex: 1, backgroundColor: colors.background}}>
         <Navigator
           ref={(nav) => { navigator = nav; }}
           openMenu={this.props.openMenu}

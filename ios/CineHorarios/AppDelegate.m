@@ -45,20 +45,20 @@
 
 //   jsCodeLocation = [[NSBundle mainBundle] URLForResource:@"main" withExtension:@"jsbundle"];
   
-  jsCodeLocation = [NSURL URLWithString:@"http://192.168.50.42:8081/index.ios.bundle?platform=ios&dev=true"];
   #ifdef DEBUG
     NSLog(@"debug");
     jsCodeLocation = [NSURL URLWithString:@"http://192.168.50.42:8081/index.ios.bundle?platform=ios&dev=true"];
   #else
       // CODEPUSH
     NSLog(@"codepush");
-//    jsCodeLocation = [CodePush bundleURL];
+    jsCodeLocation = [CodePush bundleURL];
   #endif
 
   RCTRootView *rootView = [[RCTRootView alloc] initWithBundleURL:jsCodeLocation
                                                       moduleName:@"CineHorarios"
                                                initialProperties:nil
                                                    launchOptions:launchOptions];
+  rootView.backgroundColor = [UIColor blackColor];
 
   self.window = [[UIWindow alloc] initWithFrame:[UIScreen mainScreen].bounds];
   UIViewController *rootViewController = [UIViewController new];

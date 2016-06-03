@@ -20,7 +20,7 @@ import Content from './Content';
 export default class App extends React.Component {
 
   componentDidMount() {
-    codePush.sync();
+    // codePush.sync();
   }
   render() {
     return (

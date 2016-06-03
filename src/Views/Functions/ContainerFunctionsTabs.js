@@ -157,10 +157,12 @@ class ContainerFunctionsTabs extends React.Component {
 const styles = StyleSheet.create({
   icon: {
     color: 'gray',
+    textAlign: 'center',
     marginBottom: -5
   },
   sIcon: {
     color: 'white',
+    textAlign: 'center',
     marginBottom: -5
   },
   tabBar: {

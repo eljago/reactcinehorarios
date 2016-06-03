@@ -4,7 +4,7 @@ import React, { PropTypes } from 'react';
 import Relay from 'react-relay';
 
 import ComponentShow from './ComponentShow';
-import {getShowImagesRoute} from '../../routes/navigatorRoutes'
+import {getPhotoGalleryRoute, getShowCastRoute} from '../../routes/navigatorRoutes'
 
 class ContainerShow extends React.Component {
 
@@ -36,13 +36,14 @@ class ContainerShow extends React.Component {
 
   _goToImages() {
     const images = this.props.viewer.api_show.images;
-    let showImagesRoute = getShowImagesRoute(images);
+    let showImagesRoute = getPhotoGalleryRoute(images);
     this.props.navigator.push(showImagesRoute);
-    console.log(this.props.navigator);
   }
 
   _goToCast() {
-    console.log('go to cast'); 
+    const cast = this.props.viewer.api_show.people;
+    let showCastRoute = getShowCastRoute(cast);
+    this.props.navigator.push(showCastRoute);
   }
 }
 

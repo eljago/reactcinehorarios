@@ -8,9 +8,10 @@ import ComingSoon from '../Views/ComingSoon';
 import Theaters from '../Views/Theaters';
 import Functions from '../Views/Functions';
 import Show from '../Views/Show';
-import ShowImages from '../Views/Show/ComponentImages';
+import PhotoGallery from '../Views/PhotoGallery';
 import Videos from '../Views/Videos';
 import VideosWebView from '../Views/VideosWebView';
+import ShowCast from '../Views/ShowCast';
 
 function getBaseRoutes() {
   return [
@@ -27,9 +28,10 @@ export {
   getFunctionsRoute,
   getTheatersRoute,
   getShowRoute,
-  getShowImagesRoute,
+  getPhotoGalleryRoute,
   getVideosRoute,
-  getVideosWebView
+  getVideosWebView,
+  getShowCastRoute
 };
 
 function getCinemasRoute() {
@@ -98,10 +100,10 @@ function getShowRoute(show_id) {
   });
 };
 
-function getShowImagesRoute(images) {
+function getPhotoGalleryRoute(images) {
   return({
     title: "",
-    Component: ShowImages,
+    Component: PhotoGallery,
     extraData: {
       images: images
     },
@@ -115,4 +117,15 @@ function getVideosWebView() {
     title: "",
     Component: VideosWebView
   });
+};
+
+function getShowCastRoute(cast) {
+  return({
+    title: 'Elenco',
+    Component: ShowCast,
+    extraData: {
+      cast: cast
+    },
+  });
 }
+
