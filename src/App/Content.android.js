@@ -1,17 +1,18 @@
 'use strict';
 
 import React from 'react';
-import { StatusBar, View, DrawerLayoutAndroid } from 'react-native';
+import { StatusBar, View, DrawerLayoutAndroid, StyleSheet } from 'react-native';
 
 import Nav from './Nav';
 import Menu from '../Menu';
 import {colors} from '../Data';
+import {getBaseRoutes} from '../routes/navigatorRoutes';
 
 export default class Content extends React.Component {
 
   render() {
     return (
-      <View style={{flex: 1}}>
+      <View style={styles.container}>
         <StatusBar
           barStyle="light-content"
           translucent={false}
@@ -25,8 +26,12 @@ export default class Content extends React.Component {
             return <Menu onPress={this._onPress.bind(this)} />;
           }}
         >
-          <View style={{flex: 1}}>
-            <Nav ref={"nav"} openMenu={this._openMenu.bind(this)}/>
+          <View style={styles.tabContent}>
+            <Nav
+              initialRoute={getBaseRoutes()[0]}
+              ref={"nav"}
+              openMenu={this._openMenu.bind(this)}
+            />
           </View>
         </DrawerLayoutAndroid>
       </View>
@@ -42,3 +47,12 @@ export default class Content extends React.Component {
     this.refs.drawer.closeDrawer();
   }
 }
+
+const styles = StyleSheet.create({
+  container: {
+    flex: 1
+  },
+  tabContent: {
+    flex: 1
+  }
+});

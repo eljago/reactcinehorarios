@@ -15,10 +15,10 @@ import ShowCast from '../Views/ShowCast';
 
 function getBaseRoutes() {
   return [
-    getVideosRoute(),
-    getBillboardRoute(),
     getCinemasRoute(),
-    getComingSoonRoute()
+    getBillboardRoute(),
+    getComingSoonRoute(),
+    getVideosRoute()
   ];
 };
 

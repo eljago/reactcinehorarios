@@ -1,7 +1,7 @@
 'use strict';
 
 import React, { PropTypes } from 'react';
-import { View, StyleSheet, ListView } from 'react-native';
+import { View, StyleSheet, ListView, Platform } from 'react-native';
 
 import { EmptyView, SeparatorView } from './';
 
@@ -35,6 +35,8 @@ export default class MyGiftedListView extends React.Component {
   }
 
   render() {
+    const contentInset = (Platform.OS === 'ios') ? 49 : 0;
+    
     return (
     	<View style={[styles.container, this.props.style]}>
         <ListView
@@ -44,6 +46,8 @@ export default class MyGiftedListView extends React.Component {
           renderRow={this.props.renderRow}
           enableEmptySections={true}
           initialListSize={1}
+          automaticallyAdjustContentInsets={false}
+          contentInset={{bottom: contentInset}}
         />
       </View>
     );

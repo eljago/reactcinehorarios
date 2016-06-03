@@ -1,15 +1,14 @@
 'use strict';
 
-import React from 'react';
+import React, {PropTypes} from 'react';
 import { Navigator, Text, View, Platform, BackAndroid } from 'react-native';
 
-import {getBaseRoutes} from '../../routes/navigatorRoutes';
 import renderScene from '../RenderScene';
 import {colors} from '../../Data';
 
 import NavigationBar from './NavigationBar';
 import {BackButton} from './BackButton';
-import {MenuButton} from './MenuButton';
+import {MenuButton} from './MenuButton';
 
 let navigator = null;
 
@@ -23,51 +22,41 @@ BackAndroid.addEventListener('hardwareBackPress', () => {
 
 export default class MyApp extends React.Component {
 
-  constructor(props) {
-    super(props);
-
-    this.state = {
-      navigationBarHidden: false
-    }
-  }
+  static propTypes = {
+    initialRoute: PropTypes.object
+  };
 
   render() {
     return (
-      <View style={{ flex: 1, backgroundColor: colors.background}}>
-        <Navigator
-          ref={(nav) => { navigator = nav; }}
-          openMenu={this.props.openMenu}
-          initialRoute={getBaseRoutes()[0]}
-          renderScene={renderScene}
-          configureScene={(route, routeStack) => {
-            if (Platform.OS === 'android') {
-              return Navigator.SceneConfigs.FadeAndroid;
-            }
-            return Navigator.SceneConfigs.FloatFromRight;
-          }}
-          navigationBar={
-            <NavigationBar
-              routeMapper={NavigationBarRouteMapper}
-              style={{backgroundColor: colors.navBar}}
-            />
+      <Navigator
+        ref={(nav) => { navigator = nav; }}
+        openMenu={this.props.openMenu}
+        initialRoute={this.props.initialRoute}
+        renderScene={renderScene}
+        configureScene={(route, routeStack) => {
+          if (Platform.OS === 'android') {
+            return Navigator.SceneConfigs.FadeAndroid;
           }
-        />
-      </View>
+          return Navigator.SceneConfigs.FloatFromRight;
+        }}
+        navigationBar={
+          <NavigationBar
+            routeMapper={NavigationBarRouteMapper}
+            style={{backgroundColor: colors.navBar}}
+          />
+        }
+      />
     );
   }
 
   getNavigator() {
-  	return navigator;
+    return navigator;
   }
 }
 
 var NavigationBarRouteMapper = {
 
-  	LeftButton(route, navigator, index, navState) {
-    if (index === 0) {
-      return null;
-    }
-
+	LeftButton(route, navigator, index, navState) {
     var previousRoute = navState.routeStack[index - 1];
     if (Platform.OS === 'android') {
       return(
@@ -85,11 +74,7 @@ var NavigationBarRouteMapper = {
   },
 
   RightButton(route, navigator, index, navState) {
-    if (Platform.OS === 'android') return null;
-
-    return(
-      <MenuButton onPress={navigator.props.openMenu} />
-    );
+    return null;
   },
 
   Title(route, navigator, index, navState) {

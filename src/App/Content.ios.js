@@ -1,11 +1,11 @@
 'use strict';
 
 import React from 'react';
-import { StatusBar, View } from 'react-native';
+import { StatusBar, View, StyleSheet, TabBarIOS } from 'react-native';
 
-import SideMenu from 'react-native-side-menu';
 import Menu from '../Menu';
 import Nav from './Nav';
+import {getBaseRoutes} from '../routes/navigatorRoutes';
 
 import {colors} from '../Data';
 
@@ -14,51 +14,51 @@ export default class Content extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      isOpen: false,
-      disableGestures: false
+      selectedTab: getBaseRoutes()[0].title
     };
   }
 
   render() {
     return (
-      <View style={{flex: 1, backgroundColor: colors.menuBackground}}>
-        <StatusBar
-          barStyle="light-content"
-          translucent={true}
-          backgroundColor={"rgba(0, 0, 0, 0.2)"}
-        />
-        <SideMenu
-          ref='sideMenu'
-          menuPosition='right'
-          touchToClose={true}
-          isOpen={this.state.isOpen}
-          disableGestures={this._getMenuGesturesDisabled.bind(this)}
-          menu={<Menu onPress={this._onPress.bind(this)} />}
-        >
-          <Nav 
-            ref={"nav"}
-            openMenu={this._openMenu.bind(this)}
-          />
-        </SideMenu>
-      </View>
+      <TabBarIOS
+        unselectedTintColor="yellow"
+        tintColor="white"
+        translucent={true}
+        barTintColor={colors.tabBar}>
+
+        {this._getTabBarIOSItems()}
+
+      </TabBarIOS>
     );
   }
 
-  _getMenuGesturesDisabled() {
-    const currentRoutes = this.refs.nav.getNavigator().navigationContext._currentRoute;
-    return currentRoutes.menuGesturesDisabled === true;
-  }
-
-  _openMenu() {
-    this.setState({
-      isOpen: true
-    });
-  }
-
-  _onPress(routeData) {
-    this.refs.nav.getNavigator().resetTo(routeData);
-    this.setState({
-      isOpen: false
+  _getTabBarIOSItems() {
+    return getBaseRoutes().map((route) => {
+      return (
+        <TabBarIOS.Item
+          key={route.title}
+          title={route.title}
+          selected={this.state.selectedTab === route.title}
+          onPress={() => {
+            this.setState({
+              selectedTab: route.title,
+            });
+          }}
+        >
+          <View style={styles.tabContent}>
+            <Nav initialRoute={route}/>
+          </View>
+        </TabBarIOS.Item>
+      );
     });
   }
 }
+
+const styles = StyleSheet.create({
+  container: {
+    flex: 1
+  },
+  tabContent: {
+    flex: 1
+  }
+});

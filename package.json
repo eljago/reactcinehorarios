@@ -10,8 +10,7 @@
     "react-native": "^0.26.2",
     "react-native-code-push": "^1.11.0-beta",
     "react-native-photo-browser": "file:///Users/gharlock/Documents/GitClones/react-native-photo-browser",
-    "react-native-side-menu": "git://github.com/react-native-fellowship/react-native-side-menu.git#master",
-    "react-native-tab-navigator": "^0.3.0",
+    "react-native-scrollable-tab-view": "^0.4.3",
     "react-relay": "^0.8.1",
     "slash": "^1.0.0"
   },
