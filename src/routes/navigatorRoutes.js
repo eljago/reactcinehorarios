@@ -37,7 +37,8 @@ export {
 function getCinemasRoute() {
   return({
     title: 'Cinemas',
-    Component: Cinemas
+    Component: Cinemas,
+    icon: require('../../assets/Cinemas.png')
   });
 };
 
@@ -45,7 +46,8 @@ function getBillboardRoute() {
   return({
     title: 'Cartelera',
     Component: Billboard,
-    queryConfig: new ViewerQueryConfig()
+    queryConfig: new ViewerQueryConfig(),
+    icon: require('../../assets/Billboard.png')
   });
 };
 
@@ -53,7 +55,8 @@ function getComingSoonRoute() {
   return({
     title: 'Próximamente',
     Component: ComingSoon,
-    queryConfig: new ViewerQueryConfig()
+    queryConfig: new ViewerQueryConfig(),
+    icon: require('../../assets/ComingSoon.png')
   });
 };
 
@@ -61,7 +64,8 @@ function getVideosRoute() {
   return({
     title: 'Videos',
     Component: Videos,
-    queryConfig: new ViewerQueryConfig()
+    queryConfig: new ViewerQueryConfig(),
+    icon: require('../../assets/Videos.png')
   });
 }
 

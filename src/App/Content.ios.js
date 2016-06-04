@@ -21,10 +21,11 @@ export default class Content extends React.Component {
   render() {
     return (
       <TabBarIOS
-        unselectedTintColor="yellow"
-        tintColor="white"
+        unselectedTintColor={colors.tabBarInactive}
+        tintColor={colors.tabBarActive}
         translucent={true}
-        barTintColor={colors.tabBar}>
+        barTintColor={colors.tabBar}
+      >
 
         {this._getTabBarIOSItems()}
 
@@ -38,18 +39,24 @@ export default class Content extends React.Component {
         <TabBarIOS.Item
           key={route.title}
           title={route.title}
+          icon={route.icon}
           selected={this.state.selectedTab === route.title}
-          onPress={() => {
-            this.setState({
-              selectedTab: route.title,
-            });
-          }}
+          onPress={() => {this._onPressTabBarItem(route)}}
         >
           <View style={styles.tabContent}>
-            <Nav initialRoute={route}/>
+            <Nav
+              ref={"nav"}
+              initialRoute={route}
+            />
           </View>
         </TabBarIOS.Item>
       );
+    });
+  }
+
+  _onPressTabBarItem(route) {
+    this.setState({
+      selectedTab: route.title
     });
   }
 }

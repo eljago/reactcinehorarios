@@ -8,6 +8,8 @@ import {
   TouchableOpacity,
 } from 'react-native';
 
+import {colors} from '../../Data';
+
 export default class ComponentTabBar extends React.Component {
 
   static propTypes = {
@@ -28,8 +30,7 @@ export default class ComponentTabBar extends React.Component {
                 style={styles.tab}
               >
                 <Text style={{
-                  color: this.props.activeTab == i ? 'rgb(59,89,152)' : 'rgb(204,204,204)',
-                  textAlign: 'center'
+                  color: this.props.activeTab == i ? colors.tabBarActive : colors.tabBarInactive
                 }}>
                   {tab}
                 </Text>
@@ -50,7 +51,8 @@ const styles = StyleSheet.create({
     paddingBottom: 10,
   },
   tabs: {
-    height: 45,
+    height: 25,
+    backgroundColor: colors.navBar,
     flexDirection: 'row',
     paddingTop: 5,
     borderWidth: 1,

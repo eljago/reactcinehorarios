@@ -37,7 +37,7 @@ var DateHelper = {
   getShortDateString: (date) => {
     const weekDayNumber = date.getDay();
     const weekDays = ['Do', 'Lu', 'Ma', 'Mi', 'Ju', 'Vi', 'Sa'];
-    return `${weekDays[weekDayNumber]}\n${date.getDate()}`;
+    return `${weekDays[weekDayNumber]} ${date.getDate()}`;
   }
 }
 
