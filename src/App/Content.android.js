@@ -1,6 +1,6 @@
 'use strict';
 
-import React from 'react';
+import React, {PropTypes} from 'react';
 import { StatusBar, View, DrawerLayoutAndroid, StyleSheet } from 'react-native';
 
 import Nav from './Nav';
@@ -9,6 +9,10 @@ import {colors} from '../Data';
 import {getBaseRoutes} from '../routes/navigatorRoutes';
 
 export default class Content extends React.Component {
+
+  static propTypes = {
+    superNavigator: PropTypes.object
+  };
 
   render() {
     return (
@@ -31,6 +35,7 @@ export default class Content extends React.Component {
               initialRoute={getBaseRoutes()[0]}
               ref={"nav"}
               openMenu={this._openMenu.bind(this)}
+              superNavigator={this.props.superNavigator}
             />
           </View>
         </DrawerLayoutAndroid>

@@ -1,6 +1,6 @@
 'use strict';
 
-import React from 'react';
+import React, {PropTypes} from 'react';
 import { StatusBar, View, StyleSheet, TabBarIOS } from 'react-native';
 
 import Menu from '../Menu';
@@ -11,6 +11,10 @@ import {colors} from '../Data';
 
 export default class Content extends React.Component {
   
+  static propTypes = {
+    superNavigator: PropTypes.object
+  };
+
   constructor(props) {
     super(props);
     this.state = {
@@ -20,16 +24,23 @@ export default class Content extends React.Component {
 
   render() {
     return (
-      <TabBarIOS
-        unselectedTintColor={colors.tabBarInactive}
-        tintColor={colors.tabBarActive}
-        translucent={true}
-        barTintColor={colors.tabBar}
-      >
+      <View style={styles.container}>
+        <StatusBar
+          barStyle="light-content"
+          translucent={false}
+          backgroundColor={colors.navBar}
+        />
+        <TabBarIOS
+          unselectedTintColor={colors.tabBarInactive}
+          tintColor={colors.tabBarActive}
+          translucent={true}
+          barTintColor={colors.tabBar}
+        >
 
-        {this._getTabBarIOSItems()}
+          {this._getTabBarIOSItems()}
 
-      </TabBarIOS>
+        </TabBarIOS>
+      </View>
     );
   }
 
@@ -47,6 +58,7 @@ export default class Content extends React.Component {
             <Nav
               ref={"nav"}
               initialRoute={route}
+              superNavigator={this.props.superNavigator}
             />
           </View>
         </TabBarIOS.Item>

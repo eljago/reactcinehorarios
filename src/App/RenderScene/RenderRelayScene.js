@@ -7,7 +7,7 @@ import Relay from 'react-relay';
 import LoadingIndicator from './LoadingIndicator';
 
 
-export default function renderRelayScene(route, navigator) {
+export default function renderRelayScene(route, navigator, props = null) {
   const { title, Component, queryConfig, extraData } = route;
 
   return (
@@ -21,6 +21,7 @@ export default function renderRelayScene(route, navigator) {
       renderFetched={(data, readyState) => {
         return (
           <Component
+            {...props}
             navigator={navigator}
             name={title}
             extraData={extraData}

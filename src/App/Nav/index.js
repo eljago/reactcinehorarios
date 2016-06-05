@@ -23,8 +23,13 @@ BackAndroid.addEventListener('hardwareBackPress', () => {
 export default class MyApp extends React.Component {
 
   static propTypes = {
+    superNavigator: PropTypes.object,
     initialRoute: PropTypes.object
   };
+
+  componentDidMount() {
+    navigator.superNavigator = this.props.superNavigator;
+  }
 
   render() {
     return (
