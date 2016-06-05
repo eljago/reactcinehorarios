@@ -38,7 +38,8 @@ function getCinemasRoute() {
   return({
     title: 'Cinemas',
     Component: Cinemas,
-    icon: require('../../assets/Cinemas.png')
+    icon: require('../../assets/Cinemas.png'),
+    navigator: true
   });
 };
 
@@ -65,7 +66,8 @@ function getVideosRoute() {
     title: 'Videos',
     Component: Videos,
     queryConfig: new ViewerQueryConfig(),
-    icon: require('../../assets/Videos.png')
+    icon: require('../../assets/Videos.png'),
+    navigator: true
   });
 }
 
@@ -110,9 +112,7 @@ function getPhotoGalleryRoute(images) {
     Component: PhotoGallery,
     extraData: {
       images: images
-    },
-    navigationBarHidden: true,
-    menuGesturesDisabled: true
+    }
   });
 };
 

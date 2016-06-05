@@ -6,7 +6,6 @@ import { Navigator, Text, View, Platform, BackAndroid } from 'react-native';
 import renderScene from '../RenderScene';
 import {colors} from '../../Data';
 
-import NavigationBar from './NavigationBar';
 import {BackButton} from './BackButton';
 import {MenuButton} from './MenuButton';
 
@@ -45,7 +44,7 @@ export default class MyApp extends React.Component {
           return Navigator.SceneConfigs.FloatFromRight;
         }}
         navigationBar={
-          <NavigationBar
+          <Navigator.NavigationBar
             routeMapper={NavigationBarRouteMapper}
             style={{backgroundColor: colors.navBar}}
           />

@@ -1,13 +1,15 @@
 'use strict';
 
 import React, {PropTypes} from 'react';
-import { StatusBar, View, StyleSheet, TabBarIOS } from 'react-native';
+import { StatusBar, View, StyleSheet, TabBarIOS, Platform } from 'react-native';
 
 import Menu from '../Menu';
 import Nav from './Nav';
 import {getBaseRoutes} from '../routes/navigatorRoutes';
 
 import {colors} from '../Data';
+import renderRelayScene from './RenderScene/RenderRelayScene';
+import renderNormalScene from './RenderScene/RenderNormalScene';
 
 export default class Content extends React.Component {
   
@@ -36,9 +38,7 @@ export default class Content extends React.Component {
           translucent={true}
           barTintColor={colors.tabBar}
         >
-
           {this._getTabBarIOSItems()}
-
         </TabBarIOS>
       </View>
     );
@@ -54,16 +54,36 @@ export default class Content extends React.Component {
           selected={this.state.selectedTab === route.title}
           onPress={() => {this._onPressTabBarItem(route)}}
         >
-          <View style={styles.tabContent}>
-            <Nav
-              ref={"nav"}
-              initialRoute={route}
-              superNavigator={this.props.superNavigator}
-            />
-          </View>
+          {this._getTabItem(route)}
         </TabBarIOS.Item>
       );
     });
+  }
+
+  _getTabItem(route) {
+    if (route.navigator) {
+      return(
+        <Nav
+          ref={"nav"}
+          initialRoute={route}
+          superNavigator={this.props.superNavigator}
+        />
+      );
+    }
+    else {
+      if (route.queryConfig !== undefined) {
+        var scene = renderRelayScene(route, this.props.superNavigator);
+      }
+      else {
+        var scene = renderNormalScene(route, this.props.superNavigator);
+      }
+      return (
+        <View style={styles.container}>
+          <View style={{height: 20, backgroundColor: colors.navBar}} />
+          {scene}
+        </View>
+      );
+    }
   }
 
   _onPressTabBarItem(route) {
@@ -75,9 +95,7 @@ export default class Content extends React.Component {
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1
-  },
-  tabContent: {
-    flex: 1
+    flex: 1,
+    backgroundColor: colors.background
   }
 });

@@ -22,7 +22,7 @@ class ContainerComingSoon extends React.Component {
   _onPress(rowData) {
     const {show_id} = rowData;
     let showRoute = getShowRoute(show_id);
-    this.props.navigator.superNavigator.push(showRoute);
+    this.props.navigator.push(showRoute);
   }
 }
 

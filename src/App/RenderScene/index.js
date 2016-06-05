@@ -19,9 +19,6 @@ export default function renderScene(route, navigator) {
 	if (Platform.OS === 'android') {
 		marginTop = 56;
 	}
-	if (route.navigationBarHidden === true) {
-		marginTop = 0;
-	}
 	return (
     <View style={[styles.container, {marginTop: marginTop}]}>
     	{scene}
