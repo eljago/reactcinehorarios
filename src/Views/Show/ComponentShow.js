@@ -54,6 +54,7 @@ export default class ComponentShow extends React.Component {
     const estreno = debut ? `Estreno: ${debut}` : null;
     return(
       <View style={styles.container}>
+        <View style={{height: 20, backgroundColor: colors.navBar}} />
         <ScrollView style={styles.scrollView}>
           <View style={styles.shadowView}>
             <Image

@@ -30,7 +30,8 @@ export default class ComponentTabBar extends React.Component {
                 style={styles.tab}
               >
                 <Text style={{
-                  color: this.props.activeTab == i ? colors.tabBarActive : colors.tabBarInactive
+                  color: this.props.activeTab == i ? colors.scrollIconActive : colors.scrollIconInactive,
+                  fontWeight: this.props.activeTab == i ? '600' : 'normal'
                 }}>
                   {tab}
                 </Text>

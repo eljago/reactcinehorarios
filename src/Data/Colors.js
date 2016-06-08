@@ -9,6 +9,8 @@ export const colors = {
 	navBarLetters: 'white',
 	tabBar: '#1E1E1E',
 	tabBarInactive: '#858585',
-	tabBarActive: 'white'
+	tabBarActive: 'white',
+	scrollIconActive: 'white',
+	scrollIconInactive: '#FEBBAA'
 };
 

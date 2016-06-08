@@ -61,20 +61,22 @@ export default class MyApp extends React.Component {
 var NavigationBarRouteMapper = {
 
 	LeftButton(route, navigator, index, navState) {
-    var previousRoute = navState.routeStack[index - 1];
     if (Platform.OS === 'android') {
       return(
         <MenuButton onPress={navigator.props.openMenu} />
       );
     }
-    
-    return(
-      <BackButton
-        onPress={() => {
-          navigator.pop();
-        }}
-      />
-    );
+    var previousRoute = navState.routeStack[index - 1];
+    if (previousRoute) {
+      return(
+        <BackButton
+          onPress={() => {
+            navigator.pop();
+          }}
+        />
+      );
+    }
+    return null;
   },
 
   RightButton(route, navigator, index, navState) {
