@@ -13,6 +13,8 @@
 
 #import "CodePush.h"
 
+@import Firebase; // react-native-firebase-analytics
+
 @implementation AppDelegate
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
@@ -53,6 +55,8 @@
     NSLog(@"codepush");
     jsCodeLocation = [CodePush bundleURL];
   #endif
+  
+  [FIRApp configure]; // react-native-firebase-analytics
 
   RCTRootView *rootView = [[RCTRootView alloc] initWithBundleURL:jsCodeLocation
                                                       moduleName:@"CineHorarios"

@@ -9,6 +9,7 @@
     "react": "^15.1.0",
     "react-native": "^0.27.1",
     "react-native-code-push": "^1.11.0-beta",
+    "react-native-firebase-analytics": "^1.0.2",
     "react-native-parallax-scroll-view": "^0.18.2",
     "react-native-photo-browser": "file:///Users/gharlock/Documents/GitClones/react-native-photo-browser",
     "react-native-scrollable-tab-view": "^0.4.3",

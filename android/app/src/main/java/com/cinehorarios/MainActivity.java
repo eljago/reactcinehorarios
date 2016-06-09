@@ -1,6 +1,7 @@
 package com.cinehorarios;
 
 import com.facebook.react.ReactActivity;
+import com.evollu.react.fa.FIRAnalyticsPackage;
 import com.microsoft.codepush.react.CodePush;
 import com.facebook.react.ReactPackage;
 import com.facebook.react.shell.MainReactPackage;
@@ -42,6 +43,7 @@ public class MainActivity extends ReactActivity {
     protected List<ReactPackage> getPackages() {
         return Arrays.<ReactPackage>asList(
             new MainReactPackage(),
+            new FIRAnalyticsPackage(),
             new CodePush("Ia8rXTpzEkgi8-MYeXuBc49mj33mVyYqaEyHl", this, BuildConfig.DEBUG)
         );
     }

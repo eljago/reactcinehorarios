@@ -61,7 +61,6 @@ export default class ComponentShow extends React.Component {
         parallaxHeaderHeight={Dimensions.get('window').width * 720 / 1280}
         renderForeground={() => (
           <Image
-            resizeMode='cover'
             style={styles.portraitImage}
             source={{uri: ImageHelper.addPrefixToPath(portrait_image.image_url, 'small_')}}
           >
@@ -187,9 +186,8 @@ const styles = StyleSheet.create({
     flex: 1,
   },
   portraitImage: {
-    flexDirection: 'row',
-    height: Dimensions.get('window').width * 720 / 1280,
-    width: Dimensions.get('window').width
+    flex: 1,
+    flexDirection: 'row'
   },
   viewTitleDetails: {
     flex: 1,
