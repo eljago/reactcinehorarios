@@ -12,6 +12,8 @@ import {
   TouchableHighlight
 } from 'react-native';
 
+import ParallaxScrollView from 'react-native-parallax-scroll-view';
+
 import ComponentRightButton from './ComponentRightButton';
 import ComponentScoreButton from './ComponentScoreButton';
 
@@ -53,73 +55,75 @@ export default class ComponentShow extends React.Component {
 
     const estreno = debut ? `Estreno: ${debut}` : null;
     return(
-      <View style={styles.container}>
-        <View style={{height: 20, backgroundColor: colors.navBar}} />
-        <ScrollView style={styles.scrollView}>
-          <View style={styles.shadowView}>
-            <Image
-              resizeMode='cover'
-              style={styles.portraitImage}
-              source={{uri: ImageHelper.addPrefixToPath(portrait_image.image_url, 'small_')}}
-            >
-              <View style={styles.viewTitleDetails}>
-                <Text style={styles.title}>
-                  {name}
-                </Text>
-                <View style={styles.viewDetails}>
-                  {this._getDetailText(name_original)}
-                  {this._getDetailText(year.toString())}
-                  {this._getDetailText(rating)}
-                  {this._getDetailText(genres)}
-                  {this._getDetailText(estreno)}
-                </View>
-              </View>
-              <View style={styles.rightMenu}>
-                <ComponentRightButton
-                  onPress={this.props.onGoToImages}
-                  source={require('../../../assets/IconImages.png')}
-                  color={'#45D264'}
-                />
-                <ComponentRightButton
-                  onPress={this.props.onGoToCast}
-                  source={require('../../../assets/IconActors.png')}
-                  color={'#FFC956'}
-                />
-                <ComponentRightButton
-                  onPress={this.props.onGoToImages}
-                  source={require('../../../assets/IconVideos.png')}
-                  color={'#E10B14'}
-                />
-                <ComponentRightButton
-                  onPress={this.props.onGoToImages}
-                  source={require('../../../assets/IconShowtimes.png')}
-                  color={'#2B72E6'}
-                />
-              </View>
-            </Image>
-          </View>
-
-          <View style={styles.imageAndInformation}>
-            <View>
-              <View style={styles.shadowView}>
-                <Image
-                  resizeMode='stretch'
-                  style={styles.coverImage}
-                  source={{uri: ImageHelper.addPrefixToPath(image_url, 'smaller_')}}
-                />
-              </View>
-              <View style={styles.scoresView}>
-                {this._getImdbScoreView(imdb_code, imdb_score)}
-                {this._getMetacriticScoreView(metacritic_url, metacritic_score)}
-                {this._getRottenTomatoesScoreView(rotten_tomatoes_url, rotten_tomatoes_score)}
+      <ParallaxScrollView
+        backgroundColor={colors.navBar}
+        contentBackgroundColor="white"
+        parallaxHeaderHeight={Dimensions.get('window').width * 720 / 1280}
+        renderForeground={() => (
+          <Image
+            resizeMode='cover'
+            style={styles.portraitImage}
+            source={{uri: ImageHelper.addPrefixToPath(portrait_image.image_url, 'small_')}}
+          >
+            <View style={styles.viewTitleDetails}>
+              <Text style={styles.title}>
+                {name}
+              </Text>
+              <View style={styles.viewDetails}>
+                {this._getDetailText(name_original)}
+                {this._getDetailText(year.toString())}
+                {this._getDetailText(rating)}
+                {this._getDetailText(genres)}
+                {this._getDetailText(estreno)}
               </View>
             </View>
-            <Text style={styles.information}>
-              {information}
-            </Text>
+            <View style={styles.rightMenu}>
+              <ComponentRightButton
+                onPress={this.props.onGoToImages}
+                source={require('../../../assets/IconImages.png')}
+                color={'#45D264'}
+              />
+              <ComponentRightButton
+                onPress={this.props.onGoToCast}
+                source={require('../../../assets/IconActors.png')}
+                color={'#FFC956'}
+              />
+              <ComponentRightButton
+                onPress={this.props.onGoToImages}
+                source={require('../../../assets/IconVideos.png')}
+                color={'#E10B14'}
+              />
+              <ComponentRightButton
+                onPress={this.props.onGoToImages}
+                source={require('../../../assets/IconShowtimes.png')}
+                color={'#2B72E6'}
+              />
+            </View>
+          </Image>
+        )}
+      >
+
+        <View style={styles.imageAndInformation}>
+          <View>
+            <View style={styles.shadowView}>
+              <Image
+                resizeMode='stretch'
+                style={styles.coverImage}
+                source={{uri: ImageHelper.addPrefixToPath(image_url, 'smaller_')}}
+              />
+            </View>
+            <View style={styles.scoresView}>
+              {this._getImdbScoreView(imdb_code, imdb_score)}
+              {this._getMetacriticScoreView(metacritic_url, metacritic_score)}
+              {this._getRottenTomatoesScoreView(rotten_tomatoes_url, rotten_tomatoes_score)}
+            </View>
           </View>
-        </ScrollView>
-      </View>
+          <Text style={styles.information}>
+            {information}
+          </Text>
+        </View>
+        
+      </ParallaxScrollView>
     );
   }
 
