@@ -14,6 +14,7 @@ Relay.injectNetworkLayer(
 );
 
 import codePush from "react-native-code-push";
+var Analytics = require('react-native-firebase-analytics');
 
 import renderRelayScene from './RenderScene/RenderRelayScene';
 import renderNormalScene from './RenderScene/RenderNormalScene';
@@ -25,6 +26,15 @@ export default class App extends React.Component {
 
   componentDidMount() {
     // codePush.sync();
+
+    // if (__DEV__) {
+    //   console.log('DEV');
+    //   Analytics.setEnabled(false);
+    // }
+
+    Analytics.logEvent('view_item', {
+      'item_id': 'AppStart'
+    });
   }
   render() {
     return (
