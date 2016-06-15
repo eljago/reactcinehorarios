@@ -1,7 +1,7 @@
 'use strict';
 
 import React from 'react';
-import {Navigator, View, StyleSheet} from 'react-native';
+import {Navigator, View, StyleSheet, Platform} from 'react-native';
 import Relay from 'react-relay';
 import config from '../config';
 
@@ -21,6 +21,7 @@ import renderNormalScene from './RenderScene/RenderNormalScene';
 import {colors} from '../Data';
 import Menu from '../Menu';
 import Content from './Content';
+
 
 export default class App extends React.Component {
 
@@ -57,6 +58,9 @@ export default class App extends React.Component {
           );
         }}
         configureScene={(route, routeStack) => {
+          if (Platform.OS === 'android') {
+            return Navigator.SceneConfigs.FadeAndroid;
+          }
           return Navigator.SceneConfigs.FloatFromRight;
         }}
       />

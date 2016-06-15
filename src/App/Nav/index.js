@@ -9,15 +9,22 @@ import {colors} from '../../Data';
 import {BackButton} from './BackButton';
 import {MenuButton} from './MenuButton';
 
-let navigator = null;
-
-BackAndroid.addEventListener('hardwareBackPress', () => {
-    if (navigator && navigator.getCurrentRoutes().length > 1) {
+let nagivagor = null;
+if (Platform.OS === 'android') {
+  BackAndroid.addEventListener('hardwareBackPress', () => {
+    if (navigator) {
+      if (navigator.superNavigator && navigator.superNavigator.getCurrentRoutes().length > 1) {
+        navigator.superNavigator.pop();
+        return true;
+      }
+      else if (navigator.getCurrentRoutes().length > 1) {
         navigator.pop();
         return true;
+      }
     }
     return false;
-});
+  });
+}
 
 export default class MyApp extends React.Component {
 

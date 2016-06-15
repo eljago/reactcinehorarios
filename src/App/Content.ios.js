@@ -3,8 +3,8 @@
 import React, {PropTypes} from 'react';
 import { StatusBar, View, StyleSheet, TabBarIOS, Platform } from 'react-native';
 
-import Menu from '../Menu';
 import Nav from './Nav';
+import Menu from '../Menu';
 import {getBaseRoutes} from '../routes/navigatorRoutes';
 
 import {colors} from '../Data';

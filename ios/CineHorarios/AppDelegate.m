@@ -13,7 +13,7 @@
 
 #import "CodePush.h"
 
-@import Firebase; // react-native-firebase-analytics
+#import <Firebase.h> // react-native-firebase-analytics
 
 
 @implementation AppDelegate
@@ -50,7 +50,7 @@
   
   #ifdef DEBUG
     NSLog(@"debug");
-    jsCodeLocation = [NSURL URLWithString:@"http://192.168.50.42:8081/index.ios.bundle?platform=ios&dev=true"];
+    jsCodeLocation = [NSURL URLWithString:@"http://localhost:8081/index.ios.bundle?platform=ios&dev=true"];
   #else
       // CODEPUSH
     NSLog(@"codepush");
