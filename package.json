@@ -7,16 +7,15 @@
   },
   "dependencies": {
     "react": "^15.1.0",
-    "react-native": "^0.27.1",
+    "react-native": "^0.27.2",
     "react-native-code-push": "^1.11.0-beta",
-    "react-native-firebase-analytics": "^1.0.2",
+    "react-native-firebase-analytics": "^1.0.3",
     "react-native-photo-browser": "file:///Users/gharlock/Documents/GitClones/react-native-photo-browser",
-    "react-native-scrollable-tab-view": "^0.4.3",
-    "react-relay": "^0.9.0",
-    "slash": "^1.0.0"
+    "react-native-scrollable-tab-view": "^0.4.4",
+    "react-native-sglistview": "^0.3.2",
+    "react-relay": "^0.9.0"
   },
   "devDependencies": {
-    "babel": "^6.5.2",
     "babel-preset-react-native": "^1.9.0",
     "babel-relay-plugin": "^0.9.0"
   }

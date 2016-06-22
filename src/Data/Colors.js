@@ -8,6 +8,7 @@ export const colors = {
 	navBar: '#972605',
 	navBarLetters: 'white',
 	tabBar: '#1E1E1E',
+	tabBarSelected: '#101010',
 	tabBarInactive: '#858585',
 	tabBarActive: 'white',
 	scrollIconActive: 'white',

@@ -9,7 +9,7 @@ import {colors} from '../../Data';
 import {BackButton} from './BackButton';
 import {MenuButton} from './MenuButton';
 
-let nagivagor = null;
+let navigator = null;
 if (Platform.OS === 'android') {
   BackAndroid.addEventListener('hardwareBackPress', () => {
     if (navigator) {

@@ -1,3 +1,3 @@
 'use strict';
 
-export {default as default} from './ContainerShowCast';
+export {default as default} from './ComponentShowCast';

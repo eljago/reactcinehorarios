@@ -35,8 +35,9 @@ export default class Content extends React.Component {
         <TabBarIOS
           unselectedTintColor={colors.tabBarInactive}
           tintColor={colors.tabBarActive}
-          translucent={true}
+          translucent={false}
           barTintColor={colors.tabBar}
+          style={styles.tabBar}
         >
           {this._getTabBarIOSItems()}
         </TabBarIOS>
@@ -97,5 +98,8 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: colors.background
+  },
+  tabBar: {
+    backgroundColor: colors.tabBar
   }
 });

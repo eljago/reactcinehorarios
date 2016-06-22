@@ -9,7 +9,8 @@ import {ImageHelper} from '../../Utils';
 export default class ComponentShowCast extends React.Component {
 
 	static propTypes = {
-		cast: PropTypes.array
+		extraData: PropTypes.object,
+    navigator: PropTypes.object
 	};
 
 	constructor(props) {
@@ -17,10 +18,12 @@ export default class ComponentShowCast extends React.Component {
 	}
 
 	render() {
+    const cast = this.props.extraData ? this.props.extraData.cast : [];
 		return(
       <MyGiftedListView
         renderRow={this._renderRow.bind(this)}
-        dataRows={this.props.cast}
+        dataRows={cast}
+        ignoreContentInset={true}
       />
 		);
 	}

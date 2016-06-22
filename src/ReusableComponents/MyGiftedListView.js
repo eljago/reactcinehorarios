@@ -3,6 +3,8 @@
 import React, { PropTypes } from 'react';
 import { View, StyleSheet, ListView, Platform } from 'react-native';
 
+let SGListView = require('react-native-sglistview');
+
 import { EmptyView, SeparatorView } from './';
 
 export default class MyGiftedListView extends React.Component {
@@ -10,7 +12,8 @@ export default class MyGiftedListView extends React.Component {
   static propTypes = {
     scrollsToTop: PropTypes.bool,
     renderRow: PropTypes.func,
-    dataRows: PropTypes.array
+    dataRows: PropTypes.array,
+    ignoreContentInset: PropTypes.bool
   };
   static defaultProps = {
     pagination: false
@@ -35,11 +38,14 @@ export default class MyGiftedListView extends React.Component {
   }
 
   render() {
-    const contentInset = (Platform.OS === 'ios') ? 49 : 0;
+    let contentInset = 0;
+    if (!this.props.ignoreContentInset && Platform.OS === 'ios') {
+      contentInset = 49;
+    }
     
     return (
     	<View style={[styles.container, this.props.style]}>
-        <ListView
+        <SGListView
           contentContainerStyle={this.props.listViewStyle}
           scrollsToTop={this.props.scrollsToTop}
           dataSource={this.state.dataSource}
