@@ -32,6 +32,7 @@ class ContainerShow extends React.Component {
     return (
       <ComponentShow
         show={show}
+        onGoBack={() => this.props.navigator.pop()}
         onPressCast={this._onPressCast.bind(this)}
         onPressImages={this._onPressImages.bind(this)}
       />

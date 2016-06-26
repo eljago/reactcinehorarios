@@ -20,6 +20,7 @@ export default class ComponentShow extends React.Component {
 
   static propTypes = {
     show: PropTypes.object.isRequired,
+    onGoBack: PropTypes.func,
     onPressCast: PropTypes.func,
     onPressShowtimes: PropTypes.func,
     onPressVideos: PropTypes.func,
@@ -67,6 +68,7 @@ export default class ComponentShow extends React.Component {
         </View>
 
         <ComponentShowMenu
+          onGoBack={this.props.onGoBack}
           onPressCast={this.props.onPressCast}
           onPressShowtimes={this.props.onPressShowtimes}
           onPressVideos={this.props.onPressVideos}
@@ -168,6 +170,7 @@ const styles = StyleSheet.create({
     paddingLeft: 15
   },
   title: {
+    marginTop: 10,
     fontSize: 22,
     color: 'white',
   },

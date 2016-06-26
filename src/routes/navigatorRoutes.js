@@ -102,7 +102,8 @@ function getShowRoute(show_id) {
     queryConfig: new ViewerQueryConfig(),
     extraData: {
       show_id: show_id
-    }
+    },
+    hideNavBar: true
   });
 };
 

@@ -1,7 +1,7 @@
 'use strict'
 
 import React, {PropTypes} from 'react';
-import {StyleSheet, View} from 'react-native';
+import {StyleSheet, View, Platform} from 'react-native';
 
 import {colors} from '../../Data';
 import ComponentRightButton from './ComponentRightButton';
@@ -9,6 +9,7 @@ import ComponentRightButton from './ComponentRightButton';
 export default class ComponentShowMenu extends React.Component {
 
 	static propTypes = {
+		onGoBack: PropTypes.func,
 		onPressCast: PropTypes.func,
 		onPressShowtimes: PropTypes.func,
 		onPressVideos: PropTypes.func,
@@ -16,8 +17,17 @@ export default class ComponentShowMenu extends React.Component {
 	};
 
 	render() {
+		let ComponentGoBack = null;
+		if (Platform.OS === 'ios') {
+			ComponentGoBack = <ComponentRightButton
+										      onPress={this.props.onGoBack}
+										      source={require('../../../assets/MenuBackIcon.png')}
+										      color={'white'}
+										    />;
+		}
 		return(
 		  <View style={[styles.menu, styles.shadowView]}>
+			  {ComponentGoBack}
 		    <ComponentRightButton
 		      onPress={this.props.onPressCast}
 		      source={require('../../../assets/IconActors.png')}
