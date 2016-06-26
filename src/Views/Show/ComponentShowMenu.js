@@ -61,6 +61,6 @@ const styles = StyleSheet.create({
   menu: {
     flexDirection: 'row',
     height: 49,
-    backgroundColor: colors.tabBar
+    backgroundColor: 'rgba(0, 0, 0, 0.5)',
   }
 });

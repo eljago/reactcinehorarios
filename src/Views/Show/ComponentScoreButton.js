@@ -31,7 +31,7 @@ export default class ComponentScoreButton extends React.Component {
 
 const styles = StyleSheet.create({
   scoreButton: {
-    padding: 5
+    padding: 2
   },
   scoreView: {
     alignItems: 'center'

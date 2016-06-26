@@ -65,15 +65,15 @@ export default class ComponentShow extends React.Component {
               {this._getDetailText(genres)}
               {this._getDetailText(estreno)}
             </View>
-          </Image>
 
-          <ComponentShowMenu
-            onGoBack={this.props.onGoBack}
-            onPressCast={this.props.onPressCast}
-            onPressShowtimes={this.props.onPressShowtimes}
-            onPressVideos={this.props.onPressVideos}
-            onPressImages={this.props.onPressImages}
-          />
+            <ComponentShowMenu
+              onGoBack={this.props.onGoBack}
+              onPressCast={this.props.onPressCast}
+              onPressShowtimes={this.props.onPressShowtimes}
+              onPressVideos={this.props.onPressVideos}
+              onPressImages={this.props.onPressImages}
+            />
+          </Image>
         </View>
 
         <View style={styles.imageAndInformation}>
@@ -159,8 +159,6 @@ const styles = StyleSheet.create({
     flex: 1,
   },
   portraitImage: {
-    height: Dimensions.get('window').width * 720 / 1280,
-    width: Dimensions.get('window').width
   },
   viewTitleDetails: {
     flex: 1,
