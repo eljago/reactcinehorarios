@@ -3,8 +3,11 @@
 import React, { PropTypes } from 'react';
 import Relay from 'react-relay';
 
-import ComponentShowTabs from './ComponentShowTabs';
-import {getPhotoGalleryRoute, getShowCastRoute} from '../../routes/navigatorRoutes'
+import ComponentShow from './ComponentShow';
+import {
+  getPhotoGalleryRoute,
+  getShowCastRoute
+} from '../../routes/navigatorRoutes'
 
 class ContainerShow extends React.Component {
 
@@ -27,21 +30,21 @@ class ContainerShow extends React.Component {
       return null;
     }
     return (
-      <ComponentShowTabs
+      <ComponentShow
         show={show}
-        onGoToImages={this._goToImages.bind(this)}
-        onGoToCast={this._goToCast.bind(this)}
+        onPressCast={this._onPressCast.bind(this)}
+        onPressImages={this._onPressImages.bind(this)}
       />
     );
   }
 
-  _goToImages() {
+  _onPressImages() {
     const images = this.props.viewer.api_show.images;
     let showImagesRoute = getPhotoGalleryRoute(images);
     this.props.navigator.push(showImagesRoute);
   }
 
-  _goToCast() {
+  _onPressCast() {
     const people = this.props.viewer.api_show.people;
     let showCastRoute = getShowCastRoute(people);
     this.props.navigator.push(showCastRoute);

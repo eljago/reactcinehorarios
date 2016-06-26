@@ -3,11 +3,10 @@
 import React, {PropTypes} from 'react';
 import { Navigator, Text, View, Platform, BackAndroid } from 'react-native';
 
+import {NavigationBarRouteMapper, configureScene} from '../NavigationBarRouteMapper';
+
 import renderScene from '../RenderScene';
 import {colors} from '../../Data';
-
-import {BackButton} from './BackButton';
-import {MenuButton} from './MenuButton';
 
 let navigator = null;
 if (Platform.OS === 'android') {
@@ -44,12 +43,7 @@ export default class MyApp extends React.Component {
         openMenu={this.props.openMenu}
         initialRoute={this.props.initialRoute}
         renderScene={renderScene}
-        configureScene={(route, routeStack) => {
-          if (Platform.OS === 'android') {
-            return Navigator.SceneConfigs.FadeAndroid;
-          }
-          return Navigator.SceneConfigs.FloatFromRight;
-        }}
+        configureScene={configureScene}
         navigationBar={
           <Navigator.NavigationBar
             routeMapper={NavigationBarRouteMapper}
@@ -59,49 +53,4 @@ export default class MyApp extends React.Component {
       />
     );
   }
-
-  getNavigator() {
-    return navigator;
-  }
 }
-
-var NavigationBarRouteMapper = {
-
-	LeftButton(route, navigator, index, navState) {
-    if (Platform.OS === 'android') {
-      return(
-        <MenuButton onPress={navigator.props.openMenu} />
-      );
-    }
-    var previousRoute = navState.routeStack[index - 1];
-    if (previousRoute) {
-      return(
-        <BackButton
-          onPress={() => {
-            navigator.pop();
-          }}
-        />
-      );
-    }
-    return null;
-  },
-
-  RightButton(route, navigator, index, navState) {
-    return null;
-  },
-
-  Title(route, navigator, index, navState) {
-      return(
-				<Text
-          style={{
-            color: colors.navBarLetters,
-            fontSize: 20,
-            marginTop: 8
-          }}
-        >
-          {route.title}
-        </Text>
-			);
-  },
-
-};

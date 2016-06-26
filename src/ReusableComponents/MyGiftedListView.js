@@ -1,7 +1,7 @@
 'use strict';
 
 import React, { PropTypes } from 'react';
-import { View, StyleSheet, ListView, Platform } from 'react-native';
+import { View, StyleSheet, ListView } from 'react-native';
 
 let SGListView = require('react-native-sglistview');
 
@@ -38,11 +38,6 @@ export default class MyGiftedListView extends React.Component {
   }
 
   render() {
-    let contentInset = 0;
-    if (!this.props.ignoreContentInset && Platform.OS === 'ios') {
-      contentInset = 49;
-    }
-    
     return (
     	<View style={[styles.container, this.props.style]}>
         <SGListView
@@ -53,7 +48,6 @@ export default class MyGiftedListView extends React.Component {
           enableEmptySections={true}
           initialListSize={1}
           automaticallyAdjustContentInsets={false}
-          contentInset={{bottom: contentInset}}
         />
       </View>
     );

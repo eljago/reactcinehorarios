@@ -11,6 +11,7 @@ import {
 } from 'react-native';
 
 import ComponentScoreButton from './ComponentScoreButton';
+import ComponentShowMenu from './ComponentShowMenu';
 
 import {colors} from '../../Data';
 import {ImageHelper} from '../../Utils';
@@ -19,6 +20,10 @@ export default class ComponentShow extends React.Component {
 
   static propTypes = {
     show: PropTypes.object.isRequired,
+    onPressCast: PropTypes.func,
+    onPressShowtimes: PropTypes.func,
+    onPressVideos: PropTypes.func,
+    onPressImages: PropTypes.func
   };
 
   render() {
@@ -60,6 +65,13 @@ export default class ComponentShow extends React.Component {
             </View>
           </Image>
         </View>
+
+        <ComponentShowMenu
+          onPressCast={this.props.onPressCast}
+          onPressShowtimes={this.props.onPressShowtimes}
+          onPressVideos={this.props.onPressVideos}
+          onPressImages={this.props.onPressImages}
+        />
 
         <View style={styles.imageAndInformation}>
           <View>
@@ -178,10 +190,10 @@ const styles = StyleSheet.create({
   },
   shadowView: {
     shadowColor: 'black',
-    shadowRadius: 3,
+    shadowRadius: 2,
     shadowOpacity: 1,
     shadowOffset: {
-      width: 0, height: 0
+      width: 0, height: -2
     }
   },
   coverImage: {

@@ -1,10 +1,11 @@
 'use strict';
 
 import React, {PropTypes} from 'react';
-import { StatusBar, View, StyleSheet, TabBarIOS, Platform } from 'react-native';
+import { StatusBar, View, StyleSheet, Platform, Image } from 'react-native';
+
+import TabNavigator from 'react-native-tab-navigator';
 
 import Nav from './Nav';
-import Menu from '../Menu';
 import {getBaseRoutes} from '../routes/navigatorRoutes';
 
 import {colors} from '../Data';
@@ -32,15 +33,11 @@ export default class Content extends React.Component {
           translucent={false}
           backgroundColor={colors.navBar}
         />
-        <TabBarIOS
-          unselectedTintColor={colors.tabBarInactive}
-          tintColor={colors.tabBarActive}
-          translucent={false}
-          barTintColor={colors.tabBar}
-          style={styles.tabBar}
+        <TabNavigator
+          tabBarStyle={styles.tabBar}
         >
           {this._getTabBarIOSItems()}
-        </TabBarIOS>
+        </TabNavigator>
       </View>
     );
   }
@@ -48,15 +45,28 @@ export default class Content extends React.Component {
   _getTabBarIOSItems() {
     return getBaseRoutes().map((route) => {
       return (
-        <TabBarIOS.Item
+        <TabNavigator.Item
           key={route.title}
-          title={route.title}
-          icon={route.icon}
           selected={this.state.selectedTab === route.title}
+          title={route.title}
+          renderIcon={() => 
+            <Image
+              source={route.icon}
+              style={styles.icon}
+            />
+          }
+          renderSelectedIcon={()  => 
+            <Image
+              source={route.icon}
+              style={styles.iconSelected}
+            />
+          }
           onPress={() => {this._onPressTabBarItem(route)}}
+          titleStyle={styles.iconTitle}
+          selectedTitleStyle={styles.iconTitleSelected}
         >
           {this._getTabItem(route)}
-        </TabBarIOS.Item>
+        </TabNavigator.Item>
       );
     });
   }
@@ -101,5 +111,17 @@ const styles = StyleSheet.create({
   },
   tabBar: {
     backgroundColor: colors.tabBar
+  },
+  icon: {
+    tintColor: 'gray'
+  },
+  iconSelected: {
+    tintColor: 'white'
+  },
+  iconTitle: {
+    color: 'gray'
+  },
+  iconTitleSelected: {
+    color: 'white'
   }
 });

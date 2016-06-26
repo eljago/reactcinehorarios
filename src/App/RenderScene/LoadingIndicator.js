@@ -2,9 +2,8 @@
 
 import React from 'react';
 import {
-  ActivityIndicatorIOS,
   Platform,
-  ProgressBarAndroid,
+  ActivityIndicator,
   StyleSheet,
   View,
 } from 'react-native';
@@ -12,26 +11,26 @@ import {
 export default class LoadingIndicator extends React.Component {
 
   render() {
-    if (Platform.OS === 'android') {
-      return (
-        <View style={styles.loadingContainer}>
-          <ProgressBarAndroid styleAttr="Large" color="black" />
-        </View>
-      );
-    } else {
-      return (
-        <View style={styles.loadingContainer}>
-          <ActivityIndicatorIOS size="large" color='black' />
-        </View>
-      );
-    }
+    return(
+      <View style={styles.loadingContainer}>
+        <ActivityIndicator
+          style={styles.activityIndicator}
+          size="large"
+          color='black'
+        />
+      </View>
+    );
   }
 }
 
 const styles = StyleSheet.create({
   loadingContainer: {
-    alignItems: 'center',
+    flex: 1,
     justifyContent: 'center',
-    height: 100,
+    alignItems: 'center'
   },
+  activityIndicator: {
+    width: 36,
+    height: 36
+  }
 });
