@@ -26,7 +26,7 @@ export default class ComponentShowMenu extends React.Component {
 										    />;
 		}
 		return(
-		  <View style={[styles.menu, styles.shadowView]}>
+		  <View style={styles.menu}>
 			  {ComponentGoBack}
 		    <ComponentRightButton
 		      onPress={this.props.onPressCast}
@@ -62,13 +62,5 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     height: 49,
     backgroundColor: colors.tabBar
-  },
-  shadowView: {
-    shadowColor: 'black',
-    shadowRadius: 2,
-    shadowOpacity: 1,
-    shadowOffset: {
-      width: 0, height: 2
-    }
-  },
+  }
 });

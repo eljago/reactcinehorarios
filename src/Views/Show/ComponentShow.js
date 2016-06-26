@@ -49,7 +49,8 @@ export default class ComponentShow extends React.Component {
 
     const estreno = debut ? `Estreno: ${debut}` : null;
     return(
-      <ScrollView style={styles.scrollView}>
+      <ScrollView style={styles.scrollView} bounces={false}>
+
         <View style={styles.shadowView}>
           <Image
             resizeMode='cover'
@@ -65,15 +66,15 @@ export default class ComponentShow extends React.Component {
               {this._getDetailText(estreno)}
             </View>
           </Image>
-        </View>
 
-        <ComponentShowMenu
-          onGoBack={this.props.onGoBack}
-          onPressCast={this.props.onPressCast}
-          onPressShowtimes={this.props.onPressShowtimes}
-          onPressVideos={this.props.onPressVideos}
-          onPressImages={this.props.onPressImages}
-        />
+          <ComponentShowMenu
+            onGoBack={this.props.onGoBack}
+            onPressCast={this.props.onPressCast}
+            onPressShowtimes={this.props.onPressShowtimes}
+            onPressVideos={this.props.onPressVideos}
+            onPressImages={this.props.onPressImages}
+          />
+        </View>
 
         <View style={styles.imageAndInformation}>
           <View>
@@ -193,10 +194,10 @@ const styles = StyleSheet.create({
   },
   shadowView: {
     shadowColor: 'black',
-    shadowRadius: 2,
+    shadowRadius: 3,
     shadowOpacity: 1,
     shadowOffset: {
-      width: 0, height: -2
+      width: 0, height: 0
     }
   },
   coverImage: {
