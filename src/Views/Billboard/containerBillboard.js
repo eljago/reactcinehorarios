@@ -37,6 +37,12 @@ export default Relay.createContainer(ContainerBillboard, {
           image_url
           genres
           duration
+          imdb_code
+          imdb_score
+          metacritic_url
+          metacritic_score
+          rotten_tomatoes_url
+          rotten_tomatoes_score
         }
       }
     `

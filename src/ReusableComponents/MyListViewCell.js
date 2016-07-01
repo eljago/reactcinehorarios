@@ -5,7 +5,7 @@ import { TouchableHighlight, StyleSheet, View } from 'react-native'
 
 import {RightAccessoryView} from './';
 
-export default class MyListviewCell extends React.Component {
+export class MyListViewCell extends React.Component {
 
 	static propTypes = {
 		rowNumber: PropTypes.number,

@@ -131,6 +131,7 @@ function getShowCastRoute(cast) {
     extraData: {
       cast: cast
     },
+    hideNavBar: true
   });
 }
 

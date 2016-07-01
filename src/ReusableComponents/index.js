@@ -7,4 +7,5 @@ export { default as RightAccessoryView } from './RightAccessoryView';
 export { default as SeparatorView } from './SeparatorView';
 export { default as ResponsiveImage } from './ResponsiveImage';
 export { default as SimpleCell } from './SimpleCell';
-export { default as MyListViewCell } from './MyListViewCell';
+export {MyListViewCell} from './MyListViewCell';
+export {ScoreButton} from './ScoreButton';

@@ -5,6 +5,7 @@ import { StyleSheet, View, Image, Text } from 'react-native';
 
 import { colors } from '../Data';
 import { RightAccessoryView, MyListViewCell } from './';
+import {getImdbView, getRottenTomatoesView, getMetacriticView} from '../Utils'
 
 export default class MovieCell extends React.Component {
 
@@ -13,11 +14,24 @@ export default class MovieCell extends React.Component {
     rowNumber: PropTypes.number,
     onPress: PropTypes.func,
     subtitle: PropTypes.string,
-    imageUri: PropTypes.string
+    imageUri: PropTypes.string,
+    imdb_code: PropTypes.string,
+    imdb_score: PropTypes.number,
+    metacritic_url: PropTypes.string,
+    metacritic_score: PropTypes.number,
+    rotten_tomatoes_url: PropTypes.string,
+    rotten_tomatoes_score: PropTypes.number,
+    showScores: PropTypes.bool
   };
 
   render() {
-    const {title, rowNumber, onPress, subtitle, imageUri} = this.props;
+    const {
+      title,
+      rowNumber,
+      onPress,
+      subtitle,
+      imageUri
+    } = this.props;
 
     return(
       <MyListViewCell
@@ -35,10 +49,34 @@ export default class MovieCell extends React.Component {
           <View style={styles.textContainer}>
             <Text style={styles.name}>{title}</Text>
             <Text style={styles.genres}>{subtitle}</Text>
+            <View style={styles.scoresView}>
+              {this._getScoresViews()}
+            </View>
           </View>
         </View>
       </MyListViewCell>
     );
+  }
+
+  _getScoresViews() {
+    const {
+      imdb_code,
+      imdb_score,
+      metacritic_url,
+      metacritic_score,
+      rotten_tomatoes_url,
+      rotten_tomatoes_score
+    } = this.props;
+    if (this.props.showScores) {
+      return(
+        [
+          getImdbView(imdb_code, imdb_score),
+          getMetacriticView(metacritic_url, metacritic_score),
+          getRottenTomatoesView(rotten_tomatoes_url, rotten_tomatoes_score)
+        ]
+      );
+    }
+    return null;
   }
 }
 
@@ -57,12 +95,14 @@ let styles = StyleSheet.create({
     backgroundColor: '#ddd',
   },
   name: {
-    fontSize: 22,
+    fontSize: 20,
     color: colors.navBar,
+    fontWeight: '500'
   },
   genres: {
-    fontSize: 18,
-    marginTop: 5
+    fontSize: 16,
+    marginTop: 8,
+    marginBottom: 8
   },
   image: {
     flex: 1
@@ -78,5 +118,9 @@ let styles = StyleSheet.create({
     shadowOffset: {
       width: 0, height: 0
     }
+  },
+  scoresView: {
+    flex: 1,
+    flexDirection: 'row'
   }
 });

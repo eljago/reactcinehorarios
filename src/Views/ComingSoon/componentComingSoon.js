@@ -23,8 +23,18 @@ export default class ComponentComingSoon extends React.Component {
   }
 
   _renderRow(rowData, sectionID, rowID, highlightRow) {
-    let {name, debut, image_url, duration, rowNumber} = rowData;
-    debut = debut ? `Estreno: ${debut}` : "";
+    const {
+      name,
+      debut,
+      image_url,
+      duration,
+      rowNumber,
+      imdb_code,
+      imdb_score,
+      metacritic_url,
+      metacritic_score,
+      rotten_tomatoes_url,
+      rotten_tomatoes_score} = rowData;
     
     return (
       <MovieCell
@@ -33,6 +43,12 @@ export default class ComponentComingSoon extends React.Component {
         title={name}
         subtitle={debut}
         imageUri={ImageHelper.addPrefixToPath(image_url, 'smaller_')}
+        imdb_code={imdb_code}
+        imdb_score={imdb_score}
+        metacritic_url={metacritic_url}
+        metacritic_score={metacritic_score}
+        rotten_tomatoes_url={rotten_tomatoes_url}
+        rotten_tomatoes_score={rotten_tomatoes_score}
       />
     );
   }

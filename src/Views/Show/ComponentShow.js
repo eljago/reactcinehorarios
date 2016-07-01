@@ -10,6 +10,8 @@ import {
   Dimensions
 } from 'react-native';
 
+import {getImdbView, getRottenTomatoesView, getMetacriticView} from '../../Utils'
+
 import ComponentScoreButton from './ComponentScoreButton';
 import ComponentShowMenu from './ComponentShowMenu';
 
@@ -86,9 +88,9 @@ export default class ComponentShow extends React.Component {
               />
             </View>
             <View style={styles.scoresView}>
-              {this._getImdbScoreView(imdb_code, imdb_score)}
-              {this._getMetacriticScoreView(metacritic_url, metacritic_score)}
-              {this._getRottenTomatoesScoreView(rotten_tomatoes_url, rotten_tomatoes_score)}
+              {getImdbView(imdb_code, imdb_score, true)}
+              {getMetacriticView(metacritic_url, metacritic_score, true)}
+              {getRottenTomatoesView(rotten_tomatoes_url, rotten_tomatoes_score, true)}
             </View>
           </View>
           <Text style={styles.information}>
@@ -103,48 +105,6 @@ export default class ComponentShow extends React.Component {
     if (typeof string == 'string' && string.length > 0) {
       return(
         <Text style={styles.textDetails}>{string}</Text>
-      );
-    }
-    return null;
-  }
-
-  _getImdbScoreView(imdb_code, imdb_score) {
-    imdb_score = imdb_score > 0 ? imdb_score/10 : '?';
-    if (typeof imdb_code == 'string' && imdb_code.length > 0) {
-      return(
-        <ComponentScoreButton
-          onPress={() => {}}
-          source={require('../../../assets/LogoImdb.png')}
-          text={`${imdb_score} / 10`}
-        />
-      );
-    }
-    return null;
-  }
-
-  _getRottenTomatoesScoreView(rotten_tomatoes_url, rotten_tomatoes_score) {
-    rotten_tomatoes_score = rotten_tomatoes_score > 0 ? rotten_tomatoes_score : '?';
-    if (typeof rotten_tomatoes_url == 'string' && rotten_tomatoes_url.length > 0) {
-      return(
-        <ComponentScoreButton
-          onPress={() => {}}
-          source={require('../../../assets/LogoRotten.png')}
-          text={`${rotten_tomatoes_score} %`}
-        />
-      );
-    }
-    return null;
-  }
-
-  _getMetacriticScoreView(metacritic_url, metacritic_score) {
-    metacritic_score = metacritic_score > 0 ? metacritic_score : '?';
-    if (typeof metacritic_url == 'string' && metacritic_url.length > 0) {
-      return(
-        <ComponentScoreButton
-          onPress={() => {}}
-          source={require('../../../assets/LogoMetacritic.png')}
-          text={`${metacritic_score} / 100`}
-        />
       );
     }
     return null;

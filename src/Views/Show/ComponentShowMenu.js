@@ -38,7 +38,7 @@ export default class ComponentShowMenu extends React.Component {
 
 		      }}
 		      source={require('../../../assets/IconShowtimes.png')}
-		      color={'#2B72E6'}
+		      color={'white'}
 		    />
 		    <ComponentRightButton
 		      onPress={() => {
@@ -50,7 +50,7 @@ export default class ComponentShowMenu extends React.Component {
 		    <ComponentRightButton
 		      onPress={this.props.onPressImages}
 		      source={require('../../../assets/IconImages.png')}
-		      color={'white'}
+		      color={'#3FB1E6'}
 		    />
 		  </View>
 		);

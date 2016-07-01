@@ -8,8 +8,8 @@ import {
   StyleSheet
 } from 'react-native';
 
-import {colors} from '../../Data'
-import {MyListViewCell} from '../../ReusableComponents'
+import {colors} from '../../Data';
+import {MyListViewCell} from '../../ReusableComponents';
 
 export default class CinemaCell extends React.Component {
 
