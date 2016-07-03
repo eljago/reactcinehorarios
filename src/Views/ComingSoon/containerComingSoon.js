@@ -3,24 +3,32 @@
 import React, { PropTypes } from 'react';
 import Relay from 'react-relay';
 
+import Immutable from 'immutable';
+
 import ComponentComingSoon from './componentComingSoon';
 import {getShowRoute} from '../../routes/navigatorRoutes';
 
 class ContainerComingSoon extends React.Component {
 
+  constructor(props) {
+    super(props);
+    this.state = {
+      dataRows: Immutable.fromJS(props.viewer ? props.viewer.api_coming_soon : []),
+      showingScores: false
+    }
+  }
+
   render() {
-    const dataRows = this.props.viewer ? this.props.viewer.api_coming_soon : [];
-    
     return (
       <ComponentComingSoon
         onPress={this._onPress.bind(this)}
-        dataRows={dataRows}
+        dataRows={this.state.dataRows}
       />
     );
   }
 
   _onPress(rowData) {
-    const {show_id} = rowData;
+    const show_id = rowData.get('show_id');
     let showRoute = getShowRoute(show_id);
     this.props.navigator.push(showRoute);
   }
@@ -37,7 +45,6 @@ export default Relay.createContainer(ContainerComingSoon, {
           debut
           image_url
           genres
-          duration
           imdb_code
           imdb_score
           metacritic_url

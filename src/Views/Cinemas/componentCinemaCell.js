@@ -14,14 +14,14 @@ import {MyListViewCell} from '../../ReusableComponents';
 export default class CinemaCell extends React.Component {
 
   static propTypes = {
+    rowNumber: PropTypes.number,
     title: PropTypes.string,
     image: PropTypes.number,
-    rowNumber: PropTypes.number,
     onPress: PropTypes.func
   };
 
   render() {
-    const {title, image, rowNumber, onPress} = this.props;
+    const {title, image, onPress, rowNumber} = this.props;
 
     return(
       <MyListViewCell

@@ -1,16 +1,17 @@
 'use strict';
 
 import React, { PropTypes } from 'react';
+import {StyleSheet, View} from 'react-native';
+
+import ActionButton from 'react-native-action-button';
 
 import { MyGiftedListView, MovieCell } from '../../ReusableComponents';
-
-import { ImageHelper } from '../../Utils';
 
 export default class ComponentComingSoon extends React.Component {
 
   static propTypes = {
     onPress: PropTypes.func,
-    dataRows: PropTypes.array
+    dataRows: PropTypes.object
   };
 
   render() {
@@ -23,32 +24,21 @@ export default class ComponentComingSoon extends React.Component {
   }
 
   _renderRow(rowData, sectionID, rowID, highlightRow) {
-    const {
-      name,
-      debut,
-      image_url,
-      duration,
-      rowNumber,
-      imdb_code,
-      imdb_score,
-      metacritic_url,
-      metacritic_score,
-      rotten_tomatoes_url,
-      rotten_tomatoes_score} = rowData;
-    
     return (
       <MovieCell
-        rowNumber={rowNumber}
         onPress={() => this.props.onPress(rowData)}
-        title={name}
-        subtitle={debut}
-        imageUri={ImageHelper.addPrefixToPath(image_url, 'smaller_')}
-        imdb_code={imdb_code}
-        imdb_score={imdb_score}
-        metacritic_url={metacritic_url}
-        metacritic_score={metacritic_score}
-        rotten_tomatoes_url={rotten_tomatoes_url}
-        rotten_tomatoes_score={rotten_tomatoes_score}
+        showName={rowData.get('name')}
+        showGenres={rowData.get('genres')}
+        showDebut={rowData.get('debut')}
+        showImageUrl={rowData.get('image_url')}
+        showImdbCode={rowData.get('imdb_code')}
+        showImdbScore={rowData.get('imdb_score')}
+        showMetacriticUrl={rowData.get('metacritic_url')}
+        showMetacriticScore={rowData.get('metacritic_score')}
+        showRottenTomatoesUrl={rowData.get('rotten_tomatoes_url')}
+        showRottenTomatoesScore={rowData.get('rotten_tomatoes_score')}
+        showingScores={rowData.get('showingScores')}
+        isBillboard={false}
       />
     );
   }

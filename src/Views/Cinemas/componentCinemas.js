@@ -9,7 +9,7 @@ export default class ComponentCinemas extends React.Component {
 
   static propTypes = {
     onPress: PropTypes.func,
-    dataRows: PropTypes.array
+    dataRows: PropTypes.object
   };
 
   render() {
@@ -22,14 +22,16 @@ export default class ComponentCinemas extends React.Component {
   }
 
   _renderRow(rowData, sectionID, rowID, highlightRow) {
-    const { name, images, rowNumber } = rowData;
-    const image = images[Math.floor(Math.random()*images.length)];
+    const name = rowData.get('name');
+    const images = rowData.get('images');
+    const rowNumber = rowData.get('rowNumber');
+    const image = images.size > 0 ? images.get(Math.floor(Math.random()*images.size)) : null;
 
     return (
       <CinemaCell
+        rowNumber={rowNumber}
         title={name}
         image={image}
-        rowNumber={rowNumber}
         onPress={() => this.props.onPress(rowData)}
       />
     );

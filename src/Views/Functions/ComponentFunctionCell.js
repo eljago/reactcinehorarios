@@ -11,7 +11,7 @@ export default class ComponentFunctionCell extends React.Component {
   static propTypes = {
     title: PropTypes.string,
     imageUri: PropTypes.string,
-    functions: PropTypes.array,
+    functions: PropTypes.object,
     rowNumber: PropTypes.number,
     onPress: PropTypes.func
   };
@@ -34,33 +34,32 @@ export default class ComponentFunctionCell extends React.Component {
           </View>
           <View style={styles.textContainer}>
             <Text style={styles.name}>{title}</Text>
-            {this._getFunctionsViews(functions)}
+            {getFunctionsViews(functions)}
           </View>
         </View>
       </MyListViewCell>
     );
   }
-
-  _getFunctionsViews(functions) {
-    return(
-      functions.map((f, i) => {
-        return(
-          <View
-            key={i}
-            style={styles.functionView}>
-            <Text style={styles.functionTypes}>
-              {f.function_types.join('   ')}
-            </Text>
-            <Text style={styles.showtimes}>
-              {f.showtimes.join('   ')}
-            </Text>
-          </View>
-        );
-      })
-    );
-  }
 }
 
+const getFunctionsViews = (functions) => {
+  return(
+    functions.map((f, i) => {
+      return(
+        <View
+          key={i}
+          style={styles.functionView}>
+          <Text style={styles.functionTypes}>
+            {f.get('function_types').join('   ')}
+          </Text>
+          <Text style={styles.showtimes}>
+            {f.get('showtimes').join('   ')}
+          </Text>
+        </View>
+      );
+    })
+  );
+}
 
 const styles = StyleSheet.create({
   rowContainer: {

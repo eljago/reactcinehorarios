@@ -9,13 +9,13 @@ import { MyListViewCell } from './';
 export default class SimpleCell extends React.Component {
   
   static propTypes = {
-    title: PropTypes.string,
     rowNumber: PropTypes.number,
+    title: PropTypes.string,
     onPress: PropTypes.func
   };
 
   render() {
-    const {title, rowNumber, onPress} = this.props;
+    const {rowNumber, title, onPress} = this.props;
 
     return(
       <MyListViewCell

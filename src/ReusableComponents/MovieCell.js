@@ -5,32 +5,34 @@ import { StyleSheet, View, Image, Text } from 'react-native';
 
 import { colors } from '../Data';
 import { RightAccessoryView, MyListViewCell } from './';
-import {getImdbView, getRottenTomatoesView, getMetacriticView} from '../Utils'
+import {getImdbView, getRottenTomatoesView, getMetacriticView, ImageHelper} from '../Utils'
 
 export default class MovieCell extends React.Component {
 
   static propTypes = {
-    title: PropTypes.string,
     rowNumber: PropTypes.number,
     onPress: PropTypes.func,
-    subtitle: PropTypes.string,
-    imageUri: PropTypes.string,
-    imdb_code: PropTypes.string,
-    imdb_score: PropTypes.number,
-    metacritic_url: PropTypes.string,
-    metacritic_score: PropTypes.number,
-    rotten_tomatoes_url: PropTypes.string,
-    rotten_tomatoes_score: PropTypes.number,
-    showScores: PropTypes.bool
+    isBillboard: PropTypes.bool,
+    showName: PropTypes.string,
+    showDebut: PropTypes.string,
+    showGenres: PropTypes.string,
+    showDuration: PropTypes.number,
+    showRating: PropTypes.string,
+    showImageUrl: PropTypes.string,
+    showImdbCode: PropTypes.string,
+    showImdbScore: PropTypes.number,
+    showMetacriticUrl: PropTypes.string,
+    showMetacriticScore: PropTypes.number,
+    showRottenTomatoesUrl: PropTypes.string,
+    showRottenTomatoesScore: PropTypes.number,
+    showingScores: PropTypes.bool,
   };
 
   render() {
     const {
-      title,
       rowNumber,
       onPress,
-      subtitle,
-      imageUri
+      showImageUrl
     } = this.props;
 
     return(
@@ -43,73 +45,81 @@ export default class MovieCell extends React.Component {
             <Image
               resizeMode='stretch'
               style={styles.image}
-              source={{uri: imageUri}}
+              source={{uri: ImageHelper.addPrefixToPath(showImageUrl, 'smaller_')}}
             />
           </View>
-          <View style={styles.textContainer}>
-            <Text style={styles.name}>{title}</Text>
-            <Text style={styles.genres}>{subtitle}</Text>
-            <View style={styles.scoresView}>
-              {this._getScoresViews()}
-            </View>
-          </View>
+          {this._getDynamicView()}
         </View>
       </MyListViewCell>
     );
   }
 
-  _getScoresViews() {
-    const {
-      imdb_code,
-      imdb_score,
-      metacritic_url,
-      metacritic_score,
-      rotten_tomatoes_url,
-      rotten_tomatoes_score
-    } = this.props;
-    if (this.props.showScores) {
+  _getDynamicView() {
+    const {showName, showingScores} = this.props;
+    if (showingScores) {
+      const {
+        showImdbCode,
+        showImdbScore,
+        showMetacriticUrl,
+        showMetacriticScore,
+        showRottenTomatoesUrl,
+        showRottenTomatoesScore
+      } = this.props;
       return(
-        [
-          getImdbView(imdb_code, imdb_score),
-          getMetacriticView(metacritic_url, metacritic_score),
-          getRottenTomatoesView(rotten_tomatoes_url, rotten_tomatoes_score)
-        ]
+        <View style={styles.textContainer}>
+          <Text style={styles.name}>{showName}</Text>
+          <View style={styles.scoresView}>
+              {getImdbView(showImdbCode, showImdbScore)}
+              {getMetacriticView(showMetacriticUrl, showMetacriticScore)}
+              {getRottenTomatoesView(showRottenTomatoesUrl, showRottenTomatoesScore)}
+          </View>
+        </View>
       );
     }
-    return null;
+    else {
+      const {
+        isBillboard,
+        showGenres,
+        showDuration,
+        showRating,
+        showDebut
+      } = this.props;
+      const specificContent = isBillboard ? 
+        [
+          getSubtitleView(showDuration, `${showDuration} minutos`),
+          getSubtitleView(showRating)
+        ] :
+        [
+          getSubtitleView(showDebut),
+        ];
+      return(
+        <View style={styles.textContainer}>
+          <Text key='name' style={styles.name}>{showName}</Text>
+          {getSubtitleView(showGenres)}
+          {specificContent}
+        </View>
+      );
+    }
   }
 }
 
-let styles = StyleSheet.create({
+const getSubtitleView = (variable, customText = null) => {
+  if ((typeof variable === 'number' && variable > 0) ||
+      (typeof variable === 'string' && variable.length > 0)) {
+    const text = customText ? customText : variable;
+    return (
+      <Text key={text} style={styles.subtitle}>{text}</Text>
+    );
+  }
+  return null;
+}
+
+const styles = StyleSheet.create({
   rowContainer: {
     flex: 1,
     flexDirection: 'row',
   },
-  textContainer: {
-    flex: 1,
-    marginLeft: 10,
-    alignSelf: 'flex-start',
-  },
-  separator: {
-    height: 1,
-    backgroundColor: '#ddd',
-  },
-  name: {
-    fontSize: 20,
-    color: colors.navBar,
-    fontWeight: '500'
-  },
-  genres: {
-    fontSize: 16,
-    marginTop: 8,
-    marginBottom: 8
-  },
-  image: {
-    flex: 1
-  },
   imageContainer: {
-    width: 80,
-    height: 120,
     alignSelf: 'flex-start',
     backgroundColor: 'gray',
     shadowColor: 'black',
@@ -119,8 +129,29 @@ let styles = StyleSheet.create({
       width: 0, height: 0
     }
   },
+  image: {
+    width: 80,
+    height: 120
+  },
   scoresView: {
     flex: 1,
-    flexDirection: 'row'
-  }
+    flexDirection: 'row',
+    alignItems: 'center'
+  },
+  textContainer: {
+    flex: 1,
+    marginLeft: 12,
+    alignSelf: 'flex-start',
+  },
+  name: {
+    fontSize: 20,
+    color: colors.navBar,
+    fontWeight: '500',
+    marginBottom: 4
+  },
+  subtitle: {
+    fontSize: 16,
+    marginTop: 4,
+    marginBottom: 4
+  },
 });

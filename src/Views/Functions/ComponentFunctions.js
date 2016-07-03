@@ -10,7 +10,7 @@ export default class ComponentFunctions extends React.Component {
 
   static propTypes = {
     onPress: PropTypes.func,
-    dataRows: PropTypes.array
+    dataRows: PropTypes.object
   };
 
   render() {
@@ -23,13 +23,12 @@ export default class ComponentFunctions extends React.Component {
   }
 
   _renderRow(rowData, sectionID, rowID, highlightRow) {
-    const {name, functions, rowNumber, image_url} = rowData;
     return (
       <ComponentFunctionCell
-        title={name}
-        imageUri={ImageHelper.addPrefixToPath(image_url, 'smaller_')}
-        functions={functions}
-        rowNumber={rowNumber}
+        rowNumber={rowData.get('rowNumber')}
+        title={rowData.get('name')}
+        imageUri={ImageHelper.addPrefixToPath(rowData.get('image_url'), 'smaller_')}
+        functions={rowData.get('functions')}
         onPress={() => this.props.onPress(rowData)}
       />
     );

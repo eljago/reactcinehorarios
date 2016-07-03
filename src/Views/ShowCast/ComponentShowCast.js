@@ -13,10 +13,6 @@ export default class ComponentShowCast extends React.Component {
     navigator: PropTypes.object
 	};
 
-	constructor(props) {
-		super(props);
-	}
-
 	render() {
     const cast = this.props.extraData ? this.props.extraData.cast : [];
 		return(

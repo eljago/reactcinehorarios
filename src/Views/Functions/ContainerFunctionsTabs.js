@@ -3,6 +3,8 @@
 import React, { PropTypes } from 'react';
 import Relay from 'react-relay';
 
+import Immutable from 'immutable';
+
 import ScrollableTabView from 'react-native-scrollable-tab-view';
 import ComponentTabBar from './ComponentTabBar';
 
@@ -60,7 +62,7 @@ class ContainerFunctionsTabs extends React.Component {
           key={dateString}
           tabLabel={dateString}
           date={date}
-          dataRows={getDataRows(date, viewer.api_theater_shows)}
+          dataRows={Immutable.fromJS(getDataRows(date, viewer.api_theater_shows))}
           navigator={navigator}
         />
       );

@@ -8,7 +8,7 @@ export default class ComponentTheaters extends React.Component {
 
   static propTypes = {
     onPress: PropTypes.func,
-    dataRows: PropTypes.array
+    dataRows: PropTypes.object
   };
 
   render() {
@@ -21,11 +21,10 @@ export default class ComponentTheaters extends React.Component {
   }
 
   _renderRow(rowData, sectionID, rowID, highlightRow) {
-    const {name, rowNumber} = rowData;
     return (
       <SimpleCell
-        title={name}
-        rowNumber={rowNumber}
+        rowNumber={rowData.get('rowNumber')}
+        title={rowData.get('name')}
         onPress={() => this.props.onPress(rowData)}
       />
     );

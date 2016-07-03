@@ -13,7 +13,7 @@ export default class ContainerFunctions extends React.Component {
 
   static propTypes = {
     date: PropTypes.object,
-    dataRows: PropTypes.array
+    dataRows: PropTypes.object
   };
 
   render() {
@@ -26,8 +26,7 @@ export default class ContainerFunctions extends React.Component {
   }
 
   _onPress(rowData) {
-    const {show_id} = rowData;
-    let showRoute = getShowRoute(show_id);
+    let showRoute = getShowRoute(rowData.get('show_id'));
     this.props.navigator.superNavigator.push(showRoute);
   }
 }

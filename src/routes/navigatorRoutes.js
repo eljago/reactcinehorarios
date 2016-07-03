@@ -15,8 +15,8 @@ import ShowCast from '../Views/ShowCast';
 
 function getBaseRoutes() {
   return [
-    getCinemasRoute(),
     getBillboardRoute(),
+    getCinemasRoute(),
     getComingSoonRoute(),
     getVideosRoute()
   ];
