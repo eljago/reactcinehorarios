@@ -18,12 +18,13 @@ export class MyListViewCell extends React.Component {
 
     return (
       <TouchableHighlight
-      	style={styles.container}
       	onPress={onPress}
       	underlayColor={'transparent'}
       >
         <View style={[styles.rowContainer, {backgroundColor: cellBackgroundColor}]}>
-      		{children}
+          <View style={styles.childrenContainer}>
+        		{children}
+          </View>
           <RightAccessoryView />
         </View>
       </TouchableHighlight>
@@ -32,13 +33,13 @@ export class MyListViewCell extends React.Component {
 }
 
 const styles = StyleSheet.create({
-  container: {
-    flex: 1
-  },
   rowContainer: {
     flex: 1,
     flexDirection: 'row',
     padding: 10,
     alignItems: 'center'
+  },
+  childrenContainer: {
+    flex: 1
   }
 });
