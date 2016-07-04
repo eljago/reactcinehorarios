@@ -3,6 +3,8 @@
 import React, { PropTypes } from 'react';
 import Relay from 'react-relay';
 
+import Immutable from 'immutable';
+
 import ComponentVideos from './ComponentVideos';
 import {getVideosWebView} from '../../routes/navigatorRoutes';
 
@@ -10,25 +12,26 @@ class ContainerVideos extends React.Component {
 
   constructor(props) {
     super(props);
-
+    this.state = {
+      dataRows: Immutable.fromJS(props.viewer ? props.viewer.api_videos : []),
+      showingScores: false
+    }
     props.relay.setVariables({
       page: 1
     });
   }
-
   render() {
-    const dataRows = this.props.viewer ? this.props.viewer.api_videos : [];
-
     return (
       <ComponentVideos 
-        dataRows={dataRows}
         onPress={this._onPress.bind(this)}
         onPressShow={this._onPressShow.bind(this)}
+        dataRows={this.state.dataRows}
       />
     );
   }
 
   _onPress(rowData) {
+    
   }
 
   _onPressShow(rowData) {

@@ -37,6 +37,7 @@ export default class App extends React.Component {
       'item_id': 'AppStart'
     });
   }
+  
   render() {
     return (
       <Navigator

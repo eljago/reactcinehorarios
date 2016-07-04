@@ -1,10 +1,9 @@
 'use strict'
 
 import React from 'react';
-import {Text, Platform, Navigator} from 'react-native';
+import {Text, Platform, Navigator, View} from 'react-native';
 
-import {BackButton} from './Nav/BackButton';
-
+import {NavButton} from './NavButton';
 import {colors} from '../Data';
 
 export let NavigationBarRouteMapper = {
@@ -13,10 +12,11 @@ export let NavigationBarRouteMapper = {
     var previousRoute = navState.routeStack[index - 1];
     if (previousRoute) {
       return(
-        <BackButton
+        <NavButton
           onPress={() => {
             navigator.pop();
           }}
+          imageSource={require('../../assets/MenuBackIcon.png')}
         />
       );
     }
@@ -24,6 +24,25 @@ export let NavigationBarRouteMapper = {
   },
 
   RightButton(route, navigator, index, navState) {
+    if (route.title === 'Videos') {
+      return(
+        <View style={{flex: 1, flexDirection: 'row'}}>
+          <NavButton
+            onPress={() => {
+              navigator.pop();
+            }}
+            imageSource={require('../../assets/MenuBackIcon.png')}
+          />
+          <NavButton
+            style={{flex:1}}
+            onPress={() => {
+              navigator.pop();
+            }}
+            imageSource={require('../../assets/MenuBackIcon.png')}
+          />
+        </View>
+      );
+    }
     return null;
   },
 

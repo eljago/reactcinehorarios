@@ -1,7 +1,7 @@
 'use strict';
 
 import React from 'react';
-import { Text, TouchableHighlight, StyleSheet, View } from 'react-native';
+import { Text, TouchableHighlight, View } from 'react-native';
 import Relay from 'react-relay';
 
 import LoadingIndicator from './LoadingIndicator';

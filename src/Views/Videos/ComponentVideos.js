@@ -9,7 +9,7 @@ import { ImageHelper } from '../../Utils'
 export default class ComponentVideos extends React.Component {
 
   static propTypes = {
-    dataRows: PropTypes.array,
+    dataRows: PropTypes.object,
     onPress: PropTypes.func,
     onPressShow: PropTypes.func
   };
@@ -25,12 +25,11 @@ export default class ComponentVideos extends React.Component {
   }
 
   _renderRow(rowData, sectionID, rowID, highlightRow) {
-    const {name, image_url, code, show} = rowData;
     return(
       <ComponentVideoCell 
-        title={name}
-        videoPortraitImageUri={ImageHelper.addPrefixToPath(image_url, 'smaller_')}
-        showImageUri={ImageHelper.addPrefixToPath(show.image_url, 'smaller_')}
+        title={rowData.get('name')}
+        videoPortraitImageUri={ImageHelper.addPrefixToPath(rowData.get('image_url'), 'smaller_')}
+        showImageUri={ImageHelper.addPrefixToPath(rowData.get('show').get('image_url'), 'smaller_')}
         onPress={() => this.props.onPress(rowData)}
         onPressShow={() => this.props.onPressShow(rowData)}
       />
