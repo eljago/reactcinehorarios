@@ -1,7 +1,7 @@
 'use strict'
 
 import React from 'react';
-import {Text, Platform, Navigator, View} from 'react-native';
+import {Text, View} from 'react-native';
 
 import {NavButton} from './NavButton';
 import {colors} from '../Data';
@@ -61,10 +61,3 @@ export let NavigationBarRouteMapper = {
   }
 
 };
-
-export let configureScene = (route, routeStack) => {
-  if (Platform.OS === 'android') {
-    return Navigator.SceneConfigs.FadeAndroid;
-  }
-  return Navigator.SceneConfigs.FloatFromRight;
-}
