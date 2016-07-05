@@ -1,6 +1,6 @@
 'use strict';
 
-import { ViewerQueryConfig } from './queryConfigs';
+import ViewerQueryConfig from './queryConfigs';
 
 import Cinemas from '../Views/Cinemas';
 import Billboard from '../Views/Billboard';
