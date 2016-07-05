@@ -4,8 +4,6 @@ import React, {PropTypes} from 'react';
 import { StatusBar, View, StyleSheet, Platform, Image } from 'react-native';
 
 import TabNavigator from 'react-native-tab-navigator';
-
-import renderScene from '../../App/renderScene';
 import {colors} from '../../Data';
 
 export default class ComponentMainTabs extends React.Component {
@@ -34,12 +32,12 @@ export default class ComponentMainTabs extends React.Component {
           onPress={() => {onPressTabBarItem(route)}}
           key={route.title}
           title={route.title}
-          renderIcon={() =>  <Image source={route.tabIcon} style={styles.icon}/>}
-          renderSelectedIcon={() => <Image source={route.tabIcon} style={styles.iconSelected}/>}
+          renderIcon={() =>  <Image source={route.tabBarIcon} style={styles.icon}/>}
+          renderSelectedIcon={() => <Image source={route.tabBarIcon} style={styles.iconSelected}/>}
           titleStyle={styles.iconTitle}
           selectedTitleStyle={styles.iconTitleSelected}
         >
-          {renderScene(route)}
+          {route.renderScene()}
         </TabNavigator.Item>
       );
     });

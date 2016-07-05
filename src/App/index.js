@@ -3,11 +3,34 @@
 import React from 'react';
 import {Navigator, StyleSheet} from 'react-native';
 
-import renderScene from './renderScene';
-import MainTabBarRoute from '../routes/TabBarRoutes/MainTabBarRoute';
+import TabBarRoute from '../routes/TabBarRoute';
+import NavigatorRoute from '../routes/NavigatorRoute';
+import SimpleRoute from '../routes/SimpleRoute';
+
+import Cinemas from '../Views/Cinemas';
+import Billboard from '../Views/Billboard';
 
 export default class App extends React.Component {
 	render() {
-		return renderScene(new MainTabBarRoute())
+		const tabBarRoute = new TabBarRoute({
+			tabBarRoutes:
+			[
+				new NavigatorRoute({
+					title: 'Cinemas',
+					tabBarIcon: require('../../assets/Cinemas.png'),
+					initialRoute: new SimpleRoute({
+						title: 'Cinemas',
+						component: Cinemas
+					})
+				}),
+				new SimpleRoute({
+					title: 'Cartelera',
+					component: Billboard,
+					tabBarIcon: require('../../assets/Billboard.png'),
+				})
+			]
+		});
+		return tabBarRoute.renderScene();
 	}
 }
+
