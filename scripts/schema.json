@@ -213,16 +213,6 @@
                     "ofType": null
                   },
                   "defaultValue": null
-                },
-                {
-                  "name": "date_end",
-                  "description": null,
-                  "type": {
-                    "kind": "SCALAR",
-                    "name": "String",
-                    "ofType": null
-                  },
-                  "defaultValue": null
                 }
               ],
               "type": {
@@ -1943,11 +1933,6 @@
         {
           "name": "skip",
           "description": "Ignore this part of the query if `if` is true",
-          "locations": [
-            "FIELD",
-            "FRAGMENT_SPREAD",
-            "INLINE_FRAGMENT"
-          ],
           "args": [
             {
               "name": "if",
@@ -1963,16 +1948,14 @@
               },
               "defaultValue": null
             }
-          ]
+          ],
+          "onOperation": false,
+          "onFragment": true,
+          "onField": true
         },
         {
           "name": "include",
           "description": "Include this part of the query if `if` is true",
-          "locations": [
-            "FIELD",
-            "FRAGMENT_SPREAD",
-            "INLINE_FRAGMENT"
-          ],
           "args": [
             {
               "name": "if",
@@ -1988,7 +1971,10 @@
               },
               "defaultValue": null
             }
-          ]
+          ],
+          "onOperation": false,
+          "onFragment": true,
+          "onField": true
         }
       ]
     }
