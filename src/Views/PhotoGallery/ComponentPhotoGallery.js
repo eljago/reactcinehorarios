@@ -2,7 +2,7 @@
 
 import React, { PropTypes } from 'react'
 
-import PhotoBrowser from 'react-native-photo-browser'
+import Gallery from 'react-native-gallery'
 
 import { ImageHelper } from '../../Utils'
 
@@ -14,27 +14,16 @@ export default class ComponentPhotoGallery extends React.Component {
 
   render() {
     return (
-			<PhotoBrowser
-        onBack={this.props.navigator.pop}
-        mediaList={this._getMedia()}
-        initialIndex={0}
-        displayNavArrows={true}
-        displaySelectionButtons={false}
-        displayActionButton={false}
-        startOnGrid={true}
-        enableGrid={true}
+      <Gallery
+        style={{flex: 1, backgroundColor: 'black'}}
+        images={this._getMedia()}
       />
     )
   }
 
   _getMedia() {
     return this.props.images.map((image) => {
-      return({
-        thumb: ImageHelper.addPrefixToPath(image.image_url, 'smaller_'),
-        photo: ImageHelper.addPrefixToPath(image.image_url),
-        caption: ' ',
-        selected: false
-      })
+      return(ImageHelper.addPrefixToPath(image.image_url, ''))
     })
   }
 }

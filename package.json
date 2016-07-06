@@ -12,6 +12,7 @@
     "react-native-action-button": "^1.1.9",
     "react-native-code-push": "^1.11.0-beta",
     "react-native-firebase-analytics": "^1.0.3",
+    "react-native-gallery": "0.0.14",
     "react-native-photo-browser": "file:///Users/gharlock/Documents/GitClones/react-native-photo-browser",
     "react-native-scrollable-tab-view": "^0.5.1",
     "react-native-tab-navigator": "^0.3.2",
