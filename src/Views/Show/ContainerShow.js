@@ -7,21 +7,13 @@ import ComponentShow from './ComponentShow';
 import {
   getPhotoGalleryRoute,
   getShowCastRoute
-} from '../../routes/navigatorRoutes'
+} from '../../routes/MyRoutes'
 
 class ContainerShow extends React.Component {
 
   static propTypes = {
-    extraData: PropTypes.object,
     navigator: PropTypes.object
   };
-
-  constructor(props) {
-    super(props);
-    props.relay.setVariables({
-      show_id: props.extraData.show_id,
-    });
-  }
 
   render() {
     const show = this.props.viewer.api_show;
@@ -41,13 +33,13 @@ class ContainerShow extends React.Component {
 
   _onPressImages() {
     const images = this.props.viewer.api_show.images;
-    let showImagesRoute = getPhotoGalleryRoute(images);
+    const showImagesRoute = getPhotoGalleryRoute(images);
     this.props.navigator.push(showImagesRoute);
   }
 
   _onPressCast() {
     const people = this.props.viewer.api_show.people;
-    let showCastRoute = getShowCastRoute(people);
+    const showCastRoute = getShowCastRoute(people);
     this.props.navigator.push(showCastRoute);
   }
 }

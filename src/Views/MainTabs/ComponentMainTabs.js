@@ -37,7 +37,7 @@ export default class ComponentMainTabs extends React.Component {
           titleStyle={styles.iconTitle}
           selectedTitleStyle={styles.iconTitleSelected}
         >
-          {route.renderScene()}
+          {route.renderScene(this.props.navigator)}
         </TabNavigator.Item>
       );
     });

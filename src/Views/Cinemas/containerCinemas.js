@@ -1,13 +1,13 @@
-'use strict';
+'use strict'
 
-import React, { PropTypes } from 'react';
-import { Navigator } from 'react-native';
+import React, { PropTypes } from 'react'
+import { Navigator } from 'react-native'
 
-import Immutable from 'immutable';
+import Immutable from 'immutable'
 
-import ComponentCinemas from './componentCinemas';
-import {getTheatersRoute} from '../../routes/navigatorRoutes';
-import {cinemas} from '../../Data';
+import ComponentCinemas from './componentCinemas'
+import {getTheatersRoute} from '../../routes/MyRoutes'
+import {cinemas} from '../../Data'
 
 export default class ContainerCinemas extends React.Component {
 
@@ -21,13 +21,13 @@ export default class ContainerCinemas extends React.Component {
         onPress={this._onPress.bind(this)}
         dataRows={this.state.dataRows}
       />
-    );
+    )
   }
 
   _onPress(rowData) {
-    const cinema_id = rowData.get('cinema_id');
-    const name = rowData.get('name');
-    let theatersRoute = getTheatersRoute(cinema_id, name);
-    this.props.navigator.push(theatersRoute);
+    const cinema_id = rowData.get('cinema_id')
+    const name = rowData.get('name')
+    const theaterRoute = getTheatersRoute(name, cinema_id);
+    this.props.navigator.push(theaterRoute)
   }
 }

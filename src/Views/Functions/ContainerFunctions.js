@@ -1,20 +1,18 @@
-'use strict';
+'use strict'
 
-import React, { PropTypes } from 'react';
-import Relay from 'react-relay';
+import React, { PropTypes } from 'react'
+import Relay from 'react-relay'
 
-import ComponentFunctions from './ComponentFunctions';
-import {getShowRoute} from '../../routes/navigatorRoutes'
+import ComponentFunctions from './ComponentFunctions'
+import {getShowRoute} from '../../routes/MyRoutes'
 import {DateHelper} from '../../Utils'
-
-require('../../Utils/ArrayExtension');
 
 export default class ContainerFunctions extends React.Component {
 
   static propTypes = {
     date: PropTypes.object,
     dataRows: PropTypes.object
-  };
+  }
 
   render() {
     return (
@@ -22,12 +20,12 @@ export default class ContainerFunctions extends React.Component {
         onPress={this._onPress.bind(this)}
         dataRows={this.props.dataRows}
       />
-    );
+    )
   }
 
   _onPress(rowData) {
-    let showRoute = getShowRoute(rowData.get('show_id'));
-    this.props.navigator.superNavigator.push(showRoute);
+    const showRoute = getShowRoute(rowData.get('show_id'))
+    this.props.navigator.superNavigator.push(showRoute)
   }
 }
 

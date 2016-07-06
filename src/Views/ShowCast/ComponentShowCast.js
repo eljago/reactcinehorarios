@@ -1,31 +1,35 @@
 'use strict'
 
-import React, {PropTypes} from 'react';
+import React, {PropTypes} from 'react'
 
-import {MyGiftedListView} from '../../ReusableComponents';
-import ComponentShowCastCell from './ComponentShowCastCell';
-import {ImageHelper} from '../../Utils';
+import Immutable from 'immutable'
+
+import {MyGiftedListView} from '../../ReusableComponents'
+import ComponentShowCastCell from './ComponentShowCastCell'
+import {ImageHelper} from '../../Utils'
 
 export default class ComponentShowCast extends React.Component {
 
 	static propTypes = {
-		extraData: PropTypes.object,
     navigator: PropTypes.object
 	};
 
 	render() {
-    const cast = this.props.extraData ? this.props.extraData.cast : [];
+    const cast = this.props.people ? this.props.people : [];
 		return(
       <MyGiftedListView
         renderRow={this._renderRow.bind(this)}
-        dataRows={cast}
+        dataRows={Immutable.fromJS(cast)}
         ignoreContentInset={true}
       />
-		);
+		)
 	}
 
 	_renderRow(rowData, sectionID, rowID, highlightRow) {
-    const {name, character, rowNumber, image_url} = rowData;
+    const name = rowData.get('name');
+    const image_url = rowData.get('image_url');
+    const character = rowData.get('character');
+    const rowNumber = rowData.get('rowNumber');
     return (
       <ComponentShowCastCell
         name={name}

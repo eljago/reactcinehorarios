@@ -6,16 +6,9 @@ import Relay from 'react-relay'
 import Immutable from 'immutable';
 
 import ComponentTheaters from './ComponentTheaters'
-import {getFunctionsRoute} from '../../routes/navigatorRoutes'
+import {getFunctionsRoute} from '../../routes/MyRoutes'
 
 class ContainerTheaters extends React.Component {
-
-  constructor(props) {
-    super(props);
-    props.relay.setVariables({
-      cinema_id: props.extraData.cinema_id,
-    });
-  }
 
   render() {
     const dataRows = Immutable.fromJS(this.props.viewer ? this.props.viewer.api_theaters : []);
@@ -30,7 +23,7 @@ class ContainerTheaters extends React.Component {
   _onPress(rowData) {
     const theater_id = rowData.get('theater_id');
     const name = rowData.get('name');
-    let functionsRoute = getFunctionsRoute(new Date(), theater_id, name);
+    const functionsRoute = getFunctionsRoute(name, theater_id);
     this.props.navigator.push(functionsRoute);
   }
 }

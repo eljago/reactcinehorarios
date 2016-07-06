@@ -1,12 +1,12 @@
-'use strict';
+'use strict'
 
-import React, { PropTypes } from 'react';
+import React, { PropTypes } from 'react'
 import Relay from 'react-relay'
 
-import ComponentBillboard from './componentBillboard';
-import {getShowRoute} from '../../routes/navigatorRoutes';
+import ComponentBillboard from './componentBillboard'
+import {getShowRoute} from '../../routes/MyRoutes'
 
-import Immutable from 'immutable';
+import Immutable from 'immutable'
 
 class ContainerBillboard extends React.Component {
 
@@ -25,13 +25,12 @@ class ContainerBillboard extends React.Component {
         dataRows={this.state.dataRows}
         onButtonPressed={this._onButtonPressed.bind(this)}
       />
-    );
+    )
   }
 
   _onPress(rowData) {
-    const show_id = rowData.get('show_id');
-    let showRoute = getShowRoute(show_id);
-    this.props.navigator.push(showRoute);
+    const showRoute = getShowRoute(rowData.get('show_id'))
+    this.props.navigator.push(showRoute)
   }
 
   _onButtonPressed() {
@@ -39,10 +38,10 @@ class ContainerBillboard extends React.Component {
     this.setState({
       showingScores: newShowingScores,
       dataRows: this.state.dataRows.map((dataRow) => {
-        const newDataRow = dataRow.set('showingScores', newShowingScores);
-        return newDataRow;
+        const newDataRow = dataRow.set('showingScores', newShowingScores)
+        return newDataRow
       })
-    });
+    })
   }
 }
 
@@ -67,4 +66,4 @@ export default Relay.createContainer(ContainerBillboard, {
       }
     `
   },
-});
+})

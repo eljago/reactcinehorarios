@@ -15,7 +15,7 @@ export default class TabBarRoute extends SimpleRoute {
 
   renderScene(navigator = null) {
   	return(
-			<ContainerMainTabBar tabBarRoutes={this.tabBarRoutes}/>
+			<ContainerMainTabBar tabBarRoutes={this.tabBarRoutes} navigator={navigator}/>
   	);
   }
 }

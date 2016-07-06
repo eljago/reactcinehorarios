@@ -6,7 +6,7 @@ import Relay from 'react-relay';
 import Immutable from 'immutable';
 
 import ComponentVideos from './ComponentVideos';
-import {getVideosWebView} from '../../routes/navigatorRoutes';
+import {getVideosWebViewRoute} from '../../routes/MyRoutes';
 
 class ContainerVideos extends React.Component {
 
@@ -35,7 +35,7 @@ class ContainerVideos extends React.Component {
   }
 
   _onPressShow(rowData) {
-    let videosWebViewRoute = getVideosWebView();
+    let videosWebViewRoute = getVideosWebViewRoute();
     this.props.navigator.push(videosWebViewRoute);
   }
 }

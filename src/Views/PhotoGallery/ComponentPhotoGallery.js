@@ -1,17 +1,16 @@
-'use strict';
+'use strict'
 
-import React, { PropTypes } from 'react';
+import React, { PropTypes } from 'react'
 
-import PhotoBrowser from 'react-native-photo-browser';
+import PhotoBrowser from 'react-native-photo-browser'
 
-import { ImageHelper } from '../../Utils';
+import { ImageHelper } from '../../Utils'
 
 export default class ComponentPhotoGallery extends React.Component {
 
   static propTypes = {
-  	navigator: PropTypes.object,
-    extraData: PropTypes.object
-  };
+  	navigator: PropTypes.object
+  }
 
   render() {
     return (
@@ -25,17 +24,17 @@ export default class ComponentPhotoGallery extends React.Component {
         startOnGrid={true}
         enableGrid={true}
       />
-    );
+    )
   }
 
   _getMedia() {
-    return this.props.extraData.images.map((image) => {
+    return this.props.images.map((image) => {
       return({
         thumb: ImageHelper.addPrefixToPath(image.image_url, 'smaller_'),
         photo: ImageHelper.addPrefixToPath(image.image_url),
         caption: ' ',
         selected: false
-      });
-    });
+      })
+    })
   }
 }

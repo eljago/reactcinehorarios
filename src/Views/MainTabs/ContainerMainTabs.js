@@ -23,6 +23,7 @@ export default class ContainerMainTabBar extends React.Component {
         tabBarRoutes={this.props.tabBarRoutes}
         selectedTab={this.state.selectedTab}
         onPressTabBarItem={this._onPressTabBarItem.bind(this)}
+        navigator={this.props.navigator}
       />
     );
   }

@@ -1,7 +1,8 @@
 'use strict'
 
 import React from 'react';
-import {StyleSheet, Platform, View} from 'react-native';
+import {StyleSheet, View} from 'react-native';
+import {colors} from '../Data'
 
 export default class SimpleRoute {
 
@@ -16,10 +17,19 @@ export default class SimpleRoute {
   renderScene(navigator = null) {
     const Component = this.component;
     return(
-			<Component
-				navigator={navigator}
-				{...this.extraProps}
-			/>
+      <View style={styles.container}>
+  			<Component
+  				navigator={navigator}
+  				{...this.extraProps}
+  			/>
+      </View>
 		);
   }
 }
+
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    backgroundColor: colors.background
+  }
+})

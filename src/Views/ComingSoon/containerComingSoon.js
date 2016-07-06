@@ -1,12 +1,12 @@
-'use strict';
+'use strict'
 
-import React, { PropTypes } from 'react';
-import Relay from 'react-relay';
+import React, { PropTypes } from 'react'
+import Relay from 'react-relay'
 
-import Immutable from 'immutable';
+import Immutable from 'immutable'
 
-import ComponentComingSoon from './componentComingSoon';
-import {getShowRoute} from '../../routes/navigatorRoutes';
+import ComponentComingSoon from './componentComingSoon'
+import {getShowRoute} from '../../routes/MyRoutes'
 
 class ContainerComingSoon extends React.Component {
 
@@ -28,9 +28,8 @@ class ContainerComingSoon extends React.Component {
   }
 
   _onPress(rowData) {
-    const show_id = rowData.get('show_id');
-    let showRoute = getShowRoute(show_id);
-    this.props.navigator.push(showRoute);
+    const showRoute = getShowRoute(rowData.get('show_id'))
+    this.props.navigator.push(showRoute)
   }
 }
 
@@ -55,4 +54,4 @@ export default Relay.createContainer(ContainerComingSoon, {
       }
     `
   },
-});
+})
