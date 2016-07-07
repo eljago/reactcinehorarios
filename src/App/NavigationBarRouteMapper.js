@@ -1,26 +1,26 @@
 'use strict'
 
-import React from 'react';
-import {Text, View} from 'react-native';
+import React from 'react'
+import {Text, View} from 'react-native'
 
-import {NavButton} from './NavButton';
-import {colors} from '../Data';
+import {NavButton} from './NavButton'
+import {colors} from '../Data'
 
 export let NavigationBarRouteMapper = {
 
   LeftButton(route, navigator, index, navState) {
-    var previousRoute = navState.routeStack[index - 1];
+    var previousRoute = navState.routeStack[index - 1]
     if (previousRoute) {
       return(
         <NavButton
           onPress={() => {
-            navigator.pop();
+            navigator.pop()
           }}
           imageSource={require('../../assets/MenuBackIcon.png')}
         />
-      );
+      )
     }
-    return null;
+    return null
   },
 
   RightButton(route, navigator, index, navState) {
@@ -28,16 +28,12 @@ export let NavigationBarRouteMapper = {
       return(
         <View style={{flex: 1, flexDirection: 'row'}}>
           <NavButton
-            onPress={() => {
-              navigator.pop();
-            }}
+            onPress={navigator.pop()}
             imageSource={require('../../assets/MenuBackIcon.png')}
           />
           <NavButton
             style={{flex:1}}
-            onPress={() => {
-              navigator.pop();
-            }}
+            onPress={navigator.pop}
             imageSource={require('../../assets/MenuBackIcon.png')}
           />
         </View>
@@ -57,7 +53,7 @@ export let NavigationBarRouteMapper = {
       >
         {route.title}
       </Text>
-    );
+    )
   }
 
 };

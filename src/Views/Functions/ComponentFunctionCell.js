@@ -73,8 +73,8 @@ const styles = StyleSheet.create({
   },
   name: {
     fontSize: 22,
-    fontWeight: '300',
-    color: colors.navBar,
+    fontWeight: '400',
+    color: colors.titleText,
   },
   functionView: {
     marginTop: 5

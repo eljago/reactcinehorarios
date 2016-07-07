@@ -32,6 +32,7 @@ export default class RelayRoute extends SimpleRoute {
           return (
             <View style={styles.container}>
               <Component
+                title={this.title}
                 navigator={navigator}
                 {...this.extraProps}
                 {...data}

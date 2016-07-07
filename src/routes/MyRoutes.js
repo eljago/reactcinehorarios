@@ -21,14 +21,14 @@ import ShowCast from '../Views/ShowCast'
 export function getApplicationRoutes() {
   return new NavigatorRoute({
 		initialRoute: new TabBarRoute({
-			hideNavBar: true,
 			tabBarRoutes:
 			[
 				getCinemasNavigatorRoute(),
 				getBillboardRoute(),
 				getComingSoonRoute(),
 				getVideosNavigatorRoute()
-			]
+			],
+			hideNavBar: true
 		})
 	})
 }
@@ -115,11 +115,11 @@ function getFunctionsRoute(name, theater_id) {
 
 function getShowRoute(show_id) {
 	return new RelayRoute({
-		hideNavBar: true,
 		component: Show,
 		relayParams: {
 			show_id: show_id
-		}
+		},
+		hideNavBar: true
 	})
 }
 
@@ -129,18 +129,19 @@ function getShowCastRoute(people) {
 		component: ShowCast,
 		extraProps: {
 			people: people
-		}
+		},
+		hideNavBar: true
 	})
 }
 
 function getPhotoGalleryRoute(images) {
 	return new SimpleRoute({
-		hideNavBar: true,
 		title: "Elenco",
 		component: PhotoGallery,
 		extraProps: {
 			images: images
-		}
+		},
+		hideNavBar: true
 	})
 }
 

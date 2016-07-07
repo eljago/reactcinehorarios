@@ -49,15 +49,17 @@ const styles = StyleSheet.create({
     backgroundColor: colors.tabBar
   },
   icon: {
-    tintColor: 'gray'
+    tintColor: colors.tabBarIcon
   },
   iconSelected: {
-    tintColor: 'white'
+    tintColor: colors.tabBarIconSelected
   },
   iconTitle: {
-    color: 'gray'
+    color: colors.tabBarIcon,
+    fontSize: 12
   },
   iconTitleSelected: {
-    color: 'white'
+    color: colors.tabBarIconSelected,
+    fontSize: 12
   }
 });

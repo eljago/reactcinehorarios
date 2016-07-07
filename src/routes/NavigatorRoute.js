@@ -46,6 +46,7 @@ export default class NavigatorRoute extends SimpleRoute {
 
 const styles = StyleSheet.create({
 	container: {
-		flex: 1
+		flex: 1,
+		backgroundColor: '#1E1E1E'
 	}
 })

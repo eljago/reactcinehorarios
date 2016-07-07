@@ -15,11 +15,13 @@ export default class LoadingIndicator extends React.Component {
   render() {
     return(
       <View style={styles.loadingContainer}>
-        <ActivityIndicator
-          style={styles.activityIndicator}
-          size="large"
-          color='black'
-        />
+        <View style={styles.activityContainer}>
+          <ActivityIndicator
+            style={styles.activityIndicator}
+            size="large"
+            color='white'
+          />
+        </View>
       </View>
     )
   }
@@ -29,8 +31,14 @@ const styles = StyleSheet.create({
   loadingContainer: {
     flex: 1,
     justifyContent: 'center',
+    alignItems: 'center'
+  },
+  activityContainer: {
+    padding: 20,
+    borderRadius: 15,
+    justifyContent: 'center',
     alignItems: 'center',
-    backgroundColor: colors.background
+    backgroundColor: 'rgba(1,1,1,0.5)'
   },
   activityIndicator: {
     width: 36,
