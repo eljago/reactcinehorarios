@@ -3,7 +3,7 @@
 import React from 'react'
 import {Text, View} from 'react-native'
 
-import {NavButton} from './NavButton'
+import NavButton from './NavButton'
 import {colors} from '../Data'
 
 export let NavigationBarRouteMapper = {
@@ -24,22 +24,7 @@ export let NavigationBarRouteMapper = {
   },
 
   RightButton(route, navigator, index, navState) {
-    if (route.title === 'Videos') {
-      return(
-        <View style={{flex: 1, flexDirection: 'row'}}>
-          <NavButton
-            onPress={navigator.pop()}
-            imageSource={require('../../assets/MenuBackIcon.png')}
-          />
-          <NavButton
-            style={{flex:1}}
-            onPress={navigator.pop}
-            imageSource={require('../../assets/MenuBackIcon.png')}
-          />
-        </View>
-      );
-    }
-    return null;
+    return typeof route.getNavRightButton === 'function' ? route.getNavRightButton() : null;
   },
 
   Title(route, navigator, index, navState) {

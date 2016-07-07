@@ -3,11 +3,11 @@
 import React, {PropTypes} from 'react';
 import {Image, StyleSheet, TouchableHighlight} from 'react-native'
 
-export class NavButton extends React.Component {
+export default class NavButton extends React.Component {
 
   static propTypes = {
     onPress: PropTypes.func,
-    imageSource: PropTypes.number
+    imageSource: PropTypes.number,
   };
 
   render() {

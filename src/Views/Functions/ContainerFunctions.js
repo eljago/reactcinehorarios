@@ -25,7 +25,7 @@ export default class ContainerFunctions extends React.Component {
 
   _onPress(rowData) {
     const showRoute = getShowRoute(rowData.get('show_id'))
-    this.props.navigator.superNavigator.push(showRoute)
+    this.props.navigator.navigator.push(showRoute)
   }
 }
 

@@ -20,7 +20,7 @@ export default class NavigatorRoute extends SimpleRoute {
       <Navigator
         initialRoute={this.initialRoute}
         renderScene={(route, nav) => {
-        	nav.superNavigator = navigator;
+        	nav.navigator = navigator;
         	const scene = route.renderScene(nav)
     			let marginTop = 0
 					if (!route.hideNavBar) {
